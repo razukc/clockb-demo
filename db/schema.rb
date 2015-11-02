@@ -1,0 +1,161 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 20151030104104) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "alumnis", force: :cascade do |t|
+    t.boolean  "company"
+    t.string   "name"
+    t.string   "person_in_charge"
+    t.string   "contact"
+    t.string   "email"
+    t.string   "affiliated_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "client_background"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.boolean  "company"
+    t.string   "name"
+    t.string   "person_in_charge"
+    t.string   "contact"
+    t.string   "email"
+    t.string   "affiliated_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "client_background"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.date     "start_date"
+  end
+
+  create_table "feedbacks_of_the_services", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feedbacks_of_the_services", ["client_id"], name: "index_feedbacks_of_the_services_on_client_id", using: :btree
+
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "company"
+    t.string   "person_in_charge"
+    t.string   "contact_number"
+    t.string   "occupation"
+    t.integer  "package"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+  end
+
+  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
+  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+
+  create_table "milestone_alumnis", force: :cascade do |t|
+    t.text     "content"
+    t.boolean  "achieved"
+    t.integer  "alumni_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "milestone_alumnis", ["alumni_id"], name: "index_milestone_alumnis_on_alumni_id", using: :btree
+
+  create_table "milestones", force: :cascade do |t|
+    t.text     "content"
+    t.boolean  "achieved"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "milestones", ["client_id"], name: "index_milestones_on_client_id", using: :btree
+
+  create_table "program_schedules", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "program_schedules", ["client_id"], name: "index_program_schedules_on_client_id", using: :btree
+
+  create_table "recommended_services", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "alumni_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recommended_services", ["alumni_id"], name: "index_recommended_services_on_alumni_id", using: :btree
+
+  create_table "schedule_for_meetings", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedule_for_meetings", ["client_id"], name: "index_schedule_for_meetings_on_client_id", using: :btree
+
+  create_table "services_catereds", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "services_catereds", ["client_id"], name: "index_services_catereds_on_client_id", using: :btree
+
+  add_foreign_key "feedbacks_of_the_services", "clients"
+  add_foreign_key "milestone_alumnis", "alumnis"
+  add_foreign_key "milestones", "clients"
+  add_foreign_key "program_schedules", "clients"
+  add_foreign_key "recommended_services", "alumnis"
+  add_foreign_key "schedule_for_meetings", "clients"
+  add_foreign_key "services_catereds", "clients"
+end

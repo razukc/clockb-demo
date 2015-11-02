@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: false
+  name: MyString
+  person_in_charge: MyString
+  contact: MyString
+  email: MyString
+  affiliated_date: MyString
+
+two:
+  company: false
+  name: MyString
+  person_in_charge: MyString
+  contact: MyString
+  email: MyString
+  affiliated_date: MyString

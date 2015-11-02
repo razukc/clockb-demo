@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  company: false
+  person_in_charge: MyString
+  contact_number: MyString
+  occupation: MyString
+  package: 1
+
+two:
+  name: MyString
+  company: false
+  person_in_charge: MyString
+  contact_number: MyString
+  occupation: MyString
+  package: 1

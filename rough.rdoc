@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Clockb Demo" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clockb Demo" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+   
+       <%= yield %>
+  
+  </body>
+</html>
+
+
+
+Website Member
+
+    Company/Personal Name
+    Person in charge
+    Contact number
+    Email
+    Occupation/Business
+    Package Selected
+
+rails g model Member name:string company:boolean contact_number:string email:string occupation_business:string package:integer
+
+client
+company:boolean
+name:string
+person_in_charge:string
+contact:string
+email:string
+affiliated_date:string
+rails g model client company:boolean name:string person_in_charge:string contact:string email:string affiliated_date:string
+
+services_catered:text
+a client has many services_catered
+a services_catered belongs to a client
+rails g model services_catered content:text client:belongs_to
+
+program_schedules:text
+rails g model program_schedule content:text client:belongs_to
+
+milestones:text
+rails g model milestone content:text achieved:boolean client:belongs_to
+
+feedbacks_of_the_service:text
+rails g model feedbacks_of_the_service content:text client:belongs_to
+
+schedule_for_meeting:text
+rails g model schedule_for_meeting content:text client:belongs_to
+
+client_background:attachment
+
+alumni
+company:boolean
+name:string
+person_in_charge:string
+contact:string
+email:string
+affiliated_date:string
+milestones:text
+rails g model milestone_alumni content:text achieved:boolean alumni:belongs_to
+recommended_services:text
+rails g model recommended_service content:text alumni:belongs_to
+client_background:attachment
