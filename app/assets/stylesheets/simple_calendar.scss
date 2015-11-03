@@ -1,5 +1,5 @@
 /* Styles for Date Selector */
-
+$primary-color: #A0D3E8;
 .today {
   
   background-color: #f9f9f9;
@@ -7,10 +7,20 @@
 
         border: 1px solid #ddd;
 
-        padding: 2px 0;
+        
+}
+.has-events{
+  font-weight: bold;
+background-color: $primary-color;
+color: white !important;
+display: inline-block;
+border-radius: 5px;
+
+        
+
+        
 }
 
-$primary-color: #A0D3E8;
 .month {
 
   height: 110px;

@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem "gretel"
+gem 'jquery-turbolinks'
 gem 'rails_12factor'
 gem 'foundation-icons-sass-rails'
 gem "simple_calendar", "~> 2.0"

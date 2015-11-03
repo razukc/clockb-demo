@@ -1,3 +1,11 @@
-<%= month_calendar do |date| %>
+<%= month_calendar events: @events do |date, events| %>
+ 
+  <div class="this-day">
   <%= date %>
+</div>
+  <% events.each do |event| %>
+    <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= event.name %>">
+    		<%= link_to date, event %>
+    </span>
+  <% end %>
 <% end %>

@@ -1,61 +1,18 @@
+<% @events.each do |event| %>
 <article class="event">
-
-
-
         <div class="event-date">
-
-          <p class="event-month">Sept</p>
-
-          <p class="event-day">18</p>
-
+          <p class="event-month"><%= event.start_date.strftime('%b') %></p>
+          <p class="event-day"><%= event.start_date.strftime('%e') %></p>
         </div>
-
-
-
         <div class="event-desc">
-
-          <h4 class="event-desc-header">Day in the Life of Foundation for Apps</h4>
-
+          <h4 class="event-desc-header"><%= event.name %></h4>
           <!-- <p class="event-desc-detail"><span class="event-desc-time"></span>BDConf - Altlanta</p> -->
-
-          <a href="#" class="rsvp button info small">View Details</a>
-
+          <%= link_to 'View Details', event_path(event), class: 'rsvp button info small' %>
         </div>
-
-
-
-      </article>
-
-
-
+</article>
       <hr>
-
-
-
-      <article class="event">
-
-
-
-        <div class="event-date">
-
-          <p class="event-month">Oct</p>
-
-          <p class="event-day">21</p>
-
-        </div>
-
-
-
-        <div class="event-desc">
-
-          <h4 class="event-desc-header">Day in the Life of Foundation for Apps</h4>
-
-          <!-- <p class="event-desc-detail"><span class="event-desc-time"></span>BDConf - Washington, DC</p> -->
-
-          <a href="#">View Details</a>
-
-        </div>
-
-
-
-      </article>
+      <% end %>
+      
+<% if @events.empty? %>
+  <em>No events found</em>
+<% end %>
