@@ -1,0 +1,10 @@
+<div class="row">
+	<% breadcrumb :events, @events %>
+<h4>All Events</h4>
+	<% @events.each do |event| %>
+		<h5><%= link_to event.name, event_path(event) %></h5>
+	<% end %>
+<% if @events.empty? %>
+  <em>No events found</em>
+<% end %>
+</div>	
