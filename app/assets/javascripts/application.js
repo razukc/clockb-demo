@@ -31,5 +31,4 @@ $(function(){
 	$('.calendar .has-events .this-day').each(function(){
 		$(this).remove();
 	});
-	$(document).foundation('tooltip', 'reflow');
 });

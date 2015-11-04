@@ -1,3 +1,15 @@
+Event Attendee
+rails g model event_attendee company:boolean name person_in_charge contact_number email event:belongs_to
+/app/models/event.rb
+has_many :event_attendees
+
+
+
+Members:
+  Basic Profile
+  My Events (Register for events)
+
+
 <!DOCTYPE html>
 <html>
   <head>
