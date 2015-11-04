@@ -5,9 +5,9 @@
           <p class="event-day"><%= event.start_date.strftime('%e') %></p>
         </div>
         <div class="event-desc">
-          <h4 class="event-desc-header"><%= event.name %></h4>
-          <!-- <p class="event-desc-detail"><span class="event-desc-time"></span>BDConf - Altlanta</p> -->
-          <%= link_to 'View Details', event_path(event), class: 'rsvp button info small' %>
+          <h5 class="event-desc-header"><%= event.name %></h5>
+          <p class="event-desc-detail"><span class="event-desc-time"></span>BDConf - Altlanta</p>
+          <%= link_to 'View Details', event_path(event), class: 'rsvp button info tiny' %>
         </div>
 </article>
       <hr>

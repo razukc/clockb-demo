@@ -39,7 +39,6 @@
 	    </div>
 	  </li>
 	</ul>
-	<hr />
 </div>
 
 
@@ -48,7 +47,8 @@
   <div class="medium-6 large-4 columns">
   	<div id="events_calendar">
   		<%= render partial: 'layouts/calendar' %>
-		</div>
+	</div>
+	<%= link_to "View all Events", events_path, class: 'button expand' %>
   </div>
   <!-- Event Listing -->
   <div class="medium-6 large-8 columns">
@@ -57,7 +57,6 @@
   	<%= render "layouts/event_listing" %>
   	<br />
   </div>
-  <hr />
 </div>
 
 <!-- Why Clock b? -->
