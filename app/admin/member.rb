@@ -2,7 +2,7 @@ ActiveAdmin.register Member do
 
 config.batch_actions = false
 
-actions :all, except: [:edit, :new]
+actions :all, except: [:edit, :new, :destroy]
 config.per_page = 10
 
 index :download_links => false do
@@ -23,6 +23,6 @@ end
 filter :name
 filter :company
 permit_params :name, :person_in_charge, 
-	:email, :contact_number, :package, :company
+	:email, :contact_number, :package, :occupation, :company
 
 end

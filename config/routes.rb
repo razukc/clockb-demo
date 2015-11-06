@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   devise_for :members
   resources :members
-  resources :events
+  resources :events do
+    get "register" => 'events#register'
+  end
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

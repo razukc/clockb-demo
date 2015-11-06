@@ -2,4 +2,5 @@
 <% breadcrumb :event, @event %>
 <h4><%= @event.name %></h4>
 <h5><%= @event.start_date %></h5>
+<%= link_to "Register for this event", event_register_path(@event.id), class: 'button' %>
 </div>

@@ -1,3 +1,19 @@
 // Place all the styles related to the Members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tabs{
+	border-bottom: 1px dashed #E6E6E6;
+	border-left: 1px solid #E6E6E6;
+}
+.tabs .active{
+	border-top: 3px solid rgb(43, 166, 203);
+	margin-top: -3px;
+}
+
+.tabs-content .content.active{
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: #E6E6E6;
+	padding: 20px;
+	margin-top: -1px;
+}

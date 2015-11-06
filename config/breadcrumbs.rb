@@ -10,6 +10,15 @@ crumb :event do |event|
 	link event.name, event_path(event)
 	parent :events
 end
+
+crumb :members do |members|
+	# link :members, members_path
+end
+
+crumb :member do |member|
+	link member.email, member_path(member)
+	parent :members
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end
