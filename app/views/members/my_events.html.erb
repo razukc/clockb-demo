@@ -1,3 +1,4 @@
+<% breadcrumb :my_events, @my_events %>
 <div class="row">
   <div class="large-8 columns">
 
@@ -7,9 +8,11 @@
 </dl>
 <div class="tabs-content">
   <div class="content active" id="panel1">
+    <ul>
     <% @my_events.each do |event| %>
-    <%= link_to event.name, event_path(event) %>
+    <li><%= link_to event.name, event_path(event) %></li>
     <% end %>
+    </ul>
     <% if @my_events.empty? %>
     <p>You have not signed up for any Events.</p>
     <p>Click <%= link_to 'here', events_path %> to view all Events.</p>
@@ -19,9 +22,11 @@
     <% if @today.empty? %>
     <p>There are no events today.</p>
     <% end %>
+    <ul>
     <% @today.each do |today| %>
-    <%= link_to today.name, event_path(today) %>
+    <li><%= link_to today.name, event_path(today) %></li>
     <% end %>
+    </ul>
   </div>
 </div>
   </div>

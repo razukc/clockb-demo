@@ -5,16 +5,21 @@ class Event < ActiveRecord::Base
 		self.start_date
 	end
 	def days_left
-		(self.start_date - Date.today).to_i
+		num_days = 0
+		num_days += (self.start_date - Date.today).to_i if (self.start_date - Date.today).to_i >= 0 
+		num_days += (Date.today - self.start_date).to_i if (self.start_date - Date.today).to_i < 0 
+		num_days
 	end
-	def days_left2
-		"Today" if (self.start_date - Date.today).to_i == 0
-		(self.start_date - Date.today).to_i.to_s << "Days left" if (self.start_date - Date.today).to_i > 0
-		"Completed" if (self.start_date - Date.today).to_i < 0
-		"Tomorrow" if (self.start_date - Date.today).to_i == 1
+	def self.status(resource)
+		res = ""
+		res << "Today" if (resource.start_date - Date.today).to_i == 0
+		res << "Past" if (resource.start_date - Date.today).to_i < 0
+		res << "Tomorrow" if (resource.start_date - Date.today).to_i == 1
+		res << "Upcoming" if (resource.start_date - Date.today).to_i > 1
+		res
 	end
 	def self.today
-		Event.where(:start_date => Date.today).order(:start_date)
+		Event.where('start_date = ?', Date.today).order(:start_date)
 	end
 	def self.upcoming
 		Event.where('start_date >= ?', Date.today).order(:start_date)
@@ -24,5 +29,8 @@ class Event < ActiveRecord::Base
 	end
 	def self.past
 		Event.where('start_date < ?', Date.today).order(:start_date)
+	end
+	def self.single_event_attendees_count(resource)
+		resource.members.count
 	end
 end

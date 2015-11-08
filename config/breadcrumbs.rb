@@ -1,3 +1,6 @@
+crumb :my_events do |my_events|
+	link "MY EVENTS", my_events_path
+end
 crumb :root do
   link "Home", root_path
 end

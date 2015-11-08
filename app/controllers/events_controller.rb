@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_member!, only: [:attend]
+
 	def attend
 	  @event = Event.find(params[:id])
 	  current_member.events << @event
@@ -15,7 +16,10 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		@events = Event.all
+		@events_all = Event.all
+		@events_today = Event.today
+		@events_upcoming = Event.upcoming
+		@events_past = Event.past
 	end
 	
 	def show
