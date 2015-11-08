@@ -1,9 +1,8 @@
 <% breadcrumb :member, @member %>
 <div class="row">
-  <div class="large-9 columns">
-<dl class="tabs four-up" data-tab>
+  <div class="large-8 columns">
+<dl class="tabs" data-tab>
   <dd class="active"><a href="#panel1">Profile</a></dd>
-  <dd><a href="#panel2">My Events</a></dd>
   <dd><a href="#panel3">Change Password</a></dd>
   <dd><a href="#panel4">Delete Account</a></dd>
 </dl>
@@ -55,11 +54,7 @@
 
 
   </div>
-  <div class="content" id="panel2">
-    <p>List of events you have attended.</p>
 
-
-  </div>
   <div class="content" id="panel3">
     <div class="authform">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>

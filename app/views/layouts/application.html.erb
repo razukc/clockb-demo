@@ -15,22 +15,24 @@
   <body>
     <!-- Top Navigation -->
     <%= render 'layouts/navigation' %>
-
-    <!-- Logo and social icons -->
+    <!-- Logo -->
     <div class="row">
-      <div class="large-6 medium-6 columns"><h2>Clock b</h2></div>
+      <div class="large-6 medium-6 columns">
+        <%= image_tag "clockb-logo.jpg", class: 'lazyload' %>
+      </div>
     </div>
+    <!-- Breadcrumb -->
     <div class="row">
       <div class="columns">
         <%= breadcrumbs display_single_fragment: false, pretext: "You are here: ", style: :foundation5 %>
       </div>
     </div>
+    <!-- Flash messages -->
     <div class="clearfix">
       <%= render 'layouts/messages' %>
     </div>
     <%= yield %>
-
+    <!-- Footer -->
     <%= render 'layouts/footer'%>
-
   </body>
 </html>

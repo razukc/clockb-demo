@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="large-8 columns">
+
+<dl class="tabs" data-tab>
+  <dd class="active"><a href="#panel1">My Events</a></dd>
+  <dd><a href="#panel2">Today</a></dd>
+</dl>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <% @my_events.each do |event| %>
+    <%= link_to event.name, event_path(event) %>
+    <% end %>
+    <% if @my_events.empty? %>
+    <p>You have not signed up for any Events.</p>
+    <p>Click <%= link_to 'here', events_path %> to view all Events.</p>
+    <% end %>
+  </div>
+  <div class="content" id="panel2">
+    <% if @today.empty? %>
+    <p>There are no events today.</p>
+    <% end %>
+    <% @today.each do |today| %>
+    <%= link_to today.name, event_path(today) %>
+    <% end %>
+  </div>
+</div>
+  </div>
+</div>

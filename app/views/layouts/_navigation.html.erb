@@ -8,12 +8,12 @@
   <!-- Right Nav Section -->
   <ul class="right customgap">
     <% if member_signed_in? %>
-    
-      <li><%= link_to 'Log out', destroy_member_session_path, :method => 'delete', class: 'button' %></li>
-      <li><%= link_to 'Settings', edit_member_registration_path, class: 'button secondary'%></li>
+    <li><%= link_to 'My Events', my_events_path, class: 'button secondary' %></li>
+      <li><%= link_to 'Sign out', destroy_member_session_path, :method => 'delete', class: 'button' %></li>
+      <li><%= link_to 'Profile', edit_member_registration_path, class: 'button secondary'%></li>
       <% else %>
-      <li><%= link_to 'Log in', new_member_session_path, class: 'button' %></li>
-      <li><%= link_to 'Register', new_member_registration_path, class: 'button secondary' %></li>
+      <li><%= link_to 'Sign in', new_member_session_path, class: 'button' %></li>
+      <li><%= link_to 'Sign up', new_member_registration_path, class: 'button secondary' %></li>
     <% end %>
     
   </ul>
@@ -24,4 +24,3 @@
   </ul>
 </section>
 </nav>
-<br />

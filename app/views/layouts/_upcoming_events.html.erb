@@ -1,0 +1,32 @@
+<% @upcoming_events.each do |event| %>
+<article class="event">
+        <div class="event-date">
+          <p class="event-month"><%= event.start_date.strftime('%b') %></p>
+          <p class="event-day"><%= event.start_date.strftime('%e') %></p>
+        </div>
+        <div class="event-desc">
+          <h5 class="event-desc-header"><%= event.name %></h5>
+          <p class="event-desc-detail"><span class="event-desc-time">
+            <% if (event.start_date - Date.today).to_i == 0 %>
+            Today
+            <% end %>
+            <% if (event.start_date - Date.today).to_i == 1 %>
+            Tomorrow
+            <% end %>
+            <% if (event.start_date - Date.today).to_i < 0 %> 
+            Completed
+            <% end %>
+            <% if (event.start_date - Date.today).to_i > 0 %>
+            Starting in <%= (event.start_date - Date.today).to_i %> 
+            Days
+            <% end %>
+          </span></p>
+          <%= link_to 'View Details', event_path(event), class: 'rsvp button info tiny' %>
+        </div>
+</article>
+      <hr>
+      <% end %>
+      
+<% if @upcoming_events.empty? %>
+  <em>No upcoming_events found</em>
+<% end %>

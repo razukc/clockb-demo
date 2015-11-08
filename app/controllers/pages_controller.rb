@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 	def index
-		@events = Event.all #to-do: add limit 2
+		@events = Event.all
+		@upcoming_events = Event.upcoming_home_page
 	end
 end

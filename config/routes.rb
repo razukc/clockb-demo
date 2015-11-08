@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   
-  devise_for :members
-  resources :members
+  
+  devise_for :members, controllers: { registrations: "registrations" }
+  devise_scope :members do
+    get 'my-events' => 'members#my_events'
+  end
+
   resources :events do
-    get "register" => 'events#register'
+    post 'attend', on: :member
+    delete 'unattend', on: :member
   end
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,9 +1,11 @@
+<% breadcrumb :events, @events %>
 <div class="row">
-	<% breadcrumb :events, @events %>
 	<div class="large-12 columns">
 <h4>All Events</h4>
 	<% @events.each do |event| %>
 		<h5><%= link_to event.name, event_path(event) %></h5>
+		<%= event.start_date %>
+		<%= "(" << event.days_left.to_s << " " << "Days left" << ")" %>
 	<% end %>
 <% if @events.empty? %>
   <em>No events found</em>

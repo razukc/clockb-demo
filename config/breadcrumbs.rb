@@ -16,7 +16,7 @@ crumb :members do |members|
 end
 
 crumb :member do |member|
-	link member.email, member_path(member)
+	link member.email, edit_member_registration_path(member)
 	parent :members
 end
 # crumb :projects do

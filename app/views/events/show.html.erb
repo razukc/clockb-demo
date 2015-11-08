@@ -1,6 +1,17 @@
-<div class="row">
 <% breadcrumb :event, @event %>
+<div class="row">
+<div class="columns">
 <h4><%= @event.name %></h4>
 <h5><%= @event.start_date %></h5>
-<%= link_to "Register for this event", event_register_path(@event.id), class: 'button' %>
+<% if @event.days_left < 0 %>
+	<span class="label alert" style="font-size:14px;">Expired</span>
+<% else %>
+<% if current_member && current_member.events.include?(@event) %>
+<span class="success label" style="font-size:14px;">Signed up</span>
+<%= button_to 'Cancel your attendance', unattend_event_path(@event), method: :delete, class: 'button alert' %>
+<% else %>
+<%= button_to 'Attend this event', attend_event_path(@event), method: :post, class: 'button' %>
+<% end %>
+<% end %>
+</div>
 </div>
