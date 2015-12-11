@@ -29,7 +29,7 @@ form do |f|
 	f.inputs "Event Details" do
 		f.input :name
 		f.input :start_date, as: :datepicker,
-			datepicker_options: {date_format:"DD, d MM, yy"}
+			datepicker_options: {date_format:"DD, d MM, yy", min_date:0}
 	end
 	f.actions	
 end

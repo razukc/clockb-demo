@@ -1,3 +1,6 @@
+#to-do
+past-events should not be attended
+
 Event Attendee
 rails g model event_attendee company:boolean name person_in_charge contact_number email event:belongs_to
 /app/models/event.rb

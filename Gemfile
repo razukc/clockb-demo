@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem "opentok", "~> 2.3"
 gem "gretel"
 gem 'jquery-turbolinks'
 gem 'rails_12factor'
