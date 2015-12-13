@@ -15,12 +15,15 @@
   <body>
     <!-- Top Navigation -->
     <%= render 'layouts/navigation' %>
+    <%= @root_path2 %>
+    <% if @root_path2 == '/' %>
     <!-- Logo -->
     <div class="row">
       <div class="large-6 medium-6 columns">
         <%= image_tag "clockb-logo.jpg", class: 'lazyload' %>
       </div>
     </div>
+    <% end %>
     <!-- Breadcrumb -->
     <div class="row">
       <div class="columns">

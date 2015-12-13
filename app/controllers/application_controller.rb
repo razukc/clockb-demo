@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:package, :password, :password_confirmation, :current_password, :name, :company, :person_in_charge, :occupation, :contact_number) }
 
   end
+
+  def root_path2
+    root_path
+  end
 end
