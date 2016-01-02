@@ -1,5 +1,19 @@
+#slider-backend -- basic works -- complete resizing 
+rails generate uploader Slider
+rails g model Slider slide:string caption:text remarks:boolean
+mount_uploader :slide, SliderUploader
+rails g active_admin:resource Slider
+
 #to-do
 past-events should not be attended
+users can post text/photos
+slideshow backend
+
+Webinar
+rails g controller webinars index create party config_opentok
+rails g model webinar name sessionId public:boolean
+
+
 
 Event Attendee
 rails g model event_attendee company:boolean name person_in_charge contact_number email event:belongs_to

@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
 	before_action :authenticate_member!, only: [:attend]
-
+	def upcoming
+		@events_upcoming = Event.upcoming
+	end
 	def attend
 	  @event = Event.find(params[:id])
 	  current_member.events << @event

@@ -1,4 +1,7 @@
 class Member < ActiveRecord::Base
+  def self.recent(n=5)
+    Member.order(:created_at).limit(n)
+  end
 has_and_belongs_to_many :events
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106185234) do
+ActiveRecord::Schema.define(version: 20151218182617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,22 @@ ActiveRecord::Schema.define(version: 20151106185234) do
   end
 
   add_index "services_catereds", ["client_id"], name: "index_services_catereds_on_client_id", using: :btree
+
+  create_table "sliders", force: :cascade do |t|
+    t.string   "slide"
+    t.text     "caption"
+    t.boolean  "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "webinars", force: :cascade do |t|
+    t.string   "name"
+    t.string   "sessionId"
+    t.boolean  "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "milestone_alumnis", "alumnis"

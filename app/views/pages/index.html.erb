@@ -15,33 +15,24 @@
 </div>
 <br />
 <!-- Slider -->
+<% if @sliders.any? %>
 <div class="row">
 	<ul class="example-orbit" data-orbit>
+		<% @sliders.each do |slider| %>
 	  <li> <!-- A92B48/fff -->
-	  	<%= image_tag "yellow.png", class: "lazyload" %>
+	  	<%= image_tag slider.slide, class: "lazyload" %>
 	    <!-- <img src="1000x500.png" alt="slide 1" class="lazyload"/> -->
+	    <% if !slider.caption.empty? %>
 	    <div class="orbit-caption">
-	      Caption One.
+	      <%= slider.caption %>
 	    </div>
+	    <% end %>
 	  </li>
-	  <li>
-	  	<%= image_tag "fff.png", class: "lazyload" %>
-	    <!-- <img src="fff.png" alt="slide 2" class="lazyload" /> -->
-	    <div class="orbit-caption">
-	      Caption Two.
-	    </div>
-	  </li>
-	  <li>
-	  	<%= image_tag "1000x500.png", class: "lazyload" %>
-	    <!-- <img src="yellow.png" alt="slide 3" class="lazyload" /> -->
-	    <div class="orbit-caption">
-	      Caption Three.
-	    </div>
-	  </li>
-	</ul><a name="events"></a>
+	  <% end %>
+	</ul><hr />
 </div>
-
-
+<% end %>
+<div class="row"><a name="events"></a></div>
 <div class="row">
 	<!-- Event Calendar -->
 	
@@ -57,7 +48,7 @@
   	<h3 data-magellan-destination="events">Upcoming Events</h3>
   	<%= render "layouts/upcoming_events" %>
   	<br />
-  </div>
+  </div><hr />
 </div>
 
 <!-- Why Clock b? -->

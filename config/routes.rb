@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  resources :webinars
+   match '/party/:id', :to => 'webinars#party', :as => :party, :via => :get
   
   devise_for :members, controllers: { registrations: "registrations" }
   devise_scope :members do
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     post 'attend', on: :member
     delete 'unattend', on: :member
   end
+  get 'upcoming-events', to: 'events#upcoming'
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

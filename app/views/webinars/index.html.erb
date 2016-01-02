@@ -1,0 +1,28 @@
+<div id="newRoom">
+<fieldset>
+<legend>Start a new session</legend>
+<%= form_for(@new_webinar) do |f| %>
+Webinar Name: <%= f.text_field :name %><br/><br/>
+Public? <%= f.check_box :public %><br/><br/>
+
+<%= f.submit %>
+<% end %>
+</fieldset>
+</div>
+
+<fieldset>
+<legend>Existing webinars</legend>
+<table cellpadding="2" cellspacing="5">
+<tr>
+<th>Name</th>
+<th>Started</th>
+</tr>
+
+<% @webinars.each do |webinar| %>
+<tr>
+<td align="center" width="300px"><a href="/party/<%= webinar.id %>"><%= webinar.name %></a></td>
+<td><%= webinar.created_at %></td>
+</tr>
+<% end %>
+</table>
+</fieldset>

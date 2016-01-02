@@ -1,3 +1,7 @@
+crumb :events_upcoming do
+	link "UPCOMING EVENTS" , upcoming_events_path
+	parent :events
+end
 crumb :my_events do |my_events|
 	link "MY EVENTS", my_events_path
 end
