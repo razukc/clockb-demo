@@ -12,9 +12,10 @@
 </div>
 <br />
 <!-- Slider -->
-<% if @sliders.any? %>
+
 <div class="row">
 	<ul class="example-orbit" data-orbit>
+    <% if @sliders.any? %>
 		<% @sliders.each do |slider| %>
 	  <li> <!-- A92B48/fff -->
 	  	<%= image_tag slider.slide, class: "lazyload" %>
@@ -26,9 +27,13 @@
 	    <% end %>
 	  </li>
 	  <% end %>
+    <% else %>
+    <li><%= image_tag 'default-slider.png', class: "lazyload" %>
+      <div class="orbit-caption">Slider caption goes here(Optional)</div>
+    </li>
+    <% end %>
 	</ul><hr />
 </div>
-<% end %>
 <!-- data-magellan for Networking -->
 <a data-magellan-destination="networking" name="networking"></a>
 <div class="row">
@@ -36,12 +41,16 @@
   	<div id="events_calendar">
   		<!-- Event Calendar -->
   		<%= render partial: 'layouts/calendar' %>
+    </div>
   		<hr />
+    <div id="upcoming-events">
   		<!-- Upcoming Events -->
   		<h4>Upcoming Events</h4>
   		<%= render partial: 'layouts/upcoming_events' %>
-	</div>
+	  </div>
+    <div id="browse-all-events">
 	 <!-- <%= link_to "Browse all Events", events_path, class: 'button expand' %> -->
+   </div>
   </div>
   
   <!-- Networking -->
@@ -49,7 +58,7 @@
   	<h3>Networking</h3>
   	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum, deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-  	<button class="button small">Learn more</button>
+  	<button class="button small right ">Learn more</button>
   </div>
   <div class="medium-6 large-4 columns">
   	<h4>Regular</h4>
@@ -66,7 +75,9 @@
 <div class="row">
   <div class="medium-6 large-6 columns">
     <a data-magellan-destination="services" name="services"></a>
-    <div style="border:1px solid #eee;width:100%;height:150px;float:left;"></div>
+    <div style="border:1px solid #eee;width:100%;height:150px;float:left;">
+      <%= image_tag 'default-services.png', class: "lazyload" %>
+    </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<a href="#">Read more</a></p>
   </div>
@@ -96,10 +107,9 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<button class="button">About us</button>
+consequat.</p>
+<button class="button">Learn More</button>
+
 	</div>
 	<div class="large-6 columns">
 		<div class="row">
@@ -109,20 +119,19 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 	consequat.<cite>Mary Rose, CTO</cite></blockquote>
 		</div>
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="left">
-			<!-- Social media icons -->
+			
 			<h5>Social media links. Opens in new/same window.</h5>
 			<%= image_tag 'linkedin.png', class: 'lazyload'%>
 			<%= image_tag 'facebook.png', class: 'lazyload'%>
 			<%= image_tag 'twitter.png', class: 'lazyload'%>
 			<%= image_tag 'youtube.png', class: 'lazyload'%>
 			</div>
-		</div>
+		</div> -->
 
 		
 	</div>
-	<hr />
 </div>
 
 

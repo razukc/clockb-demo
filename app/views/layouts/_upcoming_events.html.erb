@@ -1,12 +1,13 @@
 <% @upcoming_events.each do |event| %>
-<article class="event">
+<a href="<%= event_path(event) %>">
+<article class="event columns" >
         <div class="event-date">
           <p class="event-month"><%= event.start_date.strftime('%b') %></p>
           <p class="event-day"><%= event.start_date.strftime('%e') %></p>
         </div>
         <div class="event-desc">
           <h5 class="event-desc-header"><%= event.name %></h5>
-          <p class="event-desc-detail"><span class="event-desc-time">
+          <!-- <p class="event-desc-detail"><span class="event-desc-time">
             <% if (event.start_date - Date.today).to_i == 0 %>
             Today
             <% end %>
@@ -20,11 +21,12 @@
             Starting in <%= (event.start_date - Date.today).to_i %> 
             Days
             <% end %>
-          </span></p>
-          <%= link_to 'View Details', event_path(event), class: 'rsvp button info tiny' %>
+          </span></p> -->
+          <%= link_to 'View Details', event_path(event), class: 'rsvp button info tiny' %> 
         </div>
 </article>
-      <hr>
+</a>
+     <!--  <hr> -->
       <% end %>
       
 <% if @upcoming_events.empty? %>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Clockb Demo" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Clockb Demo-" %><%= yield(:page_title) %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clockb Demo" %>">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -23,11 +23,11 @@
       </div>
     </div>
     <% else %>
-    <div class="row">
+<!--     <div class="row">
       <div class="large-6 medium-6 columns">
         <h1>Clock b</h1>
       </div>
-    </div>
+    </div> -->
     <% end %>
     <!-- Breadcrumb -->
     <div class="row">
@@ -40,7 +40,10 @@
       <%= render 'layouts/messages' %>
     </div>
     <%= yield %>
+     <% if current_page?('/') %>
     <!-- Footer -->
-    <%= render 'layouts/footer'%>
+    <%= render 'layouts/home_footer' %>
+    <% end %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

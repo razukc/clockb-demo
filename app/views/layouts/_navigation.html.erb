@@ -1,4 +1,4 @@
-<div class="contain-to-grid fixed">
+<div class="contain-to-grid #fixed">
 <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false" data-no-turbolink>
   <ul class="title-area">
     <li class="name"></li>
@@ -20,8 +20,10 @@
         </ul>
       </li>
     <% else %>
-      <li><%= link_to 'Sign in', new_member_session_path, class: 'button secondary' %></li>
+      <li><%= link_to 'Sign in', new_member_session_path, class: 'button' %></li>
+<!-- 
       <li><%= link_to 'Sign up', new_member_registration_path, class: 'button' %></li>
+       -->
     <% end %>
     
   </ul>

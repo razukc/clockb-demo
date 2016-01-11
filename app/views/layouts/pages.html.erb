@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="controller" content="<%= "pages" %>"></meta>
+    <title><%= content_for?(:page_title) ? yield(:page_title) : "Clockb Business Innovations" %></title>
+    <meta name="description" content="<%= content_for?(:page_description) ? yield(:page_description) : "Clockb Demo" %>">
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "custom-magellan", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "lazysizes.min", 'async' => '' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="top-navigation">
+      <!-- Top Navigation -->
+      <%= render 'layouts/navigation' %>
+    </div>
+    
+    <div id="breadcrumb">
+      <!-- Breadcrumb -->
+      <div class="row">
+        <div class="columns">
+          <%= breadcrumbs display_single_fragment: false, pretext: "You are here: ", style: :foundation5 %>
+        </div>
+      </div>
+    </div>
+    <!-- Flash messages -->
+    <div id="messages" class="clearfix">
+      <%= render 'layouts/messages' %>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+    <div id="footer">
+      <!-- Footer -->
+      <%= render 'layouts/footer' %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<%= content_for :page_title, 'Services' %>
+<div class="row">
+	<div class="large-3 medium-5 columns width-finder">
+		
+<!-- Magellan Menu -->
+	<div data-magellan-expedition="fixed" class="custom-magellan hide-for-small-only" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
+		<!-- <div class="fixed large-4 columns"> -->
+		<ul class="side-nav custom-side-nav">
+			<li class="heading">Company Profile</li>
+	    	<li data-magellan-arrival="our-company" class="active"><a href="#our-company">Our Company</a></li>
+	    	<li data-magellan-arrival="culture-and-values"><a href="#culture-and-values">Culture And Values</a></li>
+	    	<li data-magellan-arrival="our-people"><a href="#our-people">Our People</a></li>
+	    	<li data-magellan-arrival="our-clients"><a href="#our-clients">Our Clients</a></li>
+	    	<li data-magellan-arrival="request-for-meeting"><a href="#request-for-meeting">Request for Meeting</a></li>
+	    	<li class="divider" style="margin:20px 0px;"></li>
+	    	<li class="heading">Why Clock b</li>
+	    	<li data-magellan-arrival="our-perspective"><a href="#our-perspective">Our Perspective</a></li>
+	    	<li data-magellan-arrival="experts-perspective"><a href="#experts-perspective">Experts' Perspective</a></li>
+	    	<li data-magellan-arrival="clients-perspective"><a href="#clients-perspective">Clients' Perspective</a></li>
+	  	</ul>
+	  <!-- </div> -->
+	</div>
+	
+	</div>
+	<div class="large-8 large-offset-1 medium-7 columns">
+		<!-- <h2>Company Profile</h2> -->
+		<br />
+		<a data-magellan-destination="our-company" name="our-company"></a>
+		<h4>Our Company</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="culture-and-values" name="culture-and-values"></a>
+		<h4>Culture and Values</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="our-people" name="our-people"></a>
+		<h4>Our people</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="our-clients" name="our-clients"></a>
+		<h4>Our Clients</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="request-for-meeting" name="request-for-meeting"></a>
+		<h4>Request for Meeting</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<div id="request-for-meeting" class="clearfix">
+			<% content_for :request_for , 'meeting' %>
+			<%= render partial: 'request' %>
+		</div>
+
+		<a  data-magellan-destination="our-perspective" name="our-perspective"></a>
+		<h4>Our Perspective</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="experts-perspective" name="experts-perspective"></a>
+		<h4>Experts' Perspective</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<a  data-magellan-destination="clients-perspective" name="clients-perspective"></a>
+		<h4>Clients' Perspective</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<hr />
+		<%= render partial: 'layouts/side_footer' %>
+	</div>
+
+
+<!-- <ul class="side-nav">
+	<li class="heading">Company Profile</li>
+  <li class="active"><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li class="divider"></li>
+  <li><a href="#">Link 3</a></li>
+  <li><a href="#">Link 4</a></li>
+</ul> -->
+</div>	

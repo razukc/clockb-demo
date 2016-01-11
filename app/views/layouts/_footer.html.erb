@@ -12,18 +12,24 @@
 
         <div class="large-6 medium-6 columns">
 
-          <p>&copy; Copyright message goes here</p>
+          <ul class="inline-list left">
+            <li><%= image_tag 'linkedin.png', class: 'lazyload'%></li>
+            <li><%= image_tag 'facebook.png', class: 'lazyload'%></li>
+            <li><%= image_tag 'twitter.png', class: 'lazyload'%></li>
+          </ul>
 
         </div>
 
         <div class="large-6 medium-6 columns">
 
-      <!--     
+          
         <ul class="inline-list right">
-          <li><a href='#'><i class="fi-social-facebook media-icons"></i></a></li>
-          <li><a href='#'><i class="fi-social-linkedin media-icons"></i></a></li>
-          <li><a href='#'><i class="fi-social-youtube media-icons"></i></a></li>
-        </ul> -->
+<li><%= link_to 'Home', root_path %></li>
+<li><%= link_to 'Clock b', clockb_path %></li>
+<li><%= link_to 'Services', services_path %></li>
+<li><%= link_to 'Careers', careers_path %></li>
+<li><%= link_to 'Events', events_path %></li>
+        </ul>
 
         </div>
 

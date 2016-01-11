@@ -30,3 +30,9 @@ ul.customgap li{
 .top-bar-section .dropdown{
 	top:40px;
 }
+@import "foundation/functions";
+
+hr{
+  margin-top:rem-calc(30);
+  margin-bottom:rem-calc(30);
+}
