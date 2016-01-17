@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem 'remotipart', '~> 1.2'
 # gem "high_voltage"
 gem 'mini_magick'
 gem "opentok", "~> 2.3"

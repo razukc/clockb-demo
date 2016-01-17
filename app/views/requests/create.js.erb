@@ -1,0 +1,33 @@
+// $('form').on('ajax:error', function(event, xhr, status, error) {
+//   // insert the failure message inside the "#account_settings" element
+//   $(this).append(xhr.responseText)
+// });
+// $('form').on('ajax:success', function(event, data, xhr, status) {
+//   // insert the failure message inside the "#account_settings" element
+//   $(this).append(xhr.responseText)
+// });
+// $('form.new_conversation').on('ajax:beforeSend', function(event, xhr, settings) {
+//   xhr.setRequestHeader('X-Awesome', 'enabled');
+// });
+// $('form').submit = false;
+// $("#new_request input[type=submit]").addClass("success");
+// $("#new_request input[type=submit]").prop("value", $.parseHTML("<i class=\"fi-check\">&nbsp;Sent</i>"));
+// $('#myModal-content').foundation('reveal', 'close');
+// $('div#request-for-x').html('<p class="label success"><i class="fi-check">&nbsp;</i>Sent');
+// $("#new_request :input").prop("disabled", true);
+// $('textarea')
+// $("#new_request input[type=submit]").fadeOut('slow');
+// $('div.after-sent').fadeIn('slow');
+
+<% if @request.errors.any? %>
+  <% @request.errors.full_messages.each do |error| %>
+  	$('div.errors').html('<p class="label alert"><%= escape_javascript( error ) %></p>');
+  <% end %>
+
+
+<% else %>
+$('#myModal-content').foundation('reveal', 'close');
+<% end %>
+$('a.closed').on('click', function() {
+	$('#myModal-content').foundation('reveal', 'close');
+});

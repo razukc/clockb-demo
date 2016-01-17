@@ -36,3 +36,15 @@ hr{
   margin-top:rem-calc(30);
   margin-bottom:rem-calc(30);
 }
+.margin-right-10{
+	margin-right:10px;
+}
+@import "foundation/components/thumbs";
+$include-html-media-classes: $include-html-classes;
+.th-no-hover {
+  @include thumb(
+    // Box shadow to apply on hover
+    // comma-separate variable: value,
+    $box-shadow-hover: 0 0 1px 1px rgba($black,0.2)
+  );
+}

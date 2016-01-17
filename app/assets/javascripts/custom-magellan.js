@@ -11,9 +11,7 @@ $(function(){
 	// });
 // $(document).foundation();
 // $(document).foundation('magellan-expedition':{active_class: 'label'});
-$(document).foundation('magellan-expedition','reflow');
-
-
+// $(document).foundation('magellan-expedition','reflow');
 	
 	// $('div.custom-magellan').css({ 'width': $('.width-finder').css('width'), 'left': 'auto', 'min-width': '0'});
 	$('div.custom-magellan').css({ 'width': $('div.width-finder').width()+'px', 'left': 'auto', 'min-width': '0'});

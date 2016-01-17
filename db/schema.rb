@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109162412) do
+ActiveRecord::Schema.define(version: 20160117214330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,10 +142,11 @@ ActiveRecord::Schema.define(version: 20160109162412) do
   add_index "recommended_services", ["alumni_id"], name: "index_recommended_services_on_alumni_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
-    t.string   "request_by"
-    t.string   "request_for"
+    t.text     "request_by"
+    t.text     "request_for"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "attachment"
   end
 
   create_table "schedule_for_meetings", force: :cascade do |t|
@@ -170,6 +171,12 @@ ActiveRecord::Schema.define(version: 20160109162412) do
     t.string   "slide"
     t.text     "caption"
     t.boolean  "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vacancies", force: :cascade do |t|
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

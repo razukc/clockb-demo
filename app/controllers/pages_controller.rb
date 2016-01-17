@@ -19,6 +19,5 @@ class PagesController < ApplicationController
   def careers
   	
   end
-	
-  private
+
 end

@@ -1,100 +1,175 @@
 <%= content_for :page_title, 'Services' %>
 <div class="row">
-	<div class="large-3 medium-5 columns width-finder">
+	<div class="large-4 medium-5 columns width-finder">
+		<!-- Popup/Reveal content box -->
+<!-- 		<a href="<%= new_request_path %>?meeting_for=example" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true">Click Me For A Modal</a> -->
+		<!-- <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?request_for=example">Click Me For A Modal</a> -->
+		<!-- <a id="myModal-button" class="button">Click for a Modal</a> -->
 		
+		<div id="myModal-content" class="reveal-modal small" data-reveal></div>
 <!-- Magellan Menu -->
 	<div data-magellan-expedition="fixed" class="custom-magellan hide-for-small-only" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
 		<!-- <div class="fixed large-4 columns"> -->
 		<ul class="side-nav custom-side-nav">
-			<li class="heading">Company Profile</li>
-	    	<li data-magellan-arrival="our-company" class="active"><a href="#our-company">Our Company</a></li>
-	    	<li data-magellan-arrival="culture-and-values"><a href="#culture-and-values">Culture And Values</a></li>
-	    	<li data-magellan-arrival="our-people"><a href="#our-people">Our People</a></li>
-	    	<li data-magellan-arrival="our-clients"><a href="#our-clients">Our Clients</a></li>
-	    	<li data-magellan-arrival="request-for-meeting"><a href="#request-for-meeting">Request for Meeting</a></li>
-	    	<li class="divider" style="margin:20px 0px;"></li>
-	    	<li class="heading">Why Clock b</li>
-	    	<li data-magellan-arrival="our-perspective"><a href="#our-perspective">Our Perspective</a></li>
-	    	<li data-magellan-arrival="experts-perspective"><a href="#experts-perspective">Experts' Perspective</a></li>
-	    	<li data-magellan-arrival="clients-perspective"><a href="#clients-perspective">Clients' Perspective</a></li>
+			<li class="heading">services</li>
+	    	<li data-magellan-arrival="consulting"><a href="#consulting">Consulting</a></li>
+	    	<li class="divider" style="margin:10px 0px;"></li>
+
+	    	<li data-magellan-arrival="outsourcing"><a href="#outsourcing">Outsourcing</a></li>
+	    		<div style="margin-left:15px;">
+	    	<li data-magellan-arrival="marketing"><a href="#marketing">Marketing</a></li>
+	    	<li data-magellan-arrival="social-media-management"><a href="#social-media-management">Social Media Management</a></li>
+	    	<li data-magellan-arrival="relationship-management"><a href="#relationship-management">Relationship Management</a></li>
+	    	<li data-magellan-arrival="r-and-d-of-strategies"><a href="#r-and-d-of-strategies">R &amp; D of Strategies</a></li>
+	    	</div>
+	    	<li class="divider" style="margin:10px 0px;"></li>
+
+	    	<li data-magellan-arrival="networking"><a href="#networking">Networking</a></li>
+	    	<div style="margin-left:15px;">
+	    	<li data-magellan-arrival="packages"><a href="#packages">Packages</a></li>
+<div style="margin-left:15px;">
+	    	<li data-magellan-arrival="regular-package"><a href="#regular-package">Regular</a></li>
+	    	<!-- <li class="divider" style="margin:20px 0px;"></li> -->
+	    	<!-- <li class="heading">Why Clock b</li> -->
+	    	<li data-magellan-arrival="premium"><a href="#premium-package">Premium</a></li>
+	    	</div>
+	    	<li data-magellan-arrival="events"><a href="#events">Events</a></li>
+	    	</div>
+	    	<li class="divider" style="margin:10px 0px;"></li>
+
+	    	<li data-magellan-arrival="innovation"><a href="#innovation">Innovation</a></li>
 	  	</ul>
 	  <!-- </div> -->
 	</div>
 	
 	</div>
-	<div class="large-8 large-offset-1 medium-7 columns">
-		<!-- <h2>Company Profile</h2> -->
+	<div class="large-8 medium-7 columns">
 		<br />
-		<a data-magellan-destination="our-company" name="our-company"></a>
-		<h4>Our Company</h4>
+		<a data-magellan-destination="consulting" name="consulting"></a>
+		<h4>Consulting</h4>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="culture-and-values" name="culture-and-values"></a>
-		<h4>Culture and Values</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="our-people" name="our-people"></a>
-		<h4>Our people</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="our-clients" name="our-clients"></a>
-		<h4>Our Clients</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="request-for-meeting" name="request-for-meeting"></a>
-		<h4>Request for Meeting</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-		<div id="request-for-meeting" class="clearfix">
-			<% content_for :request_for , 'meeting' %>
-			<%= render partial: 'request' %>
+		<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3"> 
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+						<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+						<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+		</ul>
+		<div id="request-for-x">
+					<a href="<%= new_request_path %>?request_for=consulting" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a>
 		</div>
+		<hr />
+		<a  data-magellan-destination="outsourcing" name="outsourcing"></a>
+		<h4>Outsourcing</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		
+		<div class="row">
+			<div class="large-6 columns">
+				<a name="marketing"></a>
+				<h5>Marketing</h5>
+			<%= image_tag "100.png", class: "lazyload left margin-right-10" %>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p><div id="request-for-x"><a href="<%= new_request_path %>?request_for=marketing" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a></div></div>
+		<div class="large-6 columns">
+			<a name="social-media-management"></a>
 
-		<a  data-magellan-destination="our-perspective" name="our-perspective"></a>
-		<h4>Our Perspective</h4>
+			<h5>Social Media Management</h5>
+			<%= image_tag "100.png", class: "lazyload left margin-right-10" %>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><div id="request-for-x"><a href="<%= new_request_path %>?request_for=social-media-management" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a></div></div></div>
+		
+		<div class="row"><div class="large-6 columns"><a name="relationship-management"></a><h5>Relationship Management</h5><%= image_tag "100.png", class: "lazyload left margin-right-10" %><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p><div id="request-for-x"><a href="<%= new_request_path %>?request_for=relationship-management" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a></div></div><div class="large-6 columns"><a name="r-and-d-of-strategies"></a><h5>R &amp; D of Strategies</h5><%= image_tag "100.png", class: "lazyload left margin-right-10" %><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p><div id="request-for-x"><a href="<%= new_request_path %>?request_for=r-and-d-of-strategies" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a></div></div></div>
+		<hr />
+
+		<a  data-magellan-destination="networking" name="networking"></a>
+		<h4>Networking</h4>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="experts-perspective" name="experts-perspective"></a>
-		<h4>Experts' Perspective</h4>
+		<div id="request-for-x" class="clearfix">
+			<a href="<%= new_request_path %>?request_for=networking" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a>
+		</div>
+		<a name="packages"></a>
+		<h4>Packages</h4>
+		<a name="regular-package"></a>
+		<h5>Regular</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+
+		<a name="premium-package"></a>
+		<h5>Premium</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+		<div id="request-for-x">
+			<a href="<%= new_request_path %>?request_for=networking-packages" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a>
+		</div>
+		<a name="events"></a>	
+		<h4>Events</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+		<a class="button tiny">Browse our events</a>
+		<hr />
+
+		<a data-magellan-destination="innovation" name="innovation"></a>
+		<h4>Innovation</h4>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<a  data-magellan-destination="clients-perspective" name="clients-perspective"></a>
-		<h4>Clients' Perspective</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<ul class="small-block-grid-3 medium-block-grid-3 large-block-grid-3"> 
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+		</ul>
+		<div id="request-for-x">
+			<a href="<%= new_request_path %>?request_for=innovation" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Request for meeting</a>
+		</div>
 		<hr />
 		<%= render partial: 'layouts/side_footer' %>
 	</div>
@@ -108,4 +183,4 @@
   <li><a href="#">Link 3</a></li>
   <li><a href="#">Link 4</a></li>
 </ul> -->
-</div>	
+</div>

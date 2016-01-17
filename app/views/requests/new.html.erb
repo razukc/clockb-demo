@@ -1,0 +1,22 @@
+<!-- requests/new -->
+<!-- Size Classes: [small medium large xlarge expand] -->
+<!-- <div id="myModal-example" class="reveal-modal small" data-reveal> -->
+	<div id="request_form">
+		  <p class="lead">Request for meeting</p>
+		  
+		  <%= form_for @request, remote: true do |f| %>
+			<%= f.hidden_field :request_for, :value => params[:request_for] %>
+			<!-- , OpenStruct.new(@request.request_by) -->
+			<%= f.fields_for :request_by do |r| %>
+			  <%= r.text_field :name, :placeholder => 'Name', required: true %>
+			  <%= r.text_field :company, :placeholder => 'Company' %>
+			  <%= r.text_field :phone, :placeholder => 'Phone', required: true %>
+			  <%= r.text_field :email, :placeholder => 'Email', required: true %>
+			<% end %>
+			<%= f.submit "Send", class: 'button small' %>
+		  <% end %>
+		</div>
+
+		  <a class="close-reveal-modal">&#215;</a>
+		<!-- </div> -->
+	
