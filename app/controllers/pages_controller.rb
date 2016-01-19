@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def careers
-  	
+  	@vacancy = Vacancy.all
   end
 
 end

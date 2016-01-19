@@ -1,3 +1,13 @@
+
+        <thead>
+          <tr>
+        <% vacancy.content.each_key do |key| %>
+          <th><%= key %></th>
+        <% end %>
+          <th>&nbsp;</th>
+          </tr>
+        </thead>
+
 #slider-backend -- basic works -- complete resizing 
 rails generate uploader Slider
 rails g model Slider slide:string caption:text remarks:boolean

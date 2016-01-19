@@ -3,10 +3,10 @@
 	<!-- <div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div> -->
 	
 	<div class="success"><ul></ul></div>
-	<% if @request_for == 'internship' %>
-		<p class="lead">Apply for internship</p>
-		<%= form_for @request, remote: true, :disable_with => 'Sending...' do |f| %>
-			<%= f.hidden_field :request_for, :value => 'internship' %>
+	<% if @request_for.in?(['internship', 'vacancy']) %>
+		<p class="lead">Apply <%= @request_for == 'internship' ? 'as a Intern' : 'for the position of '+@vacancy_title.to_s %></p>
+		<%= form_for @request, remote: true do |f| %>
+			<%= f.hidden_field :request_for, :value => @request_for %>
 			<div class="errors"></div>
 			<fieldset>
 		    	<legend>Attach CV</legend>
@@ -14,9 +14,17 @@
 				<%= f.file_field :attachment, required: :true, class: 'button secondary tiny' %>
 				<!-- <label><em>Allowed file types: pdf, doc, docx</em></label> -->
 			</fieldset>
+			<% if @request_for == 'internship' %>
 			<!-- , OpenStruct.new(@request.request_by) -->
 			<%= f.fields_for :request_by do |r| %>
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
+			<% end %>
+			<% end %>
+			<% if @request_for == 'vacancy' %>
+			<!-- , OpenStruct.new(@request.request_by) -->
+			<%= f.fields_for :request_by do |r| %>
+				<%= r.hidden_field :vacancy_id, :value => @vacancy_id %>
+			<% end %>
 			<% end %>
 			<%= f.submit "Send", class: 'button small right' %>
 		<% end %>
@@ -33,9 +41,10 @@
 		<% end %>
 		<%= f.submit "Send", class: 'button small right' %>
 	<% end %>
-	<div class="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+	<div class="clearfix"></div>
+	<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
 	<% end %>
-	<div class="preloader"></div>
+	<div id="preloader"></div>
 </div>
 <a class="close-reveal-modal">&#215;</a>
 

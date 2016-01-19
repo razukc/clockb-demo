@@ -12,6 +12,7 @@ ActiveAdmin.register Request do
 #   permitted << :other if resource.something?
 #   permitted
 # end
+config.filters = false
 config.per_page = 10
 
 end

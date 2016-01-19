@@ -3,6 +3,8 @@ class RequestsController < ApplicationController
 	def new
 		@request = Request.new
 		@request_for = params[:request_for] ? params[:request_for] : 'unknown'
+		@vacancy_id = params[:vacancy_id] ? params[:vacancy_id].to_i : '-1'.to_i
+		@vacancy_title = @vacancy_id >=0 ? Vacancy.find_by_id(@vacancy_id).content['job_title'] : 'unknown';
 		render partial: "requests/form"
 	end
 	
