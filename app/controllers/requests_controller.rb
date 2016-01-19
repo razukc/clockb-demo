@@ -4,7 +4,9 @@ class RequestsController < ApplicationController
 		@request = Request.new
 		@request_for = params[:request_for] ? params[:request_for] : 'unknown'
 		@vacancy_id = params[:vacancy_id] ? params[:vacancy_id].to_i : '-1'.to_i
-		@vacancy_title = @vacancy_id >=0 ? Vacancy.find_by_id(@vacancy_id).content['job_title'] : 'unknown';
+		@vacancy_title = @vacancy_id > 0 ? Vacancy.find_by_id(@vacancy_id).content['job_title'] : 'unknown';
+		@event_id = params[:event_id] ? params[:event_id].to_i : '-1'.to_i
+		@event_title = @event_id > 0 ? Event.find_by_id(@event_id).name : 'unknown'
 		render partial: "requests/form"
 	end
 	

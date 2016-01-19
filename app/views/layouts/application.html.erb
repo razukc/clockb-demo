@@ -15,20 +15,6 @@
   <body>
     <!-- Top Navigation -->
     <%= render 'layouts/navigation' %>
-    <% if current_page?('/') %>
-    <!-- Logo -->
-    <div class="row">
-      <div class="large-6 medium-6 columns">
-        <%= image_tag "clockb-logo.jpg", class: 'lazyload' %>
-      </div>
-    </div>
-    <% else %>
-<!--     <div class="row">
-      <div class="large-6 medium-6 columns">
-        <h1>Clock b</h1>
-      </div>
-    </div> -->
-    <% end %>
     <!-- Breadcrumb -->
     <div class="row">
       <div class="columns">

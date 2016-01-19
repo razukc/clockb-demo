@@ -1,0 +1,3 @@
+$("#events_calendar").html("<%= escape_javascript render(partial: "layouts/calendar") %>");
+$('.calendar .has-events .this-day').each(function(){$(this).remove();});
+$(document).foundation('tooltip', 'reflow');

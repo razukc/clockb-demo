@@ -1,0 +1,128 @@
+<%= content_for :page_title, 'Events' %>
+<div class="row">
+	<div class="large-3 medium-4 columns width-finder">
+	<div id="myModal-content" class="reveal-modal small" data-reveal></div>
+	<!-- Menu -->
+	<div data-magellan-expedition="fixed" class="custom-magellan hide-for-small-only" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
+		<ul class="side-nav custom-side-nav">
+			<li class="heading">events</li>
+	    	<li data-magellan-arrival="reasons-to-attend"><a href="#reasons-to-attend">Reasons to attend</a></li>
+
+	    	<li data-magellan-arrival="upcoming-events"><a href="#upcoming-events">Upcoming Events</a></li>
+	    	<li data-magellan-arrival="contact-us"><a href="#contact-us">Contact Us</a></li>
+	  	</ul>
+	</div>
+	
+	</div>
+	<!-- Content -->
+	<div class="large-9 medium-8 columns">
+		<br />
+		<!-- Slider -->
+		<div class="clearfix">
+			<ul class="example-orbit" data-orbit>
+			  <li>
+				<%= image_tag "1000x500.png", class: 'lazyload' %>
+			    <div class="orbit-caption">
+			      Caption goes here
+			    </div>
+			  </li>
+			</ul>
+		</div>
+		<br />
+		<a data-magellan-destination="reasons-to-attend" name="reasons-to-attend"></a>
+		<h4>Reasons to attend</h4>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<ul>
+			<li>Professional Networking</li>
+			<li>Facilitator</li>
+			<li>Led by attendees</li>
+		</ul>
+		<hr />
+		<div class="row">
+			<div class="large-7 columns">
+			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
+				<!-- Main Event -->
+				<div class="clearfix">
+		<%= image_tag "1000x500.png", class: 'th-no-hover lazyload' %>
+		</div>
+		<br />
+		<h5>Event Insights</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<div id="request-for-x" class="clearfix">
+			<a href="<%= new_request_path %>?request_for=event&amp;event_id=0" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny" data-type="JSON">Register</a>
+		</div>
+		<hr />
+		<!-- Weekly Event -->
+		<div class="clearfix">
+				<%= image_tag "1000x500.png", class: 'th-no-hover lazyload' %>
+		</div>
+		<br />
+		<h5>Event Insights</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<div id="request-for-x" class="clearfix">
+			<a href="<%= new_request_path %>?request_for=event&amp;event_id=0" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny" data-type="JSON">Register</a>
+		</div>
+
+			</div>
+			<div class="large-5 columns" style="border-left:1px solid #e3e3e3;">
+				<div class="clearfix">
+					<div id="events_calendar">
+			  		<!-- Event Calendar -->
+			  		<%= render partial: 'layouts/calendar' %>
+				    </div>
+				  		<hr />
+				    <div id="upcoming-events">
+			  		<!-- Upcoming Events -->
+			  		<h5>Upcoming Events</h5>
+			  		<%= render partial: 'layouts/upcoming_events' %>
+				  	</div>
+				  	<hr />
+				    <div id="browse-all-events">
+					 <%= link_to "Browse our events", events_path, class: 'button expand' %>
+				   </div>
+				   <hr />
+				</div>
+				<div class="clearfix">
+				<h5>Events Gallery</h5>
+		<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
+			<li>
+				<a><%= image_tag "500.png", class: 'th-no-hover lazyload' %></a>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+						<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+						<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>			<li>
+				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
+			</li>
+		</ul>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<a  data-magellan-destination="contact-us" name="contact-us"></a>
+		<%= render partial: 'layouts/side_footer' %>
+	</div>
+</div>

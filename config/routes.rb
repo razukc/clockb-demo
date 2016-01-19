@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'clockb' => 'pages#clockb'
   get 'services' => 'pages#services'
   get 'careers' => 'pages#careers'
+  get 'events' => 'pages#events'
   resources :webinars
    match '/party/:id', :to => 'webinars#party', :as => :party, :via => :get
   

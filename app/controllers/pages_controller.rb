@@ -20,4 +20,9 @@ class PagesController < ApplicationController
   	@vacancy = Vacancy.all
   end
 
+  def events
+    @events = Event.all
+    @upcoming_events = Event.upcoming_home_page
+  end
+
 end

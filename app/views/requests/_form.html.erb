@@ -1,10 +1,8 @@
 <!-- Size Classes: [small medium large xlarge expand] -->
 <div id="request_form">
 	<!-- <div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div> -->
-	
-	<div class="success"><ul></ul></div>
 	<% if @request_for.in?(['internship', 'vacancy']) %>
-		<p class="lead">Apply <%= @request_for == 'internship' ? 'as a Intern' : 'for the position of '+@vacancy_title.to_s %></p>
+		<p class="lead">Apply<%= @request_for == 'internship' ? ' as a Intern' : ' for: '+@vacancy_title.to_s %></p>
 		<%= form_for @request, remote: true do |f| %>
 			<%= f.hidden_field :request_for, :value => @request_for %>
 			<div class="errors"></div>
@@ -29,7 +27,12 @@
 			<%= f.submit "Send", class: 'button small right' %>
 		<% end %>
 	<% else %>
+	<% if @request_for == 'event' %>
+	<p class="lead">Register for: <%= @event_title %></p>
+				
+	<% else %>
 	<p class="lead">Request for meeting</p>
+	<% end %>
 	<%= form_for @request, remote: true do |f| %>
 		<%= f.hidden_field :request_for, :value => @request_for %>
 		<!-- , OpenStruct.new(@request.request_by) -->
@@ -41,8 +44,10 @@
 		<% end %>
 		<%= f.submit "Send", class: 'button small right' %>
 	<% end %>
+	<% if @request_for != 'event' %>
 	<div class="clearfix"></div>
-	<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+	<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>NOTE:Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+	<% end %>
 	<% end %>
 	<div id="preloader"></div>
 </div>
