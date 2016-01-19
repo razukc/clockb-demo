@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+	def browse
+		
+	end
 	before_action :authenticate_member!, only: [:attend]
 	def upcoming
 		@events_upcoming = Event.upcoming

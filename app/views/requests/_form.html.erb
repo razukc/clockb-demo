@@ -5,7 +5,7 @@
 		<p class="lead">Apply<%= @request_for == 'internship' ? ' as a Intern' : ' for: '+@vacancy_title.to_s %></p>
 		<%= form_for @request, remote: true do |f| %>
 			<%= f.hidden_field :request_for, :value => @request_for %>
-			<div class="errors"></div>
+			
 			<fieldset>
 		    	<legend>Attach CV</legend>
 		    	<%= f.hidden_field :attachment_cache %>
@@ -49,7 +49,9 @@
 	<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>NOTE:Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
 	<% end %>
 	<% end %>
-	<div id="preloader"></div>
+	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
+	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
+	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
 </div>
 <a class="close-reveal-modal">&#215;</a>
 

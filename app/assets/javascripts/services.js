@@ -23,5 +23,4 @@ $(function(){
   		// var modal = $(this);
   		$(document).foundation();
 	});
-	
 });

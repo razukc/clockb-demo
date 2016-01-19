@@ -20,12 +20,20 @@
 // $('div.after-sent').fadeIn('slow');
 
 <% if @request.errors.any? %>
-  <% @request.errors.full_messages.each do |error| %>
-  	$('div.errors').html('<p class="label alert"><%= escape_javascript( error ) %></p>');
-  <% end %>
+  
+  $('div.errors').show();
 
 <% else %>
-$('#myModal-content').foundation('reveal', 'close');
+
+$('div.errors').hide();
+$('div.success').show();
+setTimeout(
+  function() 
+  {
+    //do something special
+    $('#myModal-content').foundation('reveal', 'close');
+  }, 1000);
+
 <% end %>
 $('a.closed').on('click', function() {
 	$('#myModal-content').foundation('reveal', 'close');

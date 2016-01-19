@@ -1,4 +1,8 @@
-
+<% @request.errors.full_messages.each do |error| %>
+    // $('div.errors').html('<p class="label alert"><%= escape_javascript( error ) %></p>');
+    
+    <% end %>
+    
         <thead>
           <tr>
         <% vacancy.content.each_key do |key| %>
