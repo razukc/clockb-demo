@@ -17,7 +17,7 @@
 	<!-- Content -->
 	<div class="large-9 medium-8 columns">
 		<br />
-		<% if @slider.nil? %>
+		<% if @slider.empty? %>
 
 				<p>Slider</p>
 				<% else %>
@@ -103,7 +103,7 @@
 				</div>
 				<div class="clearfix">
 				<h5>Events Gallery</h5>
-				<% if @gallery.nil? %>
+				<% if @gallery.empty? %>
 				<p>Events Gallery</p>
 				<% else %>
 		<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
