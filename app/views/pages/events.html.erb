@@ -17,25 +17,29 @@
 	<!-- Content -->
 	<div class="large-9 medium-8 columns">
 		<br />
-		<% if @slider.empty? %>
-
-				<p>Slider</p>
-				<% else %>
+		
 		<!-- Slider -->
 		<div class="clearfix">
 			<ul class="example-orbit" data-orbit data-turbolinks="false">
 				
 				<% @slider.each do |e| %>
 			  <li>
+			  	<% if @slider.empty? %>
+			  	<%= image_tag "default-slider.png", class: 'lazyload' %>
+			    <div class="orbit-caption">
+			      <%= "Caption goes here" %>
+			    </div>
+				<% else %>
 				<%= image_tag e.attachment.slider, class: 'lazyload' %>
 			    <div class="orbit-caption">
 			      <%= e.form_params['name'] %>
 			    </div>
+			     <% end %>
 			  </li>
 			  <% end %>
 			</ul>
 		</div>
-					  <% end %>
+					 
 
 		<br />
 		<a data-magellan-destination="reasons-to-attend" name="reasons-to-attend"></a>
@@ -103,17 +107,20 @@
 				</div>
 				<div class="clearfix">
 				<h5>Events Gallery</h5>
-				<% if @gallery.empty? %>
-				<p>Events Gallery</p>
-				<% else %>
 		<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
+			<% if @gallery.empty? %>
+				<li>
+				<a href="500.png"><%= image_tag "190.png", class: 'th-no-hover lazyload' %></a>
+			</li>
+				<% else %>
 			<% @gallery.each do |g| %>
 			<li>
 				<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
 			</li>
 			<% end %>
+			<% end %>
 		</ul>
-		<% end -%>
+		
 				</div>
 			</div>
 		</div>
