@@ -1,36 +1,29 @@
 class Event < ActiveRecord::Base
-	has_and_belongs_to_many :members
-	validates_presence_of :name, :message => 'Event name is required'
-	def start_time
-		self.start_date
-	end
-	def days_left
-		num_days = 0
-		num_days += (self.start_date - Date.today).to_i if (self.start_date - Date.today).to_i >= 0 
-		num_days += (Date.today - self.start_date).to_i if (self.start_date - Date.today).to_i < 0 
-		num_days
-	end
-	def self.status(resource)
-		res = ""
-		res << "Today" if (resource.start_date - Date.today).to_i == 0
-		res << "Past" if (resource.start_date - Date.today).to_i < 0
-		res << "Tomorrow" if (resource.start_date - Date.today).to_i == 1
-		res << "Upcoming" if (resource.start_date - Date.today).to_i > 1
-		res
-	end
-	def self.today
-		Event.where('start_date = ?', Date.today).order(:start_date)
-	end
+	mount_uploader :attachment, SliderUploader
+	# serialize [:form_params, :link_params, :extra_params], Hash
+	serialize :form_params, Hash
+	serialize :link_params, Hash
+	serialize :extra_params, Hash
 	def self.upcoming
 		Event.where('start_date >= ?', Date.today).order(:start_date)
 	end
-	def self.upcoming_home_page
-		Event.where('start_date >= ?', Date.today).order(:start_date).limit(2)
+
+	def self.upcoming_main
+		 # Event.where('true = true', :form_params.find{|x| x[:type] == 'main'}).limit(1)
+		upcoming.find{ |u| u.form_params['type'] == "main" }
+					
 	end
-	def self.past
-		Event.where('start_date < ?', Date.today).order(:start_date)
+	def self.upcoming_weekly
+		upcoming.find{ |u| u.form_params['type'] == "weekly"}
 	end
-	def self.single_event_attendees_count(resource)
-		resource.members.count
+
+	def self.slider
+		Event.where('attachment not like ?', '').limit(5)
+	end
+	def self.gallery
+		Event.where('attachment not like ?', '').limit(6)
+	end
+	def start_time
+		self.start_date
 	end
 end

@@ -1,0 +1,45 @@
+<div class="row" style="margin-top:25px;">
+  <div class="large-4 columns">
+    <ul class="side-nav">
+      <li class="heading">Browse our Events</li>
+      <li class="divider"></li>
+    </ul>
+  </div>
+	<div class="large-8 columns">
+  <div id="myModal-content" class="reveal-modal small" data-reveal></div>
+        <ul class="no-bullet">
+          <% if !@events_single.nil? %>
+            <li><h4><%= @events_single.form_params['name'] %></h4></li>
+            <p>&nbsp;</p>
+            <p><%= image_tag @events_single.attachment.slider, class: 'th-no-hover lazyload' %></p>
+            <p><%= @events_single.form_params['description'] %></p>
+            <p>
+              <strong>Date: </strong><%= @events_single.start_date.strftime('%A, %B %e, %Y') %><br />
+              <strong>Time: </strong><%= @events_single.form_params['start_time'] %><br />
+              <strong>Venue: </strong><%= @events_single.form_params['venue'] %><br />
+            </p>
+            <div id="request-for-x" class="clearfix">
+              <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @events_single.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+            </div>
+            <hr />
+          <% else %>
+          <% @events_all.each do |event| %>
+            <li><h5><%= event.form_params['name'] %></h5></li>
+            <p>&nbsp;</p>
+            <p><%= image_tag event.attachment.slider, class: 'th-no-hover lazyload' %></p>
+            <p><%= event.form_params['description'] %></p>
+            <p>
+              <strong>Date: </strong><%= event.start_date.strftime('%A, %B %e, %Y') %><br />
+              <strong>Time: </strong><%= event.form_params['start_time'] %><br />
+              <strong>Venue: </strong><%= event.form_params['venue'] %><br />
+            </p>
+            <div id="request-for-x" class="clearfix">
+              <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= event.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+            </div>
+            <hr />
+          <% end %>
+          <% end %>
+        </ul>
+      
+</div>
+</div>	

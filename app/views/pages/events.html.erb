@@ -19,13 +19,15 @@
 		<br />
 		<!-- Slider -->
 		<div class="clearfix">
-			<ul class="example-orbit" data-orbit>
+			<ul class="example-orbit" data-orbit data-turbolinks="false">
+				<% @slider.each do |e| %>
 			  <li>
-				<%= image_tag "1000x500.png", class: 'lazyload' %>
+				<%= image_tag e.attachment.slider, class: 'lazyload' %>
 			    <div class="orbit-caption">
-			      Caption goes here
+			      <%= e.form_params['name'] %>
 			    </div>
 			  </li>
+			  <% end %>
 			</ul>
 		</div>
 		<br />
@@ -48,34 +50,24 @@
 			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
 				<!-- Main Event -->
 				<div class="clearfix">
-		<%= image_tag "1000x500.png", class: 'th-no-hover lazyload' %>
+		<%= image_tag @upcoming_main.attachment.featured, class: 'th-no-hover lazyload' %>
 		</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p><%= @upcoming_main.form_params['description'] %></p>
 				<div id="request-for-x" class="clearfix">
-			<a href="<%= new_request_path %>?request_for=event&amp;event_id=0" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @upcoming_main.id %>" class="button secondary tiny" data-type="JSON">Register</a>
 		</div>
 		<hr />
 		<!-- Weekly Event -->
 		<div class="clearfix">
-				<%= image_tag "1000x500.png", class: 'th-no-hover lazyload' %>
+				<%= image_tag @upcoming_weekly.attachment.featured, class: 'th-no-hover lazyload' %>
 		</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p><%= @upcoming_weekly.form_params['description'] %></p>
 				<div id="request-for-x" class="clearfix">
-			<a href="<%= new_request_path %>?request_for=event&amp;event_id=0" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @upcoming_weekly.id %>" class="button secondary tiny" data-type="JSON">Register</a>
 		</div>
 
 			</div>
@@ -93,30 +85,18 @@
 				  	</div>
 				  	<hr />
 				    <div id="browse-all-events">
-					 <%= link_to "Browse our events", events_path, class: 'button expand' %>
+					 <%= link_to "Browse our events", events_browse_path, class: 'button expand' %>
 				   </div>
 				   <hr />
 				</div>
 				<div class="clearfix">
 				<h5>Events Gallery</h5>
 		<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
+			<% @gallery.each do |g| %>
 			<li>
-				<a><%= image_tag "500.png", class: 'th-no-hover lazyload' %></a>
+				<a><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
 			</li>
-			<li>
-				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
-			</li>
-			<li>
-				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
-			</li>
-						<li>
-				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
-			</li>
-						<li>
-				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
-			</li>			<li>
-				<%= image_tag "500.png", class: 'th-no-hover lazyload' %>
-			</li>
+			<% end %>
 		</ul>
 				</div>
 			</div>

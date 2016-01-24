@@ -1,17 +1,4 @@
 ActiveAdmin.register Vacancy do
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
 permit_params :content
 config.filters = false
 config.batch_actions = false
@@ -43,7 +30,10 @@ controller do
 		@vacancy = Vacancy.find_by_id(params[:id])
 		if @vacancy.update(vacancy_params)
 			redirect_to admin_vacancies_path
+		else
+			render 'edit'
 		end
+
 	end
 	def edit
 		@vacancy = Vacancy.find_by_id(params[:id])	
@@ -53,6 +43,8 @@ controller do
 		@vacancy = Vacancy.new(vacancy_params)
 		if @vacancy.save
 			redirect_to admin_vacancies_path
+		else
+			render 'new'
 		end
 	end
 

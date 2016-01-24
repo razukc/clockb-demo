@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  start_date: 2015-11-02
+  form_params: MyText
+  link_params: MyText
+  extra_params: MyText
+  start_date: 2016-01-22
+  attachment: MyString
 
 two:
-  name: MyString
-  start_date: 2015-11-02
+  form_params: MyText
+  link_params: MyText
+  extra_params: MyText
+  start_date: 2016-01-22
+  attachment: MyString

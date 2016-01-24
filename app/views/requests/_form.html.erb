@@ -1,54 +1,53 @@
 <!-- Size Classes: [small medium large xlarge expand] -->
 <div id="request_form">
 	<!-- <div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div> -->
-	<% if @request_for.in?(['internship', 'vacancy']) %>
-		<p class="lead">Apply<%= @request_for == 'internship' ? ' as a Intern' : ' for: '+@vacancy_title.to_s %></p>
-		<%= form_for @request, remote: true do |f| %>
-			<%= f.hidden_field :request_for, :value => @request_for %>
-			
+	<p class="lead"><%= @_title %></p>
+	<%= form_for @request, remote: true do |f| %>
+		<%= f.fields_for :link_params do |k| %>
+			<%= k.hidden_field :_x, :value => @_x %>
+			<%= k.hidden_field :_y, :value => @_y %>
+			<%= k.hidden_field :_z, :value => @_z %>
+		<% end %>
+		
+		<% if @_x.in?(['internship', 'vacancy']) %>
 			<fieldset>
 		    	<legend>Attach CV</legend>
 		    	<%= f.hidden_field :attachment_cache %>
 				<%= f.file_field :attachment, required: :true, class: 'button secondary tiny' %>
 				<!-- <label><em>Allowed file types: pdf, doc, docx</em></label> -->
 			</fieldset>
-			<% if @request_for == 'internship' %>
-			<!-- , OpenStruct.new(@request.request_by) -->
-			<%= f.fields_for :request_by do |r| %>
+		<% end %>
+
+		<% if @_x == 'internship' %>
+			<!-- , OpenStruct.new(@request.form_params) -->
+			<%= f.fields_for :form_params do |r| %>
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
 			<% end %>
-			<% end %>
-			<% if @request_for == 'vacancy' %>
-			<!-- , OpenStruct.new(@request.request_by) -->
-			<%= f.fields_for :request_by do |r| %>
-				<%= r.hidden_field :vacancy_id, :value => @vacancy_id %>
-			<% end %>
-			<% end %>
-			<%= f.submit "Send", class: 'button small right' %>
 		<% end %>
-	<% else %>
-	<% if @request_for == 'event' %>
-	<p class="lead">Register for: <%= @event_title %></p>
-				
-	<% else %>
-	<p class="lead">Request for meeting</p>
-	<% end %>
-	<%= form_for @request, remote: true do |f| %>
-		<%= f.hidden_field :request_for, :value => @request_for %>
-		<!-- , OpenStruct.new(@request.request_by) -->
-		<%= f.fields_for :request_by do |r| %>
+
+		<% if @_x.in?(['meeting', 'event']) %>
+	
+		<%#= f.hidden_field :form_params, :value => @_x %>
+		<!-- , OpenStruct.new(@request.form_params) -->
+		<%= f.fields_for :form_params do |r| %>
 			<%= r.text_field :name, :placeholder => 'Name', required: true %>
 			<%= r.text_field :company, :placeholder => 'Company' %>
 			<%= r.text_field :phone, :placeholder => 'Phone', required: true %>
 			<%= r.text_field :email, :placeholder => 'Email', required: true %>
 		<% end %>
-		<%= f.submit "Send", class: 'button small right' %>
-	<% end %>
-	<% if @request_for != 'event' %>
-	<div class="clearfix"></div>
-	<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>NOTE:Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
-	<% end %>
-	<% end %>
+		<% end %>
+		<% if @_x.in?(['meeting']) %>
+
+		<div class="clearfix"></div>
+		<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>NOTE:Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+		<% end %>
+		<%= f.submit "Send", class: 'button right small' %>
+		<% end %>
+	
+	
+
+	
+	
 	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
 	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
 	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>

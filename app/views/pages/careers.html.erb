@@ -35,13 +35,10 @@
 		<hr />
 		<a  data-magellan-destination="recent-vacancies" name="recent-vacancies"></a>
 		<h4>Recent Vacancies</h4>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<table>
+				<% if @vacancy.empty? %>
+				<thead><tr><th><p><em>There are no vacanices at the moment.</em></p></th></tr></thead>
+				<% else %>
 				<thead><tr>
 					<th>Job position</th>
 					<th>No.</th>
@@ -49,13 +46,14 @@
 					<th>Job Despcription</th>
 					<th colspan="2">Job Specification</th>
 				</tr></thead>
+				<% end %>
 				<tbody>
 				<% @vacancy.each do |vacancy| %>
 					<tr>
 				<% vacancy.content.each_value do |value| %>
 					<td><%= value %></td>
 				<% end %>
-					<td><a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?request_for=vacancy&amp;vacancy_id=<%= vacancy.id %>" class="" data-type="JSON">Apply</a></td>
+					<td><a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=vacancy&amp;_z=<%= vacancy.id %>" class="" data-type="JSON">Apply</a></td>
 					</tr>
 				<% end %>
 				</tbody>			
@@ -70,7 +68,7 @@
 		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		<div id="request-for-x" class="clearfix">
-			<a href="<%= new_request_path %>?request_for=internship" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny" data-type="JSON">Apply as a Intern</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=internship" class="button secondary tiny" data-type="JSON">Apply as a Intern</a>
 		</div>
 		<hr />
 		<%= render partial: 'layouts/side_footer' %>

@@ -1,56 +1,66 @@
 ActiveAdmin.register Event do
 
+permit_params :form_params, :link_params, :extra_params, :start_date, :attachment,
+	:attachment_cache
+
+index download_links: false
+config.filters = false
 config.batch_actions = false
-
-actions :all#, except: [:show]
-config.per_page = 10
-
-index :download_links => false do
-  serial_number = 0 
-  column " " do
-  	serial_number = serial_number + 1
-  end
-  column :name do |n|
-  	link_to n.name, admin_event_path(n)
-  end
-  column :start_date do |s_d|
-  	s_d.start_date.strftime("%A, %d %B, %Y")
-  end
-  column 'Attendees', :id do |id|
-    Event.single_event_attendees_count(id)
-  end
-end
-
-filter :name
-filter :start_date
-permit_params :name, :start_date
-
 form do |f|
 	f.inputs "Event Details" do
-		f.input :name
+		f.semantic_errors
+		f.fields_for :form_params,
+		 (OpenStruct.new(Event.find_by_id(params[:id]).form_params) unless f.object.new_record?) do |r|
+			r.input :type, :label => 'Main/Weekly', as: :select, :include_blank => false,
+				:collection => [["Main", "main"], ["Weekly", "weekly"]] 
+			r.input :name, :required => true
+			r.input :description, as: :text, input_html: {rows: 6}
+			r.input :venue 
+			r.input :start_time
+		end	
 		f.input :start_date, as: :datepicker,
-			datepicker_options: {date_format:"DD, d MM, yy", min_date:0}
+			datepicker_options: {date_format:"DD, d MM, yy"}
+		f.input :attachment, as: :file, :label => "Photo"
+		li image_tag (f.object.attachment.thumb.url) if f.object.attachment?
+		f.input :attachment_cache, as: :hidden
 	end
-	f.actions	
+	
+	f.actions
 end
 
-show do
-      tabs do
-        tab 'Overview' do
-          attributes_table do
-            row(:name)
-            row(:start_date)
-          end
-        end
+controller do
+	def update
+		@event = Event.find_by_id(params[:id])
+		if @event.update(event_params)
+			redirect_to admin_events_path
+		else
+			render 'edit'
+		end
+	end
+	def edit
+		@event = Event.find_by_id(params[:id])	
+	end
 
-        tab 'Attendees' do
-          table_for event.members do
-            column(:name) { |p| p.name.titleize }
-            column(:contact_number)
-            column(:email)
-          end
-        end
-      end
+	def create
+		@event = Event.new(event_params)
+		if @event.save
+			redirect_to admin_events_path
+		else
+			render 'new'
+		end
+	end
+
+	def event_params
+		content_keys = params[:event][:form_params].keys
+		params.require(:event).permit(:start_date, :attachment, 
+			extra_params: extra_params, form_params: form_params)
+	end
+	def form_params
+		["type", "name", "description", "venue", 
+		 "start_time",]
+	end
+	def extra_params
+		["attachment_cache"]
+	end
 end
-
 end
