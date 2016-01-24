@@ -1,3 +1,6 @@
+<% if @upcoming_main.nil? && @upcoming_weekly.nil? %>
+  <em>No upcoming events found</em>
+  <% else %>
 <%# @upcoming_one_main_event.each do |event| %>
 <a href="<%= event_browse_path(@upcoming_main) %>">
 <article class="event columns" >
@@ -25,6 +28,5 @@
 </a>
       <%# end %>
       
-<% if @upcoming_main.nil? && @upcoming_weekly.nil? %>
-  <em>No upcoming events found</em>
+
 <% end %>

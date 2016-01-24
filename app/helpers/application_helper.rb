@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def blank_to_nbsp(value)
+  value.blank? ? "&nbsp;".html_safe : value
+end
 	# Should probably go in application_helper
 # examples (when run in this order):
 # autotab           # returns 1
