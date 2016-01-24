@@ -8,8 +8,8 @@ class PagesController < ApplicationController
   
   def home
     @events = Event.all
-    @upcoming_main = Event.upcoming_main
-    @upcoming_weekly = Event.upcoming_weekly
+    @upcoming_main = Event.m_upcoming_main
+    @upcoming_weekly = Event.m_upcoming_weekly
     @sliders = Slider.where('remarks' => false)
   end
 
