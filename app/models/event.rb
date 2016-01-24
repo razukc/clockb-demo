@@ -8,19 +8,19 @@ class Event < ActiveRecord::Base
 		Event.where('start_date >= ?', Date.today).order(:start_date)
 	end
 
-	def self.upcoming_main
+	def self.m_upcoming_main
 		 # Event.where('true = true', :form_params.find{|x| x[:type] == 'main'}).limit(1)
 		upcoming.find{ |u| u.form_params['type'] == "main" }
 					
 	end
-	def self.upcoming_weekly
+	def self.m_upcoming_weekly
 		upcoming.find{ |u| u.form_params['type'] == "weekly"}
 	end
 
-	def self.slider
+	def self.m_slider
 		Event.where('attachment not like ?', '').limit(5)
 	end
-	def self.gallery
+	def self.m_gallery
 		Event.where('attachment not like ?', '').limit(6)
 	end
 	def start_time

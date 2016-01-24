@@ -23,10 +23,10 @@ class PagesController < ApplicationController
 
   def events
     @events = Event.all
-    @slider = Event.slider
-    @gallery = Event.gallery
-    @upcoming_main = Event.upcoming_main
-    @upcoming_weekly = Event.upcoming_weekly
+    @slider = Event.m_slider
+    @gallery = Event.m_gallery
+    @upcoming_main = Event.m_upcoming_main
+    @upcoming_weekly = Event.m_upcoming_weekly
   end
   def browse
     @events_single = Event.find_by_id(params[:id])

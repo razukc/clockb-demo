@@ -5,7 +5,7 @@
 </div>
   <% events.each do |event| %>
     <span data-tooltip aria-haspopup="true" class="has-tip" title="<%= event.form_params['name'] %>">
-    		<%= link_to date, events_browse_path(event) %>
+    		<%= link_to date, event_browse_path(event) %>
     </span>
   <% end %>
 <% end %>

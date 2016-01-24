@@ -3,14 +3,22 @@ permit_params :content
 config.filters = false
 config.batch_actions = false
 actions :all, except: [:show]
-index :download_links => false do
-	column :id
-	column :content do |x|
-			x.content['job_title']
-	end
-	column :created_at
-	column :updated_at
-	actions
+# index :download_links => false do
+# 	column :id
+# 	column :content do |x|
+# 			x.content['job_title']
+# 	end
+# 	column :created_at
+# 	column :updated_at
+# 	actions
+# end
+index as: :block, download_links: false do |product|
+  div for: product do
+    # resource_selection_cell product
+    h2  link_to     product.content['job_title'], edit_admin_vacancy_path(product)
+    div truncate product.content['job_description']
+    br
+  end
 end
 form  do |f|
 	f.inputs "Vacancy Details" do

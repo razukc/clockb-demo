@@ -94,7 +94,7 @@
 		<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
 			<% @gallery.each do |g| %>
 			<li>
-				<a><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
+				<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
 			</li>
 			<% end %>
 		</ul>

@@ -3,8 +3,8 @@ config.batch_actions = false
 
 index :download_links => false, as: :grid do |slider|
   dd link_to image_tag(slider.slide.thumb), edit_admin_slider_path(slider)
-  dd link_to "Edit", edit_admin_slider_path(slider) 
-  dd link_to "Delete", admin_slider_path(slider), method: :delete, data: { :confirm => "Are you sure?" }
+  # dd link_to "Edit", edit_admin_slider_path(slider) 
+  # dd link_to "Delete", admin_slider_path(slider), method: :delete, data: { :confirm => "Are you sure?" }
 end	
 
 permit_params do
