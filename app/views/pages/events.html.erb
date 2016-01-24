@@ -55,32 +55,33 @@
 		<div class="row">
 			<div class="large-7 columns">
 			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
-			
+			<% if !@v_main.nil? %>
 				<!-- Main Event -->
 				<div class="clearfix">
-		<%= image_tag @upcoming_main.attachment.featured, class: 'th-no-hover lazyload' %>
+		<%= image_tag @v_main.attachment.featured, class: 'th-no-hover lazyload' %>
 
 		</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p><%= @upcoming_main.form_params['description'] %></p>
+		<p><%= @v_main.form_params['description'] %></p>
 				<div id="request-for-x" class="clearfix">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @upcoming_main.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_main.id %>" class="button secondary tiny" data-type="JSON">Register</a>
 		</div>
 		
 		<hr />
-		
+		<% end %>
+			<% if !@v_weekly.nil? %>
 		<!-- Weekly Event -->
 		<div class="clearfix">
-				<%= image_tag @upcoming_weekly.attachment.featured, class: 'th-no-hover lazyload' %>
+				<%= image_tag @v_weekly.attachment.featured, class: 'th-no-hover lazyload' %>
 		</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p><%= @upcoming_weekly.form_params['description'] %></p>
+		<p><%= @v_weekly.form_params['description'] %></p>
 				<div id="request-for-x" class="clearfix">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @upcoming_weekly.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_weekly.id %>" class="button secondary tiny" data-type="JSON">Register</a>
 		</div>
-		
+		<% end %>
 			</div>
 			<div class="large-5 columns" style="border-left:1px solid #e3e3e3;">
 				<div class="clearfix">
