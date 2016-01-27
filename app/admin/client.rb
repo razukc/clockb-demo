@@ -1,3 +1,4 @@
+=begin
 ActiveAdmin.register Client do
 
 config.batch_actions = false
@@ -96,3 +97,4 @@ end
 
 
 end
+=end

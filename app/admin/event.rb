@@ -3,24 +3,6 @@ ActiveAdmin.register Event do
 permit_params :form_params, :link_params, :extra_params, :start_date, :attachment,
 	:attachment_cache
 
-# index download_links: false do 
-# 	column "Event", :form_params do |k, v|
-# 		k['form_params']['name']
-# 		end
-# 	actions
-# end
-# index as: :blog, download_links: false do
-#   title do |post|
-#     span post.form_params['name'], class: 'title'
-#     # span post.created_at, class: 'created_at'
-#   end
-#   body do |post|
-#     div truncate post.form_params['description']
-#     div class: 'meta' do
-#       span "Posted in #{post.form_params['type'].titleize}"
-#     end
-#   end
-# end
 index as: :block, download_links: false do |product|
   div for: product do
     # resource_selection_cell product
@@ -89,4 +71,23 @@ controller do
 		["attachment_cache"]
 	end
 end
+
+# index download_links: false do 
+# 	column "Event", :form_params do |k, v|
+# 		k['form_params']['name']
+# 		end
+# 	actions
+# end
+# index as: :blog, download_links: false do
+#   title do |post|
+#     span post.form_params['name'], class: 'title'
+#     # span post.created_at, class: 'created_at'
+#   end
+#   body do |post|
+#     div truncate post.form_params['description']
+#     div class: 'meta' do
+#       span "Posted in #{post.form_params['type'].titleize}"
+#     end
+#   end
+# end
 end

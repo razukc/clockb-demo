@@ -16,6 +16,8 @@ class RequestsController < ApplicationController
 		@_title = 'Apply as a intern'
 		when 'meeting'
 		@_title = 'Request for a meeting'
+		when 'webinar'
+		@_title = 'Request for a Webinar'
 		else
 		@_title = '_title'
 		end

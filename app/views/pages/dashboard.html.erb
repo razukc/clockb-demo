@@ -1,0 +1,117 @@
+<%= content_for :page_title, 'Dashboard' %>
+<div class="row">
+	<div class="large-12 columns">
+		<p>&nbsp;</p>
+		<h5 style="text-decoration: underline;">Client Information</h5>
+		<ul class="no-bullet">
+			<li>Name: <%= @user.inputs['name'] %></li>
+			<%= simple_format '<li>Person in charge: '+@user.inputs["person_in_charge"]+'</li>' if @user.inputs['person_in_charge'] %>
+			<li>Package Type: <%= @user.inputs['plan'].titleize %></li>
+		</ul>
+<!-- 		<ul>
+			<% @user.inputs.each do |k,v| %>
+				<li><strong><%= k.titleize %>: </strong><%= v.titleize %></li>
+			<% end %>
+		</ul> -->	
+	</div>
+<hr />
+	<div class="row">
+		<div class="large-6 columns">
+			<ul class="example-orbit" data-orbit>
+			  <li>
+			    <%= image_tag "500x300.png", class: 'lazyload' %>
+			    <div class="orbit-caption">
+			      Pro User advert
+			    </div>
+			  </li>
+			</ul>
+		</div>
+
+		<div class="large-6 columns">
+			<h5>Networking Profiles</h5>
+			<ul>
+				<li>Clockb</li>
+				<li>Clockb</li>
+				<li>Clockb</li>
+				<li>Clockb</li>
+				<li>Clockb</li>
+			</ul>
+		</div>
+	</div>
+<hr />
+	<div class="row">
+		<div class="large-4 columns">
+			<div class="row">
+				<div class="large-12 medium-6 columns">
+					<h5>Events Gallery</h5>
+					<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
+						<% if @gallery.empty? %>
+							<li>
+							<a><%= image_tag "190.png", class: 'th-no-hover lazyload' %></a>
+						</li>
+							<% else %>
+						<% @gallery.each do |g| %>
+						<li>
+							<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
+						</li>
+						<% end %>
+						<% end %>
+					</ul><hr />
+				</div>
+				<div class="large-12 medium-6 columns">
+					<h5>Upcoming events</h5>
+					<%= render 'layouts/upcoming_events' %>
+					<hr />
+				</div>
+				<div class="columns">
+					<% if @user.premium? %>
+					<%= link_to "Post an advert", "#", class: 'button expand' %>
+					<% else %>
+					<h5>Upgrage to Premium</h5>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="large-4 columns">
+			<h5>Webinar</h5>
+		</div>
+
+		<div class="large-4 columns">
+			<h5>Networking Benefits</h5>
+			<ul>
+				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+			</ul>
+		</div>
+	</div>
+<hr />
+<div class="large-6 columns">
+	<% if @user.client? %>
+	<h5>Program schedules</h5>
+	<ul>
+		<li><%= @user.inputs['program_schedules'] %></li>
+	</ul>
+	<% end -%>
+	<% if @user.alumni? %>
+		<h5>Recommended Services</h5>
+		<%= simple_format @user.inputs['recommended_services'] %>
+	<% end -%>
+</div>
+
+<div class="large-6 columns">
+	<% if @user.client? || @user.alumni? %>
+	<h5>Feedbacks</h5>
+	<%= form_for FeedbackFromUser.new, remote: true, method: :post do |f| %>
+	<%= f.text_area :feedback, rows: 6 %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.submit "Submit", class: 'button secondary small right'%>
+	<% end %>
+	<div class="errors hide"><span class="label alert radius left">Error</span></div>
+	<div class="success hide"><span class="label success radius left">Thank you!</span></div>
+	<% end %>
+</div>
+<hr />
+</div>

@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
   layout 'pages'
+  def dashboard
+    @user = current_user
+    @gallery = Event.m_gallery
+    @upcoming_main = Event.m_upcoming_main
+    @upcoming_weekly = Event.m_upcoming_weekly
+  end
+
 	def index
 		# @events = Event.all
 		# @upcoming_events = Event.upcoming_home_page

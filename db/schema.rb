@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122082741) do
+ActiveRecord::Schema.define(version: 20160127094355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20160122082741) do
   add_index "events_members", ["event_id", "member_id"], name: "index_events_members_on_event_id_and_member_id", using: :btree
   add_index "events_members", ["member_id", "event_id"], name: "index_events_members_on_member_id_and_event_id", using: :btree
 
+  create_table "feedback_from_users", force: :cascade do |t|
+    t.text     "feedback"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feedback_from_users", ["user_id"], name: "index_feedback_from_users_on_user_id", using: :btree
+
   create_table "feedbacks_of_the_services", force: :cascade do |t|
     t.text     "content"
     t.integer  "client_id"
@@ -81,30 +90,6 @@ ActiveRecord::Schema.define(version: 20160122082741) do
   end
 
   add_index "feedbacks_of_the_services", ["client_id"], name: "index_feedbacks_of_the_services_on_client_id", using: :btree
-
-  create_table "members", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "company"
-    t.string   "person_in_charge"
-    t.string   "contact_number"
-    t.string   "occupation"
-    t.integer  "package"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-  end
-
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
-  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
   create_table "milestone_alumnis", force: :cascade do |t|
     t.text     "content"
@@ -178,6 +163,32 @@ ActiveRecord::Schema.define(version: 20160122082741) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.text     "inputs"
+    t.string   "attachment"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: ""
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   create_table "vacancies", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
@@ -192,6 +203,7 @@ ActiveRecord::Schema.define(version: 20160122082741) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "milestone_alumnis", "alumnis"
   add_foreign_key "milestones", "clients"

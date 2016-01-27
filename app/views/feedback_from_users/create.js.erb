@@ -1,0 +1,8 @@
+<% if @feedback.errors.any? %>
+	$('div.errors').show();
+	$('div.success').hide();
+<% else %>
+	$('div.errors').hide();
+	$('div.success').show();
+	$('form input, textarea').prop("disabled", true);
+<% end %>

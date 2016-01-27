@@ -1,53 +1,33 @@
-ActiveAdmin.register Member do
+# ActiveAdmin.register Member do
+# index download_links: false do
+# 	column :form_inputs
+# 	column :email
+# 	actions
+# end
+# form do |f|
+# 	f.inputs "Member Details" do
+# 		f.fields_for :form_inputs do |fi|
+# 			fi.input :type, as: :select, 
+# 				:collection => [["Client", "client"], ["Alumni", "alumni"],['Guest', 'guest']] 
+# 		end
+# 	end
+# 	f.actions
+# end
+# config.filters = false
+# permit_params :email
+# action_item :invite, only: :edit do
+#   link_to 'Invite',  send_invitation_admin_member_path, method: :post
+# end
 
-config.batch_actions = false
-
-actions :all, except: [:edit, :new, :destroy]
-config.per_page = 10
-
-index :download_links => false do
-  serial_number = 0 
-  column "S.N " do
-  	serial_number = serial_number + 1
-  end
-  column :name do |n|
-  	link_to n.name.titleize, admin_member_path(n)
-  end
-  column :person_in_charge
-  column :email
-  column :contact_number
-  column :package do |pkg| pkg.package.titleize end
-  column :company, :class => "text-align-right"
-end
-
-filter :name
-filter :company
-permit_params :name, :person_in_charge, 
-	:email, :contact_number, :package, :occupation, :company
-
-
-show do
-      tabs do
-        tab 'Overview' do
-          attributes_table do
-            row(:name)
-            row(:company)
-            row(:email)
-            row(:person_in_charge)
-            row(:contact_number)
-            row(:occupation)
-            row(:package)
-          end
-        end
-
-        tab 'Events' do
-          table_for member.events do
-            column(:name) { |p| p.name.titleize }
-            column(:start_date)
-            column("Status", :id) {|p| Event.status(p)}
-          end
-        end
-      end
-end
-
-end
+# member_action :send_invitation, :method => :post do
+# 	@member = resource_class.invite!({email: resource.email})
+# 	if @member.errors.empty?
+# 		flash[:success] = "User has been successfully invited." 
+# 		redirect_to edit_admin_member_path, method: :get
+# 	else
+# 		messages = @member.errors.full_messages.map { |msg| msg }.join
+# 		flash[:error] = "Error: " + messages
+# 		redirect_to edit_admin_member_path, method: :get
+# 	end
+# end
+# end

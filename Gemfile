@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem "letter_opener", :group => :development
 gem 'remotipart', '~> 1.2'
 # gem "high_voltage"
 gem 'mini_magick'

@@ -1,4 +1,6 @@
 ActiveAdmin.setup do |config|
+  # config.authentication_method = :authenticate_admin_user!
+  # config.current_user_method = :current_admin_user
   # == Site Title
   #
   # Set the title that is displayed on the main layout

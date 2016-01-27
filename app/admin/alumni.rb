@@ -1,3 +1,4 @@
+=begin
 ActiveAdmin.register Alumni do
 
 config.batch_actions = false
@@ -68,3 +69,4 @@ form do |f|
 end
 
 end
+=end

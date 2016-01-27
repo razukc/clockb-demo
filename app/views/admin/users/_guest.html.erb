@@ -1,0 +1,27 @@
+<%= active_admin_form_for [:admin, @user] do |f|
+f.inputs "Guest Details" do
+	f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
+
+		i.input :type, 
+			input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
+		i.input :type, as: :hidden
+		
+		i.input :name
+
+		i.input :contact
+
+		i.input :email, input_html: {value: User.find_by_id(params[:id]).email}
+
+	end
+	end
+	f.inputs "Client Background" do
+        if f.object.attachment && f.object.attachment.file
+          li link_to "#{f.object.attachment.file.filename}", f.object.attachment.url
+          f.input :remove_attachment, as: :boolean, :label => "Remove"
+        else
+          f.input :attachment, as: :file, :label => "Upload"
+          f.input :attachment_cache, as: :hidden
+        end
+     end
+	f.actions 
+end %>
