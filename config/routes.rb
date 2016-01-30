@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
- resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
-  devise_for :users, 
+  
+   
+   devise_for :users, 
           :controllers => { 
           :sessions => "users_sessions", 
           # :registrations => "user_registrations", 
           :passwords => "users_passwords",
           # Proper invitations should be sent through the active_admin interface.
-          :invitations => 'users_invitations' # user_invitations_controller.rb
+          :invitations => "users_invitations" # user_invitations_controller.rb
           }
-  # devise_for :users
-      # ,
-      # :controllers => { :invitations => 'users/invitations' }
-  ActiveAdmin.routes(self)
+    ActiveAdmin.routes(self)
+    
   resources :requests
+  resources :adverts
+  resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
+
   get 'clockb' => 'pages#clockb'
   get 'services' => 'pages#services'
   get 'careers' => 'pages#careers'

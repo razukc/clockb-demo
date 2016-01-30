@@ -2,15 +2,36 @@ ActiveAdmin.register Event do
 
 permit_params :form_params, :link_params, :extra_params, :start_date, :attachment,
 	:attachment_cache
-
-index as: :block, download_links: false do |product|
-  div for: product do
-    # resource_selection_cell product
-    h2  link_to     product.form_params['name'], edit_admin_event_path(product)
-    div truncate product.form_params['description']
-    br
-  end
+index download_links: false do 
+	# column :form_params
+	column "Type" do |k|
+		span k.form_params['type'].titleize
+	end
+	column :start_date
+	
+	column "Event", :form_params do |k, v|
+		k['form_params']['name']
+		end
+	column "Description", :form_params do |k, v|
+		truncate k['form_params']['description']
+		end
+	column "Start Time" do |k|
+		k.form_params['start_time']
+	end
+	column "Venue" do |k|
+		k.form_params['venue']
+	end
+	actions
 end
+# index as: :block, download_links: false do |product|
+#   div for: product do
+#     # resource_selection_cell product
+#     h3  link_to     product.form_params['name'], edit_admin_event_path(product)
+#     div "Start Date: " << product.start_date.strftime('%A, %B %e, %Y')
+#     # div truncate product.form_params['description']
+#     br
+#   end
+# end
 actions :all, except: [:show]
 config.filters = false
 config.batch_actions = false
@@ -26,8 +47,9 @@ form do |f|
 			r.input :venue 
 			r.input :start_time
 		end	
-		f.input :start_date, as: :datepicker,
-			datepicker_options: {date_format:"DD, d MM, yy"}
+		f.input :start_date, as: :datepicker, #:date_time_picker,
+			# datepicker_options: {format:"l, F d, Y H:i A"}
+			datepicker_options: {date_format:"DD, MM d, yy"}
 		f.input :attachment, as: :file, :label => "Photo"
 		li image_tag (f.object.attachment.thumb.url) if f.object.attachment?
 		f.input :attachment_cache, as: :hidden

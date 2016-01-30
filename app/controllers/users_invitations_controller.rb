@@ -1,5 +1,9 @@
 class UsersInvitationsController < Devise::InvitationsController
-
+def edit
+    set_minimum_password_length if respond_to? :set_minimum_password_length
+    resource.invitation_token = params[:invitation_token]
+    render 'users/invitations/edit'
+  end
 # def create
 #     # new user
 #     if User.find_by_email(invite_params[:email]).nil?
@@ -36,7 +40,7 @@ class UsersInvitationsController < Devise::InvitationsController
     else
       # invite! class method returns invitable var, which is a User instance
       # resource_class.invite!(invite_params, current_inviter, &block)
-      @user.invite!(current_user)
+      @user.invite!
       @user
     end
   end

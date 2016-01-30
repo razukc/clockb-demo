@@ -3,27 +3,40 @@
 	<div class="large-12 columns">
 		<p>&nbsp;</p>
 		<h5 style="text-decoration: underline;">Client Information</h5>
-		<ul class="no-bullet">
+<!-- 		<ul class="no-bullet">
 			<li>Name: <%= @user.inputs['name'] %></li>
 			<%= simple_format '<li>Person in charge: '+@user.inputs["person_in_charge"]+'</li>' if @user.inputs['person_in_charge'] %>
 			<li>Package Type: <%= @user.inputs['plan'].titleize %></li>
-		</ul>
-<!-- 		<ul>
+		</ul> -->
+		<ul>
 			<% @user.inputs.each do |k,v| %>
 				<li><strong><%= k.titleize %>: </strong><%= v.titleize %></li>
 			<% end %>
-		</ul> -->	
+		</ul>	
 	</div>
 <hr />
 	<div class="row">
 		<div class="large-6 columns">
 			<ul class="example-orbit" data-orbit>
+				<% if @adverts.empty? %>
 			  <li>
 			    <%= image_tag "500x300.png", class: 'lazyload' %>
 			    <div class="orbit-caption">
 			      Pro User advert
 			    </div>
 			  </li>
+			  <% else %>
+			  <% @adverts.each do |advert| %>
+				  <li>
+				    <%= image_tag advert.image.advert, class: 'lazyload' %>
+				    <% if !advert.content.empty? %>
+				    <div class="orbit-caption">
+				      <%= advert.content %>
+				    </div>
+				    <% end %>
+				  </li>
+				<% end %>
+			  <% end %>
 			</ul>
 		</div>
 
@@ -63,11 +76,17 @@
 					<%= render 'layouts/upcoming_events' %>
 					<hr />
 				</div>
+				<!-- Advert -->
 				<div class="columns">
+					<div id="myModal-content" class="reveal-modal small" data-reveal></div>
 					<% if @user.premium? %>
-					<%= link_to "Post an advert", "#", class: 'button expand' %>
+					<div id="request-for-x" class="clearfix panel">
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
+					</div>
 					<% else %>
-					<h5>Upgrage to Premium</h5>
+					<div id="request-for-x" class="clearfix panel">
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=webinar&amp;_y=dashboard" class="button success expand" data-type="JSON">Upgrade to Premium</a>
+					</div>
 					<% end %>
 				</div>
 			</div>
@@ -109,8 +128,9 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.submit "Submit", class: 'button secondary small right'%>
 	<% end %>
-	<div class="errors hide"><span class="label alert radius left">Error</span></div>
-	<div class="success hide"><span class="label success radius left">Thank you!</span></div>
+	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
+	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
+	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
 	<% end %>
 </div>
 <hr />

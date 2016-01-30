@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127094355) do
+ActiveRecord::Schema.define(version: 20160130081818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20160127094355) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "adverts", force: :cascade do |t|
+    t.text     "content"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "adverts", ["user_id"], name: "index_adverts_on_user_id", using: :btree
 
   create_table "alumnis", force: :cascade do |t|
     t.boolean  "company"
@@ -203,6 +213,7 @@ ActiveRecord::Schema.define(version: 20160127094355) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "adverts", "users"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "milestone_alumnis", "alumnis"

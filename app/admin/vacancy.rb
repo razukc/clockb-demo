@@ -3,23 +3,40 @@ permit_params :content
 config.filters = false
 config.batch_actions = false
 actions :all, except: [:show]
-# index :download_links => false do
-# 	column :id
-# 	column :content do |x|
-# 			x.content['job_title']
-# 	end
-# 	column :created_at
-# 	column :updated_at
-# 	actions
-# end
-index as: :block, download_links: false do |product|
-  div for: product do
-    # resource_selection_cell product
-    h2  link_to     product.content['job_title'], edit_admin_vacancy_path(product)
-    div truncate product.content['job_description']
-    br
-  end
+index :download_links => false do
+	# column :id
+	# column :content
+	column "Posted at", :created_at
+
+	column "Job Title" do |x|
+			x.content['job_title']
+	end
+	column "No." do |x|
+			x.content['number_of_vacancies']
+	end
+	column "Min. requirement" do |x|
+			 truncate x.content['minimum_requirement']
+	end
+	column "Job Desc" do |x|
+			truncate x.content['job_description']
+	end
+	column "Job Spec" do |x|
+			truncate x.content['job_specification']
+	end
+	# column "Applicants" do |x|
+	# 	# Request.find_by(request_for: '{"_x"=>"vacancy","_y"=>"_y","_z"=>'<<x.id.to_s<<'}')
+	# end
+	actions
 end
+# index as: :block, download_links: false do |product|
+#   div for: product do
+#     # resource_selection_cell product
+#     h3  link_to     product.content['job_title'], edit_admin_vacancy_path(product)
+#     div "Created at: " << product.created_at.strftime('%e %b, %y')
+#     # div truncate product.content['job_description']
+#     br
+#   end
+# end
 form  do |f|
 	f.inputs "Vacancy Details" do
 		f.fields_for :content, (OpenStruct.new(Vacancy.find_by_id(params[:id]).content) unless f.object.new_record?) do |r|

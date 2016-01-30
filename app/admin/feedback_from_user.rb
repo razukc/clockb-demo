@@ -12,12 +12,14 @@ ActiveAdmin.register FeedbackFromUser, as: "Feedback" do
 #   permitted << :other if resource.something?
 #   permitted
 # end
-actions :all, except: [:edit, :update, :destroy]
+actions :all, except: [:new, :create, :edit, :update, :destroy, :show]
 config.filters = false
 index download_links: false do
-	column :feedback
-	column :created_at
-	actions
+	column "Date", :created_at
+	column "Sent by", :user_id do |user|
+		link_to User.find_by_id(user.user_id).email, admin_user_path(user.user_id)
+	end
+	column :feedback	
 end
 
 end

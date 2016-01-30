@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-	
  serialize :inputs, Hash
  validates_presence_of :email, :message => "Email is required"
  mount_uploader :attachment, DocumentUploader
@@ -9,7 +8,7 @@ class User < ActiveRecord::Base
   	self.inputs['plan'] == 'premium'
   end
   def regular?
-  	self.plan['regular'] == 'regular'
+  	self.inputs['plan'] == 'regular'
   end
   def alumni?
   	self.inputs['type'] == 'alumni'
@@ -26,5 +25,4 @@ class User < ActiveRecord::Base
   def company?
   	self.inputs['company'] == 'company'
   end
-  
 end
