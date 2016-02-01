@@ -69,8 +69,13 @@
 		<br />
 		<h5>Event Insights</h5>
 		<p><%= @v_main.form_params['description'] %></p>
+		<ul class="no-bullet">
+			<li><strong>Start Date:</strong> <%= @v_main.start_date.strftime('%A, %B %e, %Y') %></li>
+			<li><strong>Time:</strong> <%= @v_main.form_params['start_time'] %></li>
+			<li><strong>Venue:</strong> <%= @v_main.form_params['venue'] %></li>
+		</ul>
 				<div id="request-for-x" class="clearfix">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_main.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_main.id %>" class="button secondary tiny right" data-type="JSON">Register</a>
 		</div>
 		
 		<hr />
@@ -83,8 +88,13 @@
 		<br />
 		<h5>Event Insights</h5>
 		<p><%= @v_weekly.form_params['description'] %></p>
+				<ul class="no-bullet">
+			<li><strong>Start Date:</strong> <%= @v_weekly.start_date.strftime('%A, %B %e, %Y') %></li>
+			<li><strong>Time:</strong> <%= @v_weekly.form_params['start_time'] %></li>
+			<li><strong>Venue:</strong> <%= @v_weekly.form_params['venue'] %></li>
+		</ul>
 				<div id="request-for-x" class="clearfix">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_weekly.id %>" class="button secondary tiny" data-type="JSON">Register</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @v_weekly.id %>" class="button secondary tiny right" data-type="JSON">Register</a>
 		</div>
 		<% end %>
 			</div>
@@ -114,10 +124,13 @@
 				<a><%= image_tag "190.png", class: 'th-no-hover lazyload' %></a>
 			</li>
 				<% else %>
+				<% @i = 0 %>
 			<% @gallery.each do |g| %>
+			
 			<li>
-				<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
+				<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload ' %></a> <!-- #<< 'hide' if @i > 1 -->
 			</li>
+			<% @i = @i + 1 %>
 			<% end %>
 			<% end %>
 		</ul>

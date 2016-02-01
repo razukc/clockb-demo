@@ -85,7 +85,7 @@
 					</div>
 					<% else %>
 					<div id="request-for-x" class="clearfix panel">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=webinar&amp;_y=dashboard" class="button success expand" data-type="JSON">Upgrade to Premium</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'premium', _y: 'dashboard', _z: @user.id) %>" class="button success expand" data-type="JSON">Upgrade to Premium</a>
 					</div>
 					<% end %>
 				</div>

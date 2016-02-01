@@ -17,7 +17,9 @@ class RequestsController < ApplicationController
 		when 'meeting'
 		@_title = 'Request for a meeting'
 		when 'webinar'
-		@_title = 'Request for a Webinar'
+		@_title = 'Request for Webinar'
+		when 'premium'
+		@_title = "Request for Premium Package"
 		else
 		@_title = '_title'
 		end

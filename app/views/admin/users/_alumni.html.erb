@@ -1,28 +1,49 @@
-<%= active_admin_form_for [:admin, @user] do |f|
-f.inputs "Alumni Details" do
+<%= 
+	active_admin_form_for [:admin, @user] do |f|
+	# f.inputs "Email" do
+	# 	f.input :email, type: :email
+	# end
 	f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
+		f.inputs "Categorization" do
+			i.input :type,
+				input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
+			i.input :type, as: :hidden
 
-		i.input :type, 
-			input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
-		i.input :type, as: :hidden
-		i.input :plan, as: :select, collection: [["Regular","regular"],["Premium","premium"]], include_blank: false, label: "Networking Package"
+			# i.input :type, as: :select, :include_blank => false,
+			# 	:collection => [
+			# 		["Alumni", "alumni"],
+			# 		["Client", "client"], 
+			# 		["Employee", "employee"],
+			# 		["Guest", "guest"]
+			# 	], :label => "Select one"
 
-		i.input :company, as: :select, collection: [["Company","company"], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
+			i.input :plan, as: :radio, collection: [["Regular","regular"],["Premium","premium"]], include_blank: false, label: "Networking Package"
 
-		i.input :name
+			i.input :company, as: :radio, collection: [["Company","company"], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
+			i.input :profile, :label => "Networking Profile"
+		
 
-		i.input :person_in_charge
+		end #categorization
 
-		i.input :contact
+		f.inputs "Basic Info" do
+			i.input :name
 
-		i.input :email, input_html: {value: User.find_by_id(params[:id]).email}
+			i.input :person_in_charge
 
-		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
+			i.input :contact
 
-		i.input :milestones, as: :text, input_html: {class: 'autogrow', rows: 6}
+			i.input :email, input_html: {value: User.find_by_id(params[:id]).email}
 
-		i.input :recommended_services, as: :text, input_html: {class: 'autogrow', rows: 6}
-	end
+			i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
+
+		end #basic-info
+
+		f.inputs "Miscellaneous" do
+			
+			i.input :milestones, as: :text, input_html: {class: 'autogrow', rows: 6}
+
+			i.input :recommended_services, as: :text, input_html: {class: 'autogrow', rows: 6}
+		end #miscellaneous
 	end
 	f.inputs "Client Background" do
         if f.object.attachment && f.object.attachment.file
@@ -34,4 +55,5 @@ f.inputs "Alumni Details" do
         end
      end
 	f.actions 
-end %>
+end 
+%>

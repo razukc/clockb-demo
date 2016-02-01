@@ -6,6 +6,10 @@ f.inputs "Guest Details" do
 			input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
 		i.input :type, as: :hidden
 		
+		
+		i.input :profile, :label => "Networking Profile"
+
+
 		i.input :name
 
 		i.input :contact

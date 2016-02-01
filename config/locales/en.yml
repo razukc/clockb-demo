@@ -40,4 +40,4 @@ en:
   active_admin:
     powered_by: ""
     dashboard_welcome:
-      welcome: "Welcome message goes here"
+      welcome: "Administration Backend"

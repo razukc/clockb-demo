@@ -8,6 +8,8 @@ f.inputs "Client Details" do
 		i.input :plan, as: :select, collection: [["Regular","regular"],["Premium","premium"]], include_blank: false, label: "Networking Package"
 
 		i.input :company, as: :select, collection: [["Company","company"], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
+		
+		i.input :profile, :label => "Networking Profile"
 
 		i.input :name
 

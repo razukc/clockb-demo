@@ -17,10 +17,10 @@ index :download_links => false do
 	column "Min. requirement" do |x|
 			 truncate x.content['minimum_requirement']
 	end
-	column "Job Desc" do |x|
+	column "Job Description" do |x|
 			truncate x.content['job_description']
 	end
-	column "Job Spec" do |x|
+	column "Job Specification" do |x|
 			truncate x.content['job_specification']
 	end
 	# column "Applicants" do |x|

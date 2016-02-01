@@ -12,7 +12,7 @@
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
           consequat.</p>
               <div id="request-for-x">
-          <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=webinar" class="button">Request for Webinar</a>
+          <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'webinar', user: current_user) %>" class="button">Request for Webinar</a>
           
           <div id="myModal-content" class="reveal-modal small" data-reveal></div>
     </div>

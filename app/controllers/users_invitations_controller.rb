@@ -1,4 +1,5 @@
 class UsersInvitationsController < Devise::InvitationsController
+  layout 'pages'
 def edit
     set_minimum_password_length if respond_to? :set_minimum_password_length
     resource.invitation_token = params[:invitation_token]

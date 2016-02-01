@@ -1,0 +1,60 @@
+<%= content_for :page_title, 'Dashboard' %>
+<div class="row">
+<div class="columns">
+<p>&nbsp;</p>
+		<h5 style="text-decoration: underline;">Employee Information</h5>
+ 		<ul class="no-bullet">
+			<li>Name: <%= @user.inputs['name'] %></li>
+			<li>Job Title: <%= @user.inputs['job_title'] %></li>
+		</ul>
+</div><hr />
+</div>
+
+<div class="row">
+<div class="large-6 columns">
+<h5>Job Description</h5>
+<p><%= @user.inputs['job_description'] %></p>
+</div>
+<div class="large-6 columns">
+<h5>Job Specification</h5>
+<p><%= @user.inputs['job_description'] %></p>
+</div><hr />
+</div>
+
+<div class="row">
+<div class="large-6 columns">
+<h5>Tasks &amp; Schedules</h5>
+<p><%= @user.inputs['tasks_and_schedules'] %></p>
+</div>
+<div class="large-6 columns">
+	<div class="row">
+	<div class="large-8 medium-8 columns">
+		<h5>Goals &amp; Targets</h5>
+	</div>
+	<div class="large-4 medium-4 columns">
+		<button class="button small tiny secondary">Download</button>
+	</div>
+	</div>
+<hr />
+	<div class="row">
+	<div class="large-8 medium-8 columns">
+		<h5>Employee Documents</h5>
+	</div>
+	<div class="large-4 medium-4 columns">
+		<button class="button small tiny secondary">Download</button>
+	</div>
+	</div>
+<hr />
+	<div class="row">
+	<div class="large-8 medium-8 columns">
+		<h5>HR Policy</h5>
+	</div>
+	<div class="large-4 medium-4 columns">
+		<button class="button small tiny secondary">Download</button>
+	</div>
+	</div>
+<hr />
+
+
+</div>
+</div>

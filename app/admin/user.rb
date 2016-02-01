@@ -1,4 +1,40 @@
 ActiveAdmin.register User do
+	
+
+show title: :email do
+columns do
+	column do
+		attributes_table do
+			table do
+				user.inputs.each do |k, v| 
+					tr do	
+						th do
+							k
+						end
+						td do
+							v.titleize
+						end
+					end
+				end
+			end
+		end	
+	end	
+	column do	
+		panel "Invitation" do
+			attributes_table_for user do
+				row :invitation_token
+				row :invitation_sent_at
+				row :invitation_accepted_at
+			end
+		end
+		panel "Client Background" do
+			attributes_table_for user do
+				row :attachment
+			end
+		end
+	end
+end
+end
 index download_links: false do
 	column "Category" do |k|
 		k.inputs['type'].titleize
@@ -30,9 +66,9 @@ form do |f|
 	f.inputs "Add new user" do
 		f.input :email, :placeholder => 'user@domain.com'
 		f.fields_for :inputs do |i|
-			i.input :type, as: :select, :include_blank => false,
+			i.input :type, as: :radio, :include_blank => false,
 				:collection => [
-					["Alumni", "alumni"],
+					["Alumni", "alumni",{ :checked => true } ],
 					["Client", "client"], 
 					["Employee", "employee"],
 					["Guest", "guest"]
@@ -42,13 +78,13 @@ form do |f|
 	f.actions
 	else
 	 		f.render f.object.inputs['type']
-	 end
-	
+	end
+	# f.actions
 end
 # config.filters = false
 filter :inputs
 permit_params :email
-action_item :invite, only: :edit do
+action_item :invite, only: :show do
   link_to 'Invite User',  send_invitation_admin_user_path, method: :post
   # link_to 'Invite User',  user_invitation_path, method: :post
 end
@@ -74,7 +110,7 @@ controller do
 		@user = User.find_by_id(params[:id])
 		if @user.update(user_params)
 			flash[:success] = "User has been successfully updated." 
-			redirect_to admin_users_path
+			redirect_to admin_user_path(@user)
 		else
 			messages = @user.errors.full_messages.map { |msg| msg }.join
 			flash[:error] = "Error: " + messages
@@ -88,8 +124,8 @@ controller do
 	end
 	def create
 		@user = User.new(user_params)
-		if @user.save
-			redirect_to admin_users_path
+		if @user.save && @user.errors.empty?
+			redirect_to admin_user_path(@user)
 		else
 			messages = @user.errors.full_messages.map { |msg| msg }.join
 			flash[:error] = "Error: " + messages

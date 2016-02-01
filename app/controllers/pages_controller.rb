@@ -3,10 +3,14 @@ class PagesController < ApplicationController
   before_action :authenticate_user! , only: [:dashboard]
   def dashboard
     @user = current_user
+    if current_user.employee?
+      render 'employee'
+    else
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @adverts = Advert.all
+    end
   end
 
 	def index

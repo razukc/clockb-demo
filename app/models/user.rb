@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
- serialize :inputs, Hash
- validates_presence_of :email, :message => "Email is required"
  mount_uploader :attachment, DocumentUploader
-  devise :invitable, :database_authenticatable, :recoverable, :rememberable
+
+ devise :invitable, :database_authenticatable, :recoverable, :rememberable
+
+
+ validates_presence_of :email, :message => " is required"
+ validates_uniqueness_of :email, :message => " already in use"
+
+  serialize :inputs, Hash
   # include DeviseInvitable::Inviter
   def premium?
   	self.inputs['plan'] == 'premium'

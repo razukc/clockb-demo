@@ -12,7 +12,9 @@ f.inputs "Employee Details" do
 
 		i.input :email, input_html: {value: User.find_by_id(params[:id]).email}
 
-		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
+		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy", min_date: 0}
+		
+		i.input :job_title
 
 		i.input :job_specification, as: :text, input_html: {class: 'autogrow', rows: 6}
 		
