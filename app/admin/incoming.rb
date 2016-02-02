@@ -65,7 +65,7 @@ content do
           end
           div do
             ul do              
-                li "Email: " << (@user.inputs['email'])
+                li "Email: " << (@user.inputs['email']).to_s
                 li "Contact: " << (@user.inputs['contact'])
                 li "Type: " << (@user.inputs['type']).titleize
                 li "Sent at: " << (post.created_at).to_s

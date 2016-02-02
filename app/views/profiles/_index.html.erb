@@ -1,0 +1,19 @@
+<% if current_user && current_user.premium? %>
+<h5>Profiles for <%= @k %>(<%= @profiles.size %>)</h5>
+<table width="100%">
+<tbody>
+<% @profiles.each do |k, v| %>
+
+	<tr>
+		<td><%= k['inputs']['name'] %></td>
+		<td><%= link_to "Profile", "#", class: '' %></td>
+	</tr>
+<%end%>
+</tbody>
+</table>
+<% else %>
+	<div id="request-for-x" class="clearfix panel" style="margin-top:30px;">
+		<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'premium', _y: 'networking-profile', _z: current_user.id) %>" class="button success expand" data-type="JSON">Upgrade to Premium</a>
+	</div>
+<% end -%>
+<a class="close-reveal-modal">&#215;</a>

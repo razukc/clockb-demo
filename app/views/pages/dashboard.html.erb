@@ -39,16 +39,37 @@
 			  <% end %>
 			</ul>
 		</div>
-
+		<!-- Networking Profiles -->
+		<div id="myModal-content" class="reveal-modal medium" data-reveal></div>
 		<div class="large-6 columns">
-			<h5>Networking Profiles</h5>
-			<ul>
-				<li>Clockb</li>
-				<li>Clockb</li>
-				<li>Clockb</li>
-				<li>Clockb</li>
-				<li>Clockb</li>
-			</ul>
+			<table width="100%">
+				<thead>
+					<tr>
+						<th colspan="2">Networking Profiles</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<% @profiles.each do |k, v| %>
+					<% k != "" ? k = k : k = "Uncategorized" %>
+					<tr>
+						
+					
+						<td>
+							<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%=  profiles_path(k: k) %>" class="" data-type="JSON">
+								<%= k %>
+							</a>
+
+						</td>
+						<td>(<%= v.size %>)</td>
+
+
+					</tr>
+					
+					<% end %>
+				</tbody>
+				
+			</table>
 		</div>
 	</div>
 <hr />
@@ -79,15 +100,11 @@
 				<!-- Advert -->
 				<div class="columns">
 					<div id="myModal-content" class="reveal-modal small" data-reveal></div>
-					<% if @user.premium? %>
+					
 					<div id="request-for-x" class="clearfix panel">
 			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
 					</div>
-					<% else %>
-					<div id="request-for-x" class="clearfix panel">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'premium', _y: 'dashboard', _z: @user.id) %>" class="button success expand" data-type="JSON">Upgrade to Premium</a>
-					</div>
-					<% end %>
+					
 				</div>
 			</div>
 		</div>

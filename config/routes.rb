@@ -10,7 +10,7 @@ Rails.application.routes.draw do
           :invitations => "users_invitations" # user_invitations_controller.rb
           }
     ActiveAdmin.routes(self)
-    
+  resources :profiles
   resources :requests
   resources :adverts
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]

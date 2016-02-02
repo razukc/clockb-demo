@@ -1,38 +1,83 @@
 <%= active_admin_form_for [:admin, @user] do |f|
-f.inputs "Employee Details" do
+	tabs do
+	tab "Details" do
+	
 	f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
-
-		i.input :type, 
-			input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
+f.inputs "Employee Details" do
+		# i.input :type, 
+		# 	input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
 		i.input :type, as: :hidden
 		
 		i.input :name
 
-		i.input :contact
-
-		i.input :email, input_html: {value: User.find_by_id(params[:id]).email}
-
-		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy", min_date: 0}
-		
 		i.input :job_title
 
-		i.input :job_specification, as: :text, input_html: {class: 'autogrow', rows: 6}
+		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
+
+		i.input :email, input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).email}
+
+		i.input :contact
+
 		
-		i.input :job_description, as: :text, input_html: {class: 'autogrow', rows: 6}
+		end
+	f.inputs "Job Description" do
+		i.input :job_description, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Description'
 		
-		i.input :tasks_and_schedules, as: :text, input_html: {class: 'autogrow', rows: 6}
+	end
+
+	f.inputs "Job Specification" do
+		i.input :job_specification, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Specification'
+	end
+		
+		
+		
+		# i.input :tasks_and_schedules, as: :text, input_html: {class: 'autogrow', rows: 6}
 	
 
+	
 	end
 	end
-	f.inputs "Employee Documents" do
-        if f.object.attachment && f.object.attachment.file
-          li link_to "#{f.object.attachment.file.filename}", f.object.attachment.url
-          f.input :remove_attachment, as: :boolean, :label => "Remove"
-        else
-          f.input :attachment, as: :file, :label => "Upload"
-          f.input :attachment_cache, as: :hidden
-        end
-     end
+
+	tab "Documents" do
+		f.inputs "Uploader" do
+	        # if f.object.attachment && f.object.attachment.file
+	        #   li link_to "#{f.object.attachment.file.filename}", f.object.attachment.url
+	        #   f.input :remove_attachment, as: :boolean, :label => "Remove"
+	        # else
+	        #   f.input :attachment, as: :file, :label => "Upload"
+	        #   f.input :attachment_cache, as: :hidden
+	        # end
+	        f.has_many :employee_documents, allow_destroy: true, heading: false, new_record: 'Add new' do |ed|
+	        	ed.input :name, as: :select, :collection => [
+						["Goals & Targets", "goals-and-targets"],
+						["Employee Documents", "employee-documents"], 
+						["HR Policy", "hr-policy"],
+						["Other"]
+					], :label => "Select one", include_blank: false
+
+				# ed.input :files, as: :file, label: "Upload", input_html: { multiple: true }
+				# ed.input :files_cache, as: :hidden
+				ed.input :attachment, as: :file, label: "Upload"
+				ed.input :attachment_cache, as: :hidden
+	        end
+	    end
+	end
+	tab "Tasks" do
+    f.inputs "Add new Task" do
+    	
+			f.has_many :tasks, allow_destroy: true, heading: false,
+				new_record: 'Add new' do |sc|
+					
+					sc.input :content, as: :text, label: "Task",
+						:input_html => { :class => 'autogrow', :rows => 4, :columns => "auto"}
+					sc.input :schedule, as: :datepicker,
+						datepicker_options: {date_format: "DD, MM d, yy"}
+					sc.input :status, label: "Complete"
+					
+			end
+		
+	end
+	end
 	f.actions 
+	end
 end %>

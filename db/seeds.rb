@@ -5,10 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-# (1..100).each do |cont|
-#        Client.create(
-#          name: "Sample Client Name #{cont}",
-#          company: [true, false].sample
+# (1..111).each do |cont|
+#        User.create(
+#        	inputs: {
+#        		'type' => ['alumni','client','guest','other'].sample,
+#        		'name' => "Sample User #{cont}",
+#        		'company' => ['company', 'individual'].sample,
+#        		'profile' => ['Marketing', 'IT', 'Food and Hospitality', 'Logistics', ''].sample,
+#        		'plan' => ['regular', 'premium'].sample
+#        		},
+# 			email: "user#{cont}@email.com"
+
 #        )
 #      end
 

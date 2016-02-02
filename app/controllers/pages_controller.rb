@@ -4,12 +4,14 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     if current_user.employee?
+      @documents = @user.employee_documents
       render 'employee'
     else
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @adverts = Advert.all
+    @profiles = User.group_by_profiles
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130081818) do
+ActiveRecord::Schema.define(version: 20160201234028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 20160130081818) do
     t.string   "client_background"
   end
 
+  create_table "employee_documents", force: :cascade do |t|
+    t.string   "name"
+    t.text     "attachment"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "files",                   array: true
+  end
+
+  add_index "employee_documents", ["user_id"], name: "index_employee_documents_on_user_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.text     "form_params"
     t.text     "link_params"
@@ -117,18 +128,22 @@ ActiveRecord::Schema.define(version: 20160130081818) do
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "milestones", ["client_id"], name: "index_milestones_on_client_id", using: :btree
+  add_index "milestones", ["user_id"], name: "index_milestones_on_user_id", using: :btree
 
   create_table "program_schedules", force: :cascade do |t|
     t.text     "content"
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "program_schedules", ["client_id"], name: "index_program_schedules_on_client_id", using: :btree
+  add_index "program_schedules", ["user_id"], name: "index_program_schedules_on_user_id", using: :btree
 
   create_table "recommended_services", force: :cascade do |t|
     t.text     "content"
@@ -152,18 +167,22 @@ ActiveRecord::Schema.define(version: 20160130081818) do
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "schedule_for_meetings", ["client_id"], name: "index_schedule_for_meetings_on_client_id", using: :btree
+  add_index "schedule_for_meetings", ["user_id"], name: "index_schedule_for_meetings_on_user_id", using: :btree
 
   create_table "services_catereds", force: :cascade do |t|
     t.text     "content"
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "services_catereds", ["client_id"], name: "index_services_catereds_on_client_id", using: :btree
+  add_index "services_catereds", ["user_id"], name: "index_services_catereds_on_user_id", using: :btree
 
   create_table "sliders", force: :cascade do |t|
     t.string   "slide"
@@ -172,6 +191,17 @@ ActiveRecord::Schema.define(version: 20160130081818) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text     "content"
+    t.boolean  "status"
+    t.string   "schedule"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.text     "inputs"
@@ -214,12 +244,18 @@ ActiveRecord::Schema.define(version: 20160130081818) do
   end
 
   add_foreign_key "adverts", "users"
+  add_foreign_key "employee_documents", "users"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "milestone_alumnis", "alumnis"
   add_foreign_key "milestones", "clients"
+  add_foreign_key "milestones", "users"
   add_foreign_key "program_schedules", "clients"
+  add_foreign_key "program_schedules", "users"
   add_foreign_key "recommended_services", "alumnis"
   add_foreign_key "schedule_for_meetings", "clients"
+  add_foreign_key "schedule_for_meetings", "users"
   add_foreign_key "services_catereds", "clients"
+  add_foreign_key "services_catereds", "users"
+  add_foreign_key "tasks", "users"
 end

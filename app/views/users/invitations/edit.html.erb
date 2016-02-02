@@ -9,13 +9,17 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
 
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email, :disabled => 'disabled'%></p>
+
   <p><%= f.label :password %><br />
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
-
+  <div class="clearfix">
   <p><%= f.submit t("devise.invitations.edit.submit_button"), class: 'button small right' %></p>
+  </div>
 <% end %>
 </div>
 </div>

@@ -18,8 +18,24 @@ columns do
 				end
 			end
 		end	
-	end	
-	column do	
+		if user.employee_documents.any?
+			panel "Employee Documents" do
+				attributes_table_for user.employee_documents do
+					row :name
+					row :attachment
+				end
+			end
+		end
+		if user.attachment?
+		panel "Client Background" do
+			attributes_table_for user do
+				row :attachment do |att|
+					link_to att.attachment.file.identifier, att.attachment.url if att.attachment?
+				end
+			end
+		end
+		end
+
 		panel "Invitation" do
 			attributes_table_for user do
 				row :invitation_token
@@ -27,10 +43,113 @@ columns do
 				row :invitation_accepted_at
 			end
 		end
-		panel "Client Background" do
+	end	
+	column do
+	if user.tasks.any?
+		panel "Tasks" do
 			attributes_table_for user do
-				row :attachment
+				table do
+					# i = 1
+					user.tasks.each do |k|
+						tr do
+							# td do
+							# 	i
+							# end
+							td do
+								k['content']
+							end
+						end
+					# i = i + 1
+					end
+				end
 			end
+		end
+	end
+	if user.services_catereds.any?	
+		panel "Services Catered" do
+			attributes_table_for user do
+				table do
+					# i = 1
+					user.services_catereds.each do |k|
+						tr do
+							# td do
+							# 	i
+							# end
+							td do
+								k['content']
+							end
+						end
+					# i = i + 1
+					end
+				end
+			end
+		end
+	end
+	if user.milestones.any?
+		panel "Milestones" do
+			attributes_table_for user do
+				table do
+					# i = 1
+					user.milestones.each do |k|
+						tr do
+							# td do
+							# 	i
+							# end
+							td do
+								k['content']
+							end
+						end
+					# i = i + 1
+					end
+				end
+			end
+		end
+	end
+		columns do
+		if user.program_schedules.any?	
+			column do
+				panel "Program Schedules" do
+					attributes_table_for user do
+						table do
+							i = 1
+							user.program_schedules.each do |k|
+								tr do
+									td do
+										i
+									end
+									td do
+										k['content']
+									end
+								end
+							i = i + 1
+							end
+						end
+					end
+				end
+			end
+		end
+		if user.schedule_for_meetings.any?
+		column do
+		panel "Schedules for meetings" do
+			attributes_table_for user do
+				table do
+					i = 1
+					user.schedule_for_meetings.each do |k|
+						tr do
+							td do
+								i
+							end
+							td do
+								k['content']
+							end
+						end
+					i = i + 1
+					end
+				end
+			end
+		end
+		end
+		end
 		end
 	end
 end
@@ -40,19 +159,22 @@ index download_links: false do
 		k.inputs['type'].titleize
 	end
 	column :email
+	column "Profile" do |k|
+		k.inputs['profile'].nil? ? "N/A" : k.inputs['profile'].titleize
+	end
 	column "Package" do |k|
 		k.inputs['plan'].nil? ? "N/A" : k.inputs['plan'].titleize
 	end
 	column "Ownership" do |k|
 		k.inputs['company'].nil? ? "N/A" : k.inputs['company'].titleize
 	end
-	column "Invitation" do  |k|		
+	column "Invitation" do  |k|	
 		if k.invitation_created_at.nil?
 			dd (link_to 'Invite', send_invitation_admin_user_path(k.id), method: :post)
 			# dd (link_to 'Invite', user_invitation_path, method: :post)
 		else
-		 	if k.invitation_accepted_at.nil?
-		 		dd "Sent" 
+		 	if !k.invitation_token.nil?
+		 		dd "Invited" 
 		 	else
 		 		dd "Accepted"
 			end
@@ -60,9 +182,11 @@ index download_links: false do
 	end
 	actions
 end
-form do |f|
+form :html => { :multipart => true } do |f|
+	
 	f.semantic_errors *f.object.errors.keys
 	if f.object.new_record? 
+
 	f.inputs "Add new user" do
 		f.input :email, :placeholder => 'user@domain.com'
 		f.fields_for :inputs do |i|
@@ -71,21 +195,26 @@ form do |f|
 					["Alumni", "alumni",{ :checked => true } ],
 					["Client", "client"], 
 					["Employee", "employee"],
-					["Guest", "guest"]
+					["Guest", "guest"],
+					["Other", "other"]
 				], :label => "Select one"
 		end
-	end	
+	end
 	f.actions
+
 	else
 	 		f.render f.object.inputs['type']
 	end
-	# f.actions
 end
 # config.filters = false
 filter :inputs
 permit_params :email
 action_item :invite, only: :show do
   link_to 'Invite User',  send_invitation_admin_user_path, method: :post
+  # link_to 'Invite User',  user_invitation_path, method: :post
+end
+action_item :all_users, only: :show do
+  link_to 'All Users',  admin_users_path
   # link_to 'Invite User',  user_invitation_path, method: :post
 end
 actions :all#, except: [:show]
@@ -104,8 +233,8 @@ member_action :send_invitation, :method => :post do
 		redirect_to admin_users_path, method: :get
 	end
 end
-  
 controller do
+	
 	def update
 		@user = User.find_by_id(params[:id])
 		if @user.update(user_params)
@@ -136,6 +265,12 @@ controller do
 		inputs_keys = params[:user][:inputs].keys
 		params.require(:user).permit(:email, 
 			:attachment, :attachment_cache, :remove_attachment,
+			milestones_attributes: [:id, :content, :achieved, :_destroy],
+			services_catereds_attributes: [:id, :content, :_destroy],
+			program_schedules_attributes: [:id, :content, :_destroy],
+			schedule_for_meetings_attributes: [:id, :content, :_destroy],
+			tasks_attributes: [:id, :content, :status, :schedule, :_destroy],
+			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache],
 			inputs: inputs_keys)
 	end
 end
