@@ -7,12 +7,6 @@ f.inputs "Client Details" do
 		# i.input :type, 
 		# 	input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
 		i.input :type, as: :hidden
-		
-
-		
-		
-		
-
 		i.input :name
 		i.input :company, as: :radio, collection: [["Company","company"], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
 		i.input :person_in_charge

@@ -1,0 +1,42 @@
+<h5>Profile</h5>
+<div class="row">
+<div class="large-12 columns">
+<table width="100%">
+<tbody>
+<tr>
+<th>_Name</th>
+<td><%= @profile[0][1]['name'].titleize %></td>
+</tr>
+<tr>
+<th>_Company</th>
+<td><%= @profile[0][1]['company'].humanize %></td>
+</tr>
+<tr>
+<th>_Business</th>
+<td><%= @profile[0][1]['profile'] %></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="large-12 columns">
+<div class="left">
+	<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :user_x, value: @profile[0][0] %>
+	<%= f.submit "Request for Meetup", class: 'button tiny', id: 'meetup' %>
+	<% end %>
+</div>
+<div class="right">
+	<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :user_x, value: @profile[0][0] %>
+	<%= f.hidden_field :webinar, value: true %>
+	<%= f.submit "Request for Webinar", class: 'button tiny', id: 'webinar' %>
+	<% end %>
+</div>
+</div>
+<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
+<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
+<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
+</div>
+<a class="close-reveal-modal">&#215;</a>

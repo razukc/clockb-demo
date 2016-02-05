@@ -1,4 +1,4 @@
-ActiveAdmin.register_page "Requests" do
+ActiveAdmin.register_page "Incoming Requests" do
 	menu priority: 100
 content do
 	    columns do
@@ -34,8 +34,39 @@ content do
                 li "Sent at: " << (post.created_at).to_s
             end
           end
-        end        
-      end
+        end 
+        end
+
+        panel "Requests for Meetups (Users)" do
+        Request.meetup.map do |post|
+          div do
+            h4 post.request_for['_x'].titleize << "/" << post.request_for['_y'].titleize
+          end
+          div do
+            ul do
+              li simple_format (link_to "From: " << User.find_by_id(post.request_for['_z']).email, admin_user_path(User.find_by_id(post.request_for['_z']))).to_s
+              li simple_format (link_to "To: " << User.find_by_id(post.request_for['_a']).email, admin_user_path(User.find_by_id(post.request_for['_a']))).to_s
+            end
+          end
+        end
+        end  
+
+
+        panel "Requests for Webinar (Users)" do
+        Request.webinar_meetup.map do |post|
+          div do
+            h4 post.request_for['_x'].titleize << "/" << post.request_for['_y'].titleize
+          end
+          div do
+            ul do
+              li simple_format (link_to "From: " << User.find_by_id(post.request_for['_z']).email, admin_user_path(User.find_by_id(post.request_for['_z']))).to_s
+              li simple_format (link_to "To: " << User.find_by_id(post.request_for['_a']).email, admin_user_path(User.find_by_id(post.request_for['_a']))).to_s
+            end
+          end
+        end
+        end
+
+      
       end
     
     

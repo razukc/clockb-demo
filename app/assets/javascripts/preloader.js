@@ -5,6 +5,7 @@ $( document ).ready(function() {
   $(document).ajaxStart(function(){
     $(".preloader").show();
     $(".errors").hide();
+    $(".success").hide();
   });
 
   // hide preloader on AJAX stop

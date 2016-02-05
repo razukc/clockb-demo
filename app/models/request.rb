@@ -23,4 +23,10 @@ class Request < ActiveRecord::Base
 	def self.premium
 		Request.all.select {|c| c.request_for['_x'] == 'premium'}
 	end
+	def self.meetup
+		Request.all.select {|c| c.request_for['_x'] == 'meetup'}
+	end
+	def self.webinar_meetup
+		Request.all.select {|c| c.request_for['_x'] == 'webinar-meetup'}
+	end
 end

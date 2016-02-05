@@ -10,6 +10,7 @@ Rails.application.routes.draw do
           :invitations => "users_invitations" # user_invitations_controller.rb
           }
     ActiveAdmin.routes(self)
+    resources :usermeetups
   resources :profiles
   resources :requests
   resources :adverts

@@ -1,12 +1,17 @@
 <% if current_user && current_user.premium? %>
-<h5>Profiles for <%= @k %>(<%= @profiles.size %>)</h5>
+<div id="myModal-profile" class="reveal-modal small" data-reveal></div>
+<h5><%= @k %>(<%= @profiles.size %>)</h5>
 <table width="100%">
 <tbody>
 <% @profiles.each do |k, v| %>
 
 	<tr>
 		<td><%= k['inputs']['name'] %></td>
-		<td><%= link_to "Profile", "#", class: '' %></td>
+		<td class="right">
+		<a href="#" data-reveal-id="myModal-profile" data-reveal-ajax="<%=  profile_path(k['id']) %>" class="" data-type="JSON">
+			View Profile
+		</a>
+		</td>
 	</tr>
 <%end%>
 </tbody>

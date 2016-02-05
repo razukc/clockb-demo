@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201234028) do
+ActiveRecord::Schema.define(version: 20160204172511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,17 @@ ActiveRecord::Schema.define(version: 20160201234028) do
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id", using: :btree
 
+  create_table "usermeetups", force: :cascade do |t|
+    t.text     "meta"
+    t.integer  "user_x"
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "webinar",    default: false
+  end
+
+  add_index "usermeetups", ["user_id"], name: "index_usermeetups_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.text     "inputs"
     t.string   "attachment"
@@ -258,4 +269,5 @@ ActiveRecord::Schema.define(version: 20160201234028) do
   add_foreign_key "services_catereds", "clients"
   add_foreign_key "services_catereds", "users"
   add_foreign_key "tasks", "users"
+  add_foreign_key "usermeetups", "users"
 end

@@ -1,0 +1,10 @@
+<% if @meetup.errors.any? %>
+$('div.success').hide();
+$('div.errors').show();
+<% else %>
+$('div.success').hide();
+$('div.errors').hide();
+$('div.success').show();
+$('form#new_usermeetup input#<%= @meetup.webinar? ? "webinar" : "meetup" %>').prop("disabled", true)
+<% end %>
+

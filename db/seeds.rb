@@ -20,8 +20,10 @@
 #      end
 
 # (1..100).each do |cont|
-#        Alumni.create(
-#          name: "Sample Alumni Name #{cont}",
-#          company: [true, false].sample
+#        FeedbackFromUser.create(
+#          feedback: "Sometime you may want more than one index page for a resource to represent
+# different views to the user. If multiple index pages exist, Active Admin will
+# automatically build links at the top of the default index page.",
+# 		user_id: 366
 #        )
 #      end

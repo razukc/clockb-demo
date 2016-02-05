@@ -5,8 +5,11 @@ class RequestsController < ApplicationController
 		@_x = params[:_x] ? params[:_x] : '_x'
 		@_y = params[:_y] ? params[:_y] : '_y'
 		@_z = params[:_z] ? params[:_z] : '_z'
+		@_a = params[:_a] ? params[:_a] : '_a'
+		
 		@_id = @_z ? @_z.to_i : 0
 		
+
 		case @_x
 		when 'vacancy'
 		@_title = @_id > 0 ? Vacancy.find_by_id(@_id).content['job_title'] : '_title'
@@ -20,6 +23,10 @@ class RequestsController < ApplicationController
 		@_title = 'Request for Webinar'
 		when 'premium'
 		@_title = "Request for Premium Package"
+		when 'meetup'
+		@_title = "Request for Meetup"
+		when 'webinar-meetup'
+		@_title = 'Request for Webinar'
 		else
 		@_title = '_title'
 		end
@@ -43,10 +50,10 @@ class RequestsController < ApplicationController
 			# end	
 		end
 	end
-	
+
 	private
 		def link_params
-			["_x", "_y", "_z"]
+			["_x", "_y", "_z", "_a"]
 		end
 		def form_params
 			["name", "company", "phone", "email",
