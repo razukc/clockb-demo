@@ -94,6 +94,8 @@ enable_starttls_auto: true,
 # password: ENV["GMAIL_PASSWORD"]
 user_name: ENV["GMAIL_USERNAME"],
 domain: ENV["GMAIL_DOMAIN"],
-password: "ba24pa509"
+password: "ba24pa509",
+enable_starttls_auto: true,
+openssl_verify_mode: 'none' 
 }
 end
