@@ -113,14 +113,21 @@
 		</div>
 
 		<div class="large-4 columns">
-			<h5>Networking Benefits</h5>
+			<% if @user.client? && @user.premium? %>
+			<h5>Networking Benefits with Clock b</h5>
 			<ul>
-				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
-				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
-				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
-				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
-				<li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+				<li>Promote yourself or your business</li>
+				<li>Make highly influential connection</li>
+				<li>Explore the secreted opportunities</li>
+				<li>Share and upgrade your knowledge</li>
+				<li>Generate referrals</li>
+				<li>Make friends for the future</li>
+				<li>Generate more business by raising your profile</li>
+				<li>Get the help of technology </li>
 			</ul>
+			<% else %>
+			<h5>Blog</h5>
+			<% end %>
 		</div>
 	</div>
 <hr />

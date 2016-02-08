@@ -85,16 +85,12 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default :charset => "utf-8"
 
 config.action_mailer.smtp_settings = {
-address: "smtp.gmail.com",
+address: ENV["SMTP_ADDRESS"],
+user_name: ENV["MAILER_USERNAME"],
+domain: ENV["MAILER_DOMAIN"],
+password: ENV["MAILER_PASSWORD"],
 port: 587,
 authentication: "plain",
-enable_starttls_auto: true,
-# user_name: ENV["GMAIL_USERNAME"],
-# domain: ENV["GMAIL_DOMAIN"],
-# password: ENV["GMAIL_PASSWORD"]
-user_name: ENV["GMAIL_USERNAME"],
-domain: ENV["GMAIL_DOMAIN"],
-password: "ba24pa509",
 enable_starttls_auto: true,
 openssl_verify_mode: 'none' 
 }

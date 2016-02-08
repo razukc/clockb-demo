@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem 'figaro'
 # gem 'active_admin_datetimepicker'
 gem "letter_opener", :group => :development
 gem 'remotipart', '~> 1.2'
