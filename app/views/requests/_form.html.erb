@@ -16,15 +16,14 @@
 				<%= f.file_field :attachment, required: :true, class: 'button secondary tiny' %>
 				<!-- <label><em>Allowed file types: pdf, doc, docx</em></label> -->
 			</fieldset>
-		<% end %>
+		
 
-		<% if @_x == 'internship' %>
+		
 			<!-- , OpenStruct.new(@request.form_params) -->
 			<%= f.fields_for :form_params do |r| %>
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
 			<% end %>
 		<% end %>
-
 		<% if @_x.in?(['meeting', 'event', 'webinar']) %>
 	
 		<%#= f.hidden_field :form_params, :value => @_x %>

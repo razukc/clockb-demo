@@ -35,6 +35,7 @@ ul.customgap li{
 hr{
   margin-top:rem-calc(30);
   margin-bottom:rem-calc(30);
+  border-top: 1px solid #008CBA;
 }
 .margin-right-10{
 	margin-right:10px;
@@ -47,4 +48,28 @@ $include-html-media-classes: $include-html-classes;
     // comma-separate variable: value,
     $box-shadow-hover: 0 0 1px 1px rgba($black,0.2)
   );
+}
+//Fluid Layout
+div.full{
+  width: 100%;
+  display:table;
+}
+div.full > .column-fluid {
+  display: table-cell;
+  float:left;
+}
+div.full > .column-fixed{
+  max-width: 62.5rem;
+  float:left;
+  display: table-cell;
+}
+.bg-left{
+  background-color:#008CBA;
+}
+.bg-right{
+  background-color:#E3E3E3;
+}
+//Custom Magellan
+.custom-magellan{
+background-color: #008CBA;
 }

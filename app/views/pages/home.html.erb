@@ -7,7 +7,7 @@
 		<dl class="sub-nav right">
 	    	<dd data-magellan-arrival="networking"><a href="#networking">NETWORKING</a></dd>
 	    	<dd data-magellan-arrival="services"><a href="#services">SERVICES</a></dd>
-        <dd data-magellan-arrival="whyclockb"><a href="#whyclockb">WHY CLOCK B?</a></dd>
+        <dd data-magellan-arrival="clockb"><a href="#clockb">CLOCK b</a></dd>
 	  	</dl>
 	</div>
 	</div>
@@ -34,46 +34,48 @@
       <div class="orbit-caption">Slider caption goes here(Optional)</div>
     </li>
     <% end %>
-	</ul><hr />
+	</ul>
 </div>
+<div class="contain-to-grid" style="background-color:#e3e3e3;padding-top:40px;">
 <!-- data-magellan for Networking -->
 <a data-magellan-destination="networking" name="networking"></a>
 <div class="row">
   <div class="medium-6 large-4 columns">
-  	<div id="events_calendar">
-  		<!-- Event Calendar -->
-  		<%= render partial: 'layouts/calendar' %>
+    <div id="events_calendar">
+      <!-- Event Calendar -->
+      <%= render partial: 'layouts/calendar' %>
     </div>
-  		<hr />
+      <hr />
     <div id="upcoming-events">
-  		<!-- Upcoming Events -->
-  		<h4>Upcoming Events</h4>
-  		<%= render partial: 'layouts/upcoming_events' %>
-	  </div>
+      <!-- Upcoming Events -->
+      <h4>Upcoming Events</h4>
+      <%= render partial: 'layouts/upcoming_events' %>
+    </div>
     <div id="browse-all-events">
-	 <!-- <%= link_to "Browse all Events", events_path, class: 'button expand' %> -->
+   <!-- <%= link_to "Browse all Events", events_path, class: 'button expand' %> -->
    </div>
   </div>
   
   <!-- Networking -->
   <div class="medium-6 large-4 columns">
-  	<h3>Networking</h3>
-  	<p>Clock b Business Innovations is attempting to build bridges in the market so that our clients could make that invaluable connection a reality. We do understand varying background of different businesses would need diverse sort of connections. Putting that into consideration Clock b Business Innovations tailors its networking service as of the client’s requirements.</p>
+    <h3>Networking</h3>
     <p>Whether you are searching for a vendor, professionals of different fields, businesses, agents, experts, advisors, entrepreneurs or any connections to boom your business, we at Clock b would map you with the invaluable ones.</p>
-  	<button class="button small right ">Learn more</button>
+        <h3>Packages</h3>
+    <p>Level-up your ways of networking. Acquire your invaluable connections out of Clock b networking packages.</p>
+    <button class="button small right ">Learn more</button>
   </div>
   <div class="medium-6 large-4 columns">
     <h3>Packages</h3>
     <p>Level-up your ways of networking. Acquire your invaluable connections out of Clock b networking packages.</p>
     <p>Our networking packages:</p>
-  	<h4>Regular</h4>
-  	<ul>
+    <h4>Regular</h4>
+    <ul>
       <li>Profile access of companies and professionals (Basic)</li>
       <li>First hand info of our upcoming events</li>
       <li>See offer of our premium plan users</li>
     </ul>
     <h4>Premium</h4>
-  	<ul>
+    <ul>
       <li>Profile access of companies and professionals(full)</li>
 <li>First hand info of our upcoming events</li>
 <li>See offer of our premium plan users</li>
@@ -121,34 +123,38 @@
 </div>
 <!-- Why Clock b? -->
 <div class="row">
-	<div class="large-6 columns">
-    <a data-magellan-destination="whyclockb" name="whyclockb"></a>
+  <div class="large-6 columns">
+    <a data-magellan-destination="clockb" name="clockb"></a>
 <h3>Why Clock b?</h3>
 <p>Clock b Business Innovations is best known for providing pragmatic, focused and tailored innovation, outsourcing, networking, consulting and other essential business services to all of our clients. We uniquely place every client, blend our expertise with theirs and provide personalized service such that it matches the values of our clients plus help them; realise risks associated with results, calculate the risks and innovate ideas and strategies to overcome it. We provide our services to broad range of organisations; from start-ups to existing big players of the market or even to the non-profit organisations.</p>
 <button class="button">Learn More</button>
 
-	</div>
-	<div class="large-6 columns">
-		<div class="row">
-			<blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua.<cite>John Doe, CEO</cite></blockquote>
-	<blockquote>Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat.<cite>Mary Rose, CTO</cite></blockquote>
-		</div>
-<!-- 		<div class="row">
-			<div class="left">
-			
-			<h5>Social media links. Opens in new/same window.</h5>
-			<%= image_tag 'linkedin.png', class: 'lazyload'%>
-			<%= image_tag 'facebook.png', class: 'lazyload'%>
-			<%= image_tag 'twitter.png', class: 'lazyload'%>
-			<%= image_tag 'youtube.png', class: 'lazyload'%>
-			</div>
-		</div> -->
+  </div>
+  <div class="large-6 columns">
+    <div class="row">
+      <blockquote>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua.<cite>John Doe, CEO</cite></blockquote>
+  <blockquote>Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat.<cite>Mary Rose, CTO</cite></blockquote>
+    </div>
+<!--     <div class="row">
+      <div class="left">
+      
+      <h5>Social media links. Opens in new/same window.</h5>
+      <%= image_tag 'linkedin.png', class: 'lazyload'%>
+      <%= image_tag 'facebook.png', class: 'lazyload'%>
+      <%= image_tag 'twitter.png', class: 'lazyload'%>
+      <%= image_tag 'youtube.png', class: 'lazyload'%>
+      </div>
+    </div> -->
 
-		
-	</div><hr />
+    
+  </div><hr />
 </div>
 <%= render 'layouts/home_footer' %>
-
+    <div id="footer">
+      <!-- Footer -->
+      <%= render 'layouts/footer' %>
+    </div>
+</div>

@@ -1,30 +1,42 @@
 <%= content_for :page_title, 'Clock b' %>
+<div class="full" data-equalizer>
+<div class="column-fluid bg-left" data-equalizer-watch></div>
+<div class="column-fixed">
+
 <div class="row">
-	<div class="large-3 medium-5 columns width-finder">
+	<div class="large-4 medium-4 columns hide-for-small-only width-finder bg-left" data-equalizer-watch>
+			
+	<!-- Magellan Menu -->
+		<div data-magellan-expedition="fixed" class="custom-magellan " data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
+			<!-- <div class="fixed large-4 columns"> -->
+			<ul class="side-nav custom-side-nav">
+				<li class="heading">Company Profile</li>
+		    	<li data-magellan-arrival="our-company"><a href="#our-company">Our Company</a></li>
+		    	<li data-magellan-arrival="culture-and-values"><a href="#culture-and-values">Culture &amp; Values</a></li>
+		    	<li data-magellan-arrival="our-people"><a href="#our-people">Our People</a></li>
+		    	<li data-magellan-arrival="our-clients"><a href="#our-clients">Our Clients</a></li>
+		    	<li data-magellan-arrival="know-the-team"><a href="#know-the-team">Know the Team</a></li>
+		    	<li data-magellan-arrival="who-we-are-for"><a href="#who-we-are-for">Who we are For</a></li>
+		    	<li data-magellan-arrival="request-for-meeting"><a href="#request-for-meeting">Request for Meeting</a></li>
+		    	<li class="divider" style="margin:20px 0px;"></li>
+		    	<li class="heading">Why Clock b</li>
+		    	<li data-magellan-arrival="our-perspective"><a href="#our-perspective">Our Perspective</a></li>
+		    	<li data-magellan-arrival="experts-perspective"><a href="#experts-perspective">Experts' Perspective</a></li>
+		    	<li data-magellan-arrival="clients-perspective"><a href="#clients-perspective">Clients' Perspective</a></li>
+		  	</ul>
+		  <!-- </div> -->
+		</div>
 		
-<!-- Magellan Menu -->
-	<div data-magellan-expedition="fixed" class="custom-magellan hide-for-small-only" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
-		<!-- <div class="fixed large-4 columns"> -->
-		<ul class="side-nav custom-side-nav">
-			<li class="heading">Company Profile</li>
-	    	<li data-magellan-arrival="our-company"><a href="#our-company">Our Company</a></li>
-	    	<li data-magellan-arrival="culture-and-values"><a href="#culture-and-values">Culture &amp; Values</a></li>
-	    	<li data-magellan-arrival="our-people"><a href="#our-people">Our People</a></li>
-	    	<li data-magellan-arrival="our-clients"><a href="#our-clients">Our Clients</a></li>
-	    	<li data-magellan-arrival="know-the-team"><a href="#know-the-team">Know the Team</a></li>
-	    	<li data-magellan-arrival="who-we-are-for"><a href="#who-we-are-for">Who we are For</a></li>
-	    	<li data-magellan-arrival="request-for-meeting"><a href="#request-for-meeting">Request for Meeting</a></li>
-	    	<li class="divider" style="margin:20px 0px;"></li>
-	    	<li class="heading">Why Clock b</li>
-	    	<li data-magellan-arrival="our-perspective"><a href="#our-perspective">Our Perspective</a></li>
-	    	<li data-magellan-arrival="experts-perspective"><a href="#experts-perspective">Experts' Perspective</a></li>
-	    	<li data-magellan-arrival="clients-perspective"><a href="#clients-perspective">Clients' Perspective</a></li>
-	  	</ul>
-	  <!-- </div> -->
-	</div>
-	
-	</div>
-	<div class="large-8 large-offset-1 medium-7 columns">
+		</div>
+	<div class="large-8 medium-8 columns bg-right" data-equalizer-watch>
+		    <!-- Flash messages -->
+    <div id="messages" class="clearfix">
+      <%= render 'layouts/messages' %>
+    </div>
+				<br />
+		<%= image_tag "1000x500.png", class: 'th-no-hover lazyload', style: "width: 100%;" %>
+		<br />
+		
 		<!-- <h2>Company Profile</h2> -->
 		<br />
 		<a data-magellan-destination="our-company" name="our-company"></a>
@@ -103,4 +115,10 @@
   <li><a href="#">Link 3</a></li>
   <li><a href="#">Link 4</a></li>
 </ul> -->
+</div>
+
+
+
+</div>
+<div class="show-for-large-up column-fluid bg-right" data-equalizer-watch></div>
 </div>

@@ -1,4 +1,67 @@
 ActiveAdmin.register Event do
+show title: "Event" do
+columns do
+column do
+panel "Event Details" do
+attributes_table_for event do
+# row :form_params
+
+row :name do
+event['form_params']['name'].titleize
+end
+row :description do
+simple_format event['form_params']['description']
+end
+row :event_type do
+event['form_params']['type'].titleize
+end
+row :start_date do
+event['start_date']
+end
+row :start_time do
+event['form_params']['start_time']
+end
+row :venue do				
+event['form_params']['venue']
+end
+row :image do
+image_tag event.attachment.thumb
+end
+row :attendees do
+Event.attendees(event.id).count
+end
+end
+end
+end
+
+column do
+	if Event.attendees(event.id).any?
+	div do
+		h4 "Attendees"
+	end
+end
+	Event.attendees(event.id).map do |post|
+		panel post.created_at do
+			attributes_table_for post do
+				row :name do
+				post.request_by['name']
+				end
+				row :company do
+				post.request_by['company']
+				end
+				row :phone do
+				post.request_by['phone']
+				end
+				row :email do
+				 post.request_by['email']			
+				end
+			end
+		end
+	end
+end
+end
+end
+
 scope :all, default: true
 scope "Main", :main
 scope "Weekly", :weekly
@@ -14,15 +77,14 @@ column "Event", :form_params do |k, v|
 k['form_params']['name']
 end
 column :start_date
-
-# column "Description", :form_params do |k, v|
-# truncate k['form_params']['description']
-# end
 column "Start Time" do |k|
 k.form_params['start_time']
 end
 column "Venue" do |k|
 k.form_params['venue']
+end
+column "Attendees" do |k|
+Event.attendees(k.id).count
 end
 actions
 end

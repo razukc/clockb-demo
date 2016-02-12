@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Clockb Demo-" %><%= yield(:page_title) %></title>
+    <title><%= content_for?(:page_title) ? yield(:page_title) : "::Clockb" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clockb Demo" %>">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>

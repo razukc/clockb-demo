@@ -5,6 +5,7 @@ class Request < ActiveRecord::Base
 	serialize :request_by, Hash
 	serialize :request_for, Hash
 
+
 	def self.meeting
 		Request.all.select {|c| c.request_for['_x'] == 'meeting'}
 	end

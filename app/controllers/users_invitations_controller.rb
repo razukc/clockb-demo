@@ -1,6 +1,5 @@
 class UsersInvitationsController < Devise::InvitationsController
-  layout 'pages'
-    def after_invite_path_for(resource)
+      def after_invite_path_for(resource)
     admin_user_path(resource)
   end
 def edit

@@ -19,21 +19,14 @@
 </table>
 </div>
 <div class="large-12 columns">
-<div class="left">
+
 	<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :user_x, value: @profile[0][0] %>
-	<%= f.submit "Request for Meetup", class: 'button tiny', id: 'meetup' %>
+	<%= f.submit "Request for Meetup", class: 'button tiny left', name: 'meetup', id: 'meetup' %>
+	<%= f.submit "Request for Webinar", class: 'button tiny right', name: 'webinar', id: 'webinar' %>
 	<% end %>
-</div>
-<div class="right">
-	<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
-	<%= f.hidden_field :user_id, value: current_user.id %>
-	<%= f.hidden_field :user_x, value: @profile[0][0] %>
-	<%= f.hidden_field :webinar, value: true %>
-	<%= f.submit "Request for Webinar", class: 'button tiny', id: 'webinar' %>
-	<% end %>
-</div>
+
 </div>
 <div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
 <div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>

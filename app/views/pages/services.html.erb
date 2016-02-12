@@ -1,6 +1,10 @@
 <%= content_for :page_title, 'Services' %>
+<div class="full" data-equalizer>
+<div class="column-fluid bg-left" data-equalizer-watch></div>
+<div class="column-fixed">
+
 <div class="row">
-	<div class="large-4 medium-5 columns width-finder">
+	<div class="large-4 medium-4 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
 		<!-- Popup/Reveal content box -->
 <!-- 		<a href="<%= new_request_path %>?meeting_for=example" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true">Click Me For A Modal</a> -->
 		<!-- <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=meeting&amp;meeting_for=example">Click Me For A Modal</a> -->
@@ -8,7 +12,7 @@
 		
 		<div id="myModal-content" class="reveal-modal small" data-reveal></div>
 <!-- Magellan Menu -->
-	<div data-magellan-expedition="fixed" class="custom-magellan hide-for-small-only" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
+	<div data-magellan-expedition="fixed" class="custom-magellan" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
 		<!-- <div class="fixed large-4 columns"> -->
 		<ul class="side-nav custom-side-nav">
 			<li class="heading">services</li>
@@ -43,7 +47,9 @@
 	</div>
 	
 	</div>
-	<div class="large-8 medium-7 columns">
+	<div class="large-8 medium-8 columns bg-right" data-equalizer-watch>
+	<br/>
+		<%= image_tag "1000x500.png", class: 'th-no-hover lazyload', style: 'width: 100%;' %>
 		<br />
 		<div class="panel radius"><p>*Note: Clock up for our service. Notify us about your services needs by clicking the request for meeting button.</p></div>
 		<a data-magellan-destination="consulting" name="consulting"></a>
@@ -95,8 +101,8 @@
 		<h4>Outsourcing</h4>
 		<p>Business is simply not a word; it’s a world in itself. Marketing, relationship management, networking, social media management, research and strategy development are only some of the major departments which are needed to be wisely strategized and executed. With the era of global competitiveness, perfecting these sections is what any businesses should work towards. Another truth which we simply cannot overwrite is we all have our constraints, every businesses has its limits. Clock b Business Innovations offers outsourcing solutions of these departments to businesses which don’t have one built within and for the ones who do, as we instill creativity, innovativeness, strategic strength and results.</p>
 		<h5>Clock b outsourcing benefits</h5>
-		<ul>
-			<li>Tailored plan and strategies</li>
+		<ul class="no-bullet">
+			<li><i class="fi-check">&nbsp;</i>Tailored plan and strategies</li>
 			<li>Get access to skilled expertise </li>
 			<li>Access to technology and software</li>
 			<li>Focus on insights and core areas</li>
@@ -224,4 +230,9 @@
   <li><a href="#">Link 3</a></li>
   <li><a href="#">Link 4</a></li>
 </ul> -->
+</div>
+
+
+</div>
+<div class="show-for-large-up column-fluid bg-right" data-equalizer-watch></div>
 </div>

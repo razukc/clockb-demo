@@ -9,9 +9,9 @@ scope :companies, -> {where("inputs like ?", '%company: company%')}
 scope :individuals, -> {where("inputs like ?", '%company: individual%')}
 scope :advertisers, -> {joins(:adverts).distinct}
 scope :feedbackers, -> {joins(:feedbacks).distinct}
-scope :meetups, -> {joins(:meetups).where(:usermeetups => {webinar: false}).distinct}
+scope :meetups, -> {joins(:meetups).where(:usermeetups => {meetup: true}).distinct}
 scope :webinars, -> {joins(:meetups).where(:usermeetups => {webinar: true}).distinct}
-
+scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct}
 mount_uploader :attachment, DocumentUploader
 
 
@@ -90,7 +90,7 @@ end
 def self.view_companies
 User.all.select{|x| x.inputs['company'] == 'company'}
 end
-def self.view_individuals
+def self.view_individualsdashboard
 User.all.select{|x| x.inputs['company'] == 'individual'}
 end
 def premium?
@@ -114,4 +114,12 @@ end
 def company?
 self.inputs['company'] == 'company'
 end
+def other?
+	self.inputs['type'] == 'other'
+end
+
+def has_event(event_id, user_id)
+	Usermeetup.find{|x| x.user_x == event_id && x.user_id == user_id}
+end
+
 end

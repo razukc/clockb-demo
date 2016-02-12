@@ -12,14 +12,23 @@ permit_params do
 end
 config.filters = false
 form do |f|
-	f.inputs "Slider Settings" do
-	li image_tag (f.object.slide.thumb.url) if f.object.slide?
-		
-	f.input :slide, as: :file
-	f.input :slide_cache, as: :hidden
-	f.input :caption, :placeholder => 'Caption text (Optional)'
-	f.input :remarks, :label => 'Hide'#, :hint => 'Check to hide'
-end
+	columns do
+		column span: 3 do
+			f.inputs "Slider Settings" do
+				f.input :slide, as: :file, label: "Image"
+				f.input :slide_cache, as: :hidden
+				f.input :caption, :placeholder => 'Caption text (Optional)', input_html: {rows: 4}
+				f.input :remarks, :label => 'Hide'#, :hint => 'Check to hide'		
+			end
+		end
+		column do
+			if f.object.slide?
+				f.inputs "Preview" do
+					li image_tag (f.object.slide.thumb.url)		
+				end
+			end
+		end
+	end
 f.actions
 end
 

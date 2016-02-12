@@ -1,7 +1,8 @@
 ActiveAdmin.register FeedbackFromUser, as: "Feedback" do
-actions :all, except: [:new, :create, :edit, :update, :destroy]
+actions :all, except: [:new, :create, :edit, :update]
 config.filters = false
 menu false
+config.batch_actions = true
 # index download_links: false do
 # 	# column "Date", :created_at
 # 	# column "Sent by", :user_id do |user|

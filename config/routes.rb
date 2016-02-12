@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'events/browse', :to => 'pages#browse', :as => 'events_browse'
   get 'events/:id', to: 'pages#browse', :as => 'event_browse'
   get 'dashboard', to: 'pages#dashboard'
+  get 'test', to: 'pages#test'
   # resources :webinars
   # match '/party/:id', :to => 'webinars#party', :as => :party, :via => :get
   

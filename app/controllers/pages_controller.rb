@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   layout 'pages'
+  def test
+    render "pages/test"
+  end
   before_action :authenticate_user! , only: [:dashboard]
   def dashboard
     @user = current_user

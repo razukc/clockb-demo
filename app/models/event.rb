@@ -6,6 +6,10 @@ class Event < ActiveRecord::Base
 	serialize :form_params, Hash
 	serialize :link_params, Hash
 	serialize :extra_params, Hash
+
+	def self.attendees(id)
+		Request.event.select{|c| c.request_for['_z'] == id.to_s }
+	end
 	def self.m_all
 		Event.all.order(:start_date)
 	end

@@ -1,12 +1,16 @@
 <%= content_for :page_title, 'Browse our events' %>
-<div class="row" style="margin-top:25px;">
-  <div class="large-4 columns">
+<div class="full" data-equalizer>
+<div class="column-fluid bg-left" data-equalizer-watch></div>
+<div class="column-fixed">
+
+<div class="row">
+  <div class="large-4 columns bg-left hide-for-small-only" data-equalizer-watch>
     <ul class="side-nav">
-      <li class="heading">Browse our Events</li>
+      <li class="heading" style="color:#e3e3e3;">Browse our Events</li>
       <li class="divider"></li>
     </ul>
   </div>
-	<div class="large-8 columns">
+	<div class="large-8 columns bg-right" style="padding-top:25px;" data-equalizer-watch>
   <div id="myModal-content" class="reveal-modal small" data-reveal></div>
         <ul class="no-bullet">
           <% if !@events_single.nil? %>
@@ -19,9 +23,8 @@
               <strong>Time: </strong><%= @events_single.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= @events_single.form_params['venue'] %><br />
             </p>
-            <div id="request-for-x" class="clearfix">
-              <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= @events_single.id %>" class="button secondary tiny" data-type="JSON">Register</a>
-            </div>
+            <%= render partial: "shared/register_for_event", locals: {_z: @events_single.id } %>
+
             <hr />
           <% else %>
           <% @events_all.each do |event| %>
@@ -34,9 +37,8 @@
               <strong>Time: </strong><%= event.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= event.form_params['venue'] %><br />
             </p>
-            <div id="request-for-x" class="clearfix">
-              <a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=event&amp;_z=<%= event.id %>" class="button secondary tiny" data-type="JSON">Register</a>
-            </div>
+            <%= render partial: "shared/register_for_event", locals: {_z: event.id } %>
+
             <hr />
           <% end %>
           <% end %>
@@ -44,3 +46,7 @@
       <%= render partial: 'layouts/side_footer' %>
 </div>
 </div>	
+
+</div>
+<div class="show-for-large-up column-fluid bg-right" data-equalizer-watch></div>
+</div>

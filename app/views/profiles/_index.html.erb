@@ -1,4 +1,3 @@
-<% if current_user && current_user.premium? %>
 <div id="myModal-profile" class="reveal-modal small" data-reveal></div>
 <h5><%= @k %>(<%= @profiles.size %>)</h5>
 <table width="100%">
@@ -16,9 +15,4 @@
 <%end%>
 </tbody>
 </table>
-<% else %>
-	<div id="request-for-x" class="clearfix panel" style="margin-top:30px;">
-		<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'premium', _y: 'networking-profile', _z: current_user.id) %>" class="button success expand" data-type="JSON">Upgrade to Premium</a>
-	</div>
-<% end -%>
 <a class="close-reveal-modal">&#215;</a>

@@ -1,5 +1,4 @@
 class UsersPasswordsController < Devise::PasswordsController
-	layout 'pages'
 	def new
 		# @user = User.new
 		    self.resource = resource_class.new

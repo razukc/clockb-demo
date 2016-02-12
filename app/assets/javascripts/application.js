@@ -16,3 +16,29 @@
 //= require foundation
 //= require jquery.turbolinks
 //= require_tree .
+
+$('div.full').hide();
+$(window).bind('load resize', function () { 
+    screen = $('div.full').width();
+	content = 1000;
+	remaining = screen - content;
+	fluid =  (remaining/screen)*50;
+	$('div.column-fluid').css({'min-width': fluid+'%'});
+	setTimeout(
+	  function() 
+	  {
+	    //do something special
+	    $('div.full').show();
+	  }, 1000
+	 );
+
+});
+
+
+// $(function(){
+// 	screen = $('div.ca').width();
+// 	content = 1000;
+// 	remaining = screen - content;
+// 	left = right = (remaining/screen)*50;
+// 	$('div.cb').css({'width': left+'%'});
+// });

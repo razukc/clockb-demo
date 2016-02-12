@@ -1,5 +1,5 @@
 ActiveAdmin.register_page "Incoming Requests" do
-	menu priority: 100
+	menu false
 content do
 	    columns do
       column do
@@ -92,16 +92,9 @@ content do
           Request.premium.map do |post|
             @user = User.find_by_id(post.request_for['_z']) 
             div do
-            h4 link_to @user.inputs['name'].titleize, admin_user_path(@user)
-          end
-          div do
-            ul do              
-                li "Email: " << (@user.inputs['email']).to_s
-                li "Contact: " << (@user.inputs['contact'])
-                li "Type: " << (@user.inputs['type']).titleize
-                li "Sent at: " << (post.created_at).to_s
+            h6 link_to @user.email, admin_user_path(@user)
+            hr
             end
-          end
           end        
         end
     end

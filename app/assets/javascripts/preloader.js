@@ -3,14 +3,13 @@ $( document ).ready(function() {
 
   // show preloader on AJAX start
   $(document).ajaxStart(function(){
-    $(".preloader").show();
-    $(".errors").hide();
-    $(".success").hide();
+    $("div.preloader").show();
+    $("div.errors").hide();
+    $("div.success").hide();
   });
 
   // hide preloader on AJAX stop
   $(document).ajaxStop(function(){
-    $(".preloader").hide();
+    $("div.preloader").hide();
   });
-
 });

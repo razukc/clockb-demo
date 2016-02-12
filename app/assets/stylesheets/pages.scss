@@ -38,15 +38,26 @@
 .custom-side-nav li:not(.custom-active) a:not(.button):hover,
 .custom-side-nav li:not(.custom-active) a:not(.button):focus{
   display:inline-block;
+  background: #007095 !important;
+  color: #FFFFFF !important;
+}
+.custom-side-nav li a:not(.button){
+	color: #FFFFFF;
+  display:inline-block;
+
 }
 .custom-side-nav li.custom-active a:not(.button):hover{
-  background: #008CBA !important;
+  background: #007095 !important;
   color: #FFFFFF !important;
+  display:inline-block;
 }
 li.custom-active a:not(.button){
   border-radius:3px;
-  color: #FFFFFF !important;
-  background: #008CBA !important;;
+  color: #008CBA !important;
+  background: #FFFFFF !important;;
   display:inline-block;
+}
+.custom-side-nav li.heading {
+	color: #e3e3e3;
 }
 

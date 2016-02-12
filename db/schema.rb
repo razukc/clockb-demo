@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204172511) do
+ActiveRecord::Schema.define(version: 20160209185346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,6 +210,8 @@ ActiveRecord::Schema.define(version: 20160204172511) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "webinar",    default: false
+    t.boolean  "meetup",     default: false
+    t.boolean  "event",      default: false
   end
 
   add_index "usermeetups", ["user_id"], name: "index_usermeetups_on_user_id", using: :btree

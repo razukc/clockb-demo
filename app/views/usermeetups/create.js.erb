@@ -5,6 +5,14 @@ $('div.errors').show();
 $('div.success').hide();
 $('div.errors').hide();
 $('div.success').show();
-$('form#new_usermeetup input#<%= @meetup.webinar? ? "webinar" : "meetup" %>').prop("disabled", true)
+<% @id = 'meetup' if @meetup.meetup? %>
+<% if @meetup.event? %>
+<% @id = 'event_' << @meetup.user_x.to_s %>
+$('form#new_usermeetup input#<%= @id %>')
+	.addClass('success disabled')
+	.prop("value", 'Registered')
+<% end %>
+<% @id = 'webinar' if @meetup.webinar? %>
+$('form#new_usermeetup input#<%= @id %>').addClass('success disabled');
 <% end %>
 

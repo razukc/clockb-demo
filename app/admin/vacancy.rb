@@ -1,31 +1,66 @@
 ActiveAdmin.register Vacancy do
+show title: "Vacancy" do
+columns do
+column do
+panel "Vacancy Details" do
+attributes_table_for vacancy do
+	# row :content
+row :job_title do
+	vacancy['content']['job_title'].titleize
+end
+row :number_of_positions do
+	vacancy['content']['number_of_vacancies']
+end
+row :job_description do
+	simple_format vacancy['content']['job_description']
+end
+row :job_specification do
+	simple_format vacancy['content']['job_specification']
+end
+row :applicants do
+	Vacancy.applicants(vacancy.id).count
+end
+end
+end
+end
+column do
+		if Vacancy.applicants(vacancy.id).any?
+			div do
+				h4 "Applicants"
+			end
+		end
+		Vacancy.applicants(vacancy.id).map do |post|
+			panel post.created_at.to_s do
+				attributes_table_for post do
+					row :comment do
+						simple_format post.request_by['comment']
+					end
+					row :document do
+						link_to "Download CV", post.attachment.url		
+					end
+				end
+			end
+		end    
+end
+end
+end
 permit_params :content
 config.filters = false
 config.batch_actions = false
-actions :all, except: [:show]
+actions :all
 index :download_links => false do
 	# column :id
 	# column :content
-	column "Posted at", :created_at
+	
 
 	column "Job Title" do |x|
 			x.content['job_title']
 	end
-	column "No." do |x|
-			x.content['number_of_vacancies']
+	
+	column "Applicants" do |x|
+		Vacancy.applicants(x.id).count
 	end
-	column "Min. requirement" do |x|
-			 truncate x.content['minimum_requirement']
-	end
-	column "Job Description" do |x|
-			truncate x.content['job_description']
-	end
-	column "Job Specification" do |x|
-			truncate x.content['job_specification']
-	end
-	# column "Applicants" do |x|
-	# 	# Request.find_by(request_for: '{"_x"=>"vacancy","_y"=>"_y","_z"=>'<<x.id.to_s<<'}')
-	# end
+	column "Posted on", :created_at
 	actions
 end
 # index as: :block, download_links: false do |product|

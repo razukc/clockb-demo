@@ -1,5 +1,5 @@
 class UsersSessionsController < Devise::SessionsController
-	layout 'pages'
+	# layout 'pages'
 	def new
 		@user = User.new
 		render 'users/sessions/new'
