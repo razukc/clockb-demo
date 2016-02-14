@@ -53,6 +53,7 @@ $include-html-media-classes: $include-html-classes;
 div.full{
   width: 100%;
   display:table;
+  opacity: 0;
 }
 div.full > .column-fluid {
   display: table-cell;

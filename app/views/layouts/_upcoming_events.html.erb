@@ -2,7 +2,7 @@
   <em>There are no upcoming events.</em>
   <% else %>
 <%# @upcoming_one_main_event.each do |event| %>
-<a href="<%= event_browse_path(@upcoming_main) %>">
+
 <article class="event columns" >
         <div class="event-date">
           <p class="event-month"><%= @upcoming_main.start_date.strftime('%b') %></p>
@@ -13,8 +13,8 @@
           <%= link_to 'View Details', event_browse_path(@upcoming_main), class: 'rsvp button info tiny' %> 
         </div>
 </article>
-</a>
-<a href="<%= event_browse_path(@upcoming_weekly) %>">
+
+
 <article class="event columns" >
         <div class="event-date">
           <p class="event-month"><%= @upcoming_weekly.start_date.strftime('%b') %></p>
@@ -25,7 +25,7 @@
           <%= link_to 'View Details', event_browse_path(@upcoming_weekly), class: 'rsvp button info tiny' %> 
         </div>
 </article>
-</a>
+
       <%# end %>
       
 

@@ -1,10 +1,16 @@
 /* Styles for Date Selector */
-$primary-color: #A0D3E8;
+$primary-color: #008CBA;
+.calendar ul.days{
+  background-color: rgb(174, 166, 166);
+}
+.calendar ul.days li{
+  color: #000;
+}
 .today {
   
   background-color: #f9f9f9;
           border-radius: 5px;
-
+color: #000 !important;
         border: 1px solid #eee;
 
         
@@ -194,7 +200,7 @@ border-color:#61B6D9;
 
     a {
 
-      color: #888;
+      color: #FFF;
 
       display: block;
 

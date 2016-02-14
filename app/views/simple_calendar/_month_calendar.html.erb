@@ -1,7 +1,7 @@
 <div class="calendar">
 	<div class="month">
-	<%= link_to "", {start_date: date_range.first - 1.day}, class: "back button info", remote: true  %>
-	<%= link_to "", {start_date: date_range.last + 1.day}, class: "next button info", remote: true %>
+	<%= link_to "", {start_date: date_range.first - 1.day}, class: "back button", remote: true  %>
+	<%= link_to "", {start_date: date_range.last + 1.day}, class: "next button", remote: true %>
 	<h5><%= I18n.t("date.month_names")[start_date.month] %></h5><p><%= start_date.year %></p>
 </div>
 	
@@ -14,7 +14,7 @@
 			</ul>
 		
 
-		<ul>
+		<ul class="days">
 			<% date_range.each_slice(7) do |week| %>
 					<% week.each do |day| %>
 						<%= content_tag :li, class: calendar.td_classes_for(day) do %>
