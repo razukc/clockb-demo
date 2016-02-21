@@ -1,7 +1,7 @@
 class UsersPasswordsController < Devise::PasswordsController
 	def new
 		# @user = User.new
-		    self.resource = resource_class.new
+		self.resource = resource_class.new
 		render 'users/passwords/new'
 	end
 	def edit

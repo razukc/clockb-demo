@@ -48,8 +48,12 @@ ActiveAdmin.register User do
 				if user.employee_documents.any?
 					panel "Employee Documents" do
 						attributes_table_for user.employee_documents do
-							row :name
-							row :attachment
+							row :name do |name|
+								name.name.titleize
+							end
+							row :attachment do |att|
+								link_to att.attachment.file.identifier, att.attachment.url if att.attachment?
+							end
 						end
 					end
 				end
@@ -251,6 +255,7 @@ ActiveAdmin.register User do
 					["Client", "client"], 
 					["Employee", "employee"],
 					["Guest", "guest"],
+					["Networker", "networker"],
 					["Other", "other"]
 					], 
 					:label => "_User"
@@ -328,7 +333,7 @@ ActiveAdmin.register User do
 			program_schedules_attributes: [:id, :content, :_destroy],
 			schedule_for_meetings_attributes: [:id, :content, :_destroy],
 			tasks_attributes: [:id, :content, :status, :schedule, :_destroy],
-			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache],
+			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache, :photo, :photo_cache],
 			inputs: inputs_keys)
 		end
 	end

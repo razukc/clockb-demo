@@ -6,6 +6,8 @@
     <title><%= content_for?(:page_title) ? yield(:page_title) : "::Clockb" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clockb Demo" %>">
     <%= stylesheet_link_tag    "application" %>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "lazysizes.min", 'async' => '' %>

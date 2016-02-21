@@ -1,10 +1,6 @@
 <%= content_for :page_title, 'Events' %>
-<div class="full" data-equalizer>
-<div class="column-fluid bg-left" data-equalizer-watch></div>
-<div class="column-fixed">
-
 <div class="row">
-	<div class="large-4 medium-4 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
+	<div class="large-3 medium-3 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
 	<!-- Menu -->
 	<div data-magellan-expedition="fixed" class="custom-magellan" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
 		<ul class="side-nav custom-side-nav">
@@ -18,13 +14,12 @@
 	
 	</div>
 	<!-- Content -->
-	<div class="large-8 medium-8 columns bg-right" data-equalizer-watch>
+	<div class="large-9 medium-9 columns bg-right" data-equalizer-watch>
 		 <!-- Flash messages -->
     <div id="messages" class="clearfix">
       <%= render 'layouts/messages' %>
     </div>
-		<br />
-		
+				
 		<!-- Slider -->
 		<div class="clearfix">
 			<ul class="example-orbit" data-orbit data-turbolinks="false">
@@ -48,20 +43,19 @@
 			</ul>
 		</div>
 					 
-
-		<br />
+		<hr>
 		<a data-magellan-destination="reasons-to-attend" name="reasons-to-attend"></a>
 		<h4>Reasons to attend</h4>
 		<p>In one word, Clock b Business Innovations defines its networking event as a “Platform”. Our business networking is:</p>
-		<ol>
-			<li>Platform for building professional connection</li>
-			<li>Platform for providing mentoring</li>
-			<li>Platform to clarify questions you might have</li>
-			<li>Platform for promotion of interesting concepts, business, products, services and even yourselves</li>
-			<li>Platform for speed networking</li>
-			<li>Platform to meet your networking needs</li>
-			<li>Platform where you could make yourselves heard</li>
-</ol>
+		<div class="panel"><ul class="no-bullet change-color">
+					<li>Platform for building professional connection</li>
+					<li>Platform for providing mentoring</li>
+					<li>Platform to clarify questions you might have</li>
+					<li>Platform for promotion of interesting concepts, business, products, services and even yourselves</li>
+					<li>Platform for speed networking</li>
+					<li>Platform to meet your networking needs</li>
+					<li>Platform where you could make yourselves heard</li>
+		</ul></div>
 <p>The platform we are trying to set for you and your business gives marvelous reasons to attend our events. Our events are for you and about you, so help us make you known.</p>
 <h5>Monday Coffee Queries</h5>
 <p>Start your week with some priceless advice. Start-ups, or for anyone who aspires to be an entrepreneur, our Monday morning coffee sessions are free advisory sessions to assess and fine-tune your ideas. If you have queries regarding your business or your ideas, simply pop in to our sessions to have it answered.</p>
@@ -147,9 +141,4 @@
 		<a  data-magellan-destination="contact-us" name="contact-us"></a>
 		<%= render partial: 'layouts/side_footer' %>
 	</div>
-</div>
-
-
-</div>
-<div class="show-for-large-up column-fluid bg-right" data-equalizer-watch></div>
 </div>

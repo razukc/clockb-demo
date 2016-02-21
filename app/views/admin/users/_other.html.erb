@@ -14,7 +14,7 @@ f.inputs "Details" do
 
 		i.input :email, input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).email}
 
-		i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
+		# i.input :affiliated_date, as: :datepicker, datepicker_options: {date_format: "d MM, yy"}
 		i.input :profile, :label => "Occupation/Business"
 		i.input :plan, as: :radio, collection: [["Regular","regular"],["Premium","premium"]], include_blank: false, label: "Networking Package"
 

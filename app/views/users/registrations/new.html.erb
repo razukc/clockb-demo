@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
+<% content_for :page_title , 'Sign Up' %>
+<div class="row" style="margin-top:50px;">
+<div class="large-4 small-centered columns panel">
+  <ul class="side-nav">
+    <li class="heading">sign up</li>
+    <li class="divider"></li>
+  </ul>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
+  
+  <div class="fields_for">
+    <%= f.fields_for :inputs do |i| %>
+    <%= i.hidden_field :type, value: 'networker' %>
+    <div class="field">
+      <%= i.radio_button :company, "company", :checked => true, autofocus: true %>
+      <%= i.label :company_company, "Company" , class: 'inline' %>
+      <%= i.radio_button :company, "personal" %>
+      <%= i.label :company_personal, "Personal" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= i.label :name %>
+      <%= i.text_field :name, required: true %>
+    </div>
+    <div class="field">
+      <%= i.label :person_in_charge %>
+      <%= i.text_field :person_in_charge %>
+    </div>
+    <div class="field">
+      <%= i.label "Contact Number" %>
+      <%= i.text_field :contact, required: true %>
+    </div>
+    <div class="field">
+      <%= i.label "Occupation/Business" %>
+      <%= i.text_field :profile, required: true %>
+    </div>
+    <div class="field">
+      <%= i.label "Package" %>
+      <%= i.radio_button :plan, "regular", checked: true %>
+      <%= i.label :plan_regular, "Regular", class: 'inline' %>
+      <%= i.radio_button :plan, "premium" %>
+      <%= i.label :plan_premium, "Premium"%>
+    </div>
+    <% end %>
+  </div>
+<br>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", required: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions clearfix">
+    <%= f.submit "Sign up", class:'button primary small right'%>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>
+</div>
+</div>

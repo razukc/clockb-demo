@@ -30,6 +30,9 @@ ul.customgap li{
 .top-bar-section .dropdown{
 	top:40px;
 }
+.top-bar-section ul li a{
+  font-family: 'Ubunutu Condensed', sans-serif !important;
+}
 @import "foundation/functions";
 
 hr{
@@ -73,4 +76,17 @@ div.full > .column-fixed{
 //Custom Magellan
 .custom-magellan{
 background-color: #008CBA;
+}
+p{
+  text-align:justify;
+  color: #666;
+}
+body{
+  font-family:  'Ubuntu Condensed', sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bree Serif', serif !important;
+}
+ul {
+  font-family: 'Ubuntu Condensed', sans-serfi !important;
 }

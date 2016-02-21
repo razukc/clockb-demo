@@ -12,10 +12,11 @@ scope :feedbackers, -> {joins(:feedbacks).distinct}
 scope :meetups, -> {joins(:meetups).where(:usermeetups => {meetup: true}).distinct}
 scope :webinars, -> {joins(:meetups).where(:usermeetups => {webinar: true}).distinct}
 scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct}
+
 mount_uploader :attachment, DocumentUploader
 
 
-devise :invitable, :database_authenticatable, :recoverable, :rememberable
+devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable
 
 
 validates_presence_of :email, :message => " is required"
@@ -51,10 +52,12 @@ accepts_nested_attributes_for :tasks, :allow_destroy => true,
 has_many :employee_documents, :dependent => :destroy
 accepts_nested_attributes_for :employee_documents, :allow_destroy => true,
 :reject_if => lambda { |a| a[:attachment].blank? } #&& a[:files_cache].blank?
+
 def self.profile(id)
 User.where(id: id).limit(1).pluck(:id, :inputs, :email)
 # User.select("id, inputs, email").where("id = ?", id).limit(1)
 end
+
 def self.profiles
 User.select("id, inputs, email").select{|h| h.inputs['type'].in? ['client','alumni','guest'] }.sort
 end
@@ -90,8 +93,11 @@ end
 def self.view_companies
 User.all.select{|x| x.inputs['company'] == 'company'}
 end
-def self.view_individualsdashboard
+def self.view_individuals
 User.all.select{|x| x.inputs['company'] == 'individual'}
+end
+def self.know_the_team
+	User.all.select{|x| x.inputs['type'] == 'employee' && x.inputs['display_in_site'] == '1' }
 end
 def premium?
 self.inputs['plan'] == 'premium'

@@ -8,7 +8,19 @@ def new
 @_id = @_z ? @_z.to_i : 0
 case @_x
 when 'vacancy'
-@_title = @_id > 0 ? Vacancy.find_by_id(@_id).content['job_title'] : '_title'
+	@_title =  '_title'
+	if @_id > 0
+		@_title = 'Apply for the Vacancy'
+		@job = Vacancy.find_by_id(@_id).content
+		@job_title =  @job['job_title']
+		@job_description = @job['job_description']
+		@job_specification = @job['job_specification']
+		@number_of_vacancies = @job['number_of_vacancies']
+		@minimum_requirement = @job['minimum_requirement']
+		
+	end
+
+
 when 'event'	
 @_title = @_id > 0 ? Event.find_by_id(@_id).form_params['name'] : '_title'
 when 'internship'

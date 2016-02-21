@@ -7,10 +7,13 @@
     <title><%= content_for?(:page_title) ? yield(:page_title) : "Clockb" %></title>
     <meta name="description" content="<%= content_for?(:page_description) ? yield(:page_description) : "Clockb Demo" %>">
     <%= stylesheet_link_tag    "application" %>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag "custom-magellan", 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "lazysizes.min", 'async' => '' %>
+    <%= javascript_include_tag "readmore", 'async' => '' %>
+    <%= javascript_include_tag "custom-magellan", 'async' => '' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -28,9 +31,19 @@
         </div>
       </div>
     </div>
-
-    <div id="content">
+    <div id="yield">
+    <% if current_page?(action: 'home') %>
       <%= yield %>
+    <% else %>
+      <div class="full" data-equalizer>
+        <div class="column-fluid bg-left" data-equalizer-watch>&nbsp;</div>
+        <div class="column-fixed" data-equalizer-watch>
+          <%= yield %>
+        </div>
+        <div class="show-for-large-up column-fluid bg-right" data-equalizer-watch>&nbsp;</div>
+      </div>
+    <% end %>
     </div>
+
   </body>
 </html>

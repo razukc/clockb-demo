@@ -17,24 +17,3 @@
 //= require jquery.turbolinks
 //= require_tree .
 
-
-$(window).bind('load resize', function () { 
-    screen = $('div.full').width();
-	content = 1000;
-	remaining = screen - content;
-	fluid =  (remaining/screen)*50;
-	$('div.column-fluid').css({'width': fluid+'%'});
-	// $('div.full').css({'visibility':'visible'})
-	$('div.full').animate({opacity: 1}, 200)
-});
-$('[data-hook="our-company-read-more"]').on('click', function() {
-    $('[data-hook="our-company"]').toggle();
-});
-
-// $(function(){
-// 	screen = $('div.ca').width();
-// 	content = 1000;
-// 	remaining = screen - content;
-// 	left = right = (remaining/screen)*50;
-// 	$('div.cb').css({'width': left+'%'});
-// });

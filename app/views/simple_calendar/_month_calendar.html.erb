@@ -2,7 +2,7 @@
 	<div class="month">
 	<%= link_to "", {start_date: date_range.first - 1.day}, class: "back button", remote: true  %>
 	<%= link_to "", {start_date: date_range.last + 1.day}, class: "next button", remote: true %>
-	<h5><%= I18n.t("date.month_names")[start_date.month] %></h5><p><%= start_date.year %></p>
+	<h5><%= I18n.t("date.month_names")[start_date.month] %></h5><p class="text-center"><%= start_date.year %></p>
 </div>
 	
 

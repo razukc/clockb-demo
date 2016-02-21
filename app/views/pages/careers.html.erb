@@ -1,10 +1,6 @@
 <%= content_for :page_title, 'Careers' %>
-<div class="full" data-equalizer>
-<div class="column-fluid bg-left" data-equalizer-watch></div>
-<div class="column-fixed">
-
 <div class="row">
-	<div class="large-4 medium-4 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
+	<div class="large-3 medium-3 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
 	<div id="myModal-content" class="reveal-modal small" data-reveal></div>
 <!-- Magellan Menu -->
 	<div data-magellan-expedition="fixed" class="custom-magellan" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
@@ -18,81 +14,65 @@
 	</div>
 	
 	</div>
-	<div class="large-8 medium-8 columns bg-right" data-equalizer-watch>
+	<div class="large-9 medium-9 columns bg-right" data-equalizer-watch>
 		<br />
 		<%= image_tag "1000x500.png", class: 'th-no-hover lazyload', style: 'width: 100%;' %>
 		<br />
 		<br />
+		<hr>
 		<a data-magellan-destination="working-with-clockb" name="working-with-clockb"></a>
 		<h4>Working with Clockb</h4>
 		<h5>Nature of work</h5>
 <p>Our clients come to us to find solutions to their complex problems; that is what we work with. Every client faces dissimilar problems, so for us to deliver the tailored solution we need to keep learning and innovating. Furthermore, we serve assorted groups of industries, which then require us to remain informed and updated about different industrial clusters. We help companies transform into upgraded version of what they are now, to build their own story of success. To get that done, we would need to: <p>
-<p>Evolve. Learn. Innovate.</p>
+<div class="panel"><blockquote class="text-center">Evolve. Learn. Innovate.</blockquote></div>
 
 <h5>Employees’ Perspective</h5>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{{Text}}
 <h5>What we look for</h5>
 <p>A company is only as smart and innovative as their employees are. That is why Clock b intends to work with such interesting and smart individuals. We believe our company would continue to evolve with your help. We would learn some of your strength and teach you some of ours. Join our team if you:</p>
-<ul>
+<div class="panel" style="color:blue;"><ul class="no-bullet change-color">
 	<li>Are an independent thinker and can work in a team.</li>
 	<li>Have appetite to learn, explore and evolve.</li>
 	<li>Possess desire to work as if the workplace is the classroom.</li>
 	<li>Are willing to take on problems and find its solutions</li>
-	</ul>
+	</ul></div>
 		<hr />
 		<a  data-magellan-destination="recent-vacancies" name="recent-vacancies"></a>
 		<h4>Recent Vacancies</h4>
-			<table>
+			<table width="100%">
 				<% if @vacancy.empty? %>
-				<thead><tr><th><p><em>There are no vacanices at the moment.</em></p></th></tr></thead>
+				<thead><tr><th><p><em style="font-size:smaller;">There are no vacanices at the moment.</em></p></th></tr></thead>
 				<% else %>
-				<thead><tr>
+<!-- 				<thead><tr>
 					<th>Job position</th>
 					<th>No.</th>
 					<th>Min. Requirement</th>
-					<th>Job Despcription</th>
+					<th>Job Description</th>
 					<th colspan="2">Job Specification</th>
-				</tr></thead>
+				</tr></thead> -->
 				<% end %>
 				<tbody>
 				<% @vacancy.each do |vacancy| %>
 					<tr>
-				<% vacancy.content.each_value do |value| %>
-					<td><%= value %></td>
-				<% end %>
-					<td><a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=vacancy&amp;_z=<%= vacancy.id %>" class="" data-type="JSON">Apply</a></td>
+				<%# vacancy.content.each_value do |value| %>
+					<td><%= vacancy.content['job_title'] %></td>
+				<%# end %>
+					<td><a href="#" id="myModal-button" data-reveal-id="myModal-vacancy" data-reveal-ajax="<%= new_request_path %>?_x=vacancy&amp;_z=<%= vacancy.id %>" class="right" data-type="JSON">View Details</a></td>
 					</tr>
 				<% end %>
 				</tbody>			
 		</table>
+	<div id="myModal-vacancy" class="reveal-modal medium" data-reveal></div>
+
 		<hr />
 		<a  data-magellan-destination="intern-with-clockb" name="intern-with-clockb"></a>
 		<h4>Internship with Clock b</h4>
 		<p>Our internship program is a unique opportunity to learn about the world of consulting and business services. During the internship, students will work alongside the Clock b team which would enable them to assess if their career truly lies in the field of management consulting or in specialized business services. At the end of the internship program Clock b Business Innovations would make the decision of whether or not to extend the intern a permanent offer. Our internship is best suited for undergraduate and post- graduate students of management field. If you willing to learn the art of consulting, come be an intern.</p>
 		<div id="request-for-x" class="clearfix">
-			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=internship" class="button secondary tiny" data-type="JSON">Apply as a Intern</a>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path %>?_x=internship" class="button info tiny" data-type="JSON">Apply as a Intern</a>
 		</div>
 		<hr />
 		<%= render partial: 'layouts/side_footer' %>
 	</div>
 
-
-<!-- <ul class="side-nav">
-	<li class="heading">Company Profile</li>
-  <li class="active"><a href="#">Link 1</a></li>
-  <li><a href="#">Link 2</a></li>
-  <li class="divider"></li>
-  <li><a href="#">Link 3</a></li>
-  <li><a href="#">Link 4</a></li>
-</ul> -->
-</div>
-
-
-</div>
-<div class="show-for-large-up column-fluid bg-right" data-equalizer-watch></div>
 </div>

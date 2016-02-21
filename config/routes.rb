@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    devise_for :users,
           :controllers => { 
           :sessions => "users_sessions", 
-          # :registrations => "user_registrations", 
+          :registrations => "users_registrations", 
           :passwords => "users_passwords",
           # Proper invitations should be sent through the active_admin interface.
           :invitations => "users_invitations" # user_invitations_controller.rb

@@ -1,7 +1,7 @@
 <!-- Size Classes: [small medium large xlarge expand] -->
 <div id="request_form">
 	<!-- <div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div> -->
-	<p class="lead"><%= @_title %></p>
+	<p class="lead subheader"><%= @_title %></p>
 	<%= form_for @request, remote: true do |f| %>
 		<%= f.fields_for :link_params do |k| %>
 			<%= k.hidden_field :_x, :value => @_x %>
@@ -9,16 +9,41 @@
 			<%= k.hidden_field :_z, :value => @_z %>
 		<% end %>
 		
-		<% if @_x.in?(['internship', 'vacancy']) %>
+		<% if @_x.in?(['vacancy']) %>
+			<div class="row">
+				<div class="columns large-6 panel">
+					<strong>Job Position</strong><%= simple_format @job_title %>
+					<strong>Job Description</strong>
+					<%= simple_format @job_description %>
+					<strong>Job Specification</strong>
+					<%= simple_format @job_specification %>
+					<strong>Minimum Requirement</strong>
+					<%= simple_format @minimum_requirement %>
+					<strong>Number of Positions</strong>
+					<%= simple_format @number_of_vacancies %>
+				</div>
+				<div class="columns large-6">
+						<fieldset>
+					    	<legend>Attach CV</legend>
+					    	<%= f.hidden_field :attachment_cache %>
+							<%= f.file_field :attachment, required: :true, class: 'button secondary tiny' %>
+							<!-- <label><em>Allowed file types: pdf, doc, docx</em></label> -->
+						</fieldset>
+						<!-- , OpenStruct.new(@request.form_params) -->
+						<%= f.fields_for :form_params do |r| %>
+							<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
+						<% end %>
+				</div>
+			</div>
+		<% end %>
+				
+		<% if @_x.in?(['internship']) %>
 			<fieldset>
 		    	<legend>Attach CV</legend>
 		    	<%= f.hidden_field :attachment_cache %>
 				<%= f.file_field :attachment, required: :true, class: 'button secondary tiny' %>
 				<!-- <label><em>Allowed file types: pdf, doc, docx</em></label> -->
 			</fieldset>
-		
-
-		
 			<!-- , OpenStruct.new(@request.form_params) -->
 			<%= f.fields_for :form_params do |r| %>
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>

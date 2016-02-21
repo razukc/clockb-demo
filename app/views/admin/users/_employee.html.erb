@@ -3,7 +3,7 @@
 	tab "Details" do
 	
 	f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
-f.inputs "Employee Details" do
+		f.inputs "Employee Details" do
 		# i.input :type, 
 		# 	input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
 		i.input :type, as: :hidden
@@ -18,16 +18,25 @@ f.inputs "Employee Details" do
 
 		i.input :contact
 
+
+		i.input :display_in_site, as: :boolean
+
 		
 		end
-	f.inputs "Job Description" do
-		i.input :job_description, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Description'
-		
-	end
+		f.inputs "Job Description" do
+			i.input :job_description, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Description'
+			
+		end
 
-	f.inputs "Job Specification" do
-		i.input :job_specification, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Specification'
-	end
+		f.inputs "Job Specification" do
+			i.input :job_specification, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Specification'
+		end
+	
+		f.inputs "Quotation" do
+			i.input :quotation, as: :text, input_html: {class: 'autogrow', rows: 6}, label: 'Quotation'
+		end
+
+
 		
 		
 		
@@ -36,7 +45,11 @@ f.inputs "Employee Details" do
 
 	
 	end
+	
+
+	
 	end
+
 
 	tab "Documents" do
 		f.inputs "Uploader" do
@@ -49,10 +62,11 @@ f.inputs "Employee Details" do
 	        # end
 	        f.has_many :employee_documents, allow_destroy: true, heading: false, new_record: 'Add new' do |ed|
 	        	ed.input :name, as: :select, :collection => [
-						["Goals & Targets", "goals-and-targets"],
 						["Employee Documents", "employee-documents"], 
+						["Employee Photo", "employee-photo"],
+						["Goals & Targets", "goals-and-targets"],
 						["HR Policy", "hr-policy"],
-						["Other"]
+						["Other", "other"]
 					], :label => "Select one", include_blank: false
 
 				# ed.input :files, as: :file, label: "Upload", input_html: { multiple: true }
