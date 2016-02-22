@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  meta: MyText
+  add_to_site: false
+
+two:
+  type: 
+  meta: MyText
+  add_to_site: false

@@ -1,0 +1,11 @@
+<%= active_admin_form_for [:admin, @resourcex] do |f|
+f.inputs "Video" do
+	f.input :category, as: :hidden
+	f.fields_for :meta,(OpenStruct.new(Resourcex.find_by_id(params[:id]).meta) unless f.object.new_record?) do |i|
+		i.input :title
+		i.input :embed_code, as: :text
+	end
+	f.input :add_to_site
+end
+f.actions 
+end %>

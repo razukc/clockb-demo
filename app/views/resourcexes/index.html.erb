@@ -1,0 +1,47 @@
+<%= content_for :page_title, 'Resources' %>
+
+
+<div class="row">
+  <div class="large-3 medium-3 columns width-finder bg-left hide-for-small-only" data-equalizer-watch>
+    <ul class="side-nav custom-side-nav">
+      <li class="heading" style="color:#e3e3e3;">Resources</li>
+      <li class="divider"></li>
+      <li><%= link_to "Blogs", resourcexes_path(:scope => 'blog') %></li>
+      <li><%= link_to "Newsletters", resourcexes_path(:scope => 'newsletter') %></li>
+      <li><%= link_to "Videos", resourcexes_path(:scope => 'video') %></li>
+    </ul>
+  </div>
+	<div class="large-9 medium-9 columns bg-right" style="padding-top:25px;" data-equalizer-watch>
+  <div id="myModal-content" class="reveal-modal small" data-reveal></div>
+        <ul class="no-bullet">
+          
+          <% @resources.each do |resource| %>
+          
+          <% case resource.category %>
+          <% when 'blog' %>
+          	<li>
+          		<h5><%= resource.meta['title'] %></h5>
+            	<p><%= simple_format resource.meta['body'] %></p>
+            	<hr />
+            </li>
+          <% when 'newsletter' %>
+          	<li>
+          		<h5><%= resource.meta['title'] %></h5>
+            	<p><%= resource.meta['description'] %></p>
+            	<%= link_to "Download", resource.attach.url, class: 'button info tiny' %>
+            	<hr />
+            </li>
+          <% when 'video' %>
+          	<li>
+          		<h5><%= resource.meta['title'] %></h5>
+            	<p><%= simple_format resource.meta['embed_code'] %></p>
+            	<hr />
+            </li>
+          <% end %>
+           
+          <% end %>
+        </ul>
+      <%= render partial: 'layouts/side_footer' %>
+</div>
+</div>	
+

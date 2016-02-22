@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   layout 'pages'
+  
   def test
     render "pages/test"
   end
@@ -34,6 +35,9 @@ class PagesController < ApplicationController
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @sliders = Slider.where('remarks' => false)
+    respond_to do |format|
+      format.html {render :layout => 'application'}
+    end
   end
 
   def services

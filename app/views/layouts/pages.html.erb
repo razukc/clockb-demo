@@ -32,9 +32,6 @@
       </div>
     </div>
     <div id="yield">
-    <% if current_page?(action: 'home') %>
-      <%= yield %>
-    <% else %>
       <div class="full" data-equalizer>
         <div class="column-fluid bg-left" data-equalizer-watch>&nbsp;</div>
         <div class="column-fixed" data-equalizer-watch>
@@ -42,7 +39,6 @@
         </div>
         <div class="show-for-large-up column-fluid bg-right" data-equalizer-watch>&nbsp;</div>
       </div>
-    <% end %>
     </div>
 
   </body>
