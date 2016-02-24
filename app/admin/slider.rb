@@ -6,6 +6,7 @@ index :download_links => false, as: :grid do |slider|
   # dd link_to "Edit", edit_admin_slider_path(slider) 
   # dd link_to "Delete", admin_slider_path(slider), method: :delete, data: { :confirm => "Are you sure?" }
 end	
+index as: :table, default: true, download_links: false
 
 permit_params do
 	permitted = [:slide, :caption, :remarks, :slide_cache]

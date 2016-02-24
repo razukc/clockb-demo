@@ -10,8 +10,7 @@
           $(document).foundation('equalizer', 'reflow');
           }
         });  
-
+          $(document).foundation('equalizer', 'reflow');
       }, 1000);
-      
     });
     

@@ -103,17 +103,17 @@
 			  		<!-- Event Calendar -->
 			  		<%= render partial: 'layouts/calendar' %>
 				    </div>
-				  		<hr />
-				    <div id="upcoming-events">
+				  		
+				    <div id="upcoming-events" style="margin-top:30px;">
 			  		<!-- Upcoming Events -->
 			  		<h5>Upcoming Events</h5>
 			  		<%= render partial: 'layouts/upcoming_events' %>
 				  	</div>
-				  	<hr />
-				    <div id="browse-all-events">
+				  	<div class="clearfix"></div>
+				  	<hr>
+				    <div id="browse-all-events" style="margin-bottom:10px;">
 					 <%= link_to "Browse our events", events_browse_path, class: 'button expand info' %>
 				   </div>
-				   <hr />
 				</div>
 				<div class="clearfix">
 				<h5>Events Gallery</h5>

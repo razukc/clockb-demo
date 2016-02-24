@@ -1,3 +1,4 @@
+<%= content_for :page_title, 'Clock b' %>
 <!-- Sub menu -->
 <div class="row">
 	<div class="large-12 columns">
@@ -34,8 +35,8 @@
 	  </li>
 	  <% end %>
     <% else %>
-    <li><%= image_tag 'default-slider.png', class: "lazyload" %>
-      <div class="orbit-caption">Slider caption goes here(Optional)</div>
+    <li><%= image_tag '1000x500.png', class: "lazyload" %>
+      <div class="orbit-caption">Slider caption (Optional)</div>
     </li>
     <% end %>
 	</ul>
@@ -56,6 +57,7 @@
       <h4>Upcoming Events</h4>
       <%= render partial: 'layouts/upcoming_events' %>
     </div>
+    <div class="clearfix"></div>
     <div id="browse-all-events">
    <!-- <%= link_to "Browse all Events", events_path, class: 'button expand' %> -->
    </div>
@@ -117,7 +119,7 @@
   <div class="medium-6 large-6 columns">
     <a data-magellan-destination="services" name="services"></a>
     <div class="clearfix">
-      <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
+      <%= image_tag '1000x500.png', class: "th-no-hover lazyload" %>
     </div><br>
    <div class="clearfix">
     <h4>Consulting</h4>
@@ -125,21 +127,21 @@
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-      <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
+      <%= image_tag '1000x500.png', class: "th-no-hover lazyload" %>
     </div><br>
     <h4>Outsourcing</h4>
     <div class="clearfix"><p class="text-center">”If you keep doing what you’ve always done, you will never be more than what you already are.”&nbsp;<a href="<%= services_path << '#outsourcing' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-      <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
+      <%= image_tag '1000x500.png', class: "th-no-hover lazyload" %>
     </div><br>
     <h4>Networking</h4>
     <div><p class="text-center">“Invaluable connection isn’t impossible, it’s just that easy get lost in the city of millions.”&nbsp;<a href="<%= services_path << '#networking' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div class="clearfix">
-      <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
+      <%= image_tag '1000x500.png', class: "th-no-hover lazyload" %>
     </div><br>
     <h4>Innovation</h4>
     <p class="text-center">“Enter the searching mode and never exit; because if you keep searching, you will always discover something new and startling.”&nbsp;<a href="<%= services_path << '#innovation' %>">Read more</a></p>
