@@ -25,6 +25,11 @@ form :html => { :multipart => true } do |f|
 	end
 end
 controller do
+	def edit
+		@resourcex = Resourcex.find_by_id(params[:id])
+		# render @user.inputs['type'], layout: 'active_admin',
+		# 	locals: { user: @user }	
+	end
 	def update
 		@resourcex = Resourcex.find_by_id(params[:id])
 		if @resourcex.update(resourcex_params)
@@ -39,7 +44,7 @@ controller do
 	def create
 		@resourcex = Resourcex.new(resourcex_params)
 		if @resourcex.save && @resourcex.errors.empty?
-		redirect_to admin_resources_path
+		redirect_to edit_admin_resource_path(@resourcex)
 		else
 		messages = @resourcex.errors.full_messages.map { |msg| msg }.join
 		flash[:error] = "Error: " + messages

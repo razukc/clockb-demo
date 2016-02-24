@@ -41,16 +41,17 @@
 	</ul>
 </div>
 <div class="contain-to-grid" style="background-color:#e3e3e3;padding-top:40px;">
-<!-- data-magellan for Networking -->
-<a data-magellan-destination="networking" name="networking"></a>
+
 <div class="row">
   <div class="medium-6 large-4 columns">
+    <!-- data-magellan for Networking -->
+<a data-magellan-destination="networking" name="networking"></a>
     <div id="events_calendar">
       <!-- Event Calendar -->
       <%= render partial: 'layouts/calendar' %>
     </div>
-      <hr />
-    <div id="upcoming-events">
+      
+    <div id="upcoming-events" style="margin-top:30px;">
       <!-- Upcoming Events -->
       <h4>Upcoming Events</h4>
       <%= render partial: 'layouts/upcoming_events' %>
@@ -119,28 +120,28 @@
       <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
     </div><br>
    <div class="clearfix">
-    <h5>Consulting</h5>
+    <h4>Consulting</h4>
    <p class="text-center">“With great help and advice, the road to success can be a lot easier.”&nbsp;<a href="<%= services_path << '#consulting' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div>
       <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
     </div><br>
-    <h5>Outsourcing</h5>
+    <h4>Outsourcing</h4>
     <div class="clearfix"><p class="text-center">”If you keep doing what you’ve always done, you will never be more than what you already are.”&nbsp;<a href="<%= services_path << '#outsourcing' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div>
       <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
     </div><br>
-    <h5>Networking</h5>
+    <h4>Networking</h4>
     <div><p class="text-center">“Invaluable connection isn’t impossible, it’s just that easy get lost in the city of millions.”&nbsp;<a href="<%= services_path << '#networking' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div class="clearfix">
       <%= image_tag 'default-services.png', class: "th-no-hover lazyload" %>
     </div><br>
-    <h5>Innovation</h5>
+    <h4>Innovation</h4>
     <p class="text-center">“Enter the searching mode and never exit; because if you keep searching, you will always discover something new and startling.”&nbsp;<a href="<%= services_path << '#innovation' %>">Read more</a></p>
     <br />
   </div><hr/>

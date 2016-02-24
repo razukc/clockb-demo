@@ -8,7 +8,6 @@
               //   $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
               // }
           $(document).foundation('equalizer', 'reflow');
-
           }
         });  
 
