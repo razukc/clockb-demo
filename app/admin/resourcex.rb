@@ -1,6 +1,16 @@
-ActiveAdmin.register Resourcex do
+ActiveAdmin.register Resourcex, as: "Resource" do
 config.filters = false
-index download_links: false
+index download_links: false do
+	column :category do |k|
+		k.category.titleize
+	end
+	column :meta, "Title" do |k|
+		link_to k.meta['title'], edit_admin_resource_path(k)
+	end
+	column :add_to_site
+	column :created_at
+	actions
+end
 permit_params :category, :add_to_site, :attach, :attach_cache, :remove_attach, meta: []
 form :html => { :multipart => true } do |f|
 	f.semantic_errors *f.object.errors.keys
@@ -19,21 +29,21 @@ controller do
 		@resourcex = Resourcex.find_by_id(params[:id])
 		if @resourcex.update(resourcex_params)
 		flash[:success] = "User has been successfully updated." 
-		redirect_to admin_resourcexes_path
+		redirect_to admin_resources_path
 		else
 		messages = @resourcex.errors.full_messages.map { |msg| msg }.join
 		flash[:error] = "Error: " + messages
-		redirect_to edit_admin_resourcex_path(@resourcex)
+		redirect_to edit_admin_resource_path(@resourcex)
 		end
 	end
 	def create
 		@resourcex = Resourcex.new(resourcex_params)
 		if @resourcex.save && @resourcex.errors.empty?
-		redirect_to edit_admin_resourcexes_path
+		redirect_to admin_resources_path
 		else
 		messages = @resourcex.errors.full_messages.map { |msg| msg }.join
 		flash[:error] = "Error: " + messages
-		redirect_to new_admin_resourcex_path(@resourcex)
+		redirect_to new_admin_resource_path(@resourcex)
 		end
 	end
 	def resourcex_params

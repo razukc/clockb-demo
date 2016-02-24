@@ -9,6 +9,11 @@ Rails.application.routes.draw do
           # Proper invitations should be sent through the active_admin interface.
           :invitations => "users_invitations" # user_invitations_controller.rb
           }
+          devise_scope :user do
+            get "/sign_in" => "users_sessions#new"
+            get "/sign_up" => "users_registrations#new"
+            delete "/sign_out" => "users_sessions#destroy"
+          end
     ActiveAdmin.routes(self)
     resources :resourcexes, except: [:create, :destroy, :update, :edit, :new, :show], path: "resources"
     resources :usermeetups

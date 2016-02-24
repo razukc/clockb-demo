@@ -11,10 +11,10 @@
   <ul class="right customgap">
     <% if user_signed_in? %>
     <li><%= link_to "Dashboard", dashboard_path, class: 'button success tiny radius' %></li>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'button primary tiny radius' %></li>
+    <li><%= link_to "Sign out", sign_out_path, method: :delete, class: 'button primary tiny radius' %></li>
     <% else %>
-    <li><%= link_to "Sign in", new_user_session_path, method: :get, class: 'button primary tiny radius' %></li>
-    <li><%= link_to "Sign up", new_user_registration_path, method: :get, class: 'button info tiny radius' %></li>
+    <li><%= link_to "Sign in", sign_in_path, method: :get, class: 'button primary tiny radius' %></li>
+    <li><%= link_to "Sign up", sign_up_path, method: :get, class: 'button info tiny radius' %></li>
     <% end %>
   </ul>
 <!-- </div> -->
