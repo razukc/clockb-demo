@@ -6,7 +6,7 @@ f.inputs "Details" do
 		# 	input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).inputs['type'].titleize}
 		i.input :type, as: :hidden
 		i.input :name
-		i.input :company, as: :radio, collection: [["Company","company"], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
+		i.input :company, as: :radio, collection: [["Company","company", {:checked => true}], ["Individual", "individual"]], include_blank: false, label: "Company/Individual"
 		
 		i.input :person_in_charge
 
@@ -15,7 +15,8 @@ f.inputs "Details" do
 		i.input :email, input_html: {disabled: 'disabled', value: User.find_by_id(params[:id]).email}
 
 		i.input :profile, :label => "Occupation/Business"
-		i.input :plan, as: :radio, collection: [["Regular","regular"],["Premium","premium"]], include_blank: false, label: "Networking Package"
+		i.input :package_selected, input_html: {disabled: 'disabled'}
+		i.input :plan, as: :radio, collection: [["Regular","regular", {:checked => true}],["Premium","premium"]], include_blank: false, label: "Networking Package"
 
 
 	end

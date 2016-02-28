@@ -23,6 +23,9 @@
 					<%= simple_format @number_of_vacancies %>
 				</div>
 				<div class="columns large-6">
+					<%= f.fields_for :form_params do |q| %>
+					<%= q.email_field :email, :placeholder => 'Email', required: true %>
+					<% end %>
 						<fieldset>
 					    	<legend>Attach CV</legend>
 					    	<%= f.hidden_field :attachment_cache %>
@@ -72,11 +75,6 @@
 
 		<%= f.submit "Send", class: 'button right small' %>
 		<% end %>
-	
-	
-
-	
-	
 	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
 	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
 	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>

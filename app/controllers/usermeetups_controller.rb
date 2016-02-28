@@ -4,7 +4,19 @@ def create
 	@meetup.webinar = true if params[:webinar]
 	@meetup.meetup = true if params[:meetup]
 	@meetup.event = true if params[:event]
-	@meetup.save!
+	
+	if @meetup.save!
+		if @meetup.meetup?
+			ClockbMailer.meetup_email(current_user.email).deliver_now
+		end
+		if @meetup.webinar?
+			ClockbMailer.webinar_email(current_user.email).deliver_now
+		end
+		if @meetup.event?
+			@event_type = Event.find_by_id(@meetup.user_x).form_params["type"]
+			ClockbMailer.event_email(current_user.email, @event_type).deliver_now
+		end
+	end
 	respond_to  do |format|
 		format.html {redirect_to '/'}
 		format.js {}

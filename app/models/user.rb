@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
 scope :invitation_accepted, -> {where("invitation_accepted_at is not null and invitation_token is null")}
 scope :invitation_sent, -> {where("invitation_accepted_at is null and invitation_sent_at is not null")}
 # this works too
@@ -123,7 +124,12 @@ end
 def other?
 	self.inputs['type'] == 'other'
 end
-
+def networker?
+	self.inputs['type'] == 'networker'
+end
+def plan
+	self.inputs['plan'] ? self.inputs['plan'] : "regular"
+end
 def has_event(event_id, user_id)
 	Usermeetup.find{|x| x.user_x == event_id && x.user_id == user_id}
 end

@@ -19,14 +19,12 @@ when 'vacancy'
 		@minimum_requirement = @job['minimum_requirement']
 		
 	end
-
-
 when 'event'	
 @_title = @_id > 0 ? Event.find_by_id(@_id).form_params['name'] : '_title'
 when 'internship'
-@_title = 'Apply as a intern'
+@_title = 'Apply as  Intern'
 when 'meeting'
-@_title = 'Request for a meeting'
+@_title = 'Request for Meeting'
 when 'webinar'
 @_title = 'Request for Webinar'
 when 'premium'
@@ -43,7 +41,21 @@ end
 
 def create
 @request = Request.create(requests_params)
-
+if @request.save
+	case @request.link_params['_x']
+		when 'meeting'
+			ClockbMailer.meeting_email(@request.form_params['email']).deliver_now
+		when 'vacancy'
+			ClockbMailer.job_application_email(@request.form_params['email']).deliver_now
+		when 'webinar'
+			ClockbMailer.webinar_email(@request.form_params['email']).deliver_now
+		when 'event'
+			ClockbMailer.event_email(@request.form_params['email'], Event.find_by_id(@request.link_params['_z']).form_params['type']).deliver_now
+		when 'premium'
+			ClockbMailer.premium_email(current_user.email).deliver_now
+		end
+		
+end
 respond_to do |format|
 # if @request.save
 format.html {redirect_to '/'}
