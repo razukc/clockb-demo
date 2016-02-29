@@ -1,5 +1,5 @@
 ActiveAdmin.register Slider do
-config.batch_actions = true
+config.batch_actions = false
 
 index :download_links => false, as: :grid do |slider|
   dd link_to image_tag(slider.slide.thumb), edit_admin_slider_path(slider)
