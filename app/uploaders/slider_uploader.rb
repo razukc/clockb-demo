@@ -27,7 +27,7 @@ class SliderUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [1000, 500]
   #
-  process :resize_to_fill => [1000, 500]
+  # process :resize_and_pad => [1000, 500, '#e3e3e3']
   # def scale(width, height)
   #   # do something
   # end

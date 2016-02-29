@@ -2,6 +2,10 @@
 <div id="request_form">
 	<!-- <div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div> -->
 	<p class="lead subheader"><%= @_title %></p>
+	<% if @_x == 'webinar' %>
+			<p class="panel"><%= "You will soon be able to clock in to our webinar service. Stay tuned." %></p>
+			<p>&nbsp;</p>
+		<% else %>
 	<%= form_for @request, remote: true do |f| %>
 		<%= f.fields_for :link_params do |k| %>
 			<%= k.hidden_field :_x, :value => @_x %>
@@ -24,6 +28,7 @@
 				</div>
 				<div class="columns large-6">
 					<%= f.fields_for :form_params do |q| %>
+					<%= q.text_field :name, :placeholder => 'Name', required: true %>
 					<%= q.email_field :email, :placeholder => 'Email', required: true %>
 					<% end %>
 						<fieldset>
@@ -52,15 +57,15 @@
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
 			<% end %>
 		<% end %>
-		<% if @_x.in?(['meeting', 'event', 'webinar']) %>
+		<% if @_x.in?(['meeting', 'event']) %>
 	
 		<%#= f.hidden_field :form_params, :value => @_x %>
 		<!-- , OpenStruct.new(@request.form_params) -->
 		<%= f.fields_for :form_params do |r| %>
 			<%= r.text_field :name, :placeholder => 'Name', required: true %>
 			<%= r.text_field :company, :placeholder => 'Company' %>
-			<%= r.text_field :phone, :placeholder => 'Phone', required: true %>
-			<%= r.text_field :email, :placeholder => 'Email', required: true %>
+			<%= r.phone_field :phone, :placeholder => 'Phone', required: true %>
+			<%= r.email_field :email, :placeholder => 'Email', required: true %>
 		<% end %>
 		<% end %>
 		<% if @_x.in?(['meeting']) %>
@@ -73,11 +78,14 @@
 			<p>&nbsp;</p>
 		<% end %>
 
+
 		<%= f.submit "Send", class: 'button right small' %>
 		<% end %>
+
 	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
 	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
 	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
 </div>
+<% end %>
 <a class="close-reveal-modal">&#215;</a>
 

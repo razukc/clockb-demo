@@ -80,6 +80,7 @@ form  do |f|
 			r.input :minimum_requirement, as: :text,:placeholder => 'Minimum requirement'
 			r.input :job_description, as: :text,:placeholder => 'Job Description'
 			r.input :job_specification, as: :text,:placeholder => 'Job Specification'
+			r.input :application_deadline, as: :datepicker
 		end
 		# f.input :content
 	end

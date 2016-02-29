@@ -9,7 +9,7 @@
 	    	<li data-magellan-arrival="working-with-clockb"><a href="#working-with-clockb">Working with Clockb</a></li>
 
 	    	<li data-magellan-arrival="recent-vacancies"><a href="#recent-vacancies">Recent Vacanices</a></li>
-	    	<li data-magellan-arrival="intern-with-clockb"><a href="#intern-with-clockb">Intern with Clockb</a></li>
+	    	<li data-magellan-arrival="internship-with-clockb"><a href="#internship-with-clockb">Internship with Clockb</a></li>
 	  	</ul>
 	</div>
 	
@@ -43,19 +43,20 @@
 				<% if @vacancy.empty? %>
 				<thead><tr><th><p><em style="font-size:smaller;">There are no vacanices at the moment.</em></p></th></tr></thead>
 				<% else %>
-<!-- 				<thead><tr>
+				<thead><tr>
 					<th>Job position</th>
 					<th>No.</th>
-					<th>Min. Requirement</th>
-					<th>Job Description</th>
-					<th colspan="2">Job Specification</th>
-				</tr></thead> -->
+					<th>Application Deadline</th>
+					<th>&nbsp;</th>
+				</tr></thead>
 				<% end %>
 				<tbody>
 				<% @vacancy.each do |vacancy| %>
 					<tr>
 				<%# vacancy.content.each_value do |value| %>
 					<td><%= vacancy.content['job_title'] %></td>
+					<td><%= vacancy.content['number_of_vacancies'] %></td>
+					<td><%= vacancy.content['application_deadline'] %></td>
 				<%# end %>
 					<td><a href="#" id="myModal-button" data-reveal-id="myModal-vacancy" data-reveal-ajax="<%= new_request_path %>?_x=vacancy&amp;_z=<%= vacancy.id %>" class="right" data-type="JSON">View Details</a></td>
 					</tr>
@@ -65,7 +66,7 @@
 	<div id="myModal-vacancy" class="reveal-modal medium" data-reveal></div>
 
 		<hr />
-		<a  data-magellan-destination="intern-with-clockb" name="intern-with-clockb"></a>
+		<a  data-magellan-destination="internship-with-clockb" name="internship-with-clockb"></a>
 		<h4>Internship with Clock b</h4>
 		<p>Our internship program is a unique opportunity to learn about the world of consulting and business services. During the internship, students will work alongside the Clock b team which would enable them to assess if their career truly lies in the field of management consulting or in specialized business services. At the end of the internship program Clock b Business Innovations would make the decision of whether or not to extend the intern a permanent offer. Our internship is best suited for undergraduate and post- graduate students of management field. If you willing to learn the art of consulting, come be an intern.</p>
 		<div id="request-for-x" class="clearfix">
