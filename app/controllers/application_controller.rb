@@ -3,7 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_filter :ensure_domain, if: :Rails.env.production?
 
+  # APP_DOMAIN = 'www.clockb.com'
+
+  # def ensure_domain
+  #   if request.env['HTTP_HOST'] != APP_DOMAIN
+  #     # HTTP 301 is a "permanent" redirect
+  #     redirect_to "http://#{APP_DOMAIN}", :status => 301
+  #   end
+  # end
   def after_sign_in_path_for(resource)
     dashboard_path
   end
