@@ -1,4 +1,5 @@
-ActiveAdmin.register Slider do
+ActiveAdmin.register Slider, as: "Home Page Slider" do
+menu parent: "Sliders"
 config.batch_actions = false
 
 index :download_links => false, as: :grid do |slider|

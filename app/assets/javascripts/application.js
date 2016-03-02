@@ -22,5 +22,7 @@
       $("input[type=text][name='user[inputs][person_in_charge]']").toggle();
       $("label[for='user_inputs_person_in_charge']").toggle();
     } );
-    $(document).foundation('orbit', 'reflow');
   });
+$(document).on('ready page:load', function () {
+	$(document).foundation();
+});

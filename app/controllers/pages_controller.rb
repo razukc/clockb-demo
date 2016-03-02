@@ -35,6 +35,7 @@ class PagesController < ApplicationController
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @sliders = Slider.where('remarks' => false)
+    @services_images = HomePageServicesImage.first
     respond_to do |format|
       format.html {render :layout => 'application'}
     end
@@ -52,7 +53,7 @@ class PagesController < ApplicationController
   end
   def events
     @events = Event.all
-    @slider = Event.m_slider
+    @slider = EventsSlider.all.where(:add_to_site => true)
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly

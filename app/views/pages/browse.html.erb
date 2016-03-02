@@ -17,7 +17,7 @@
             <p><%= image_tag @events_single.attachment.slider, class: 'th-no-hover lazyload' %></p>
             <p><%= @events_single.form_params['description'] %></p>
             <p>
-              <strong>Date: </strong><%= @events_single.start_date.strftime('%A, %B %e, %Y') %><br />
+              <strong>Date: </strong><%= @events_single.start_date? ? @events_single.start_date.strftime('%A, %B %e, %Y') : '-' %><br />
               <strong>Time: </strong><%= @events_single.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= @events_single.form_params['venue'] %><br />
             </p>
@@ -31,7 +31,7 @@
             <p><%= image_tag event.attachment.slider, class: 'th-no-hover lazyload' %></p>
             <p><%= event.form_params['description'] %></p>
             <p>
-              <strong>Date: </strong><%= event.start_date.strftime('%A, %B %e, %Y') %><br />
+              <strong>Date: </strong><%= event.start_date? ? event.start_date.strftime('%A, %B %e, %Y') : '-' %><br />
               <strong>Time: </strong><%= event.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= event.form_params['venue'] %><br />
             </p>

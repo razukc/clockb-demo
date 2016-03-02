@@ -1,4 +1,19 @@
 50.63.202.27
+50.63.202.11
+
+#1. We should have the ability to add images in the event slider, and services images at home page.
+
+#2. In the resources page, we should have ability to add image for blog article. Video and newsletter is not working.
+
+#3. Social media buttons should lead to new tab.
+
+#4. When clicking "Browse our events" button HTML code is being displayed.
+
+#5. We should have the ability to add employee images
+
+#6. In the regular and premium table in both home page and service page. In the regular section add "At no cost" next to go regular button. And for the go premium button add " Available from July, Book your interest, Now"
+
+#7. When we add events from backend the website doesn't function.
 
 <% @profiles.each do |k, v| %>
 <% k['inputs'].each do |l, m| %>
