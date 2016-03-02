@@ -94,4 +94,5 @@ config.action_mailer.smtp_settings = {
   :domain         => 'heroku.com',
   :enable_starttls_auto => true
 }
+config.serve_static_assets = true
 end
