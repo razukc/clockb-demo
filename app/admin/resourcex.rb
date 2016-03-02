@@ -11,7 +11,7 @@ index download_links: false do
 	column :created_at
 	actions
 end
-permit_params :category, :add_to_site, :attach, :attach_cache, :remove_attach, meta: []
+permit_params :category, :add_to_site, :attach, :attach_cache, :remove_attach, :image, :image_cache, :remove_image, meta: []
 form :html => { :multipart => true } do |f|
 	f.semantic_errors *f.object.errors.keys
 	if f.object.new_record? 
@@ -33,7 +33,7 @@ controller do
 	def update
 		@resourcex = Resourcex.find_by_id(params[:id])
 		if @resourcex.update(resourcex_params)
-		flash[:success] = "User has been successfully updated." 
+		flash[:success] = "Resource has been successfully updated." 
 		redirect_to admin_resources_path
 		else
 		messages = @resourcex.errors.full_messages.map { |msg| msg }.join
@@ -53,7 +53,8 @@ controller do
 	end
 	def resourcex_params
 		meta_keys = params[:resourcex][:meta] ? params[:resourcex][:meta].keys : []
-		params.require(:resourcex).permit(:category, :add_to_site, :attach, :attach_cache, :remove_attach, meta: meta_keys)
+		params.require(:resourcex).permit(:category, :add_to_site, :attach, :attach_cache, :remove_attach,
+			:image, :image_cache, :remove_image, meta: meta_keys)
 	end
 end
 end

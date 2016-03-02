@@ -23,6 +23,9 @@
           <% when 'blog' %>
           	<li>
           		<h5><%= resource.meta['title'] %></h5>
+              <% if resource.image? %>
+              <%= image_tag resource.image, class: 'th-no-hover', alt: resource.meta["title"] %>
+              <% end %>
             	<p><%= simple_format resource.meta['body'] %></p>
             	<hr />
             </li>
@@ -36,7 +39,7 @@
           <% when 'video' %>
           	<li>
           		<h5><%= resource.meta['title'] %></h5>
-            	<div class="flex-video"><%= simple_format resource.meta['embed_code'] %></div>
+            	<div class="flex-video"><%= content_tag (resource.meta['embed_code']) %></div>
             	<hr />
             </li>
           <% end %>

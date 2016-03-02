@@ -3,7 +3,8 @@ f.inputs "Video" do
 	f.input :category, as: :hidden
 	f.fields_for :meta,(OpenStruct.new(Resourcex.find_by_id(params[:id]).meta) unless f.object.new_record?) do |i|
 		i.input :title
-		i.input :embed_code, as: :text
+		i.input :description, as: :text, input_html: {rows: 6}
+		i.input :embed_code, as: :text, input_html: {rows: 3}
 	end
 	f.input :add_to_site
 end
