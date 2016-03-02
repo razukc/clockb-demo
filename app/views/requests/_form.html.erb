@@ -64,7 +64,7 @@
 		<%= f.fields_for :form_params do |r| %>
 			<%= r.text_field :name, :placeholder => 'Name', required: true %>
 			<%= r.text_field :company, :placeholder => 'Company' %>
-			<%= r.phone_field :phone, :placeholder => 'Phone', required: true %>
+			<%= r.telephone_field :phone, :placeholder => 'Phone', required: true %>
 			<%= r.email_field :email, :placeholder => 'Email', required: true %>
 		<% end %>
 		<% end %>

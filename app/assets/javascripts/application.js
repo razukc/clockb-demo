@@ -17,3 +17,9 @@
 //= require jquery.turbolinks
 //= require_tree .
 
+  $(document).ready(function(){
+    $("input[type=radio][name='user[inputs][company]']").change(function() { 
+      $("input[type=text][name='user[inputs][person_in_charge]']").toggle();
+      $("label[for='user_inputs_person_in_charge']").toggle();
+    } );
+  });
