@@ -93,7 +93,7 @@
       <% if @services_images.consulting.blank? %>
       <%= image_tag 'consulting.png', class: "th-no-hover lazyload" %>
       <% else %>
-      <%= image_tag @services_images.consulting, class: "th-no-hover lazyload" %>
+      <%= image_tag @services_images.consulting.to_s, class: "th-no-hover lazyload" %>
       <% end %>
     </div><br>
    <div class="clearfix">
