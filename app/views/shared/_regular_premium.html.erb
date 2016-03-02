@@ -1,5 +1,4 @@
-
-    <div class="row large-collapse medium-collapse small-collapse" style="margin-left:0px;">
+<div class="row large-collapse medium-collapse small-collapse" style="margin-left:0px;margin-right:0px;">
     <div class="large-6 columns">
     <ul class="pricing-table low-padding" style="border-right:none; padding:0.3rem;">
       <li class="bullet-item" style="text-align: center;"><h6>Regular</h6></li>
@@ -13,7 +12,19 @@
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
-      <li class="bullet-item"><a href="<%= new_request_path %>?_x=meeting&amp;_y=regular-package" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button info tiny">Go Regular</a></li>
+      <li class="bullet-item">
+        <% if user_signed_in? %>
+        <div id="myModal-content2" class="reveal-modal small" data-reveal>
+          <div class="panel" style="margin-top:25px;">You are already signed up for Regular Package</div>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+        <a href="#" id="myModal-button" data-reveal-id="myModal-content2" class="button info tiny">Go Regular</a>
+        <% else %>
+        <a href="<%= sign_up_path %>" class="button info tiny">Go Regular</a>
+        <% end %>
+        <div class="clearfix subheader">"At no cost"</div>
+      </li>
+      <li class="bullet-item"></li>
     </ul>
     </div>
     <div class="large-6 columns">
@@ -30,7 +41,25 @@
         <li class="bullet-item">Request for meet ups with professionals</li>
         <li class="bullet-item">Schedule online meetings</li>
         <li class="bullet-item">Attend events online</li>
-        <li class="bullet-item"><a href="<%= new_request_path %>?_x=meeting&amp;_y=premium-package" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button info tiny">Go Premium</a></li>
+        <li class="bullet-item">
+          <% if user_signed_in? %>
+          <% if current_user.premium? %>
+          <div id="myModal-content3" class="reveal-modal small" data-reveal>
+            <div class="panel" style="margin-top:25px;">You are already signed up for Premium Package</div>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
+          <a href="#" id="myModal-button" data-reveal-id="myModal-content3" class="button info tiny">Go Premium</a>
+          <% end %>
+          <% if current_user.regular? %>
+          <a href="<%= new_request_path %>?_x=premium&amp;_z=<%= current_user.id %>"  id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button info tiny">Go Premium</a>
+          <% end %>
+          <% else %>
+          <a href="<%= sign_up_path %>" class="button info tiny">Go Regular</a>
+          <% end %>
+          <div class="clearfix subheader">"Available from July, Book your interest, Now"</div>
+        </li>
+        <li class="bullet-item"></li>
+        
       </ul>
-    </div>
-    </div>
+</div>
+</div>

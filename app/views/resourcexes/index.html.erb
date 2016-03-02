@@ -36,7 +36,7 @@
           <% when 'video' %>
           	<li>
           		<h5><%= resource.meta['title'] %></h5>
-            	<p><%= simple_format resource.meta['embed_code'] %></p>
+            	<div class="flex-video"><%= simple_format resource.meta['embed_code'] %></div>
             	<hr />
             </li>
           <% end %>
