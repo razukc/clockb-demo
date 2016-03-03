@@ -1,8 +1,8 @@
-<% if @upcoming_main.blank? && @upcoming_weekly.blank? %>
+<% if @upcoming_main.nil? && @upcoming_weekly.nil? %>
   <em>We are tailoring our events for you. Sign-up and be the first to know about our events.</em>
   <% else %>
 
-
+<% if @upcoming_main %>
 <article class="event columns" >
         <div class="event-date">
           <p class="event-month"><%= @upcoming_main.start_date? ? @upcoming_main.start_date.strftime('%b') : '-' %></p>
@@ -14,6 +14,9 @@
         </div>
 </article>
 
+<% end %>
+
+<% if @upcoming_weekly %>
 
 <article class="event columns" >
         <div class="event-date">
@@ -27,4 +30,5 @@
 </article>
       
 
+<% end %>
 <% end %>
