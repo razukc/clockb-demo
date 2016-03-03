@@ -71,7 +71,13 @@
   </div>
     <div class="medium-6 large-4 columns">
     <div id="image">
+      <% if @next_event %>
+      <% if @next_event.image.blank? %>
       <%= image_tag "next-events.png", class: 'th-no-hover lazyload', style: 'height:258px;width:100%;' %>
+      <% else %>
+      <%= image_tag @next_event.image_url, class: 'th-no-hover lazyload', style: 'height:258px;width:100%;' %>
+      <% end %>
+      <% end %>
     </div>
     
   </div>
