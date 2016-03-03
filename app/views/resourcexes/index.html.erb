@@ -27,7 +27,7 @@
               <% if resource.image? %>
               <%= image_tag resource.image_url, class: 'th-no-hover', alt: resource.meta["title"] %>
               <% end %>
-            	<p><%= simple_format resource.meta['body'] %></p>
+            	<div class="readmore"><p><%= simple_format resource.meta['body'] %></p></div>
             	<hr />
             </li>
           <% when 'newsletter' %>
@@ -39,8 +39,9 @@
             </li>
           <% when 'video' %>
           	<li>
-          		<h3><%= resource.meta['title'] %></h3>
+              <h3><%= resource.meta['title'] %></h3>
             	<div class="flex-video"><%= content_tag (resource.meta['embed_code']) %></div>
+              <p><%= resource.meta['description'] %></p>
             	<hr />
             </li>
           <% end %>
