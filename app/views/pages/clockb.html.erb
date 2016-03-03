@@ -80,10 +80,10 @@
 		<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-3"> 
 			<% @know_the_team.each do |ktt| %>
 			<li class="th-no-hover photo">
-				<% if ktt.employee_documents.photo[0].nil? %>
+				<% if ktt.photo? %>
 				<%= image_tag "500.png", class: 'lazyload' %>
 				<% else %>
-				<%= image_tag ktt.employee_documents.photo[0].attachment.employee_photo, class: 'lazyload' %>
+				<%= image_tag ktt.photo_url(:thumb), class: 'lazyload' %>
 				<% end %>
 				<p class="caption"><%= ktt.inputs['name'] %><br /><%= ktt.inputs['job_title'] %></p>
 			</li>

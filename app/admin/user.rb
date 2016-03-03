@@ -38,7 +38,7 @@ ActiveAdmin.register User do
 								k
 								end
 								td do
-								v.titleize
+								v
 								end
 							end
 						end
