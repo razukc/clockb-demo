@@ -90,20 +90,11 @@
   <div class="medium-6 large-6 columns">
     <a data-magellan-destination="services" name="services"></a>
     <div class="clearfix">
-
-      <% if !@services_images.blank? %>
-      <% @consulting = @services_images.consulting %>
-      <% @outsourcing = @services_images.outsourcing %>
-      <% @networking = @services_images.networking %>
-      <% @innovation = @services_images.innovation %>
+      <% if @services_images && @services_images.consulting.blank? %>
+      <%= image_tag 'consulting.png', class: "th-no-hover lazyload" %>
       <% else %>
-      <% @consulting = 'consulting.png' %>
-      <% @outsourcing = 'outsourcing.png' %>
-      <% @networking = 'networking.png' %>
-      <% @innovation = 'innovation.png' %>
+      <%= image_tag @services_images.consulting, class: "th-no-hover lazyload" %>
       <% end %>
-
-      <%= image_tag @consulting, class: "th-no-hover lazyload" %>
     </div><br>
    <div class="clearfix">
     <h4>Consulting</h4>
@@ -111,21 +102,33 @@
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-
-      <%= image_tag @outsourcing, class: "th-no-hover lazyload" %>
+      <% if @services_images && @services_images.outsourcing.blank? %>
+      <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
+      <% else %>
+      <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+      <% end %>
     </div><br>
     <h4>Outsourcing</h4>
     <div class="clearfix"><p class="text-center">”If you keep doing what you’ve always done, you will never be more than what you already are.”&nbsp;<a href="<%= services_path << '#outsourcing' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-      <%= image_tag @networking, class: "th-no-hover lazyload" %>
+      <% if @services_images && @services_images.networking.blank? %>
+      <%= image_tag 'networking.png', class: "th-no-hover lazyload" %>
+      <% else %>
+      <%= image_tag @services_images.networking, class: "th-no-hover lazyload" %>
+      <% end %>
     </div><br>
     <h4>Networking</h4>
     <div><p class="text-center">“Invaluable connection isn’t impossible, it’s just that easy get lost in the city of millions.”&nbsp;<a href="<%= services_path << '#networking' %>">Read more</a></p><br></div>
   </div>
   <div class="medium-6 large-6 columns">
-      <%= image_tag @innovation, class: "th-no-hover lazyload" %>
+    <div class="clearfix">
+      <% if @services_images && @services_images.innovation.blank? %>
+      <%= image_tag 'innovation.png', class: "th-no-hover lazyload" %>
+      <% else %>
+      <%= image_tag @services_images.innovation, class: "th-no-hover lazyload" %>
+      <% end %>
     </div><br>
     <h4>Innovation</h4>
     <p class="text-center">“Enter the searching mode and never exit; because if you keep searching, you will always discover something new and startling.”&nbsp;<a href="<%= services_path << '#innovation' %>">Read more</a></p>
