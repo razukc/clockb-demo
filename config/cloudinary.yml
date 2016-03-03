@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hn61epjje
+  api_key: '784927338631614'
+  api_secret: r2uwdp4tKcrr6FT172lF35LYsQI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hn61epjje
+  api_key: '784927338631614'
+  api_secret: r2uwdp4tKcrr6FT172lF35LYsQI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hn61epjje
+  api_key: '784927338631614'
+  api_secret: r2uwdp4tKcrr6FT172lF35LYsQI
+  enhance_image_tag: true
+  static_image_support: false
