@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302200449) do
+ActiveRecord::Schema.define(version: 20160303141641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,10 @@ ActiveRecord::Schema.define(version: 20160302200449) do
 
   add_index "milestones", ["client_id"], name: "index_milestones_on_client_id", using: :btree
   add_index "milestones", ["user_id"], name: "index_milestones_on_user_id", using: :btree
+
+  create_table "next_event_images", force: :cascade do |t|
+    t.string "image"
+  end
 
   create_table "program_schedules", force: :cascade do |t|
     t.text     "content"
