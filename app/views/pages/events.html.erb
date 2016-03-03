@@ -28,7 +28,7 @@
 				<% else %>
 				<% @slider.each do |e| %>
 			  <li>
-				<%= image_tag e.image, class: 'lazyload' %>
+				<%= image_tag e.image_url, class: 'lazyload' %>
 			    <% if e.caption? %>
 			    <div class="orbit-caption">
 			      <%= e.caption %>
