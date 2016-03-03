@@ -15,7 +15,7 @@ class HomePageSliderUploader < CarrierWave::Uploader::Base
   # def store_dir
   #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   # end
-  process :resize_to_fill => [1000, 500, 'North']
+  process :resize_to_fit => [1000, 500]
   version :thumb do
     process :resize_to_fit => [200, 150]
   end
