@@ -8,7 +8,10 @@
         <li class="heading" style="color:#e3e3e3;">Resources</li>
         <li class="divider"></li>
         <li><%= link_to "Blogs", resourcexes_path(:scope => 'blog') %></li>
+        <% @newsletters = Resourcex.newsletters %>
+        <% if @newsletters.any? %>
         <li><%= link_to "Newsletters", resourcexes_path(:scope => 'newsletter') %></li>
+        <% end %>
         <li><%= link_to "Videos", resourcexes_path(:scope => 'video') %></li>
         <li><%= link_to "All", resourcexes_path %></li>
       </ul>
@@ -27,7 +30,7 @@
               <% if resource.image? %>
               <%= image_tag resource.image_url, class: 'th-no-hover', alt: resource.meta["title"] %>
               <% end %>
-            	<div class="readmore"><p><%= simple_format resource.meta['body'] %></p></div>
+            	<div class="readmore"><%= simple_format resource.meta['body'] %></div>
             	<hr />
             </li>
           <% when 'newsletter' %>
