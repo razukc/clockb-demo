@@ -1,4 +1,4 @@
-<% if @upcoming_main && @upcoming_weekly %>
+<% if @upcoming_main.blank? && @upcoming_weekly.blank? %>
   <em>We are tailoring our events for you. Sign-up and be the first to know about our events.</em>
   <% else %>
 
