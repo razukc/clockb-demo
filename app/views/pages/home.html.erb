@@ -90,10 +90,12 @@
   <div class="medium-6 large-6 columns">
     <a data-magellan-destination="services" name="services"></a>
     <div class="clearfix">
-      <% if @services_images && @services_images.consulting.blank? %>
-      <%= image_tag 'consulting.png', class: "th-no-hover lazyload" %>
-      <% else %>
-      <%= image_tag @services_images.consulting, class: "th-no-hover lazyload" %>
+      <% if @services_images %>
+        <% if @services_images.consulting.blank? %>
+        <%= image_tag 'consulting.png', class: "th-no-hover lazyload" %>
+        <% else %>
+        <%= image_tag @services_images.consulting, class: "th-no-hover lazyload" %>
+        <% end %>
       <% end %>
     </div><br>
    <div class="clearfix">
@@ -102,10 +104,12 @@
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-      <% if @services_images && @services_images.outsourcing.blank? %>
-      <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
-      <% else %>
-      <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+      <% if @services_images %>
+        <% if @services_images.outsourcing.blank? %>
+        <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
+        <% else %>
+        <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+        <% end %>
       <% end %>
     </div><br>
     <h4>Outsourcing</h4>
@@ -113,10 +117,12 @@
   </div>
   <div class="medium-6 large-6 columns">
     <div>
-      <% if @services_images && @services_images.networking.blank? %>
-      <%= image_tag 'networking.png', class: "th-no-hover lazyload" %>
-      <% else %>
-      <%= image_tag @services_images.networking, class: "th-no-hover lazyload" %>
+      <% if @services_images %>
+        <% if @services_images.outsourcing.blank? %>
+        <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
+        <% else %>
+        <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+        <% end %>
       <% end %>
     </div><br>
     <h4>Networking</h4>
@@ -124,10 +130,12 @@
   </div>
   <div class="medium-6 large-6 columns">
     <div class="clearfix">
-      <% if @services_images && @services_images.innovation.blank? %>
-      <%= image_tag 'innovation.png', class: "th-no-hover lazyload" %>
-      <% else %>
-      <%= image_tag @services_images.innovation, class: "th-no-hover lazyload" %>
+      <% if @services_images %>
+        <% if @services_images.innovation.blank? %>
+        <%= image_tag 'innovation.png', class: "th-no-hover lazyload" %>
+        <% else %>
+        <%= image_tag @services_images.innovation, class: "th-no-hover lazyload" %>
+        <% end %>
       <% end %>
     </div><br>
     <h4>Innovation</h4>
