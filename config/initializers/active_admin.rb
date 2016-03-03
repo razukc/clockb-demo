@@ -1,12 +1,10 @@
 ActiveAdmin.setup do |config|
-  # config.authentication_method = :authenticate_admin_user!
-  # config.current_user_method = :current_admin_user
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Clock b"
+  config.site_title = "Clockb"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -56,7 +54,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
   #
@@ -88,7 +86,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  # config.current_user_method = :current_admin_user
+  config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
@@ -137,7 +135,7 @@ ActiveAdmin.setup do |config|
   #
   # Enable and disable Batch Actions
   #
-  # config.batch_actions = false
+  config.batch_actions = true
 
   # == Controller Filters
   #
@@ -216,13 +214,11 @@ ActiveAdmin.setup do |config|
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
-    config.namespace :admin do |admin|
-      # admin.build_menu :default do |menu|
-      admin.build_menu :utility_navigation do |menu|
-        menu.add label: "Open Site", url: "/", 
-        html_options: { target: :blank, style: 'background-color:#e3e3e3;color:#4D4D4D;' }
-      end
-    end
+  #   config.namespace :admin do |admin|
+  #     admin.build_menu :default do |menu|
+  #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+  #     end
+  #   end
 
   # == Download Links
   #
@@ -262,5 +258,5 @@ ActiveAdmin.setup do |config|
   # hand side with a filter for each attribute of the registered model.
   # You can enable or disable them for all resources here.
   #
-  # config.filters = false
+  # config.filters = true
 end

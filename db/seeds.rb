@@ -26,4 +26,7 @@
 # automatically build links at the top of the default index page.",
 # 		user_id: 366
 #        )
-#      end
+#      endAdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+# AdminUser.create(email: 'admin@clockb.com', encrypted_password: 'boomon001')
+Admin.new({ :email => 'admin@clockb.com', :password => 'boomon001', :password_confirmation => 'boomon001'}).save
