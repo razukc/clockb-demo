@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class HomePageSliderUploader < CarrierWave::Uploader::Base
-  # include Cloudinary::CarrierWave
+  include Cloudinary::CarrierWave
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
