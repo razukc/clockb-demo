@@ -43,7 +43,9 @@ class PagesController < ApplicationController
   end
 
   def services
-  	
+  	respond_to do |format|
+      format.html {}
+    end
   end
 
   def careers
