@@ -15,6 +15,7 @@ scope :webinars, -> {joins(:meetups).where(:usermeetups => {webinar: true}).dist
 scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct}
 
 mount_uploader :attachment, DocumentUploader
+mount_uploader :photo, PhotoUploader
 
 
 devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable

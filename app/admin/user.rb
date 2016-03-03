@@ -328,12 +328,13 @@ ActiveAdmin.register User do
 			inputs_keys = params[:user][:inputs].keys
 			params.require(:user).permit(:email, 
 			:attachment, :attachment_cache, :remove_attachment,
+			:photo, :photo_cache, :remove_photo,
 			milestones_attributes: [:id, :content, :achieved, :_destroy],
 			services_catereds_attributes: [:id, :content, :_destroy],
 			program_schedules_attributes: [:id, :content, :_destroy],
 			schedule_for_meetings_attributes: [:id, :content, :_destroy],
 			tasks_attributes: [:id, :content, :status, :schedule, :_destroy],
-			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache, :photo, :photo_cache],
+			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache],
 			inputs: inputs_keys)
 		end
 	end
