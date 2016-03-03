@@ -1,8 +1,8 @@
     $(function(){
       setTimeout(function(){
         $('.readmore').readmore({
-          moreLink: '<a href="#" class="button tiny info right clearfix" style="width:auto;">Read More</a>',
-          lessLink: '<a href="#" class="button tiny info right clearfix" style="width:auto;">Close</a>',
+          moreLink: '<a href="#" class="button tiny info right clearfix" style="width:auto;margin-top:10px;">Read More</a>',
+          lessLink: '<a href="#" class="button tiny info right clearfix" style="width:auto;margin-top:10px;">Close</a>',
           afterToggle: function(trigger, element, expanded) {
               if(expanded){
 
