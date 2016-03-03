@@ -1,7 +1,7 @@
-<% if @upcoming_main.nil? && @upcoming_weekly.nil? %>
+<% if @upcoming_main && @upcoming_weekly %>
   <em>We are tailoring our events for you. Sign-up and be the first to know about our events.</em>
   <% else %>
-<%# @upcoming_one_main_event.each do |event| %>
+
 
 <article class="event columns" >
         <div class="event-date">
@@ -25,8 +25,6 @@
           <%= link_to 'View Details', event_browse_path(@upcoming_weekly), class: 'rsvp button info tiny' %> 
         </div>
 </article>
-
-      <%# end %>
       
 
 <% end %>
