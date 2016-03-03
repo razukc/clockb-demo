@@ -30,7 +30,7 @@
       <%= render 'layouts/messages' %>
     </div>
     <a data-magellan-destination="our-company" name="our-company"></a>
-		<%= image_tag "clockb_page.jpg", class: 'th-no-hover lazyload', style: "width: 100%;" %>
+		<%= image_tag "http://res.cloudinary.com/hn61epjje/image/upload/v1457021975/Stand_Out_o7hg1g.jpg", class: 'th-no-hover lazyload', style: "width: 100%;" %>
 		
 		
 		<!-- <h2>Company Profile</h2> -->
@@ -102,12 +102,14 @@
 		<div class="panel"><blockquote class="text-justify" style="color:#666 !important;">Clock b is committed to empower businesses through our pragmatic and focused services to quickly deliver the clients’ needs.  We identify the exceptional talents in the markets and join forces with them to bring you the best and focused solutions. Our diversified networking of professionals from different backgrounds and disciples is what makes our service such craftily well-built.<cite>Dilli Raj Joshi, Director</cite></blockquote></div>
 		<hr>
 		<a  data-magellan-destination="experts-perspective" name="experts-perspective"></a>
+<div class="hide">
 		<h4>Experts' Perspective</h4>
 		<p>{{Text}}</p>
 		<hr>
+		</div>
 		<a  data-magellan-destination="clients-perspective" name="clients-perspective"></a>
 		<h4>Clients' Perspective</h4>
-		<p>{{Text}}</p>
+		<div class="panel"><blockquote class="text-justify" style="color:#666 !important;">I found it helpful. It was more like getting a business partner. As Nepal’s business industry is bit different from other countries so, the insight information from professionals was extremely useful. Started as professional business consulting, and then developed special and personal relationship which remains warm and positive.<cite>Alexander Yoon, Programme Manager, Social Enterprise Activation Center</cite></blockquote></div>
 		<hr />
 		<%= render partial: 'layouts/side_footer' %>
 	</div>
