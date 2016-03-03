@@ -18,5 +18,6 @@ form :html => { :multipart => true } do |f|
 	  f.input :image_cache, as: :hidden
 	end	
 	end
+	f.actions
 end
 end
