@@ -94,7 +94,7 @@
         <% if @services_images.consulting.blank? %>
         <%= image_tag 'consulting.png', class: "th-no-hover lazyload" %>
         <% else %>
-        <%= image_tag @services_images.consulting, class: "th-no-hover lazyload" %>
+        <%= image_tag @services_images.consulting_url, class: "th-no-hover lazyload" %>
         <% end %>
       <% end %>
     </div><br>
@@ -108,7 +108,7 @@
         <% if @services_images.outsourcing.blank? %>
         <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
         <% else %>
-        <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+        <%= image_tag @services_images.outsourcing_url, class: "th-no-hover lazyload" %>
         <% end %>
       <% end %>
     </div><br>
@@ -118,10 +118,10 @@
   <div class="medium-6 large-6 columns">
     <div>
       <% if @services_images %>
-        <% if @services_images.outsourcing.blank? %>
-        <%= image_tag 'outsourcing.png', class: "th-no-hover lazyload" %>
+        <% if @services_images.networking.blank? %>
+        <%= image_tag 'networking.png', class: "th-no-hover lazyload" %>
         <% else %>
-        <%= image_tag @services_images.outsourcing, class: "th-no-hover lazyload" %>
+        <%= image_tag @services_images.networking_url, class: "th-no-hover lazyload" %>
         <% end %>
       <% end %>
     </div><br>
@@ -134,7 +134,7 @@
         <% if @services_images.innovation.blank? %>
         <%= image_tag 'innovation.png', class: "th-no-hover lazyload" %>
         <% else %>
-        <%= image_tag @services_images.innovation, class: "th-no-hover lazyload" %>
+        <%= image_tag @services_images.innovation_url, class: "th-no-hover lazyload" %>
         <% end %>
       <% end %>
     </div><br>
