@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class NextImageUploader < CarrierWave::Uploader::Base
+class NextEventImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   # Include RMagick or MiniMagick support:
