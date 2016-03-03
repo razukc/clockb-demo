@@ -83,7 +83,9 @@
 				<% if ktt.photo.blank? %>
 				<%= image_tag "500.png", class: 'lazyload' %>
 				<% else %>
+				<div style="width:177px;height:177px;overflow:hidden;">
 				<%= image_tag ktt.photo_url(:thumb), class: 'lazyload' %>
+				</div>
 				<% end %>
 				<p class="caption"><%= ktt.inputs['name'] %><br /><%= ktt.inputs['job_title'] %></p>
 			</li>
