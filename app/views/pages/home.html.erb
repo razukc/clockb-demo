@@ -90,7 +90,8 @@
   <div class="medium-6 large-6 columns">
     <a data-magellan-destination="services" name="services"></a>
     <div class="clearfix">
-      <% if @services_images? %>
+
+      <% if !@services_images.blank? %>
       <% @consulting = @services_images.consulting %>
       <% @outsourcing = @services_images.outsourcing %>
       <% @networking = @services_images.networking %>
@@ -98,8 +99,8 @@
       <% else %>
       <% @consulting = 'consulting.png' %>
       <% @outsourcing = 'outsourcing.png' %>
-      <% @networking = 'networking' %>
-      <% @innovation = 'innovation' %>
+      <% @networking = 'networking.png' %>
+      <% @innovation = 'innovation.png' %>
       <% end %>
 
       <%= image_tag @consulting, class: "th-no-hover lazyload" %>
