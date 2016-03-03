@@ -25,7 +25,7 @@
           	<li>
           		<h5><%= resource.meta['title'] %></h5>
               <% if resource.image? %>
-              <%= image_tag resource.image, class: 'th-no-hover', alt: resource.meta["title"] %>
+              <%= image_tag resource.image_url, class: 'th-no-hover', alt: resource.meta["title"] %>
               <% end %>
             	<p><%= simple_format resource.meta['body'] %></p>
             	<hr />
