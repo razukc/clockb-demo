@@ -19,7 +19,10 @@ form :html => { :multipart => true } do |f|
 			f.input :category, as: :radio, include_blank: false,
 			collection: [["Blog", "blog",{ :checked => true }],["Newsletter","newsletter"],["Video","video"]]
 		end
-	f.actions
+	f.actions do
+		f.action :submit, label: (f.object.new_record? ? "Create Resource" : "Save changes")
+		f.action :cancel, label: "Cancel"
+	end
 	else
 		f.render f.object.category
 	end

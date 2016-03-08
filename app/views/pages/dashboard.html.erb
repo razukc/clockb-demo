@@ -1,155 +1,190 @@
 <%= content_for :page_title, 'Dashboard' %>
+<div class="contain-to-grid" style="background-color:#008CBA;color:white;padding:20px;">
+	<div class="row">
+		<div class="large-12 columns">
+			<table width="50%">
+				<thead>
+					<tr>
+						<th colspan="2"><h5>Client Information</h5></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="subheader">Name</th>
+						<td><%= @user.inputs['name'] %></td>
+					</tr>
+					<% if @user.company? %>
+					<tr>
+						<th class="subheader">Person In Charge</th>
+						<td><%= @user.inputs['person_in_charge'] %></td>
+					</tr>
+					<% end %>
+					<tr>
+						<th class="subheader">Affiliated Date</th>
+						<td><%= @user.inputs['affiliated_date'] %></td>
+					</tr>
+					<tr>
+						<th class="subheader">Occupation/Business</th>
+						<td><%= @user.inputs['profile'] %></td>
+					</tr>
+					<tr>
+						<th class="subheader">Plan</th>
+						<td><%= @user.inputs['plan'].humanize %></td>
+					</tr>
+					<tr>
+						<th class="subheader">Contact</th>
+						<td><%= @user.inputs['contact'] %></td>
+					</tr>
+					<tr>
+						<th class="subheader">Email</th>
+						<td><%= @user.email %></td>
+					</tr>
+				</tbody>
+			</table>	
+		</div>
+	</div>
+</div>
+<div class="contain-to-grid" style="background-color:#e3e3e3;padding:20px;">
 <div class="row">
-<div class="large-12 columns">
-<p>&nbsp;</p>
-<h5 style="text-decoration: underline;">Client Information</h5>
-<ul>
-<% @user.inputs.each do |k,v| %>
-<li><strong><%= k.titleize %>: </strong><%= v.titleize %></li>
-<% end %>
-</ul>	
-</div>
-<hr />
-<div class="row">
-<div class="large-6 columns">
-<ul class="example-orbit" data-orbit>
-<% if @adverts.empty? %>
-<li>
-<%= image_tag "500x300.png", class: 'lazyload' %>
-<div class="orbit-caption">
-Pro User advert
-</div>
-</li>
-<% else %>
-<% @adverts.each do |advert| %>
-<li>
-<%= image_tag advert.image.advert, class: 'lazyload' %>
-<% if !advert.content.empty? %>
-<div class="orbit-caption">
-<%= advert.content %>
-</div>
-<% end %>
-</li>
-<% end %>
-<% end %>
-</ul>
-</div>
-<!-- Networking Profiles -->
-<div id="myModal-content" class="reveal-modal small" data-reveal></div>
-<div id="myModal-networking" class="reveal-modal small" data-reveal></div>
-<div class="large-6 columns">
-<table width="100%">
-<thead>
-<tr>
-<th colspan="2">Networking Profiles</th>
-</tr>
-</thead>
-
-<tbody>
-<% @profiles.each do |k, v| %>
-<% k != "" ? k = k : k = "Uncategorized" %>
-<tr>
-
-
-<td>
-<a href="#" data-reveal-id="myModal-networking" data-reveal-ajax="<%=  profiles_path(k: k) %>" class="" data-type="JSON">
-<%= k %>
-</a>
-
-</td>
-<td>(<%= v.size %>)</td>
-
-
-</tr>
-
-<% end %>
-</tbody>
-
-</table>
-</div>
-</div>
-<hr />
-<div class="row">
-<div class="large-4 columns">
-<div class="row">
-<div class="large-12 medium-6 columns">
-<h5>Events Gallery</h5>
-<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing> 
-<% if @gallery.empty? %>
-<li>
-<a><%= image_tag "190.png", class: 'th-no-hover lazyload' %></a>
-</li>
-<% else %>
-<% @gallery.each do |g| %>
-<li>
-<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
-</li>
-<% end %>
-<% end %>
-</ul><hr />
-</div>
-<div class="large-12 medium-6 columns">
-<h5>Upcoming events</h5>
-<%= render 'layouts/upcoming_events' %>
-<hr />
-</div>
-<!-- Advert -->
-<div class="columns">
-<div id="myModal-advert" class="reveal-modal small" data-reveal></div>
-<div id="request-for-x" class="clearfix panel">
-<a href="#" data-reveal-id="myModal-advert" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
-</div>
-</div>
-</div>
-</div>
-<div class="large-4 columns">
-<h5>Webinar</h5>
-</div>
-
-<div class="large-4 columns">
-<% if @user.client? && @user.premium? %>
-<h5>Blog</h5>
-<% else %>
-<h5>Networking Benefits with Clock b</h5>
-<ul>
-<li>Promote yourself or your business</li>
-<li>Make highly influential connection</li>
-<li>Explore the secreted opportunities</li>
-<li>Share and upgrade your knowledge</li>
-<li>Generate referrals</li>
-<li>Make friends for the future</li>
-<li>Generate more business by raising your profile</li>
-<li>Get the help of technology </li>
-</ul>
-<% end %>
-</div>
-</div>
-<hr />
-<div class="large-6 columns">
-<% if @user.client? %>
-<h5>Program schedules</h5>
-<ul>
-<li><%= @user.inputs['program_schedules'] %></li>
-</ul>
-<% end -%>
-<% if @user.alumni? %>
-<h5>Recommended Services</h5>
-<%= simple_format @user.inputs['recommended_services'] %>
-<% end -%>
-</div>
-
-<div class="large-6 columns">
-<% if @user.client? || @user.alumni? %>
-<h5>Feedbacks</h5>
-<%= form_for FeedbackFromUser.new, remote: true, method: :post do |f| %>
-<%= f.text_area :feedback, rows: 6 %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit "Submit", class: 'button secondary small right'%>
-<% end %>
-<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
-<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
-<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
-
-<% end %>
+		<div class="large-6 columns">
+			<ul class="example-orbit" data-orbit>
+				<% if @adverts.empty? %>
+				<li>
+					<%= image_tag "500x300.png", class: 'lazyload' %>
+					<div class="orbit-caption">
+						Pro User advert
+					</div>
+				</li>
+				<% else %>
+				<% @adverts.each do |advert| %>
+				<li>
+					<%= image_tag advert.image.advert, class: 'lazyload' %>
+					<% if !advert.content.empty? %>
+					<div class="orbit-caption">
+						<%= advert.content %>
+					</div>
+					<% end %>
+				</li>
+				<% end %>
+				<% end %>
+			</ul>
+		</div>
+		<!-- Networking Profiles -->
+		<div id="myModal-content" class="reveal-modal small" data-reveal></div>
+		<div id="myModal-networking" class="reveal-modal small" data-reveal></div>
+		<div class="large-6 columns">
+			<table width="100%">
+				<thead>
+					<tr>
+						<th colspan="2"><h5>Networking Profiles</h5></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @profiles.each do |k, v| %>
+					<% k != "" ? k = k : k = "Uncategorized" %>
+					<tr>
+						<td>
+							<a href="#" data-reveal-id="myModal-networking" data-reveal-ajax="<%=  profiles_path(k: k) %>" class="" data-type="JSON">
+								<%= k %>
+							</a>
+						</td>
+						<td>(<%= v.size %>)</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	<hr />
+	<div class="row">
+		<div class="large-4 columns">
+			<div class="row">
+				<div class="large-12 medium-6 columns">
+					<h5>Events Gallery</h5>
+					<ul class="small-block-grid-2 medium-block-grid-2 large-block-grid-2 clearing-thumbs" data-clearing>
+						<% if @gallery.empty? %>
+						<li>
+							<a><%= image_tag "190.png", class: 'th-no-hover lazyload' %></a>
+						</li>
+						<% else %>
+						<% @gallery.each do |g| %>
+						<li>
+							<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
+						</li>
+						<% end %>
+						<% end %>
+					</ul><hr />
+				</div>
+				<div class="large-12 medium-6 columns">
+					<h5>Upcoming events</h5>
+					<%= render 'layouts/upcoming_events' %>
+					<hr />
+				</div>
+				<!-- Advert -->
+				<div class="columns">
+					<div id="myModal-advert" class="reveal-modal small" data-reveal></div>
+					<div id="request-for-x" class="clearfix panel">
+						<a href="#" data-reveal-id="myModal-advert" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="large-4 columns">
+			<h5>Webinar</h5>
+		</div>
+		<div class="large-4 columns">
+			<% if @user.client? && @user.premium? %>
+			<h5>Blog</h5>
+				<% if @blogs.any? %>
+				<div class="panel">
+					<ul class="no-bullet change-color">
+						<% @blogs.each do |blog| %>
+							<li><%= link_to blog.meta['title'], resourcexes_path << '#' << blog.meta['title'].parameterize %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+			<% else %>
+			<h5>Networking Benefits with Clock b</h5>
+			<div class="panel">
+				<ul class="no-bullet change-color">
+					<li>Promote yourself or your business</li>
+					<li>Make highly influential connection</li>
+					<li>Explore the secreted opportunities</li>
+					<li>Share and upgrade your knowledge</li>
+					<li>Generate referrals</li>
+					<li>Make friends for the future</li>
+					<li>Generate more business by raising your profile</li>
+					<li>Get the help of technology </li>
+				</ul>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<hr />
+	<div class="large-6 columns">
+		<% if @user.client? %>
+		<h5>Program schedules</h5>
+		<ul>
+			<li><%= @user.inputs['program_schedules'] %></li>
+		</ul>
+		<% end -%>
+		<% if @user.alumni? %>
+		<h5>Recommended Services</h5>
+		<%= simple_format @user.inputs['recommended_services'] %>
+		<% end -%>
+	</div>
+	<div class="large-6 columns">
+		<% if @user.client? || @user.alumni? %>
+		<h5>Feedbacks</h5>
+		<%= form_for FeedbackFromUser.new, remote: true, method: :post do |f| %>
+		<%= f.text_area :feedback, rows: 6 %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit "Submit", class: 'button secondary small right'%>
+		<% end %>
+		<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
+		<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
+		<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
+		<% end %>
+	</div>
 </div>
 </div>

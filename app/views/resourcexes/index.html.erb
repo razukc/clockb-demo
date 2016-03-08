@@ -26,11 +26,12 @@
           <% case resource.category %>
           <% when 'blog' %>
           	<li>
+              <a name="<%= resource.meta['title'].parameterize %>"></a>
           		<h3><%= resource.meta['title'] %></h3>
               <% if resource.image? %>
               <%= image_tag resource.image_url, class: 'th-no-hover', alt: resource.meta["title"] %>
               <% end %>
-            	<div class="readmore"><%= simple_format resource.meta['body'] %></div>
+            	<div class="readmore"><div class="blog-post"><%= resource.meta['body'].html_safe %></div></div>
             	<hr />
             </li>
           <% when 'newsletter' %>

@@ -77,9 +77,16 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    ckeditor (4.1.6)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cloudinary (1.1.2)
       aws_cf_signer
       rest-client
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -280,6 +287,7 @@ DEPENDENCIES
   byebug
   cancan
   carrierwave
+  ckeditor
   cloudinary
   coffee-rails (~> 4.1.0)
   devise

@@ -127,6 +127,8 @@ f.actions
 end
 
 controller do
+after_destroy { |record| Usermeetup.destroy_all(:event => true, :user_x => record.id) }
+
 def update
 @event = Event.find_by_id(params[:id])
 if @event.update(event_params)

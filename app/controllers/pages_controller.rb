@@ -18,6 +18,7 @@ class PagesController < ApplicationController
     @upcoming_weekly = Event.m_upcoming_weekly
     @adverts = Advert.all
     @profiles = User.group_by_profiles
+    @blogs = Resourcex.by_category('blog');
     format.html {render :layout => 'application'}
     end
 
