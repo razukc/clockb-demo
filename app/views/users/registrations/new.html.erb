@@ -1,6 +1,11 @@
 <% content_for :page_title , 'Sign Up' %>
-<div class="row" style="margin-top:50px;">
-<div class="large-4 small-centered columns panel">
+<div class="contain-to-grid" style="background-color:#008CBA;">
+<div class="row" style="background-color:#008CBA;">
+      <!-- Flash messages -->
+    <div class="clearfix">
+      <%= render 'layouts/messages' %>
+    </div>
+<div class="large-6 small-centered columns panel">
   <ul class="side-nav">
     <li class="heading">sign up</li>
     <li class="divider"></li>
@@ -32,7 +37,7 @@
       <%= i.telephone_field :contact, required: true %>
     </div>
     <div class="field">
-      <%= i.label "Occupation/Business" %>
+      <%= i.label "Type of Business" %>
       <%= i.text_field :profile, required: true %>
     </div>
     <div class="field">
@@ -63,8 +68,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
   </div>
   <div class="actions clearfix">
+    <ul class="side-nav">
+    <li class="divider"></li>
+  </ul>
     <%= f.submit "Sign up", class:'button primary small right'%>
   </div>
 <% end %>
+</div>
 </div>
 </div>

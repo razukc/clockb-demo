@@ -2,7 +2,9 @@ class Event < ActiveRecord::Base
 	
 	scope :main, -> {where("form_params like ?", '%type: main%')}
 	scope :weekly, -> {where("form_params like ?", '%type: weekly%')}
+	
 	mount_uploader :attachment, SliderUploader
+	
 	# serialize [:form_params, :link_params, :extra_params], Hash
 	serialize :form_params, Hash
 	serialize :link_params, Hash

@@ -1,10 +1,11 @@
 <% content_for :page_title , 'Sign In' %>
-    <!-- Flash messages -->
+<div class="contain-to-grid full-height" style="background-color:#008CBA;">
+<div class="row" style="background-color:#008CBA;padding-top:50px;">
+      <!-- Flash messages -->
     <div class="clearfix">
       <%= render 'layouts/messages' %>
     </div>
-<div class="row" style="margin-top:50px;">
-<div class="large-4 small-centered columns panel">
+<div class="large-6 small-centered columns panel">
   <ul class="side-nav">
     <li class="heading">sign in</li>
     <li class="divider"></li>
@@ -35,5 +36,6 @@
 <% end %>
 <ul class="side-nav"><li class="divider"></li></ul>
 <%= render "users/shared/links" %>
+</div>
 </div>
 </div>

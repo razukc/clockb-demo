@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     dashboard_path
   end
 
+  def after_sign_up_path_for(resource)
+    complete_profile_profile
+  end
+
   protected
 
   def configure_permitted_parameters

@@ -20,16 +20,12 @@
 					</tr>
 					<% end %>
 					<tr>
-						<th class="subheader">Affiliated Date</th>
-						<td><%= @user.inputs['affiliated_date'] %></td>
-					</tr>
-					<tr>
 						<th class="subheader">Occupation/Business</th>
 						<td><%= @user.inputs['profile'] %></td>
 					</tr>
 					<tr>
 						<th class="subheader">Plan</th>
-						<td><%= @user.inputs['plan'].humanize %></td>
+						<td><%= @user.networker? ? @user.inputs['package_selected'].humanize : @user.inputs['plan'].humanize %></td>
 					</tr>
 					<tr>
 						<th class="subheader">Contact</th>

@@ -3,22 +3,22 @@ Rails.application.routes.draw do
    
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-   devise_for :users,
-          :controllers => { 
+  devise_for :users,
+        :controllers => { 
           :sessions => "users_sessions", 
           :registrations => "users_registrations", 
           :passwords => "users_passwords",
           # Proper invitations should be sent through the active_admin interface.
           :invitations => "users_invitations" # user_invitations_controller.rb
-          }
-          devise_scope :user do
-            get "/sign_in" => "users_sessions#new"
-            get "/sign_up" => "users_registrations#new"
-            delete "/sign_out" => "users_sessions#destroy"
-          end
-    ActiveAdmin.routes(self)
-    resources :resourcexes, except: [:create, :destroy, :update, :edit, :new, :show], path: "resources"
-    resources :usermeetups
+        }
+  devise_scope :user do
+    get "/sign_in" => "users_sessions#new"
+    get "/sign_up" => "users_registrations#new"
+    delete "/sign_out" => "users_sessions#destroy"
+  end
+  ActiveAdmin.routes(self)
+  resources :resourcexes, except: [:create, :destroy, :update, :edit, :new, :show], path: "resources"
+  resources :usermeetups
   resources :profiles
   resources :requests
   resources :adverts
@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
   get 'faqs', to: 'pages#faqs'
 
-  get 'test', to: 'pages#test'
+  get 'complete_profile', to: 'pages#complete_profile'
+  put 'complete_profile', to: 'pages#complete_profile'
   # resources :webinars
   # match '/party/:id', :to => 'webinars#party', :as => :party, :via => :get
   

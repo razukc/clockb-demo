@@ -1,10 +1,22 @@
 class PagesController < ApplicationController
   layout 'pages'
-  
+  def complete_profile
+    @user = current_user
+    if request.put?
+      if @user.update(complete_profile_params)
+        flash[:notice] = 'Profile was successfully updated'
+      else
+        flash[:notice] = 'Something went wrong. Please try again.'
+      end
+    end
+    respond_to do |format|
+      format.html { render 'complete_profile', :layout => 'application' }
+    end
+  end
   def test
     render "pages/test"
   end
-  before_action :authenticate_user! , only: [:dashboard]
+  before_action :authenticate_user! , only: [:dashboard, :complete_profile]
   def dashboard
     @user = current_user
     
@@ -67,5 +79,11 @@ class PagesController < ApplicationController
   def browse
     @events_single = Event.find_by_id(params[:id])
     @events_all = Event.all.order(:start_date)
+  end
+  private
+  def complete_profile_params
+    inputs_keys = params[:user][:inputs].keys
+    inputs_keys.push(:interested_in => [])
+    params.require(:user).permit(:interested_in, inputs: inputs_keys)
   end
 end

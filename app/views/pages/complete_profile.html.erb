@@ -1,0 +1,156 @@
+<% content_for :page_title , 'Complete Your Profile' %>
+<div class="contain-to-grid" style="background-color:#008CBA;">
+<div class="row" style="background-color:#008CBA;">
+      <!-- Flash messages -->
+    <div class="clearfix">
+      <%= render 'layouts/messages' %>
+    </div>
+<div class="large-6 small-centered columns panel">
+  <ul class="side-nav">
+    <li class="heading">complete your profile</li>
+    <li class="divider"></li>
+  </ul>
+<%= form_for(@user, url: complete_profile_path, html: { method: :put }) do |f| %>
+  <div class="fields_for">
+    <%= f.fields_for :inputs, (OpenStruct.new(current_user.inputs) ) do |i| %>
+    <%= i.hidden_field :type, value: 'networker' %>
+    <div class="field">
+      <%= i.radio_button :company, "company",  autofocus: true %>
+      <%= i.label :company_company, "Company" , class: 'inline' %>
+      <%= i.radio_button :company, "personal" %>
+      <%= i.label :company_personal, "Personal" %>
+    </div>
+    <br>
+    <div class="field">
+      <%= i.label :name %>
+      <%= i.text_field :name, required: true %>
+    </div>
+
+    <!-- Company -->
+    <div class="field">
+      <%= i.label :person_in_charge %>
+      <%= i.text_field :person_in_charge %>
+    </div>
+    <div class="field">
+      <%= i.label :company_address %>
+      <%= i.text_field :company_address %>
+    </div>
+    <div class="field">
+      <%= i.label :year_founded %>
+      <%= i.text_field :year_founded %>
+    </div>
+    <div class="field">
+      <%= i.label :number_of_employees %>
+      <%= i.text_field :number_of_employees %>
+    </div>
+    <div class="field">
+      <%= i.label :website %>
+      <%= i.text_field :website %>
+    </div>
+    <div class="field">
+      <%= i.label :contact_number %>
+      <%= i.telephone_field :contact_number, required: true %>
+    </div>
+    <div class="field">
+      <%= i.label "Select Package" %>
+      <%= i.radio_button :package_selected, "regular" %>
+      <%= i.label :package_selected_regular, "Regular", class: 'inline' %>
+      <%= i.radio_button :package_selected, "premium" %>
+      <%= i.label :package_selected_premium, "Premium"%>
+    </div>
+    <!-- Company ends -->
+    <ul class="side-nav">
+      <li class="heading hide">complete your profile</li>
+      <li class="divider"></li>
+    </ul>
+    <!-- Business -->
+    <div class="field">
+      <%= i.label "Type of Business" %>
+      <%= i.text_field :profile, required: true %>
+    </div>
+	<div class="field">
+    	<%= i.label "Products/Services of Business" %>
+    	<%= i.text_field :products_services_of_business %>
+    </div>
+	<div class="field">
+    	<%= i.label "Field of Expertise" %>
+    	<%= i.text_field :field_of_expertise %>
+    </div>
+    <div class="field">
+      <%= i.label "Target Audience" %>
+      <%= i.text_field :target_audience %>
+    </div>
+    <div class="field">
+      <%= i.label "Target Audience Location" %>
+      <%= i.text_field :target_audience_location %>
+    </div>
+    <!-- Business ends -->
+
+    <!-- Social Media -->
+    <ul class="side-nav">
+      <li class="heading">social media accounts</li>
+      <li class="divider"></li>
+    </ul>
+    <div class="field">
+    	<%= i.label "Facebook" %>
+    	<%= i.text_field :facebook %>
+    </div>
+    <div class="field">
+        	<%= i.label "Linkedin" %>
+        	<%= i.text_field :linkedin %>
+    </div>
+    <div class="field">
+        	<%= i.label "Twitter" %>
+        	<%= i.text_field :twitter %>
+    </div>
+    <div class="field">
+    	<%= i.label "Others" %>
+    	<%= i.text_field :social_media_others %>
+    </div>
+    <!-- Social Media ends -->
+
+    <!-- Networking requirement -->
+	<div class="fields">
+          <ul class="side-nav">
+        <li class="heading">please be specific about your Networking requirement</li>
+        <li class="divider"></li>
+      </ul>
+	    <%= i.text_area :networking_requirement, {rows: 6} %>
+    </div>
+    <!-- Networking requirement ends-->
+
+    <div class="fields">
+      <ul class="side-nav">
+        <li class="heading">our other offerings you would be interested in</li>
+        <li class="divider"></li>
+      </ul>
+
+      <%= i.check_box :interested_in, {multiple: true}, "marketing", nil %>
+      <%= i.label :interested_in_marketing, "Marketing" %>
+
+      <%= i.check_box :interested_in, {multiple: true}, "consulting", nil %>
+      <%= i.label :interested_in_consulting, "Consulting" %>
+
+      <%= i.check_box :interested_in, {multiple: true}, "relationship_management", nil %>
+      <%= i.label :interested_in_relationship_management, "Relationship Management" %>
+      <br>
+      <%= i.check_box :interested_in, {multiple: true}, "research_and_strategy_development", nil %>
+      <%= i.label :interested_in_research_and_strategy_development, "Research and Strategy Development" %>
+
+    	<%= i.check_box :interested_in, {multiple: true}, "social_media_management", nil %>
+      <%= i.label :interested_in_social_media_management, "Social Media Management" %>
+    </div>
+
+    <% end %>
+  </div>
+
+  <div class="actions clearfix">
+      <ul class="side-nav">
+        <li class="divider"></li>
+      </ul>
+    <%= f.submit "Save", class:'button primary small right'%>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
