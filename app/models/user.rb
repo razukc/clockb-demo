@@ -61,7 +61,7 @@ User.where(id: id).limit(1).pluck(:id, :inputs, :email)
 end
 
 def self.profiles
-User.select("id, inputs, email").select{|h| h.inputs['type'].in? ['client','alumni','guest'] }.sort
+User.select("id, inputs, email").select{|h| h.inputs['type'].in? ['client','alumni','guest','networker'] }.sort
 end
 
 def self.group_by_profiles

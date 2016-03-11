@@ -62,8 +62,11 @@
 			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
 			<% if !@v_main.nil? %>
 				<!-- Main Event -->
+				<h4><%= @v_main.form_params['name'] %></h4>
 				<div class="clearfix">
-		<%= image_tag @v_main.attachment.featured_url, class: 'th-no-hover lazyload' %>
+					<% if !@v_main.attachment.blank? %>
+		<%= image_tag @v_main.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+		<% end %>
 
 		</div>
 		<br />
@@ -80,8 +83,11 @@
 		<% end %>
 			<% if !@v_weekly.nil? %>
 		<!-- Weekly Event -->
+		<h4><%= @v_weekly.form_params['name'] %></h4>
 		<div class="clearfix">
-				<%= image_tag @v_weekly.attachment.featured_url, class: 'th-no-hover lazyload' %>
+			<% if !@v_main.attachment.blank? %>
+				<%= image_tag @v_weekly.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+		<% end %>
 		</div>
 		<br />
 		<h5>Event Insights</h5>

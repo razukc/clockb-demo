@@ -1,3 +1,10 @@
+ Blog Editor
+ Complete Profile after Signup
+
+ Favicon/Dashboard Layout/
+
+ =================================================
+
       <% if !@services_images.blank? %>
       <% @consulting = @services_images.consulting %>
       <% @outsourcing = @services_images.outsourcing %>
