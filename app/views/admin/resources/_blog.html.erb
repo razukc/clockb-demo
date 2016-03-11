@@ -6,7 +6,6 @@ f.inputs "Blog" do
         # i.input :body, as: :wysihtml5
 		i.input :body, as: :ckeditor, label: false
 	end
-	f.input :add_to_site
 end
 f.inputs "Image" do
     if f.object.image && f.object.image.file
@@ -17,6 +16,9 @@ f.inputs "Image" do
       f.input :image_cache, as: :hidden
     end
 end
+	f.inputs "Add to site?" do
+        f.input :add_to_site, label: "Yes"
+    end 
 f.actions 
 end %>
 

@@ -1,7 +1,23 @@
 ActiveAdmin.register HomePageServicesImage do
 config.batch_actions = false
 config.filters = false
-index download_links: false
+actions :all, except: [:show]
+index download_links: false do 
+	column :consulting do |img|
+		image_tag img.consulting_url(:thumb)
+	end
+	column :outsourcing do |img|
+		image_tag img.outsourcing_url(:thumb)
+	end
+	column :networking do |img|
+		image_tag img.networking_url(:thumb)
+	end
+	column :innovation do |img|
+		image_tag img.innovation_url(:thumb)
+	end
+	actions
+
+end
 menu parent: "Sliders"
 permit_params :consulting, :outsourcing, :networking, :innovation,
 	:consulting_cache, :outsourcing_cache, :networking_cache, :innovation_cache,

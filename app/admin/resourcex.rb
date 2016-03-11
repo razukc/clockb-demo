@@ -1,4 +1,5 @@
 ActiveAdmin.register Resourcex, as: "Resource" do
+actions :all, except: [:show]
 config.filters = false
 index download_links: false do
 	column :category do |k|

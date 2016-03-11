@@ -1,3 +1,4 @@
+ Event Image Uploader
  Blog Editor
  Complete Profile after Signup
 

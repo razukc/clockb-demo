@@ -43,18 +43,18 @@
 <div class="contain-to-grid" style="background-color:#e3e3e3;padding:20px;">
 <div class="row">
 		<div class="large-6 columns">
-			<ul class="example-orbit" data-orbit>
+			<ul class="example-orbit" data-orbit data-options="pause_on_hover:false;timer_speed: 3000;">
 				<% if @adverts.empty? %>
 				<li>
 					<%= image_tag "500x300.png", class: 'lazyload' %>
 					<div class="orbit-caption">
-						Pro User advert
+						Premium User advert
 					</div>
 				</li>
 				<% else %>
 				<% @adverts.each do |advert| %>
 				<li>
-					<%= image_tag advert.image.advert, class: 'lazyload' %>
+					<%= image_tag advert.image_url(:slider), class: 'lazyload' %>
 					<% if !advert.content.empty? %>
 					<div class="orbit-caption">
 						<%= advert.content %>
@@ -104,7 +104,7 @@
 						<% else %>
 						<% @gallery.each do |g| %>
 						<li>
-							<a href="<%= g.attachment %>"><%= image_tag g.attachment.thumb, class: 'th-no-hover lazyload' %></a>
+							<a href="<%= g.attachment %>"><%= image_tag g.attachment_url(:thumb), class: 'th-no-hover lazyload' %></a>
 						</li>
 						<% end %>
 						<% end %>

@@ -2,7 +2,15 @@ ActiveAdmin.register EventsSlider do
 	menu parent: "Sliders"
 	config.batch_actions = false
 config.filters = false
-index download_links: false
+index download_links: false do
+	column :image do |image|
+		image_tag image.image_url(:thumb)
+	end
+	column :caption
+	column :add_to_site
+	actions
+end
+actions :all, except: [:show]
 permit_params :image, :image_cache, :remove_image, :caption, :add_to_site
 
 form :html => { :multipart => true } do |f|
