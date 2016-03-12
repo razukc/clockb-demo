@@ -1,9 +1,16 @@
 ActiveAdmin.register Slider, as: "Home Page Slider" do
 menu parent: "Sliders"
 config.batch_actions = false
+actions :all, except: [:show]
 
-
-index as: :table, default: true, download_links: false
+index as: :table, default: true, download_links: false do
+	column :slide do |slide|
+		image_tag slide.slide_url(:thumb)
+	end
+	column :caption
+	column "Hidden", :remarks
+	actions
+end
 
 permit_params do
 	permitted = [:slide, :caption, :remarks, :slide_cache]

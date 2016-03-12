@@ -1,7 +1,13 @@
 ActiveAdmin.register NextEventImage do
 	config.filters = false
 	config.batch_actions = false
-	index download_links: false
+	actions :all, except: [:show]
+	index download_links: false do
+		column :image do |img|
+			image_tag img.image_url(:thumb)
+		end
+		actions
+	end
 	menu parent: "Sliders"
 permit_params :image, :image_cache, :remove_image
 

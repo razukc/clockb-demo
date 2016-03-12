@@ -41,5 +41,8 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	    	inputs_keys = params[:user][:inputs].keys
     		params.require(:user).permit(:email, :password, :password_confirmation, inputs: inputs_keys)
   		end
+  		def after_sign_up_path_for(resource)
+  		  complete_profile_path
+  		end
 
 end

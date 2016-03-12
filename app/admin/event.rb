@@ -1,4 +1,7 @@
 ActiveAdmin.register Event do
+	config.filters = false
+	config.batch_actions = false
+	actions :all, except: [:show]
 show title: "Event" do
 columns do
 column do
@@ -97,12 +100,12 @@ end
 #     br
 #   end
 # end
-actions :all
+# actions :all
 # config.filters = false
-filter :form_params_cont, label: "keyword"
-filter :start_date
-config.current_filters = false
-config.batch_actions = false
+# filter :form_params_cont, label: "keyword"
+# filter :start_date
+# config.current_filters = false
+# config.batch_actions = false
 form do |f|
 f.semantic_errors
 f.inputs "Event Details" do

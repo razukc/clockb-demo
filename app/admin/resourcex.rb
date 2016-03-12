@@ -22,7 +22,7 @@ form :html => { :multipart => true } do |f|
 		end
 	f.actions do
 		f.action :submit, label: (f.object.new_record? ? "Create Resource" : "Save changes")
-		f.action :cancel, label: "Cancel"
+		li (link_to "Cancel", admin_resources_path), class: 'cancel'
 	end
 	else
 		f.render f.object.category

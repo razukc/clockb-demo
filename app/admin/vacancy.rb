@@ -32,6 +32,12 @@ column do
 		Vacancy.applicants(vacancy.id).map do |post|
 			panel post.created_at.to_s do
 				attributes_table_for post do
+					row :name do
+						post.request_by['name']
+					end
+					row :email do
+						post.request_by['email']
+					end
 					row :comment do
 						simple_format post.request_by['comment']
 					end

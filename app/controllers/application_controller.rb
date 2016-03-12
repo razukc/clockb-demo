@@ -13,13 +13,6 @@ class ApplicationController < ActionController::Base
   #     redirect_to "http://#{APP_DOMAIN}", :status => 301
   #   end
   # end
-  def after_sign_in_path_for(resource)
-    dashboard_path
-  end
-
-  def after_sign_up_path_for(resource)
-    complete_profile_profile
-  end
 
   protected
 

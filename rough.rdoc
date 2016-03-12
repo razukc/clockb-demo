@@ -1,8 +1,12 @@
+ Advert Image Uploader
  Event Image Uploader
  Blog Editor
  Complete Profile after Signup
+ Email Templates
 
  Favicon/Dashboard Layout/
+
+
 
  =================================================
 
