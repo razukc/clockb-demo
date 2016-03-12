@@ -6,7 +6,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 #Custom Ignores
-config/initializers/active_admin.rb
+#config/initializers/active_admin.rb
 rough.rdoc
 
 # Ignore bundler config.
