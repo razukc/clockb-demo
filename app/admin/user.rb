@@ -11,6 +11,8 @@ ActiveAdmin.register User do
 			li "Link 8: Individual"
 			li "Link 9: Meetup"
 			li "Link 10: Webinar"
+			li "Link 11: Offered Services"
+			li "Link 12: Posted Business Requirements"
 		end
 	end
 
@@ -25,6 +27,9 @@ ActiveAdmin.register User do
 	scope "Link 8", :individuals
 	scope "Link 9", :meetups
 	scope "Link 10", :webinars
+	scope "link 11", :offered_services
+	scope "link 11", :offered_services
+	scope "link 12", :posted_business_requirements
 	scope "Events", :events
 
 	show title: :email do
@@ -85,7 +90,7 @@ ActiveAdmin.register User do
 				end
 
 				if user.services_catereds.any?	
-					panel "Services Catered" do
+					panel (user.alumni? ? "Recommended Services" : "Services Catered") do
 						attributes_table_for user do
 							table do
 								user.services_catereds.each do |k|
@@ -217,11 +222,29 @@ ActiveAdmin.register User do
 										link_to Event.find_by_id(meetup.user_x).form_params['name'].titleize, admin_event_path(meetup.user_x)
 									end
 								end
+								if meetup.service_offered?
+									row :offered_service_for do
+										text_node BusinessRequirement.find_by_id(meetup.user_x).content
+									end
+									row :requirement_posted_by do
+										link_to User.find_by_id(BusinessRequirement.find_by_id(meetup.user_x).user_id).email, admin_user_path(User.find_by_id(BusinessRequirement.find_by_id(meetup.user_x).user_id).id)
+									end
+								end
 							end
 						end
 					end
 				end
-
+				if user.business_requirements.any?
+					user.business_requirements.map do |req|
+						panel req.created_at do
+							attributes_table_for req do
+								row :posted_business_requirement do
+									req.content.html_safe
+								end
+							end
+						end
+					end
+				end
 				if user.feedbacks.any?
 					user.feedbacks.map do |feedback|
 						panel feedback.created_at do

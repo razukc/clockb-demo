@@ -13,7 +13,8 @@ scope :feedbackers, -> {joins(:feedbacks).distinct}
 scope :meetups, -> {joins(:meetups).where(:usermeetups => {meetup: true}).distinct}
 scope :webinars, -> {joins(:meetups).where(:usermeetups => {webinar: true}).distinct}
 scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct}
-
+scope :offered_services, -> {joins(:meetups).where(:usermeetups => {service_offered: true}).distinct}
+scope :posted_business_requirements, -> {joins(:business_requirements).distinct}
 mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
 
@@ -30,6 +31,7 @@ serialize :inputs, Hash
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
 has_many :adverts, :dependent => :destroy
+has_many :business_requirements, :dependent => :destroy
 
 has_many :milestones, :dependent => :destroy
 accepts_nested_attributes_for :milestones, :allow_destroy => true,
@@ -134,5 +136,7 @@ end
 def has_event(event_id, user_id)
 	Usermeetup.find{|x| x.user_x == event_id && x.user_id == user_id}
 end
-
+def has_offered_service(business_requirement_id, user_id)
+ Usermeetup.find{ |x| x.user_x == business_requirement_id && x.user_id == user_id}	
+end
 end

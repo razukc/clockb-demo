@@ -1,0 +1,27 @@
+<ul class="no-bullet">
+<% unless @business_requirement.blank? %>
+<% @business_requirement.each do |req| %>
+<li class="panel">
+	<p><%= req.content.html_safe %></p>
+	<div class="clearfix">
+	<% if current_user.has_offered_service(req.id, current_user.id) %>
+	<a href="#" class="button tiny right success disabled">Offer Sent</a>
+	<% else %>
+		<% if current_user.premium? %>
+			<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :user_x, value: req.id %>
+			<%= f.hidden_field :service_offered, value: true %>
+			<%= f.submit "Offer Service", class: 'button info tiny right', name: 'service_offered', id: 'service_offered_' << req.id.to_s %>
+			<% end %>
+		<% else %>
+		<a href="#" data-reveal-id="myModal-offer" class="button info right tiny">
+			Offer Service
+		</a>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>
+<% end %>
+</li>
+</ul>

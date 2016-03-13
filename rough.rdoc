@@ -1,5 +1,6 @@
  Advert Image Uploader
  Event Image Uploader
+ Resources
  Blog Editor
  Complete Profile after Signup
  Email Templates

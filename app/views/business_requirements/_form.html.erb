@@ -1,0 +1,13 @@
+<div id="business_requirement_form">
+	<h3>Post your business requirement</h3>
+<%= form_for @business_requirement, remote: true, method: :post do |f| %>
+
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.text_area :content, :placeholder => 'Description', :rows => 6, :required => true %>
+	<%= f.submit "Post", class: "button small" %>
+<% end %>
+<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
+	<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>
+	<div class="success hide"><p class="label radius secondary" style="color:green;"><i class="fi-check">&nbsp;</i>Success</p></div>
+</div>
+<a class="close-reveal-modal">&#215;</a>

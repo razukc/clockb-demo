@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
 	config.filters = false
 	config.batch_actions = false
-	actions :all, except: [:show]
+	actions :all#, except: [:show]
 show title: "Event" do
 columns do
 column do
@@ -31,18 +31,18 @@ row :image do
 image_tag event.attachment.thumb
 end
 row :attendees do
-Event.attendees(event.id).count
+Event.attendees(event.id).count + Event.user_attendees(event.id).count
 end
 end
 end
 end
 
 column do
-	if Event.attendees(event.id).any?
+	if Event.attendees(event.id).any? || Event.user_attendees(event.id).any?
 	div do
 		h4 "Attendees"
 	end
-end
+	end
 	Event.attendees(event.id).map do |post|
 		panel post.created_at do
 			attributes_table_for post do
@@ -57,6 +57,15 @@ end
 				end
 				row :email do
 				 post.request_by['email']			
+				end
+			end
+		end
+	end
+	Event.user_attendees(event.id).map do |post|
+		panel post.created_at do
+			attributes_table_for post do
+				row :user do
+				link_to User.find_by_id(post.user_id).email, admin_user_path(post.user_id)
 				end
 			end
 		end
@@ -87,7 +96,7 @@ column "Venue" do |k|
 k.form_params['venue']
 end
 column "Attendees" do |k|
-Event.attendees(k.id).count
+Event.attendees(k.id).count + Event.user_attendees(k.id).count
 end
 actions
 end

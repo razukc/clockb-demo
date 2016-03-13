@@ -4,7 +4,7 @@ $('div.errors').show();
 <% else %>
 $('div.success').hide();
 $('div.errors').hide();
-$('div.success').show();
+$('div.success').hide();
 <% @id = 'meetup' if @meetup.meetup? %>
 <% if @meetup.event? %>
 <% @id = 'event_' << @meetup.user_x.to_s %>
@@ -12,7 +12,16 @@ $('form#new_usermeetup input#<%= @id %>')
 	.addClass('success disabled')
 	.prop("value", 'Registered')
 <% end %>
-<% @id = 'webinar' if @meetup.webinar? %>
+<% if @meetup.webinar? %>
+<% @id = 'webinar' %>
 $('form#new_usermeetup input#<%= @id %>').addClass('success disabled');
+<% end %>
+<% if @meetup.service_offered? %>
+<% @id = 'service_offered_' << @meetup.user_x.to_s %>
+$('form#new_usermeetup input#<%= @id %>')
+	.removeClass('info')
+	.addClass('success disabled')
+	.prop("value", 'Offer Sent')
+<% end %>
 <% end %>
 

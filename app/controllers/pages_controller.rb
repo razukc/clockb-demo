@@ -29,6 +29,7 @@ class PagesController < ApplicationController
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @adverts = Advert.all
+    @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
     @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
     format.html {render :layout => 'application'}

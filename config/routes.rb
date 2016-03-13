@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :requests
   resources :adverts
+  resources :business_requirements
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
 
   get 'clockb' => 'pages#clockb'

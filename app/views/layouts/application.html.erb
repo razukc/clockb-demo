@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:page_title) ? yield(:page_title) : "::" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clock b " %>">
-    <meta name="developed_at" content="<%= ENV['DEVELOPED_AT'] %>">
     <%= stylesheet_link_tag    "application" %>
     <%= favicon_link_tag %>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>

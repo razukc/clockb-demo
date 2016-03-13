@@ -11,7 +11,11 @@ class Event < ActiveRecord::Base
 	serialize :extra_params, Hash
 
 	def self.attendees(id)
+		
 		Request.event.select{|c| c.request_for['_z'] == id.to_s }
+	end
+	def self.user_attendees(id)
+		Usermeetup.where(:event => true, :user_x => id)
 	end
 	def self.m_all
 		Event.all.order(:start_date)

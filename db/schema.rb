@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303231849) do
+ActiveRecord::Schema.define(version: 20160313222748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 20160303231849) do
     t.string   "storage_mime_type"
     t.string   "storage_size"
   end
+
+  create_table "business_requirements", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "business_requirements", ["user_id"], name: "index_business_requirements_on_user_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.boolean  "company"
@@ -267,11 +276,12 @@ ActiveRecord::Schema.define(version: 20160303231849) do
     t.text     "meta"
     t.integer  "user_x"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "webinar",    default: false
-    t.boolean  "meetup",     default: false
-    t.boolean  "event",      default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "webinar",         default: false
+    t.boolean  "meetup",          default: false
+    t.boolean  "event",           default: false
+    t.boolean  "service_offered", default: false
   end
 
   add_index "usermeetups", ["user_id"], name: "index_usermeetups_on_user_id", using: :btree
@@ -318,6 +328,7 @@ ActiveRecord::Schema.define(version: 20160303231849) do
   end
 
   add_foreign_key "adverts", "users"
+  add_foreign_key "business_requirements", "users"
   add_foreign_key "employee_documents", "users"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"

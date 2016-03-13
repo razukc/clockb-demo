@@ -92,7 +92,7 @@
 		</div>
 	<hr />
 	<div class="row">
-		<div class="large-4 columns">
+		<div class="large-4 columns" >
 			<div class="row">
 				<div class="large-12 medium-6 columns">
 					<h5>Events Gallery</h5>
@@ -115,26 +115,39 @@
 					<%= render 'layouts/upcoming_events' %>
 					<hr />
 				</div>
-				<!-- Advert -->
 				<div class="columns">
+				<!-- Advert -->
 					<div id="myModal-advert" class="reveal-modal small" data-reveal></div>
 					<div id="request-for-x" class="clearfix panel">
 						<a href="#" data-reveal-id="myModal-advert" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
+					</div>
+				<!-- Business Requirement -->
+					<div id="myModal-business-requirement" class="reveal-modal small" data-reveal></div>
+					<div id="request-for-x" class="clearfix panel">
+						<a href="#" data-reveal-id="myModal-business-requirement" data-reveal-ajax="<%= new_business_requirement_path %>" class="button success expand" data-type="JSON">Post your business requirement</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="large-4 columns">
-			<h5>Webinar</h5>
+			<div id="myModal-offer" class="reveal-modal small" data-reveal>
+				<%= render partial: 'shared/upgrade_to_premium',
+locals: {_x: 'premium', _y: 'service_offered', _z: current_user.id} %>
+			</div>
+			<h5>Business Requirements</h5>
+			<%= render partial: 'shared/business_requirements', locals: {business_requirement: @business_requirement} %>	
 		</div>
 		<div class="large-4 columns">
 			<% if @user.client? && @user.premium? %>
 			<h5>Blog</h5>
 				<% if @blogs.any? %>
-				<div class="panel">
-					<ul class="no-bullet change-color">
+				<div class="clearfix">
+					<ul class="no-bullet">
 						<% @blogs.each do |blog| %>
-							<li><%= link_to blog.meta['title'], resourcexes_path << '#' << blog.meta['title'].parameterize %></li>
+							<li class="panel">
+								<%= image_tag blog.image_url(:thumb), class: 'th-no-hover', style: 'margin-right:10px;' %>
+								<%= link_to blog.meta['title'], resourcexes_path << '#' << blog.meta['title'].parameterize %>
+							</li>
 						<% end %>
 					</ul>
 				</div>
@@ -160,22 +173,37 @@
 	<div class="large-6 columns">
 		<% if @user.client? %>
 		<h5>Program schedules</h5>
-		<ul>
-			<li><%= @user.inputs['program_schedules'] %></li>
+		<% unless @user.program_schedules.empty? %>
+		<ul class="no-bullet change-color">
+			<% @user.program_schedules.each do |sch| %>
+				
+			
+			<li><%= sch.content %></li>
+
+		<% end %>
 		</ul>
+		<% end %>
 		<% end -%>
 		<% if @user.alumni? %>
 		<h5>Recommended Services</h5>
-		<%= simple_format @user.inputs['recommended_services'] %>
+		<% unless @user.services_catereds.empty? %>
+		<ul class="no-bullet change-color">
+			<% @user.services_catereds.each do |rec| %>
+
+			<li><%= rec.content %></li>
+		
+		<% end -%>
+		</ul>
+		<% end -%>
 		<% end -%>
 	</div>
 	<div class="large-6 columns">
 		<% if @user.client? || @user.alumni? %>
 		<h5>Feedbacks</h5>
 		<%= form_for FeedbackFromUser.new, remote: true, method: :post do |f| %>
-		<%= f.text_area :feedback, rows: 6 %>
+		<%= f.text_area :feedback, rows: 6, required: true %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= f.submit "Submit", class: 'button secondary small right'%>
+		<%= f.submit "Submit", class: 'button info tiny right'%>
 		<% end %>
 		<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>
 		<div class="errors hide"><p class="label radius secondary" style="color:red;"><i class="fi-x">&nbsp;</i>Error</p></div>

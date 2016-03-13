@@ -46,6 +46,10 @@
 		<% end %>
 				
 		<% if @_x.in?(['internship']) %>
+			<%= f.fields_for :form_params do |q| %>
+			<%= q.text_field :name, :placeholder => 'Name', required: true %>
+			<%= q.email_field :email, :placeholder => 'Email', required: true %>
+			<% end %>
 			<fieldset>
 		    	<legend>Attach CV</legend>
 		    	<%= f.hidden_field :attachment_cache %>

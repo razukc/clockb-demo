@@ -1,0 +1,17 @@
+<% if @business_requirement.errors.any? %>
+  
+  $('div.errors').show();
+
+<% else %>
+
+$('div.errors').hide();
+$('div.success').show();
+setTimeout(
+  function() 
+  {
+    //do something special
+    $('div.success').hide();
+    $('#myModal-content').foundation('reveal', 'close');
+  }, 1000);
+
+<% end %>
