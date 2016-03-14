@@ -3,8 +3,8 @@ f.inputs "Blog" do
 	f.input :category, as: :hidden
 	f.fields_for :meta,(OpenStruct.new(Resourcex.find_by_id(params[:id]).meta) unless f.object.new_record?) do |i|
 		i.input :title, :placeholder => 'Title', label: false
-        # i.input :body, as: :wysihtml5
-		i.input :body, as: :ckeditor, label: false
+        i.input :body, as: :text
+		# i.input :body, as: :ckeditor, label: false
 	end
 end
 f.inputs "Image" do
