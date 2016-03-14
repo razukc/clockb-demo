@@ -1,46 +1,59 @@
 <div class="row large-collapse medium-collapse small-collapse" style="margin-left:0px;margin-right:0px;">
     <div class="large-6 columns">
-    <ul class="pricing-table low-padding" style="border-right:none; padding:0.3rem;">
-      <li class="bullet-item" style="text-align: center;"><h6>Regular</h6></li>
+    <ul class="pricing-table low-padding panel" style="border-right:none; padding:0.3rem;">
+      <li class="bullet-item" style="text-align: center;"><h6 style="color: #008CBA !important;">Regular</h6></li>
       <li class="bullet-item">Profile access of companies and professionals (Limited)</li>
       <li class="bullet-item">See offer of our premium plan users</li>
       <li class="bullet-item">Post your business requirement</li>
+      <li class="bullet-item">1 minute animated Video</li>
+      <li class="bullet-item">Logo/ Image (1 only)</li>
+      <li class="bullet-item">Products/services Info</li>
+      <li class="bullet-item">Add website Link</li>
+      <li class="bullet-item">Templates ready to be used</li>
+      <li class="bullet-item">Business message/update post</li>
+      <li class="bullet-item">Attend events online(1 Event Only)</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
       <li class="bullet-item show-for-large-up">-</li>
-      <li class="bullet-item show-for-large-up">-</li>
+
       <li class="bullet-item">
         <% if user_signed_in? %>
         <div id="myModal-content2" class="reveal-modal small" data-reveal>
           <div class="panel" style="margin-top:25px;">You are already signed up for Regular Package</div>
           <a class="close-reveal-modal">&#215;</a>
         </div>
-        <a href="#" id="myModal-button" data-reveal-id="myModal-content2" class="button info tiny">Go Regular</a>
+        <a href="#" id="myModal-button" data-reveal-id="myModal-content2" class="button secondary tiny">Go Regular</a>
         <% else %>
-        <a href="<%= sign_up_path %>" class="button info tiny">Go Regular</a>
+        <a href="<%= sign_up_path %>" class="button secondary tiny">Go Regular</a>
         <% end %>
-        <div class="clearfix subheader">At NO Cost</div>
+        <div class="clearfix" style="color:#008CBA;">At NO Cost</div>
       </li>
       <li class="bullet-item"></li>
     </ul>
     </div>
     <div class="large-6 columns">
 
-      <ul class="pricing-table low-padding" style="border-left:none;padding:0.3rem;">
-        <li class="bullet-item" style="text-align: center;"><h6>Premium</h6></li>
+      <ul class="pricing-table low-padding panel" style="border-left:none;padding:0.3rem;">
+        <li class="bullet-item" style="text-align: center;"><h6 style="color: #008CBA !important;">Premium</h6></li>
         <li class="bullet-item">Profile access of companies and professionals (Full)&nbsp;&nbsp;</li>
         <li class="bullet-item">See offer of our premium plan users</li>
         <li class="bullet-item">Post your business requirement and offer services</li>
+        <li class="bullet-item">1 minute animated Video</li>
+        <li class="bullet-item">Logo/ Image (1 only)</li>
+        <li class="bullet-item">Products/services Info</li>
+        <li class="bullet-item">Add website Link</li>
+        <li class="bullet-item">Templates ready to be used</li>
+        <li class="bullet-item">Business message/update post</li>
+        <li class="bullet-item">Attend events online</li>
         <li class="bullet-item">Access to blogs/archives</li>
         <li class="bullet-item">Access to our webinar platform</li>
         <li class="bullet-item">Post an advertisement or offer</li>
         <li class="bullet-item">Add social media links</li>
         <li class="bullet-item">Request for meet ups with professionals</li>
         <li class="bullet-item">Schedule online meetings</li>
-        <li class="bullet-item">Attend events online</li>
         <li class="bullet-item">
           <% if user_signed_in? %>
           <% if current_user.premium? %>
@@ -48,15 +61,15 @@
             <div class="panel" style="margin-top:25px;">You are already signed up for Premium Package</div>
             <a class="close-reveal-modal">&#215;</a>
           </div>
-          <a href="#" id="myModal-button" data-reveal-id="myModal-content3" class="button info tiny">Go Premium</a>
+          <a href="#" id="myModal-button" data-reveal-id="myModal-content3" class="button secondary tiny">Go Premium</a>
           <% end %>
           <% if current_user.regular? %>
-          <a href="<%= new_request_path %>?_x=premium&amp;_z=<%= current_user.id %>"  id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button info tiny">Go Premium</a>
+          <a href="<%= new_request_path %>?_x=premium&amp;_z=<%= current_user.id %>"  id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="true" class="button secondary tiny">Go Premium</a>
           <% end %>
           <% else %>
-          <a href="<%= sign_up_path %>" class="button info tiny">Go Premium</a>
+          <a href="<%= sign_up_path %>" class="button secondary tiny">Go Premium</a>
           <% end %>
-          <div class="clearfix subheader">Available from JULY, Book your interest, NOW</div>
+          <div class="clearfix" style="color:#008CBA;">Available from JULY, Book your interest, NOW</div>
         </li>
         <li class="bullet-item"></li>
         
