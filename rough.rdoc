@@ -1,3 +1,12 @@
+Invitation Template link puranai
+remove occupation from sign up
+Products/Services of Business lists (has_many)
+Sign up = mail admin
+field of expertise lists (has_many/dropdown)
+list add
+
+#A0D3E8
+
  Advert Image Uploader
  Event Image Uploader
  Resources

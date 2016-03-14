@@ -31,7 +31,14 @@
               <% if resource.image? %>
               <%= image_tag resource.image_url, class: 'th-no-hover', alt: resource.meta["title"] %>
               <% end %>
-            	<div class="readmore"><div class="blog-post"><%= resource.meta['body'].html_safe %></div></div>
+            	<div class="readmore">
+                <div class="blog-post"><%= resource.meta['body'].html_safe %>
+                </div>
+                <div id="comments">
+                  
+                </div>
+              </div>
+
             	<hr />
             </li>
           <% when 'newsletter' %>
