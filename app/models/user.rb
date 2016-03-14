@@ -101,7 +101,7 @@ def self.view_individuals
 User.all.select{|x| x.inputs['company'] == 'individual'}
 end
 def self.know_the_team
-	User.all.order(:created_at).select{|x| x.inputs['type'] == 'employee' && x.inputs['display_in_site'] == '1' }
+	User.all.order("RANDOM()").select{|x| x.inputs['type'] == 'employee' && x.inputs['display_in_site'] == '1' }
 end
 def premium?
 self.inputs['plan'] == 'premium'
