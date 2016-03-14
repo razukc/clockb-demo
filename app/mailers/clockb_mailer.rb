@@ -2,7 +2,7 @@ class ClockbMailer < ApplicationMailer
   def meeting_email(email)
     mail(from: 'meetings@clockb.com', to: email, subject: 'Request For Meeting')
   end
-  def meetup_email(email)(email)
+  def meetup_email(email)
     mail(from: 'meetings@clockb.com', to: email, subject: 'Meet-up')
   end
   def signup_email(email)
@@ -27,4 +27,34 @@ class ClockbMailer < ApplicationMailer
   def premium_email(email)
   	mail(from: 'services@clockb.com', to: email, subject: 'Request for Premium Account')
   end
+
+  # Admin Emails
+  def admin_signup_email(resource)
+    @resource = resource
+    @email = @resource.email
+    @name = @resource.inputs['name']
+    @admin_link = admin_user_url(@resource)
+    mail(from: 'admin@clockb.com', to: 'services@clockb.com', subject: "New user signed up")
+  end
+
+  def admin_job_application_email(request)
+    @request = request
+    @job = Vacancy.find_by_id(@request.link_params['_z'])
+    @job_title = @job.content['job_title']
+    @applicant_name = @request.form_params['name']
+    @applicant_email = @request.form_params['email']
+    @admin_link = admin_vacancy_url(@job)
+    
+    mail(from: 'admin@clockb.com', to: 'careers@clockb.com', subject: "New job application")
+  end
+
+  def admin_internship_email(request)
+    @request = request
+    @applicant_name = @request.form_params['name']
+    @applicant_email = @request.form_params['email']
+    @admin_link = admin_vacancy_url(@job)
+    
+    mail(from: 'admin@clockb.com', to: 'careers@clockb.com', subject: "New job application")
+  end
+
 end

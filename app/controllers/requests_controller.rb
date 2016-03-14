@@ -47,12 +47,15 @@ if @request.save
 			ClockbMailer.meeting_email(@request.form_params['email']).deliver_now
 		when 'vacancy'
 			ClockbMailer.job_application_email(@request.form_params['email']).deliver_now
+			ClockbMailer.admin_job_application_email(@request).deliver_now
 		when 'webinar'
 			ClockbMailer.webinar_email(@request.form_params['email']).deliver_now
 		when 'event'
 			ClockbMailer.event_email(@request.form_params['email'], Event.find_by_id(@request.link_params['_z']).form_params['type']).deliver_now
 		when 'premium'
 			ClockbMailer.premium_email(current_user.email).deliver_now
+		when 'internship'
+			ClockbMailer.admin_internship_email(@request).deliver_now
 		end
 		
 end

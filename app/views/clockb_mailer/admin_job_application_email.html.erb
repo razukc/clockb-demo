@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>New Job Application<h4>
+    	<ul style="list-style-type:none;">
+    		<li>Position: <%= @job_title %></li>
+    		<li>Name: <%= @applicant_name %></li>
+    		<li>Email: <%= @applicant_email %></li>
+    	</ul>
+      <p>Follow the following link:</p>
+      <a href="<%= @admin_link %>"><%= @admin_link %></a>
+  </body>
+</html>

@@ -1,46 +1,53 @@
 <%= content_for :page_title, 'Clock b' %>
 <!-- Sub menu -->
+<div class="contain-to-grid" style="background-color:#A0D3E8;">
 <div class="row">
-	<div class="large-12 columns">
+  <div class="large-12 columns">
     <!-- Logo -->
     <div class="clearfix"><%= image_tag "logo.png", class: 'lazyload', style: 'margin-top:20px;' %></div>
-	<div data-magellan-expedition="fixed">
-		<dl class="sub-nav right">
-	    	<dd data-magellan-arrival="networking"><a href="#networking">NETWORKING</a></dd>
-	    	<dd data-magellan-arrival="services"><a href="#services">SERVICES</a></dd>
+  <div data-magellan-expedition="fixed">
+    <dl class="sub-nav right home-magellan">
+        <dd data-magellan-arrival="networking"><a href="#networking">NETWORKING</a></dd>
+        <dd data-magellan-arrival="services"><a href="#services">SERVICES</a></dd>
         <dd data-magellan-arrival="clockb"><a href="#clockb">CLOCK b</a></dd>
-	  	</dl>
-	</div>
-	</div>
+      </dl>
+  </div>
+  </div>
 </div>
-<br />
-<!-- Slider -->
 
-<div class="row">
+</div>
+
+
+<div class="contain-to-grid" style="background-color:#A0D3E8;">
+  <br />
+  <div class="row">
        <!-- Flash messages -->
     <div id="messages" class="clearfix">
       <%= render 'layouts/messages' %>
     </div>
-	<ul class="example-orbit" data-orbit data-options="pause_on_hover:false;timer_speed: 3000">
+<!-- Slider -->
+  <ul class="example-orbit" data-orbit data-options="pause_on_hover:false;timer_speed: 3000">
     <% if @sliders.any? %>
-		<% @sliders.each do |slider| %>
-	  <li> <!-- A92B48/fff -->
-	  	<%= image_tag slider.slide_url, class: "lazyload" %>
-	    <!-- <img src="1000x500.png" alt="slide 1" class="lazyload"/> -->
-	    <% if !slider.caption.empty? %>
-	    <div class="orbit-caption">
-	      <%= slider.caption %>
-	    </div>
-	    <% end %>
-	  </li>
-	  <% end %>
+    <% @sliders.each do |slider| %>
+    <li> <!-- A92B48/fff -->
+      <%= image_tag slider.slide_url, class: "lazyload" %>
+      <!-- <img src="1000x500.png" alt="slide 1" class="lazyload"/> -->
+      <% if !slider.caption.empty? %>
+      <div class="orbit-caption">
+        <%= slider.caption %>
+      </div>
+      <% end %>
+    </li>
+    <% end %>
     <% else %>
     <li><%= image_tag '1000x500.png', class: "lazyload" %>
       <div class="orbit-caption">Slider caption (Optional)</div>
     </li>
     <% end %>
-	</ul>
+  </ul>
 </div>
+</div>
+
 <div class="contain-to-grid" style="background-color:#e3e3e3;padding-top:40px;">
 
 <div class="row">

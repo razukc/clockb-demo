@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>New user signed up</h4>
+      <ul style="list-style-type:none;">
+        <li>Name: <%= @name %></li>
+        <li>Email: <%= @email %></li>
+      </ul>
+      <p>Follow the following link:</p>
+      <a href="<%= @admin_link %>"><%= @admin_link %></a>
+  </body>
+</html>

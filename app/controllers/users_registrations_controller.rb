@@ -21,6 +21,7 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	        set_flash_message :notice, :signed_up if is_flashing_format?
 	        sign_up(resource_name, resource)
 	        ClockbMailer.signup_email(resource.email).deliver_now
+	        ClockbMailer.admin_signup_email(resource).deliver_now
 	        respond_with resource, location: after_sign_up_path_for(resource)
 	      else
 	        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?

@@ -94,3 +94,9 @@ ul.change-color > li:before{
 .blog-post > p {
   text-alignment: justify;
 }
+.home-magellan dd a {
+  color:black;
+}
+.home-magellan dd.active a {
+  color:#e3e3e3 !important;
+}
