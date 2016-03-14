@@ -100,3 +100,10 @@ ul.change-color > li:before{
 .home-magellan dd.active a {
   color:#e3e3e3 !important;
 }
+ul.top-menu li {
+  border-left: 1px solid #e3e3e3;
+}
+ul.top-menu li > a:hover:not(.button) {
+  background-color: #008CBA !important;
+  color: #e3e3e3 !important;
+}
