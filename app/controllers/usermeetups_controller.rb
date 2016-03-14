@@ -32,8 +32,9 @@ def usermeetups_params
 end
 def premium_only
 	unless current_user.premium?
-render partial: 'shared/upgrade_to_premium',
-locals: {_x: 'premium', _y: 'service_offered', _z: current_user.id}
+		render partial: 'shared/upgrade_to_premium',
+			locals: {_x: 'premium', _y: 'service_offered', _z: current_user.id}
+	end
 end
-end
+
 end

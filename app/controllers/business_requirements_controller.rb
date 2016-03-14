@@ -1,6 +1,6 @@
 class BusinessRequirementsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :premium_only
+	#before_action :premium_only
 
 	
 	def index
