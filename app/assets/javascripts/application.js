@@ -93,7 +93,7 @@ $(document).ready(function(){
 	});
 });
 
-$(document).on('ready page:load', function () {
+$(document).on('ready page:load' , function () {
 	$(document).foundation();
 	$('.full-height').height($(window).height());
 });

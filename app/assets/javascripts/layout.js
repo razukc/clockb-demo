@@ -8,5 +8,6 @@ $(function(){
 		// $('div.column-fluid').animate({width: fluid+'%'},600, "linear");
 		$('div.full').animate({opacity: 1}, 800)
 		// $('div.full').css({'opacity': '1'});
+		$(document).foundation();
 	});
 });
