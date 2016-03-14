@@ -15,7 +15,7 @@
 		
 		<% if @_x.in?(['vacancy']) %>
 			<div class="row">
-				<div class="columns large-6 panel callout">
+				<div class="columns large-6 panel callout" style="overflow:scroll;max-height:400px;">
 					<strong>Job Position</strong><%= simple_format @job_title %>
 					<strong>Job Description</strong>
 					<%= simple_format @job_description %>
