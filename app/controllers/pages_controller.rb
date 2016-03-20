@@ -52,7 +52,7 @@ class PagesController < ApplicationController
     @events = Event.all
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
-    @sliders = Slider.where('remarks' => false)
+    @sliders = Slider.where('remarks' => false).order('updated_at DESC')
     @services_images = HomePageServicesImage.first
     @next_event = NextEventImage.first
     respond_to do |format|
@@ -74,7 +74,7 @@ class PagesController < ApplicationController
   end
   def events
     @events = Event.all
-    @slider = EventsSlider.all.where(:add_to_site => true)
+    @slider = EventsSlider.all.where(:add_to_site => true).order('updated_at DESC')
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
