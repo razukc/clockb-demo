@@ -46,7 +46,7 @@ index download_links: false do
 			pre "Registration for Event"
 			dd link_to Event.find_by_id(xyz.request_for['_z']).form_params['name'], admin_event_path(xyz.request_for['_z'])
 			dd "Name: "<<xyz.request_by['name']
-			dd "Company: "<<xyz.request_by['company']
+			dd "Company: "<<xyz.request_by['company'] unless xyz.request_for['_y'] == 'weekly'
 			dd "Phone: "<<xyz.request_by['phone']
 			dd "Email: "<<xyz.request_by['email']
 

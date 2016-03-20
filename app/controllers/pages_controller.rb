@@ -1,5 +1,28 @@
 class PagesController < ApplicationController
   layout 'pages'
+  before_action :authenticate_user! , only: [:dashboard, :dashboard2, :complete_profile]
+  def dashboard2
+    @user = current_user
+    
+    respond_to do |format|
+    if current_user.employee?
+      @documents = @user.employee_documents
+      format.html { render 'employee', :layout => 'application' }
+    else
+      @website = @user.users_website
+    @gallery = Event.m_gallery
+    @upcoming_main = Event.m_upcoming_main
+    @upcoming_weekly = Event.m_upcoming_weekly
+    @adverts = Advert.all
+    @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
+    @profiles = User.group_by_profiles
+    @blogs = Resourcex.by_category('blog');
+    # format.html {render :layout => 'application'}
+    format.html {render 'pages/dashboard/index'}
+    end
+
+    end
+  end
   def rough
     @user = Event.all
   end
@@ -19,7 +42,6 @@ class PagesController < ApplicationController
   def test
     render "pages/test"
   end
-  before_action :authenticate_user! , only: [:dashboard, :complete_profile]
   def dashboard
     @user = current_user
     
@@ -52,7 +74,7 @@ class PagesController < ApplicationController
     @events = Event.all
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
-    @sliders = Slider.where('remarks' => false).order('updated_at DESC')
+    @sliders = Slider.where('remarks' => false).order('created_at DESC')
     @services_images = HomePageServicesImage.first
     @next_event = NextEventImage.first
     respond_to do |format|
@@ -74,7 +96,7 @@ class PagesController < ApplicationController
   end
   def events
     @events = Event.all
-    @slider = EventsSlider.all.where(:add_to_site => true)
+    @slider = EventsSlider.all.where(:add_to_site => true).order('created_at DESC')
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly

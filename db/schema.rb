@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313222748) do
+ActiveRecord::Schema.define(version: 20160320104405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,9 +137,11 @@ ActiveRecord::Schema.define(version: 20160313222748) do
   add_index "events_members", ["member_id", "event_id"], name: "index_events_members_on_member_id_and_event_id", using: :btree
 
   create_table "events_sliders", force: :cascade do |t|
-    t.string  "image"
-    t.string  "caption"
-    t.boolean "add_to_site", default: false
+    t.string   "image"
+    t.string   "caption"
+    t.boolean  "add_to_site", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "feedback_from_users", force: :cascade do |t|
@@ -313,6 +315,15 @@ ActiveRecord::Schema.define(version: 20160313222748) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "users_websites", force: :cascade do |t|
+    t.string   "address"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users_websites", ["user_id"], name: "index_users_websites_on_user_id", using: :btree
+
   create_table "vacancies", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
@@ -344,4 +355,5 @@ ActiveRecord::Schema.define(version: 20160313222748) do
   add_foreign_key "services_catereds", "users"
   add_foreign_key "tasks", "users"
   add_foreign_key "usermeetups", "users"
+  add_foreign_key "users_websites", "users"
 end

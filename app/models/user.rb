@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+has_one :users_website
 scope :invitation_accepted, -> {where("invitation_accepted_at is not null and invitation_token is null")}
 scope :invitation_sent, -> {where("invitation_accepted_at is null and invitation_sent_at is not null")}
 # this works too

@@ -77,7 +77,7 @@
 			<li><strong>Time:</strong> <%= @v_main.form_params['start_time'] %></li>
 			<li><strong>Venue:</strong> <%= @v_main.form_params['venue'] %></li>
 		</ul>
-				<%= render partial: "shared/register_for_event", locals: {_z: @v_main.id } %>
+				<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: @v_main.id } %>
 		
 		<hr />
 		<% end %>
@@ -97,7 +97,7 @@
 			<li><strong>Time:</strong> <%= @v_weekly.form_params['start_time'] %></li>
 			<li><strong>Venue:</strong> <%= @v_weekly.form_params['venue'] %></li>
 		</ul>
-		<%= render partial: "shared/register_for_event", locals: {_z: @v_weekly.id } %>
+		<%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: @v_weekly.id } %>
 		<% end %>
 			</div>
 			<div class="large-5 columns" style="border-left:1px solid #008CBA;">

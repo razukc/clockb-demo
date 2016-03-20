@@ -1,0 +1,10 @@
+<div class="clearfix">
+	<% unless @website.nil? %>
+		
+		<%= best_in_place @website, :address, :url => edit_users_website_path(@website), :activator => 'a.edit_website', class: 'inline left' %>
+		<%= link_to 'Edit', '#', class: 'edit_website button tiny info inline right' %> 
+	<% else %>
+		<input type="text">
+	<% end %>
+
+</div>

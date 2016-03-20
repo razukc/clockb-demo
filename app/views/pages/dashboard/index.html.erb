@@ -1,0 +1,54 @@
+<%= content_for :page_title, 'Dashboard' %>
+<div class="row">
+	<!-- Left column -->
+	<div class="large-4 medium-5 columns width-finder bg-left" data-equalizer-watch>
+		<ul class="side-nav custom-side-nav" style="font-size:small;">
+			<!-- your profile -->
+			<li class="heading">your profile</li>
+			<li class="divider"></li>
+			<%= render partial: 'pages/dashboard/your_profile' %>
+			<!-- how to use our website -->
+			<li class="heading">how to use our website</li>
+			<li class="divider"></li>
+			<%= render partial: 'pages/dashboard/how_to_use' %>
+
+			<!-- your logo and image -->
+			<li class="heading">your logo &amp; image</li>
+			<li class="divider"></li>
+
+			<!-- website and headline message -->
+			<li class="heading">website &amp; headline message</li>
+			<li class="divider"></li>
+			<%= render partial: 'pages/dashboard/website_and_headline_message' %>
+
+			<!-- your animated video -->
+			<li class="heading">your animated video</li>
+			<li class="divider"></li>
+
+			<!-- your business 
+			requirement -->
+			<li class="heading">your business requirement</li>
+			<li class="divider"></li>
+
+			<!-- your advertisement -->
+			<li class="heading">your advertisement</li>
+			<li class="divider"></li>
+
+			<!-- your social media links -->
+			<li class="heading">your social media links</li>
+			<li class="divider"></li>
+
+			<!-- your networking requirement -->
+			<li class="heading">your networking requirement</li>
+			<li class="divider"></li>
+			<!-- feedbacks -->
+			<li class="heading">feedbacks</li>
+			<li class="divider"></li>
+		</ul>
+	</div>
+
+	<!-- Right column -->
+	<div class="large-8 medium-7 columns bg-right" data-equalizer-watch>
+	
+	</div>
+</div>

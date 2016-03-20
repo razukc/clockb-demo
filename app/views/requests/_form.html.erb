@@ -68,7 +68,7 @@
 		<!-- , OpenStruct.new(@request.form_params) -->
 		<%= f.fields_for :form_params do |r| %>
 			<%= r.text_field :name, :placeholder => 'Name', required: true %>
-			<%= r.text_field :company, :placeholder => 'Company' %>
+			<%= (r.text_field :company, :placeholder => 'Company', required:true) unless @_y == 'weekly' %>
 			<%= r.telephone_field :phone, :placeholder => 'Phone', required: true %>
 			<%= r.email_field :email, :placeholder => 'Email', required: true %>
 		<% end %>

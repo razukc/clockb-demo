@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :adverts
   resources :business_requirements
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
+  resources :users_websites
 
   get 'clockb' => 'pages#clockb'
   get 'services' => 'pages#services'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get 'events/browse', :to => 'pages#browse', :as => 'events_browse'
   get 'events/:id', to: 'pages#browse', :as => 'event_browse'
   get 'dashboard', to: 'pages#dashboard'
+  get 'dashboard2', to: 'pages#dashboard2'
   get 'faqs', to: 'pages#faqs'
 
   get 'complete_profile', to: 'pages#complete_profile'
