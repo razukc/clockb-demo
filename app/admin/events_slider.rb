@@ -11,7 +11,7 @@ index download_links: false do
 	actions
 end
 actions :all, except: [:show]
-permit_params :image, :image_cache, :remove_image, :caption, :add_to_site
+permit_params :image, :image_cache, :remove_image, :caption, :add_to_site, :created_at, :updated_at
 
 form :html => { :multipart => true } do |f|
 	f.semantic_errors *f.object.errors.keys
@@ -29,6 +29,12 @@ form :html => { :multipart => true } do |f|
 	f.input :add_to_site
 	end
 	f.actions
+end
+controller do
+	before_create  do |record|
+		record.created_at = Time.now
+		record.updated_at = record.created_at
+	end
 end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
