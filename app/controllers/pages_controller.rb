@@ -96,7 +96,7 @@ class PagesController < ApplicationController
   end
   def events
     @events = Event.all
-    @slider = EventsSlider.all.where(:add_to_site => true).order('created_at DESC')
+    @slider = EventsSlider.where(:add_to_site => true).order('created_at DESC')
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
