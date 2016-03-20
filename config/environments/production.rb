@@ -79,7 +79,7 @@ config.action_mailer.asset_host = 'http://www.clockb.com'
   config.active_record.dump_schema_after_migration = false
 
 # Custom settings
-config.action_mailer.default_url_options = { host: 'clockb-demo.herokuapp.com' }
+config.action_mailer.default_url_options = { host: 'www.clockb.com' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = false

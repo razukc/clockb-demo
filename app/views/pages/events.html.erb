@@ -85,7 +85,7 @@
 		<!-- Weekly Event -->
 		<h4><%= @v_weekly.form_params['name'] %></h4>
 		<div class="clearfix">
-			<% if !@v_main.attachment.blank? %>
+			<% if !@v_weekly.attachment.blank? %>
 				<%= image_tag @v_weekly.attachment_url(:featured), class: 'th-no-hover lazyload' %>
 		<% end %>
 		</div>

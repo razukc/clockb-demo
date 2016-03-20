@@ -1,0 +1,61 @@
+<%= content_for :page_title, 'Dashboard' %>
+<div class="row">
+	<!-- Left column -->
+	<div class="large-4 medium-5 columns width-finder bg-left" data-equalizer-watch>
+		<ul class="side-nav custom-side-nav" style="font-size:small;">
+			<!-- your profile -->
+			<li class="heading">your profile</li>
+			<li class="divider"></li>
+			<li class="panel" style="background-color:#007095;border:none;color:#e3e3e3;font-size:0.875rem;">
+				<h6 class="subheader" style="text-decoration:underline;color:#e3e3e3;">General Info</h6>
+				<ul class="no-bullet" style="color:#e3e3e3;">
+					<li>Name: <%= @user.inputs['name']%></li>
+					<li>Address: <%= @user.inputs['address']%></li>
+					<li>Email: <%= @user.email%></li>
+					<li><%= link_to "Edit/Complete Your Profile", complete_profile_path, class: 'button tiny secondary' %></li>
+				</ul>
+			</li>
+			<!-- how to use our website -->
+			<li class="heading">how to use our website</li>
+			<li class="divider"></li>
+			<div class="flex-video"></div>
+
+			<!-- your logo and image -->
+			<li class="heading">your logo &amp; image</li>
+			<li class="divider"></li>
+
+			<!-- website and headline message -->
+			<li class="heading">website &amp; headline message</li>
+			<li class="divider"></li>
+
+			<!-- your animated video -->
+			<li class="heading">your animated video</li>
+			<li class="divider"></li>
+
+			<!-- your business 
+			requirement -->
+			<li class="heading">your business requirement</li>
+			<li class="divider"></li>
+
+			<!-- your advertisement -->
+			<li class="heading">your advertisement</li>
+			<li class="divider"></li>
+
+			<!-- your social media links -->
+			<li class="heading">your social media links</li>
+			<li class="divider"></li>
+
+			<!-- your networking requirement -->
+			<li class="heading">your networking requirement</li>
+			<li class="divider"></li>
+			<!-- feedbacks -->
+			<li class="heading">feedbacks</li>
+			<li class="divider"></li>
+		</ul>
+	</div>
+
+	<!-- Right column -->
+	<div class="large-8 medium-7 columns bg-right" data-equalizer-watch>
+	
+	</div>
+</div>

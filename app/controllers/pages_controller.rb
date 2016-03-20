@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   layout 'pages'
+  def rough
+    @user = Event.all
+  end
   def complete_profile
     @user = current_user
     if request.put?
@@ -33,6 +36,7 @@ class PagesController < ApplicationController
     @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
     format.html {render :layout => 'application'}
+    #format.html {}
     end
 
     end

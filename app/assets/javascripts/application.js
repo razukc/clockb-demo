@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require foundation
@@ -96,4 +97,9 @@ $(document).ready(function(){
 $(document).on('ready page:load' , function () {
 	$(document).foundation();
 	$('.full-height').height($(window).height());
+});
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
 });

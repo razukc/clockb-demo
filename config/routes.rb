@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  get 'rough', to: 'pages#rough'
    
   devise_for :admin_users, ActiveAdmin::Devise.config
   

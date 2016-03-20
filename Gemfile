@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem 'best_in_place', '~> 3.0.1'
+gem 'rails-jquery-autocomplete'
 gem 'ckeditor'
 gem 'figaro'
 # gem 'active_admin_datetimepicker'

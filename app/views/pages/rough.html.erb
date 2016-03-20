@@ -1,0 +1,8 @@
+<div class="row">
+<div class="columns">
+	<% @user.each do |u| %>
+
+<%= best_in_place u, u.form_params, :name %>
+<% end %>
+</div>
+</div>
