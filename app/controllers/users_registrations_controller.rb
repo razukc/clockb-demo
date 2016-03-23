@@ -1,5 +1,5 @@
 class UsersRegistrationsController < Devise::RegistrationsController
-	
+	respond_to :html, :json
 	# GET /resource/sign_up
 	  def new
 	    build_resource({})
@@ -37,10 +37,51 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	      render "users/registrations/new"
 	    end
 	  end
+	  # PUT /resource
+	    # We need to use a copy of the resource because we don't want to change
+	    # the current user in place.
+	    def update
+	      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+	      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+	      resource_updated = update_resource(resource, account_update_params)
+	      yield resource if block_given?
+	      if resource_updated
+	        if is_flashing_format?
+	          flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+	            :update_needs_confirmation : :updated
+	          set_flash_message :notice, flash_key
+	        end
+	        sign_in resource_name, resource, bypass: true
+	        respond_with resource, location: after_update_path_for(resource)
+	        # render json: resource, status: :ok
+	      else
+	        clean_up_passwords resource
+	        respond_with resource
+	        # render json: resource, status: :not_acceptable
+	      end
+	    end
+
+	  	# before_filter :configure_permitted_parameters, if: :devise_controller?
 	  protected
-	    def sign_up_params
+
+
+	  	    # def configure_permitted_parameters
+	  	    #     devise_parameter_sanitizer.for(:account_update) do |u|
+	  	    #         u.permit(:email, :password, :password_confirmation, :users_websites => [:address])
+	  	    #     end
+	  	    # end
+	  	def account_update_params
+	  	  params.require(:user).permit(:website, :headline_message)
+	  	end
+	 
+	  	def update_resource(resource, params)
+	  	  # resource.update_with_password(params)
+	  	  resource.update_without_password(params)
+	  	end
+	  	def sign_up_params
 	    	inputs_keys = params[:user][:inputs].keys
-    		params.require(:user).permit(:email, :password, :password_confirmation, inputs: inputs_keys)
+			params.require(:user).permit(:email, :password, :password_confirmation, inputs: inputs_keys)
   		end
   		def after_sign_up_path_for(resource)
   		  complete_profile_path

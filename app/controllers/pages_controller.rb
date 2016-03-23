@@ -9,7 +9,9 @@ class PagesController < ApplicationController
       @documents = @user.employee_documents
       format.html { render 'employee', :layout => 'application' }
     else
-      @website = @user.users_website
+    @website = @user.users_website
+    @headline_message = @user.headline_message
+    @animated_video = @user.animated_video
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly

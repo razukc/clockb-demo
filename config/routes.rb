@@ -10,11 +10,14 @@ Rails.application.routes.draw do
           :passwords => "users_passwords",
           # Proper invitations should be sent through the active_admin interface.
           :invitations => "users_invitations" # user_invitations_controller.rb
-        }
+          # :websites => "users_websites"
+        } #, :skip => [:sessions]
+  
   devise_scope :user do
     get "/sign_in" => "users_sessions#new"
-    get "/sign_up" => "users_registrations#new"
+    post "/sign_in" => "users_sessions#create"
     delete "/sign_out" => "users_sessions#destroy"
+    get "/sign_up" => "users_registrations#new"
   end
   ActiveAdmin.routes(self)
   resources :resourcexes, except: [:create, :destroy, :update, :edit, :new, :show], path: "resources"
@@ -24,7 +27,8 @@ Rails.application.routes.draw do
   resources :adverts
   resources :business_requirements
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
-  resources :users_websites
+  # resources :users_websites
+  # resources :users
 
   get 'clockb' => 'pages#clockb'
   get 'services' => 'pages#services'

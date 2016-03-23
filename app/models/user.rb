@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-has_one :users_website
+has_one :users_website, dependent: :destroy
+accepts_nested_attributes_for :users_website,
+	:reject_if => lambda { |record| record[:address].blank? }
 scope :invitation_accepted, -> {where("invitation_accepted_at is not null and invitation_token is null")}
 scope :invitation_sent, -> {where("invitation_accepted_at is null and invitation_sent_at is not null")}
 # this works too
@@ -19,8 +21,7 @@ mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
 
 
-devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable
-
+devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable, :validatable
 
 validates_presence_of :email, :message => " is required"
 validates_uniqueness_of :email, :message => " already in use"
@@ -133,6 +134,7 @@ end
 def plan
 	self.inputs['plan'] ? self.inputs['plan'] : "regular"
 end
+
 def has_event(event_id, user_id)
 	Usermeetup.find{|x| x.user_x == event_id && x.user_id == user_id}
 end

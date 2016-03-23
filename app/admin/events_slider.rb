@@ -35,6 +35,7 @@ controller do
 		record.created_at = Time.now
 		record.updated_at = record.created_at
 	end
+	before_update {|record| record.updated_at= Time.now}
 end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
