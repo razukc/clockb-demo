@@ -1,5 +1,6 @@
 class UsersRegistrationsController < Devise::RegistrationsController
-	respond_to :html, :json
+	respond_to :html, :json, :js
+
 	# GET /resource/sign_up
 	  def new
 	    build_resource({})
@@ -8,7 +9,6 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	    # respond_with self.resource
 	    render "users/registrations/new"
 	  end
-
 	  # POST /resource
 	  def create
 	    build_resource(sign_up_params)
@@ -38,30 +38,39 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	    end
 	  end
 	  # PUT /resource
-	    # We need to use a copy of the resource because we don't want to change
-	    # the current user in place.
-	    def update
-	      self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-	      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+	  # We need to use a copy of the resource because we don't want to change
+	  # the current user in place.
+	  def update
+	    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+	    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-	      resource_updated = update_resource(resource, account_update_params)
-	      yield resource if block_given?
-	      if resource_updated
-	        if is_flashing_format?
-	          flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-	            :update_needs_confirmation : :updated
-	          set_flash_message :notice, flash_key
-	        end
-	        sign_in resource_name, resource, bypass: true
-	        respond_with resource, location: after_update_path_for(resource)
-	        # render json: resource, status: :ok
-	      else
-	        clean_up_passwords resource
-	        respond_with resource
-	        # render json: resource, status: :not_acceptable
+	    resource_updated = update_resource(resource, account_update_params)
+	    yield resource if block_given?
+	    if resource_updated
+	      if is_flashing_format?
+	        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+	          :update_needs_confirmation : :updated
+	        set_flash_message :notice, flash_key
 	      end
+		  respond_to do |format|
+		   	format.html {
+		      sign_in resource_name, resource, bypass: true
+		      respond_with resource, location: after_update_path_for(resource)
+		   	}
+		   	format.json { respond_with_bip(resource)}
+		   	format.js { render template: 'users/registrations/update.js.erb'} 	
+		  end
+	    else
+	    	respond_to do |format|
+	    		format.html {
+			      clean_up_passwords resource
+			      respond_with resource
+	    		}
+			   	format.json { respond_with_bip(resource)}
+		    	format.js {}
+	    	end
 	    end
-
+	  end
 	  	# before_filter :configure_permitted_parameters, if: :devise_controller?
 	  protected
 
@@ -72,7 +81,8 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	  	    #     end
 	  	    # end
 	  	def account_update_params
-	  	  params.require(:user).permit(:website, :headline_message)
+	  	  params.require(:user).permit(:website, :headline_message, :animated_video, business_requirements_attributes: [:id, :content, :_destroy],
+	  	  	adverts_attributes: [:id, :content, :image, :_destroy])
 	  	end
 	 
 	  	def update_resource(resource, params)

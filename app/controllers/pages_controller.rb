@@ -9,15 +9,16 @@ class PagesController < ApplicationController
       @documents = @user.employee_documents
       format.html { render 'employee', :layout => 'application' }
     else
-    @website = @user.users_website
+    @website = @user.users_websites
     @headline_message = @user.headline_message
-    @animated_video = @user.animated_video
+    # @animated_video = @user.animated_video
+    # @business_requirements = @user.business_requirements
     @gallery = Event.m_gallery
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
-    @adverts = Advert.all
-    @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
-    @profiles = User.group_by_profiles
+    # @adverts = Advert.all
+    # @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
+    # @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
     # format.html {render :layout => 'application'}
     format.html {render 'pages/dashboard/index'}

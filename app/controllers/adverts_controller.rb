@@ -16,7 +16,24 @@ format.html {redirect_to '/dashboard'}
 format.js {}
 end
 end
-
+def update
+	@advert = Advert.find(params[:id])
+	respond_to do |format|
+	if @advert.update_attributes(advert_params)
+		format.html
+		format.json { respond_with_bip(@advert)}
+	end
+	end
+end
+def destroy
+	@advert = Advert.find(params[:id])
+	respond_to do |format|
+		if @advert.destroy
+			format.html
+			format.js { }
+		end
+	end
+end
 def premium_only
 unless current_user.premium?
 render partial: 'shared/upgrade_to_premium',

@@ -48,6 +48,14 @@ ActiveAdmin.register User do
 							end
 						end
 					end
+				end
+
+				panel "Info from Dashboard" do
+					attributes_table_for user do
+						row :website
+						row :headline_message
+						row :animated_video			
+					end
 				end	
 
 				if user.employee_documents.any?
@@ -192,7 +200,7 @@ ActiveAdmin.register User do
 						panel advert.created_at do
 							attributes_table_for advert do
 								row :advert do
-									image_tag advert.image.thumb
+									image_tag advert.image_url(:thumb)
 								end		
 								row :info do
 									simple_format advert.content
@@ -352,6 +360,7 @@ ActiveAdmin.register User do
 			params.require(:user).permit(:email, 
 			:attachment, :attachment_cache, :remove_attachment,
 			:photo, :photo_cache, :remove_photo,
+			:website, :headline_message, :animated_video,
 			milestones_attributes: [:id, :content, :achieved, :_destroy],
 			services_catereds_attributes: [:id, :content, :_destroy],
 			program_schedules_attributes: [:id, :content, :_destroy],

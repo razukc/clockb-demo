@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-has_one :users_website, dependent: :destroy
-accepts_nested_attributes_for :users_website,
+has_many :users_websites, dependent: :destroy
+accepts_nested_attributes_for :users_websites,
 	:reject_if => lambda { |record| record[:address].blank? }
 scope :invitation_accepted, -> {where("invitation_accepted_at is not null and invitation_token is null")}
 scope :invitation_sent, -> {where("invitation_accepted_at is null and invitation_sent_at is not null")}
@@ -32,7 +32,11 @@ serialize :inputs, Hash
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
 has_many :adverts, :dependent => :destroy
+accepts_nested_attributes_for :adverts,
+	:reject_if => lambda { |record| record[:image].blank? }
 has_many :business_requirements, :dependent => :destroy
+accepts_nested_attributes_for :business_requirements,
+	:reject_if => lambda { |record| record[:content].blank? }
 
 has_many :milestones, :dependent => :destroy
 accepts_nested_attributes_for :milestones, :allow_destroy => true,
@@ -139,6 +143,9 @@ def has_event(event_id, user_id)
 	Usermeetup.find{|x| x.user_x == event_id && x.user_id == user_id}
 end
 def has_offered_service(business_requirement_id, user_id)
- Usermeetup.find{ |x| x.user_x == business_requirement_id && x.user_id == user_id}	
+	Usermeetup.find{ |x| x.user_x == business_requirement_id && x.user_id == user_id}	
+end
+def has_requested_animated_video?
+	self.animated_video.in?(['requested']) 
 end
 end

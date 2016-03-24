@@ -15,7 +15,7 @@ class ClockbMailer < ApplicationMailer
     mail(from: 'careers@clockb.com', to: email, subject: 'Job Application')
   end
   def event_weekly_email(email)
-  	mail(from: 'events@clockb.com', to: email, subject: 'Event Registration Weekly Event')
+    mail(from: 'events@clockb.com', to: email, subject: 'Event Registration Weekly Event')
   end
   def event_main_email(email)
     mail(from: 'events@clockb.com', to: email, subject: 'Event Registration Main Event')
@@ -25,10 +25,17 @@ class ClockbMailer < ApplicationMailer
     mail(from: 'events@clockb.com', to: email, subject: 'Event Registration ' << @type.humanize << ' Event')
   end
   def premium_email(email)
-  	mail(from: 'services@clockb.com', to: email, subject: 'Request for Premium Account')
+    mail(from: 'services@clockb.com', to: email, subject: 'Request for Premium Account')
   end
 
   # Admin Emails
+  def admin_animated_video_email(resource)
+    @resource = resource
+    @email = @resource.email
+    @name = @resource.inputs['name']
+    @admin_link = admin_user_url(@resource)
+    mail(from: 'admin@clockb.com', to: 'info@clockb.com', subject: 'Request for Animated Video')
+  end
   def admin_signup_email(resource)
     @resource = resource
     @email = @resource.email

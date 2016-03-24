@@ -1,4 +1,4 @@
-<%= content_for :page_title, 'Dashboard' %>
+<%= content_for :page_title, 'Dashboard2' %>
 <div class="row">
 	<!-- Left column -->
 	<div class="large-4 medium-5 columns width-finder bg-left" data-equalizer-watch>
@@ -24,19 +24,25 @@
 			<!-- your animated video -->
 			<li class="heading">your animated video</li>
 			<li class="divider"></li>
-			<%= render partial: 'pages/dashboard/your_animated_video' %>
-
+			<div id="your_animated_video">
+				<%= render partial: 'pages/dashboard/your_animated_video' %>
+			</div>
+			
 			<!-- your business 
 			requirement -->
 			<li class="heading">your business requirement</li>
 			<li class="divider"></li>
+			<div id="your_business_requirement">
 			<%= render partial: 'pages/dashboard/your_business_requirement' %>
+			</div>
 
 			<!-- your advertisement -->
 			<li class="heading">your advertisement</li>
 			<li class="divider"></li>
+			<div id="your_advertisement">
 			<%= render partial: 'pages/dashboard/your_advertisement' %>
-
+			</div>
+			
 			<!-- your social media links -->
 			<li class="heading">your social media links</li>
 			<li class="divider"></li>

@@ -7,6 +7,12 @@ def new
 @_a = params[:_a] ? params[:_a] : '_a'
 @_id = @_z ? @_z.to_i : 0
 case @_x
+when 'delete_animated_video'
+	@_title = 'Delete Animated Video?'
+		
+when 'animated_video'
+	@_title = 'Request for Animated Video'
+		
 when 'vacancy'
 	@_title =  '_title'
 	if @_id > 0
@@ -56,6 +62,14 @@ if @request.save
 			ClockbMailer.premium_email(current_user.email).deliver_now
 		when 'internship'
 			ClockbMailer.admin_internship_email(@request).deliver_now
+		when 'animated_video'
+			@user = User.find_by_id(@request.link_params['_z'])
+			@user.update(:animated_video => 'requested')
+			ClockbMailer.admin_animated_video_email(@user).deliver_now
+		when 'delete_animated_video'
+			@user = User.find_by_id(@request.link_params['_z'])
+			@user.update(:animated_video => 'deleted')
+			
 		end
 		
 end

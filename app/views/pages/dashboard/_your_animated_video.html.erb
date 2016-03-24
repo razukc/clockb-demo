@@ -1,3 +1,12 @@
-<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video') %>" class="button tiny right" data-type="JSON">Request for Animated Video</a>
-<%= @animated_video %>
-<div class="flex-video"></div>
+<div id="myModal-content" class="reveal-modal small" data-reveal></div>
+<div class="clearfix">
+<% unless @user.animated_video.in?([nil, 'deleted']) %>
+	<% unless @user.has_requested_animated_video? %>
+		<div class="flex-video"><%= content_tag @user.animated_video %></div>
+	<% end %>
+			<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'delete_animated_video', _z: @user.id) %>" class="button tiny left alert", data-type="JSON">Delete</a>
+			<button class="info tiny disabled right"><i class="fi-check">&nbsp;</i>Request for Animated Video Sent</button>
+<% else %>
+	<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video', _z: @user.id) %>" class="button tiny info right" style="width:100%", data-type="JSON">Request for Animated Video</a>
+<% end %>
+</div>

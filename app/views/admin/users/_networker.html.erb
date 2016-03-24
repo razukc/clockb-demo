@@ -21,6 +21,12 @@ f.inputs "Details" do
 
 	end
 	end
+	f.inputs "Website/Headline Message/Animated Video" do
+		f.input :website
+		f.input :headline_message, as: :text, :input_html => {rows: 4}
+		f.input :animated_video, as: :text, :input_html => {rows: 4}
+
+	end
 	f.inputs "Client Background" do
         if f.object.attachment && f.object.attachment.file
           li link_to "#{f.object.attachment.file.filename}", f.object.attachment.url

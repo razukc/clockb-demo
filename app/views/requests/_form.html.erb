@@ -78,13 +78,15 @@
 		<div class="clearfix"></div>
 		<div id="note" style="margin-top:10px;padding-top:10px;border-top:1px solid #e3e3e3;"><p>NOTE: <u>Request for meeting</u> for international &amp; clients outside Kathmandu valley; meeting will be scheduled via webinar.</p></div>
 		<% end %>
-		<% if @_x == 'premium' %>
+		<% if @_x.in?(['premium','animated_video']) %>
 			<p class="panel"><%= "Press 'Send' to continue." %></p>
-			<p>&nbsp;</p>
+		<% end %>
+		<% if @_x.in?(['delete_animated_video']) %>
+			<p class="panel"><%= "Press 'Ok' to continue." %></p>
 		<% end %>
 
 
-		<%= f.submit "Send", class: 'button right small' %>
+		<%= f.submit @_x.in?(['delete_animated_video']) ? "Ok" : "Send", class: 'button right small' %>
 		<% end %>
 
 	<div class="preloader hide"><p class="label radius secondary"><i class="fi-minus-circle">&nbsp;</i>Working</p></div>

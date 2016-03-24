@@ -1,19 +1,6 @@
-<div class="clearfix hide">
-	<% unless @website.nil? %>		
-		<%= best_in_place @website, :address, :url => registration_path(@user), :activator => 'a.edit_website', class: 'inline left panel', :ok_button => "Save", ok_button_class: "inline button tiny info", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline" %>
-		<%= link_to 'Edit', '#', class: 'edit_website button tiny info inline right' %> 
-	<% else %>
-		<%= form_for(@user, url: registration_path(@user), remote: true) do |f| %>
-			<%= f.fields_for :users_website, @user.build_users_website do |website| %>
-				<%= website.text_field :address, placeholder: "Website", class: 'inline left' %>
-			<% end %>
-			<%= f.submit "Add", class: 'button info tiny inline right' %>
-		<% end %>
-	<% end %>
-</div>
-	<%= best_in_place @user, :website, :url => registration_path(@user), class: 'left  radius contain-to-grid panel clearfix', :place_holder => "<i class='fi-add'></i>" << "+ Add Website", :ok_button => "Save", ok_button_class: "inline button tiny info left", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline right" %>
+	<%= best_in_place @user, :website, :url => registration_path(@user), class: 'left  radius contain-to-grid panel clearfix', :place_holder => "<i class='fi-add'></i>" << "+ Add Website", :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline left" %>
 
 <div class="clearfix"></div>
 
-	<%= best_in_place @user, :headline_message, :url => registration_path(@user), class: 'panel radius left contain-to-grid clearfix', :place_holder => '+ Add Headline Message', :ok_button => "Save", ok_button_class: "inline button tiny info left", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline right", :html_attrs => { } %>
+	<%= best_in_place @user, :headline_message, :url => registration_path(@user), class: 'panel radius left contain-to-grid clearfix', :place_holder => '+ Add Headline Message', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline left", :html_attrs => { } %>
 

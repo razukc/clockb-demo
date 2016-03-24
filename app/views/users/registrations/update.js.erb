@@ -1,1 +1,4 @@
-alert("ok");
+$('div#your_business_requirement').html("<%= escape_javascript render(partial: "pages/dashboard/your_business_requirement", locals: {user: resource}) %>");
+$('div#your_animated_video').html("<%= escape_javascript render(partial: "pages/dashboard/your_animated_video", locals: {user: resource}) %>");
+$('div#your_advertisement').html("<%= escape_javascript render(partial: "pages/dashboard/your_advertisement", locals: {user: resource}) %>");
+$(document).foundation();

@@ -19,6 +19,13 @@ actions :all, except: [:new, :create, :edit, :update]
 index download_links: false do
 	column :requests do |xyz|
 		case xyz.request_for['_x']
+		when 'delete_animated_video'
+			pre "Confirm Animated Video Delete"
+			dd link_to User.find_by_id(xyz.request_for['_z']).email, admin_user_path(xyz.request_for['_z'])
+		when 'animated_video'
+			pre "Request for Animated Video"
+			dd link_to User.find_by_id(xyz.request_for['_z']).email, admin_user_path(xyz.request_for['_z'])
+						
 		when 'meeting'
 			pre "Request for " << xyz.request_for['_x'] << " / " << xyz.request_for['_y']
 			dd "Name: "<<xyz.request_by['name']
