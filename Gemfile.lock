@@ -54,6 +54,13 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    activevalidators (3.0.0)
+      activemodel (>= 3.0.0)
+      countries (~> 0.9.3)
+      date_validator
+      mail
+      phony (>= 1.9.0)
+      rake (>= 0.8.7)
     addressable (2.3.8)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
@@ -98,6 +105,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    countries (0.9.3)
+      currencies (~> 0.4.2)
+    currencies (0.4.2)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -186,6 +199,7 @@ GEM
       httparty (~> 0.13.1)
     orm_adapter (0.5.0)
     pg (0.18.2)
+    phony (2.15.19)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     pundit (1.0.1)
@@ -288,6 +302,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  activevalidators (~> 3.0.0)
   best_in_place (~> 3.0.1)
   better_errors
   byebug

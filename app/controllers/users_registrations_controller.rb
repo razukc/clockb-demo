@@ -67,7 +67,7 @@ class UsersRegistrationsController < Devise::RegistrationsController
 			      respond_with resource
 	    		}
 			   	format.json { respond_with_bip(resource)}
-		    	format.js {}
+		    	format.js {respond_with_bip(resource)}
 	    	end
 	    end
 	  end
@@ -82,7 +82,10 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	  	    # end
 	  	def account_update_params
 	  	  params.require(:user).permit(:website, :headline_message, :animated_video, business_requirements_attributes: [:id, :content, :_destroy],
-	  	  	adverts_attributes: [:id, :content, :image, :_destroy])
+	  	  	adverts_attributes: [:id, :content, :image, :_destroy],
+	  	  	social_media_links_attributes: [:id, :media, :link, :_destroy],
+	  	  	networking_requirements_attributes: [:id, :content, :_destroy]
+	  	  	)
 	  	end
 	 
 	  	def update_resource(resource, params)

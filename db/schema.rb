@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323155713) do
+ActiveRecord::Schema.define(version: 20160327101246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,15 @@ ActiveRecord::Schema.define(version: 20160323155713) do
   add_index "milestones", ["client_id"], name: "index_milestones_on_client_id", using: :btree
   add_index "milestones", ["user_id"], name: "index_milestones_on_user_id", using: :btree
 
+  create_table "networking_requirements", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "networking_requirements", ["user_id"], name: "index_networking_requirements_on_user_id", using: :btree
+
   create_table "next_event_images", force: :cascade do |t|
     t.string "image"
   end
@@ -262,6 +271,16 @@ ActiveRecord::Schema.define(version: 20160323155713) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "social_media_links", force: :cascade do |t|
+    t.string   "media"
+    t.string   "link"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "social_media_links", ["user_id"], name: "index_social_media_links_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.text     "content"
@@ -350,6 +369,7 @@ ActiveRecord::Schema.define(version: 20160323155713) do
   add_foreign_key "milestone_alumnis", "alumnis"
   add_foreign_key "milestones", "clients"
   add_foreign_key "milestones", "users"
+  add_foreign_key "networking_requirements", "users"
   add_foreign_key "program_schedules", "clients"
   add_foreign_key "program_schedules", "users"
   add_foreign_key "recommended_services", "alumnis"
@@ -357,6 +377,7 @@ ActiveRecord::Schema.define(version: 20160323155713) do
   add_foreign_key "schedule_for_meetings", "users"
   add_foreign_key "services_catereds", "clients"
   add_foreign_key "services_catereds", "users"
+  add_foreign_key "social_media_links", "users"
   add_foreign_key "tasks", "users"
   add_foreign_key "usermeetups", "users"
   add_foreign_key "users_websites", "users"

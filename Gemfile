@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 
 
 ruby '2.2.3'
+gem 'activevalidators', '~> 3.0.0'
 gem 'best_in_place', '~> 3.0.1'
+# gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'rails-jquery-autocomplete'
 gem 'ckeditor'
 gem 'figaro'

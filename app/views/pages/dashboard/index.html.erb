@@ -19,7 +19,11 @@
 			<!-- website and headline message -->
 			<li class="heading">website &amp; headline message</li>
 			<li class="divider"></li>
-			<%= render partial: 'pages/dashboard/website_and_headline_message' %>
+			<!-- webiste -->
+			<%= render partial: 'pages/dashboard/website' %>
+			
+			<!-- headline message -->
+			<%= render partial: 'pages/dashboard/headline_message' %>
 
 			<!-- your animated video -->
 			<li class="heading">your animated video</li>
@@ -40,19 +44,31 @@
 			<li class="heading">your advertisement</li>
 			<li class="divider"></li>
 			<div id="your_advertisement">
+			<% if @user.regular? %>
 			<%= render partial: 'pages/dashboard/your_advertisement' %>
+			<% else %>
+			<%= render partial: 'shared/upgrade_to_premium', locals: {_x: 'premium', _y: 'dashboard_advert', _z: @user.id} %>
+			<% end %>
 			</div>
 			
 			<!-- your social media links -->
 			<li class="heading">your social media links</li>
 			<li class="divider"></li>
+			<div id="your_social_media_links">
+			<% if @user.regular? %>
 			<%= render partial: 'pages/dashboard/your_social_media_links' %>
-
+			<% else %>
+			<%= render partial: 'shared/upgrade_to_premium', locals: {_x: 'premium', _y: 'dashboard_social_media_links', _z: @user.id} %>
+			<% end %>
+			</div>
+			
 			<!-- your networking requirement -->
 			<li class="heading">your networking requirement</li>
 			<li class="divider"></li>
+			<div id="your_networking_requirements">
 			<%= render partial: 'pages/dashboard/your_networking_requirements' %>
-			
+			</div>
+
 			<!-- feedbacks -->
 			<li class="heading">feedbacks</li>
 			<li class="divider"></li>

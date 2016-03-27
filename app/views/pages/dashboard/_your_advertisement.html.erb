@@ -1,19 +1,20 @@
 <div class="clearfix">
 	<% @user.adverts.each do |req| %>
-	<div class="panel clearfix" id='<%= "advert_id_#{req.id}" %>' style="padding:5px;">
-		<%= link_to "<i class='fi-trash'></i>".html_safe, advert_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
+	<div class="panel clearfix callout" id='<%= "advert_id_#{req.id}" %>' style="padding:5px;">
 		<%= image_tag req.image_url(:dashboard), class: 'th-no-hover lazyload' %>
-		<%= best_in_place req, :content, class: 'left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny alert inline left", style: 'padding:10px;' %>
+		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_advert_id_#{req.id}", style: 'padding:10px;margin-top:5px;' %>
+		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_advert_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>
+		<%= link_to "<i class='fi-trash'></i>".html_safe, advert_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
 	</div>
 	<% end %>
 </div>
+
 	<div class="panel">
-	<%= form_for @user, url: registration_path(@user), remote: true, :html => {multipart: true} do |f| %>
+	<%= form_for @user, url: registration_path(@user), remote: true, :html => {multipart: true}, data: {type: :script} do |f| %>
 		<%= f.fields_for :adverts, @user.adverts.build do |r| %>
-			<%= r.file_field :image, :placeholder => '+ Add Advert Image', class: 'left' %>
-			<%= render partial: 'pages/dashboard/preloader' %>
-			<%= r.text_area :content, :placeholder => '+ Add Advert Description' %>
+			<%= r.file_field :image, :placeholder => '+ Add Advert Image', class: '' %>
+			<%= r.text_area :content, :placeholder => '+ Add Advert Description', style: 'resize:none;', rows: 3 %>
 		<% end %>
-		<%= f.submit "Post your Advert", class: 'button tiny info', style: 'width:100%;' %>
+		<%= f.submit "Post your Advert", class: 'button tiny info', style: 'width:100%;', :disable_with => 'Uploading...' %>
 	<% end %>
 	</div>

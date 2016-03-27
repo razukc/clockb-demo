@@ -20,17 +20,24 @@ scope :posted_business_requirements, -> {joins(:business_requirements).distinct}
 mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
 
-
 devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable, :validatable
 
+# validates_length_of :headline_message, maximum: 150
 validates_presence_of :email, :message => " is required"
 validates_uniqueness_of :email, :message => " already in use"
-
+# validates_format_of :website, :with => URI.regexp(['http', 'https'])
+validates :website, :url => true, allow_blank: true# Could be combined with `allow_blank: true`
 serialize :inputs, Hash
 
 # include DeviseInvitable::Inviter
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
+has_many :networking_requirements, dependent: :destroy
+accepts_nested_attributes_for :networking_requirements,
+	:reject_if => :all_blank
+has_many :social_media_links, :dependent => :destroy
+accepts_nested_attributes_for :social_media_links,
+	:reject_if => :all_blank
 has_many :adverts, :dependent => :destroy
 accepts_nested_attributes_for :adverts,
 	:reject_if => lambda { |record| record[:image].blank? }

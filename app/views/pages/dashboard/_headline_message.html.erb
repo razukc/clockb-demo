@@ -1,0 +1,7 @@
+<div class="clearfix panel callout" style="padding:5px;">
+	<%= best_in_place @user, :headline_message, :url => registration_path(@user), class: '   left contain-to-grid panel callout', :place_holder => 'Headline Message', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :html_attrs => {rows: 4, cols: '20', onKeyUp: 'javascript:$("#counting").html($(this).val().replace(/\n/g, "\n\r").length);'}, :inner_class => "counted", :activator => 'a.edit_headline_message', style: 'padding:10px;', id: 'counted', :display_with => :truncate, :helper_options => {length: 150} %> 
+	<%= content_tag :span, "0", id: 'counting', class: 'left', style: 'margin-left:10px;font-size:small;color:#A19D9D;' %>
+	<%= content_tag :span, "/", class: 'left', style: 'margin-left:1px;font-size:small;color:#A19D9D;' %>
+	<%= content_tag :span, "150 characters max", class: 'left', style: 'margin-left:1px;font-size:small;color:#A19D9D;' %>
+	<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_headline_message", style: 'font-size: larger;padding:0 5px 0 5px;' %>
+</div>

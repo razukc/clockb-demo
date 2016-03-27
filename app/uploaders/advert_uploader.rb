@@ -36,7 +36,7 @@ class AdvertUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [200, 200]
   end
   version :dashboard do
-    process :resize_to_fit => [303, 300]
+    process :resize_to_fit => [303, 600]
   end
   version :slider do
     process :resize_to_fill => [470, 350]
@@ -46,7 +46,19 @@ class AdvertUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
+  def content_type_whitelist
+    /image\//
+  end
+  # Override the filename of the uploaded files:
+  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  def filename
+     "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secured_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

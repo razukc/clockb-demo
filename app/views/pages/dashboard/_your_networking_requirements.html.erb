@@ -1,1 +1,54 @@
-_your_networking_requirements.html.erb
+<div class="clearfix">
+	<% @user.networking_requirements.each do |req| %>
+	<div class="panel clearfix callout" id='<%= "net_req_id_#{req.id}" %>' style="padding:10px;">
+		<%= req.content %>
+		<%= link_to "<i class='fi-trash'></i>".html_safe, networking_requirement_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
+		<div class="clearfix"></div>
+	</div>
+	<% end %>
+</div>
+<div class="panel">
+	<%= form_for @user, url: registration_path(@user), remote: true do |f| %>
+		<%= f.fields_for :networking_requirements, @user.networking_requirements.build do |r| %>
+			<%= r.select :content, 
+				:collection => 
+				[
+					["Agriculture & Forestry Sector","Agriculture & Forestry Sector"],
+					["Arts, Entertainment & Recreation Sector","Arts, Entertainment & Recreation Sector"],
+					["Business Innovation","Business Innovation"],
+					["Business Services Sector","Business Services Sector"],
+					["Construction Sector","Construction Sector"],
+					["Consumer Services","Consumer Services"],
+					["Education Sector","Education Sector"],
+					["Electric Utilities","Electric Utilities"],
+					["Finance & Insurance Sector","Finance & Insurance Sector"],
+					["Government","Government"],
+					["Health Care Sector","Health Care Sector"],
+					["IT & Technology","IT & Technology"],
+					["Lodging","IT & Technology"],
+					["Management of Companies & Enterprises","Management of Companies & Enterprises"],
+					["Manufacturing Sector","Manufacturing Sector"],
+					["Media","Media"],
+					["Membership Organizations","Membership Organizations"],
+					["Mining","Mining"],
+					["Natural Gas Distribution","Natural Gas Distribution"],
+					["Nonprofit Institutions","Nonprofit Institutions"],
+					["Oil & Gas","Oil & Gas"],
+					["Others","Others"],
+					["Private Households","Private Households"],
+					["Professional Services Sector","Professional Services Sector"],
+					["Real Estate","Real Estate"],
+					["Religious Organizations","Religious Organizations"],
+					["Rental & Leasing","Rental & Leasing"],
+					["Restaurants, Bars & Food Services","Restaurants, Bars & Food Services"],
+					["Retail Sector","Retail Sector"],
+					["Transportation Services Sector","Transportation Services Sector"],
+					["Water & Sewer Utilities","Water & Sewer Utilities"],
+					["Wholesale Sector","Wholesale Sector"]
+				]
+
+			%>
+		<% end %>
+		<%= f.submit "Add", class: 'button tiny info', style: 'width:100%;' %>
+	<% end %>
+	</div>
