@@ -21,10 +21,14 @@ index download_links: false do
 		case xyz.request_for['_x']
 		when 'delete_animated_video'
 			pre "Confirm Animated Video Delete"
-			dd link_to User.find_by_id(xyz.request_for['_z']).email, admin_user_path(xyz.request_for['_z'])
+			if @user = User.find_by_id(xyz.request_for['_z'])
+				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
+			end
 		when 'animated_video'
 			pre "Request for Animated Video"
-			dd link_to User.find_by_id(xyz.request_for['_z']).email, admin_user_path(xyz.request_for['_z'])
+			if @user = User.find_by_id(xyz.request_for['_z'])
+				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
+			end
 						
 		when 'meeting'
 			pre "Request for " << xyz.request_for['_x'] << " / " << xyz.request_for['_y']
@@ -36,7 +40,9 @@ index download_links: false do
 		
 		when 'vacancy'
 			pre "Application for Vacancy"
-			dd link_to Vacancy.find_by_id(xyz.request_for['_z']).content['job_title'], admin_vacancy_path(xyz.request_for['_z'])
+			if @vacancy = Vacancy.find_by_id(xyz.request_for['_z'])
+				dd link_to @vacancy.content['job_title'], admin_vacancy_path(xyz.request_for['_z'])
+			end
 			dd "Name: "<<xyz.request_by['name']
 			dd "Email: "<<xyz.request_by['email']
 			dd "Comment: "<<xyz.request_by['comment']
@@ -51,7 +57,9 @@ index download_links: false do
 
 		when 'event'
 			pre "Registration for Event"
-			dd link_to Event.find_by_id(xyz.request_for['_z']).form_params['name'], admin_event_path(xyz.request_for['_z'])
+			if @event = Event.find_by_id(xyz.request_for['_z']) 
+				dd link_to @event.form_params['name'], admin_event_path(xyz.request_for['_z'])
+			end
 			dd "Name: "<<xyz.request_by['name']
 			dd "Company: "<<xyz.request_by['company'] unless xyz.request_for['_y'] == 'weekly'
 			dd "Phone: "<<xyz.request_by['phone']
@@ -59,7 +67,9 @@ index download_links: false do
 
 		when 'premium'
 			pre "Request for Premium Package"
-			dd link_to User.find_by_id(xyz.request_for['_z']).email, admin_user_path(xyz.request_for['_z'])
+			if @user = User.find_by_id(xyz.request_for['_z'])
+				dd link_to .email, admin_user_path(xyz.request_for['_z'])
+			end
 			
 		end
 
@@ -69,5 +79,4 @@ index download_links: false do
 	column :created_at
 	actions
 end
-
 end

@@ -4,7 +4,7 @@
 		<%= req.media %>
 		<%#= best_in_place req, :media, :as => :select, :collection => [["Facebook","Facebook"],["Twitter","Twitter"],["Linkedin","Linkedin"]] %>
 		<%= best_in_place req, :link, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_social_id_#{req.id}", style: 'padding:10px;' %>
-		<%= link_to "<i class='fi-pencil'></i>".html_safe, "javascript:void(0);", class: "right edit_social_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>
+		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_social_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>
 		<%= link_to "<i class='fi-trash'></i>".html_safe, social_media_link_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
 		<!-- <a class="close-reveal-modal">&#215;</a> -->
 		<div class="clearfix"></div>
