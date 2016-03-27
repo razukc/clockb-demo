@@ -35,9 +35,9 @@ index download_links: false do
 		when 'meeting'
 			pre "Request for " << xyz.request_for['_x'] << " / " << xyz.request_for['_y']
 			dd "Name: "<<xyz.request_by['name']
-			dd "Company: "<<xyz.request_by['company']
-			dd "Phone: "<<xyz.request_by['phone']
-			dd "Email: "<<xyz.request_by['email']
+			dd "Company: "<<xyz.request_by['company'].to_s
+			dd "Phone: "<<xyz.request_by['phone'].to_s
+			dd "Email: "<<xyz.request_by['email'].to_s
 			
 		
 		when 'vacancy'
@@ -46,16 +46,16 @@ index download_links: false do
 			unless @vacancy.nil?
 				dd link_to @vacancy.content['job_title'], admin_vacancy_path(xyz.request_for['_z'])
 			end
-			dd "Name: "<<xyz.request_by['name']
-			dd "Email: "<<xyz.request_by['email']
-			dd "Comment: "<<xyz.request_by['comment']
+			dd "Name: "<<xyz.request_by['name'].to_s
+			dd "Email: "<<xyz.request_by['email'].to_s
+			dd "Comment: "<<xyz.request_by['comment'].to_s
 			dd link_to "Download CV", xyz.attachment_url
 		
 		when 'internship'
 			pre "Application for Internship"
-			dd "Name: "<<xyz.request_by['name']
-			dd "Email: "<<xyz.request_by['email']
-			dd "Comment: "<<xyz.request_by['comment']
+			dd "Name: "<<xyz.request_by['name'].to_s
+			dd "Email: "<<xyz.request_by['email'].to_s
+			dd "Comment: "<<xyz.request_by['comment'].to_s
 			dd link_to "Download CV", xyz.attachment_url
 
 		when 'event'
@@ -66,8 +66,8 @@ index download_links: false do
 			end
 			dd "Name: "<<xyz.request_by['name']
 			dd "Company: "<<xyz.request_by['company'].to_s unless xyz.request_for['_y'] == 'weekly'
-			dd "Phone: "<<xyz.request_by['phone']
-			dd "Email: "<<xyz.request_by['email']
+			dd "Phone: "<<xyz.request_by['phone'].to_s
+			dd "Email: "<<xyz.request_by['email'].to_s
 
 		when 'premium'
 			pre "Request for Premium Package"
