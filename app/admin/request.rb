@@ -68,7 +68,7 @@ index download_links: false do
 		when 'premium'
 			pre "Request for Premium Package"
 			if @user = User.find_by_id(xyz.request_for['_z'])
-				dd link_to .email, admin_user_path(xyz.request_for['_z'])
+				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
 			end
 			
 		end
