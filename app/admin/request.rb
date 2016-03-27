@@ -65,7 +65,7 @@ index download_links: false do
 				dd link_to @event.form_params['name'], admin_event_path(xyz.request_for['_z'])
 			end
 			dd "Name: "<<xyz.request_by['name']
-			dd "Company: "<<xyz.request_by['company'] unless xyz.request_for['_y'] == 'weekly'
+			dd "Company: "<<xyz.request_by['company'].to_s unless xyz.request_for['_y'] == 'weekly'
 			dd "Phone: "<<xyz.request_by['phone']
 			dd "Email: "<<xyz.request_by['email']
 
