@@ -21,12 +21,14 @@ index download_links: false do
 		case xyz.request_for['_x']
 		when 'delete_animated_video'
 			pre "Confirm Animated Video Delete"
-			if @user = User.find_by_id(xyz.request_for['_z'])
+			@user = User.find_by_id(xyz.request_for['_z'])
+			unless @user.nil?
 				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
 			end
 		when 'animated_video'
 			pre "Request for Animated Video"
-			if @user = User.find_by_id(xyz.request_for['_z'])
+			@user = User.find_by_id(xyz.request_for['_z'])
+			unless @user.nil?
 				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
 			end
 						
@@ -58,7 +60,8 @@ index download_links: false do
 
 		when 'event'
 			pre "Registration for Event"
-			if @event = Event.find_by_id(xyz.request_for['_z']) 
+			@event = Event.find_by_id(xyz.request_for['_z']) 
+			unless @event.nil?
 				dd link_to @event.form_params['name'], admin_event_path(xyz.request_for['_z'])
 			end
 			dd "Name: "<<xyz.request_by['name']
@@ -68,7 +71,8 @@ index download_links: false do
 
 		when 'premium'
 			pre "Request for Premium Package"
-			if @user = User.find_by_id(xyz.request_for['_z'])
+			@user = User.find_by_id(xyz.request_for['_z'])
+			unless @user.nil?
 				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
 			end
 			
