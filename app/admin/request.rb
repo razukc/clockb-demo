@@ -41,7 +41,7 @@ index download_links: false do
 		when 'vacancy'
 			pre "Application for Vacancy"
 			@vacancy = Vacancy.find_by_id(xyz.request_for['_z'])
-			unless @vacancy.empty?
+			unless @vacancy.nil?
 				dd link_to @vacancy.content['job_title'], admin_vacancy_path(xyz.request_for['_z'])
 			end
 			dd "Name: "<<xyz.request_by['name']
