@@ -1,6 +1,6 @@
 <div id="myModal-content" class="reveal-modal small" data-reveal></div>
 <div id="_register_for_event" class="clearfix">
-	<% if current_user.premium? %>
+	<% if current_user %>
 		<% if current_user.has_event(_z, current_user.id) %>
 		<a href="#"><button class="success tiny disabled right"><i class="fi-check">&nbsp;</i>Registered</button></a>
 		<% else %>

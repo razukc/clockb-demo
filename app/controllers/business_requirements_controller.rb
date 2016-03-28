@@ -2,7 +2,9 @@ class BusinessRequirementsController < ApplicationController
 	before_action :authenticate_user!
 	#before_action :premium_only
 	respond_to :html, :js
-	
+	def get_user
+	@user = User.find(params[:user_id])
+	end
 	def index
 		@business_requirements = current_user.business_requirements
 	end
@@ -13,7 +15,9 @@ class BusinessRequirementsController < ApplicationController
 	end
 
 	def create
-		@business_requirement = BusinessRequirement.create(business_requirement_params)
+		@user = get_user
+		@business_requirement = @user.business_requirements.build(business_requirement_params)
+		@business_requirement.save
 		respond_to do |format|
 			format.html {redirect_to dashboard_path}
 			format.js {}

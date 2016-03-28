@@ -2,19 +2,26 @@
 	<% @user.adverts.each do |req| %>
 	<div class="panel clearfix callout" id='<%= "advert_id_#{req.id}" %>' style="padding:5px;">
 		<%= image_tag req.image_url(:dashboard), class: 'th-no-hover lazyload' %>
-		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_advert_id_#{req.id}", style: 'padding:10px;margin-top:5px;' %>
+		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_advert_id_#{req.id}", style: 'padding:10px;margin-top:5px;', url: user_advert_path(@user, req), :nil => "<span class='left' style='color:#ccc;'>Description</span>".html_safe %>
 		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_advert_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>
-		<%= link_to "<i class='fi-trash'></i>".html_safe, advert_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
+		<%= link_to "<i class='fi-trash'></i>".html_safe, user_advert_path(@user, req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
 	</div>
 	<% end %>
 </div>
-
-	<div class="panel">
-	<%= form_for @user, url: registration_path(@user), remote: true, :html => {multipart: true}, data: {type: :script} do |f| %>
-		<%= f.fields_for :adverts, @user.adverts.build do |r| %>
-			<%= r.file_field :image, :placeholder => '+ Add Advert Image', class: '' %>
-			<%= r.text_area :content, :placeholder => '+ Add Advert Description', style: 'resize:none;', rows: 3 %>
-		<% end %>
-		<%= f.submit "Post your Advert", class: 'button tiny info', style: 'width:100%;', data: {:disable_with => 'Uploading...'} %>
+<div class="panel">
+	<a href="#" data-reveal-id="advert-form" class="button info tiny" style="width:100%">
+		Post an Advert
+	</a>
+</div>
+<div id="advert-form" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h4 id="modalTitle">Post an Advert</h4>
+	<div class="panel clearfix">
+	<%= form_for [@user, @user.adverts.build], remote: true, :html => {multipart: true}, data: {type: :script} do |f| %>
+			<%= f.file_field :image, :placeholder => '+ Add Advert Image', class: '' %>
+			<%= f.text_area :content, :placeholder => '+ Add Advert Description', style: 'resize:none;', rows: 3 %>
+		<%= f.submit "Post", class: 'button tiny right info', data: {:disable_with => 'Posting...'} %>
+		<%= render partial: 'pages/dashboard/preloader' %>
 	<% end %>
+	</div>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 	</div>

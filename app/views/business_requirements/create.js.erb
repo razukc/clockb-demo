@@ -12,6 +12,20 @@ setTimeout(
     //do something special
     $('div.success').hide();
     $('#myModal-content').foundation('reveal', 'close');
-  }, 1000);
+  }, 500);
+
+//refresh partial
+$('div#your_business_requirement')
+	.html("<%= escape_javascript render(partial: 
+		"pages/dashboard/your_business_requirement") %>"
+	);
+
+//
+$('.best_in_place').best_in_place();
+$(document).foundation();
+
+//
+
+
 
 <% end %>

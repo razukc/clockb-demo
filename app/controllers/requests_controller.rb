@@ -64,11 +64,8 @@ if @request.save
 			ClockbMailer.admin_internship_email(@request).deliver_now
 		when 'animated_video'
 			@user = User.find_by_id(@request.link_params['_z'])
-			@user.update(:animated_video => 'requested')
+			@user.update(:animated_video => '[requested]')
 			ClockbMailer.admin_animated_video_email(@user).deliver_now
-		when 'delete_animated_video'
-			@user = User.find_by_id(@request.link_params['_z'])
-			@user.update(:animated_video => 'deleted')
 			
 		end
 		

@@ -1,19 +1,35 @@
 <div class="clearfix">
 	<% @user.business_requirements.each do |req| %>
 	<div class="panel clearfix callout" id='<%= "biz_req_id_#{req.id}" %>' style="padding:5px;">
-		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_biz_id_#{req.id}", style: 'padding:10px;font-size:small;', as: :textarea, :inner_class => 'clearfix', :display_with => :simple_format %>
+		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid bip_txtarea', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_biz_id_#{req.id}", style: 'padding:10px;', as: :textarea, :inner_class => 'clearfix fix-margin-txtarea', :display_with => :simple_format, :url => user_business_requirement_path(@user, req)
+		# , :confirm => true 
+		%>
 		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_biz_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>
-		<%= link_to "<i class='fi-trash'></i>".html_safe, business_requirement_path(req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
-		<!-- <a class="close-reveal-modal">&#215;</a> -->
+		<%= link_to "<i class='fi-trash'></i>".html_safe, user_business_requirement_path(@user, req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:0 5px 0 5px;' %>
 		<div class="clearfix"></div>
 	</div>
 	<% end %>
 </div>
-	<div class="panel">
-	<%= form_for @user, url: registration_path(@user), remote: true do |f| %>
-		<%= f.fields_for :business_requirements, @user.business_requirements.build do |r| %>
-			<%= r.text_area :content, :placeholder => '+ Add Business Requirement', style: 'resize:none;', rows: 5 %>
-		<% end %>
-		<%= f.submit "Post Requirement", class: 'button tiny info', style: 'width:100%;' %>
+<div class="panel">
+	<a href="#" data-reveal-id="requirement-form" class="button info tiny" style="width:100%">
+		Post Business Requirement
+	</a>
+</div>
+	<div id="requirement-form" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	  <h4 id="modalTitle">Post Business Requirement</h4>
+	  <p class="lead hide">Post Business Requirement</p>
+			  
+	<div class="panel clearfix">
+	<%#= form_for @user, url: registration_path(@user), remote: true do |f| %>
+		<%#= f.fields_for :business_requirements, @user.business_requirements.build do |r| %>
+	<%= form_for [@user, @user.business_requirements.build], remote: true do |f| %>
+			<%= f.text_area :content, :placeholder => '+ Add Business Requirement', style: 'resize:none;', rows: 3 %>
+		<%# end %>
+		<%= f.submit "Post", class: 'button tiny info right' %>
+		<%= render partial: 'pages/dashboard/preloader' %>
 	<% end %>
 	</div>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	</div>
+
+	

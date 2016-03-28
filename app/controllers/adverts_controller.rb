@@ -5,12 +5,15 @@ def index
 @adverts = current_user.adverts
 end
 def new
+	# @user = User.find(params[:user_id])
 @advert = Advert.new
 render partial: 'adverts/form'#, locals: {advert: @advert}
 end
 
 def create
-@advert = Advert.create(advert_params)
+	@user = get_user
+	@advert = @user.adverts.build(advert_params)
+	@advert.save
 respond_to do |format| 
 format.html {redirect_to '/dashboard'}
 format.js {}
@@ -33,6 +36,9 @@ def destroy
 			format.js { }
 		end
 	end
+end
+def get_user
+	User.find(params[:user_id])
 end
 def premium_only
 unless current_user.premium?

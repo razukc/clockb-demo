@@ -1,12 +1,20 @@
 <div id="myModal-content" class="reveal-modal small" data-reveal></div>
 <div class="clearfix panel callout">
-<% unless @user.animated_video.in?([nil, 'deleted']) %>
-	<% unless @user.has_requested_animated_video? %>
+	
+<% unless @user.animated_video.in?([nil, '[deleted]', '[requested]', '']) %>
 		<div class="flex-video"><%= content_tag @user.animated_video %></div>
-	<% end %>
-			<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'delete_animated_video', _z: @user.id) %>" class="button tiny left alert", data-type="JSON">Delete</a>
-			<button class="info tiny disabled right"><i class="fi-check">&nbsp;</i>Request for Video Sent</button>
-<% else %>
-	<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video', _z: @user.id) %>" class="button tiny info right" style="width:100%", data-type="JSON">Request for Animated Video</a>
+		<div class="clearfix"></div>
+		<%= form_for @user, url: registration_path(@user), remote: true do |f| %>
+			<%= f.hidden_field :animated_video, value: '[deleted]' %>
+			<%= f.submit "Delete", class: 'alert button tiny left', :confirm => 'Delete: Are you sure?' %>
+		<% end %>
 <% end %>
+	<% if @user.animated_video.in? (['','[deleted]', nil]) %>
+	<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video', _z: @user.id) %>" class="button tiny info right" style="width:100%", data-type="JSON">Request for Animated Video</a>
+	<% end %>
+
+	<% if @user.has_requested_animated_video? %>
+			<button class="info tiny disabled right" style="width:100%;"><i class="fi-check">&nbsp;</i>Request for Animated Video Sent</button>
+	<% end %>
 </div>
+

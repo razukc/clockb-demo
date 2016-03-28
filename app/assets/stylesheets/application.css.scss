@@ -97,3 +97,20 @@ ul {
 .request-button{
 margin-top:10px !important;
 }
+.padding-zero {
+  padding: 0 !important;
+}
+.margin-zero {
+  margin: 0 !important;
+}
+.fix-margin-txtarea{
+  margin-left: -11px !important;
+  margin-top: -11px !important;
+  resize:none !important;
+  min-height: 80px !important;
+  max-height: 80px !important;
+
+}
+.bip_txtarea > p{
+  font-size:0.85rem !important;
+}

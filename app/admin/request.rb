@@ -19,12 +19,7 @@ actions :all, except: [:new, :create, :edit, :update]
 index download_links: false do
 	column :requests do |xyz|
 		case xyz.request_for['_x']
-		when 'delete_animated_video'
-			pre "Confirm Animated Video Delete"
-			@user = User.find_by_id(xyz.request_for['_z'])
-			unless @user.nil?
-				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
-			end
+
 		when 'animated_video'
 			pre "Request for Animated Video"
 			@user = User.find_by_id(xyz.request_for['_z'])

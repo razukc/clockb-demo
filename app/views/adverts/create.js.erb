@@ -13,4 +13,15 @@ setTimeout(
     $('#myModal-content').foundation('reveal', 'close');
   }, 1000);
 
+//refresh partial
+$('div#your_advertisement')
+	.html("<%= escape_javascript render(partial: 
+		"pages/dashboard/your_advertisement") %>"
+	);
+
+//
+$('.best_in_place').best_in_place();
+$(document).foundation();
+
+//
 <% end %>

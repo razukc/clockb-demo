@@ -43,7 +43,7 @@ accepts_nested_attributes_for :adverts,
 	:reject_if => lambda { |record| record[:image].blank? }
 has_many :business_requirements, :dependent => :destroy
 accepts_nested_attributes_for :business_requirements,
-	:reject_if => lambda { |record| record[:content].blank? }
+	:reject_if => lambda { |record| record[:content].blank? || record[:content].empty?}
 
 has_many :milestones, :dependent => :destroy
 accepts_nested_attributes_for :milestones, :allow_destroy => true,
@@ -153,6 +153,6 @@ def has_offered_service(business_requirement_id, user_id)
 	Usermeetup.find{ |x| x.user_x == business_requirement_id && x.user_id == user_id}	
 end
 def has_requested_animated_video?
-	self.animated_video.in?(['requested']) 
+	self.animated_video == "[requested]"
 end
 end

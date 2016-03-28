@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   resources :usermeetups
   resources :profiles
   resources :requests
-  resources :adverts
-  resources :business_requirements
+  resources :users do
+    resources :adverts
+    resources :business_requirements
+  end
   resources :social_media_links
   resources :networking_requirements
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]

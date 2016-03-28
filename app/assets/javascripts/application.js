@@ -99,14 +99,18 @@ $(document).ready(function(){
 $(document).on('ready page:load' , function () {
 	$(document).foundation();
 	$('.full-height').height($(window).height());
+    
+    //headline_message character count
+    $('span#counting').html($('span#counted').html().replace(/\n/g, "\n\r").length);
 });
 
 $(document).ready(function() {
-  /* Activating Best In Place */
-  jQuery(".best_in_place").best_in_place();
+	/* Activating Best In Place */
+	jQuery(".best_in_place").best_in_place();
+	$('.best_in_place').bind("best_in_place:activate", function () {
+		$(document).foundation(); 
+	});
 });
-$(document).ready(function() {
-    $('span#counting').html($('span#counted').html().replace(/\n/g, "\n\r").length);
-});
+
  
 

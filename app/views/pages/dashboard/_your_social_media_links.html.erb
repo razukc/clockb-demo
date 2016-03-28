@@ -15,7 +15,7 @@
 	<%= form_for @user, url: registration_path(@user), remote: true do |f| %>
 		<%= f.fields_for :social_media_links, @user.social_media_links.build do |r| %>
 			<%= r.select :media, :collection => [["Facebook","Facebook"],["Twitter","Twitter"],["Linkedin","Linkedin"]] %>
-			<%= r.text_area :link, :placeholder => '+ Add Social Media Link', style: 'resize:none;', rows: 3 %>
+			<%= r.text_area :link, :placeholder => '+ Add Social Media Link', style: 'resize:none;', rows: 2 %>
 		<% end %>
 		<%= f.submit "Add", class: 'button tiny info', style: 'width:100%;' %>
 	<% end %>
