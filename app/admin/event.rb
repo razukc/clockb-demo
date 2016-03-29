@@ -139,7 +139,7 @@ f.actions
 end
 
 controller do
-after_destroy { |record| Usermeetup.update_attributes(:event => false, :user_x => record.id) }
+after_destroy { |record| Usermeetup.where(:user_x => record.id).update_all(:event => false) }
 
 def update
 @event = Event.find_by_id(params[:id])

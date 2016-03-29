@@ -41,7 +41,7 @@
 					</tr>
 					<tr>
 						<th class="subheader">Plan</th>
-						<td><%= @user.networker? ? @user.inputs['package_selected'].humanize : @user.inputs['plan'].humanize %></td>
+						<td><%= @user.networker? ? @user.inputs['package_selected'].try(:humanize) : @user.inputs['plan'].try(:humanize) %></td>
 					</tr>
 					<tr>
 						<th class="subheader">Contact</th>
@@ -135,12 +135,12 @@
 				<!-- Advert -->
 					<div id="myModal-advert" class="reveal-modal small" data-reveal></div>
 					<div id="request-for-x" class="clearfix panel">
-						<a href="#" data-reveal-id="myModal-advert" data-reveal-ajax="<%= new_advert_path %>" class="button success expand" data-type="JSON">Post an advert</a>
+						<a href="#" data-reveal-id="myModal-advert" data-reveal-ajax="<%= new_user_advert_path(@user) %>" class="button success expand" data-type="JSON">Post an advert</a>
 					</div>
 				<!-- Business Requirement -->
 					<div id="myModal-business-requirement" class="reveal-modal small" data-reveal></div>
 					<div id="request-for-x" class="clearfix panel">
-						<a href="#" data-reveal-id="myModal-business-requirement" data-reveal-ajax="<%= new_business_requirement_path %>" class="button success expand" data-type="JSON">Post your business requirement</a>
+						<a href="#" data-reveal-id="myModal-business-requirement" data-reveal-ajax="<%= new_user_business_requirement_path(@user) %>" class="button success expand" data-type="JSON">Post your business requirement</a>
 					</div>
 				</div>
 			</div>

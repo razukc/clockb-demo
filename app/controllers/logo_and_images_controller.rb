@@ -1,5 +1,6 @@
 class LogoAndImagesController < ApplicationController
 before_action :authenticate_user!
+# before_action :premium_only
 def create
 	@user = get_user
 	@logo_and_image = @user.logo_and_images.build(logo_and_image_params)
