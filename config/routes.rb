@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
   get 'dashboard2', to: 'pages#dashboard2'
   get 'faqs', to: 'pages#faqs'
+  get 'download_animated_video', to: 'pages#download_animated_video'
 
   get 'complete_profile', to: 'pages#complete_profile'
   put 'complete_profile', to: 'pages#complete_profile'

@@ -110,6 +110,13 @@ class PagesController < ApplicationController
     @events_single = Event.find_by_id(params[:id])
     @events_all = Event.all.order(:start_date)
   end
+    def download_animated_video
+      require 'open-uri'
+  @resource = current_user
+url = @resource.animated_video_file.to_s
+data = open(url).read
+send_data data, :disposition => 'attachment', :filename=>"your_animated_video.mp4"
+end
   private
   def complete_profile_params
     inputs_keys = params[:user][:inputs].keys
