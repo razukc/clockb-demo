@@ -9,8 +9,11 @@
 			<%= f.submit "Delete", class: 'alert button tiny left', :confirm => 'Delete: Are you sure?' %>
 		<% end %>
 		<% if @user.animated_video_file.present? %>
-			<%= link_to("Download", cl_private_download_url(@user.animated_video_file.path, :mp4, :attachment => true), class: "button tiny info right") %>
+			<%= link_to("Download", @user.animated_video_file, class: "button tiny info right") %>
 		<% end %>
+		<div class="flex-box">
+			<%= cl_private_download_url("SampleVideo_720x480_1mb_s59tbs.mp4", :mp4, :attachment=> true) %>
+		</div>
 <% end %>
 	<% if @user.animated_video.in? (['','[deleted]', nil]) %>
 	<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video', _z: @user.id) %>" class="button tiny info right" style="width:100%", data-type="JSON">Request for Animated Video</a>

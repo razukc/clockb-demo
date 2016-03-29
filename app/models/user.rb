@@ -19,7 +19,7 @@ scope :offered_services, -> {joins(:meetups).where(:usermeetups => {service_offe
 scope :posted_business_requirements, -> {joins(:business_requirements).distinct}
 mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
-
+mount_uploader :animated_video_file, AnimatedVideoUploader
 devise :invitable, :database_authenticatable, :recoverable, :rememberable, :registerable, :validatable
 
 # validates_length_of :headline_message, maximum: 150
