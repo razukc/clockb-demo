@@ -1,10 +1,6 @@
 class BusinessRequirementsController < ApplicationController
 	before_action :authenticate_user!
-	after_destroy {|record|
-		Usermeetup.where(:user_x => record.id).update_attributes(
-			:service_offered => false
-			)
-	}
+
 	#before_action :premium_only
 	respond_to :html, :js
 	def get_user
