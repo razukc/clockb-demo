@@ -85,7 +85,7 @@
 		<% end %>
 		<% end %>
 			<% unless @v_weekly.empty? %>
-			<% @v_weekly.each do |v_weekly| %>
+			<% @v_weekly.each_with_index do |v_weekly, index| %>
 		<!-- Weekly Event -->
 		<h4><%= v_weekly.form_params['name'] %></h4>
 		<div class="clearfix">
@@ -102,7 +102,7 @@
 			<li><strong>Venue:</strong> <%= v_weekly.form_params['venue'] %></li>
 		</ul>
 		<%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: v_weekly.id } %>
-		<hr>
+		<%= "<hr />".html_safe unless index == @v_weekly.size - 1 %>
 		<% end %>
 		<% end %>
 			</div>
