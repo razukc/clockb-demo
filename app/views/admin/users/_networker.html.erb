@@ -24,7 +24,8 @@ f.inputs "Details" do
 	f.inputs "Website/Headline Message/Animated Video" do
 		f.input :website
 		f.input :headline_message, as: :text, :input_html => {rows: 4}
-		f.input :animated_video, as: :text, :input_html => {rows: 4}
+		f.input :animated_video, as: :text, :input_html => {rows: 4}, label: "Animated Video Embed Code"
+		f.input :animated_video_file, as: :file
 
 	end
 	f.inputs "Client Background" do

@@ -54,7 +54,10 @@ ActiveAdmin.register User do
 					attributes_table_for user do
 						row :website
 						row :headline_message
-						row :animated_video			
+						row :animated_video	
+						row :animated_video_file do |file| 
+							file.animated_video_file
+						end
 					end
 				end	
 
@@ -367,6 +370,7 @@ ActiveAdmin.register User do
 			params.require(:user).permit(:email, 
 			:attachment, :attachment_cache, :remove_attachment,
 			:photo, :photo_cache, :remove_photo,
+			:animated_video_file, :animated_video_cache, :remove_animated_video,
 			:website, :headline_message, :animated_video,
 			milestones_attributes: [:id, :content, :achieved, :_destroy],
 			services_catereds_attributes: [:id, :content, :_destroy],
