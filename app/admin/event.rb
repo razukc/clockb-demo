@@ -127,7 +127,7 @@ r.input :description, as: :text, input_html: {rows: 6}
 r.input :venue 
 r.input :start_time
 end	
-f.input :start_date, as: :datepicker, #:date_time_picker,
+f.input :start_date, as: :datepicker, required: true, #:date_time_picker,
 # datepicker_options: {format:"l, F d, Y H:i A"}
 datepicker_options: {date_format:"DD, MM d, yy"}
 f.input :attachment, as: :file, :label => "Photo"
@@ -139,7 +139,7 @@ f.actions
 end
 
 controller do
-after_destroy { |record| Usermeetup.destroy_all(:event => true, :user_x => record.id) }
+after_destroy { |record| Usermeetup.update_attributes(:event => false, :user_x => record.id) }
 
 def update
 @event = Event.find_by_id(params[:id])

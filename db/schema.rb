@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327101246) do
+ActiveRecord::Schema.define(version: 20160329084330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,15 @@ ActiveRecord::Schema.define(version: 20160327101246) do
     t.string "networking"
     t.string "innovation"
   end
+
+  create_table "logo_and_images", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "logo_and_images", ["user_id"], name: "index_logo_and_images_on_user_id", using: :btree
 
   create_table "milestone_alumnis", force: :cascade do |t|
     t.text     "content"
@@ -366,6 +375,7 @@ ActiveRecord::Schema.define(version: 20160327101246) do
   add_foreign_key "employee_documents", "users"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
+  add_foreign_key "logo_and_images", "users"
   add_foreign_key "milestone_alumnis", "alumnis"
   add_foreign_key "milestones", "clients"
   add_foreign_key "milestones", "users"

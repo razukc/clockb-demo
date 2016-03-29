@@ -12,7 +12,7 @@
 </div>
 <div class="panel">
 	<a href="#" data-reveal-id="requirement-form" class="button info tiny" style="width:100%">
-		Post Business Requirement
+		Post Requirement
 	</a>
 </div>
 	<div id="requirement-form" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -25,7 +25,7 @@
 	<%= form_for [@user, @user.business_requirements.build], remote: true do |f| %>
 			<%= f.text_area :content, :placeholder => '+ Add Business Requirement', style: 'resize:none;', rows: 3 %>
 		<%# end %>
-		<%= f.submit "Post", class: 'button tiny info right' %>
+		<%= f.submit "Post", class: 'button tiny info right', data: {disable_with: "Please wait..."} %>
 		<%= render partial: 'pages/dashboard/preloader' %>
 	<% end %>
 	</div>

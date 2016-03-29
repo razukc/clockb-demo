@@ -1,4 +1,4 @@
-<% if @advert.errors.any? %>
+<% if @networking_requirement.errors.any? %>
   
   $('div.errors').show();
 
@@ -10,14 +10,13 @@ setTimeout(
   function() 
   {
     //do something special
-	$('div.success').hide();
     $('#myModal-content').foundation('reveal', 'close');
   }, 1000);
 
 //refresh partial
-$('div#your_advertisement')
+$('div#your_networking_requirements')
 	.html("<%= escape_javascript render(partial: 
-		"pages/dashboard/your_advertisement") %>"
+		"pages/dashboard/your_networking_requirements") %>"
 	);
 
 //

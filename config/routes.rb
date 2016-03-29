@@ -27,9 +27,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :adverts
     resources :business_requirements
+    resources :social_media_links
+    resources :networking_requirements
+    resources :logo_and_images
   end
-  resources :social_media_links
-  resources :networking_requirements
   resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
   # resources :users_websites
   # resources :users

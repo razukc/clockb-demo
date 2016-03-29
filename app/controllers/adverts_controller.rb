@@ -1,13 +1,13 @@
 class AdvertsController < ApplicationController
 before_action :authenticate_user!
-# before_action :premium_only
+before_action :premium_only
 def index
 @adverts = current_user.adverts
 end
 def new
-	# @user = User.find(params[:user_id])
-@advert = Advert.new
-render partial: 'adverts/form'#, locals: {advert: @advert}
+	@user = get_user
+	@new_advert = @user.adverts.build
+	render partial: 'form'
 end
 
 def create

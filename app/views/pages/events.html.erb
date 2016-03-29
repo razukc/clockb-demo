@@ -59,49 +59,54 @@
 <p>Start your week with some priceless advice. Start-ups, or for anyone who aspires to be an entrepreneur, our Monday morning coffee sessions are free advisory sessions to assess and fine-tune your ideas. If you have queries regarding your business or your ideas, simply pop in to our sessions to have it answered.</p>
 		<hr />
 		<div class="row">
-			<div class="large-7 columns">
+			<div class="large-7 columns" style="border-right:1px solid #008CBA;">
 			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
-			<% if !@v_main.nil? %>
+			<% unless @v_main.empty? %>
+				<% @v_main.each do |v_main| %>
 				<!-- Main Event -->
-				<h4><%= @v_main.form_params['name'] %></h4>
+				<h4><%= v_main.form_params['name'] %></h4>
 				<div class="clearfix">
-					<% if !@v_main.attachment.blank? %>
-		<%= image_tag @v_main.attachment_url(:featured), class: 'th-no-hover lazyload' %>
-		<% end %>
+					<% if !v_main.attachment.blank? %>
+						<%= image_tag v_main.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+					<% end %>
 
-		</div>
+				</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p><%= @v_main.form_params['description'] %></p>
+		<p><%= v_main.form_params['description'] %></p>
 		<ul class="no-bullet">
-			<li><strong>Start Date:</strong> <%= @v_main.start_date? ? @v_main.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
-			<li><strong>Time:</strong> <%= @v_main.form_params['start_time'] %></li>
-			<li><strong>Venue:</strong> <%= @v_main.form_params['venue'] %></li>
+			<li><strong>Start Date:</strong> <%= v_main.start_date? ? v_main.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
+			<li><strong>Time:</strong> <%= v_main.form_params['start_time'] %></li>
+			<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
 		</ul>
-				<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: @v_main.id } %>
+				<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id } %>
 		
 		<hr />
 		<% end %>
-			<% if !@v_weekly.nil? %>
+		<% end %>
+			<% unless @v_weekly.empty? %>
+			<% @v_weekly.each do |v_weekly| %>
 		<!-- Weekly Event -->
-		<h4><%= @v_weekly.form_params['name'] %></h4>
+		<h4><%= v_weekly.form_params['name'] %></h4>
 		<div class="clearfix">
-			<% if !@v_weekly.attachment.blank? %>
-				<%= image_tag @v_weekly.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+			<% if !v_weekly.attachment.blank? %>
+				<%= image_tag v_weekly.attachment_url(:featured), class: 'th-no-hover lazyload' %>
 		<% end %>
 		</div>
 		<br />
 		<h5>Event Insights</h5>
-		<p><%= @v_weekly.form_params['description'] %></p>
+		<p><%= v_weekly.form_params['description'] %></p>
 				<ul class="no-bullet">
-			<li><strong>Start Date:</strong> <%= @v_weekly.start_date? ? @v_weekly.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
-			<li><strong>Time:</strong> <%= @v_weekly.form_params['start_time'] %></li>
-			<li><strong>Venue:</strong> <%= @v_weekly.form_params['venue'] %></li>
+			<li><strong>Start Date:</strong> <%= v_weekly.start_date? ? v_weekly.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
+			<li><strong>Time:</strong> <%= v_weekly.form_params['start_time'] %></li>
+			<li><strong>Venue:</strong> <%= v_weekly.form_params['venue'] %></li>
 		</ul>
-		<%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: @v_weekly.id } %>
+		<%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: v_weekly.id } %>
+		<hr>
+		<% end %>
 		<% end %>
 			</div>
-			<div class="large-5 columns" style="border-left:1px solid #008CBA;">
+			<div class="large-5 columns" >
 				<div class="clearfix">
 					<div id="events_calendar">
 			  		<!-- Event Calendar -->

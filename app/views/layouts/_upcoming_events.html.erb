@@ -3,32 +3,36 @@
   <% else %>
 
 <% if @upcoming_main %>
+<% @upcoming_main.each do |upcoming_main| %>
 <article class="event columns" >
         <div class="event-date">
-          <p class="event-month"><%= @upcoming_main.start_date? ? @upcoming_main.start_date.strftime('%b') : '-' %></p>
-          <p class="event-day"><%= @upcoming_main.start_date? ? @upcoming_main.start_date.strftime('%e') : '-' %></p>
+          <p class="event-month"><%= upcoming_main.start_date? ? upcoming_main.start_date.strftime('%b') : '-' %></p>
+          <p class="event-day"><%= upcoming_main.start_date? ? upcoming_main.start_date.strftime('%e') : '-' %></p>
         </div>
         <div class="event-desc">
-          <h5 class="event-desc-header"><%= @upcoming_main.form_params['name'] %></h5>
-          <%= link_to 'View Details', event_browse_path(@upcoming_main), class: 'rsvp button info tiny' %> 
+          <h5 class="event-desc-header"><%= upcoming_main.form_params['name'] %></h5>
+          <%= link_to 'View Details', event_browse_path(upcoming_main), class: 'rsvp button info tiny' %> 
         </div>
 </article>
 
 <% end %>
+<% end %>
 
 <% if @upcoming_weekly %>
+<% @upcoming_weekly.each do |upcoming_weekly| %>
 
 <article class="event columns" >
         <div class="event-date">
-          <p class="event-month"><%= @upcoming_weekly.start_date? ? @upcoming_weekly.start_date.strftime('%b') : '-' %></p>
-          <p class="event-day"><%= @upcoming_weekly.start_date? ? @upcoming_weekly.start_date.strftime('%e') : '-' %></p>
+          <p class="event-month"><%= upcoming_weekly.start_date? ? upcoming_weekly.start_date.strftime('%b') : '-' %></p>
+          <p class="event-day"><%= upcoming_weekly.start_date? ? upcoming_weekly.start_date.strftime('%e') : '-' %></p>
         </div>
         <div class="event-desc">
-          <h5 class="event-desc-header"><%= @upcoming_weekly.form_params['name'] %></h5>
-          <%= link_to 'View Details', event_browse_path(@upcoming_weekly), class: 'rsvp button info tiny' %> 
+          <h5 class="event-desc-header"><%= upcoming_weekly.form_params['name'] %></h5>
+          <%= link_to 'View Details', event_browse_path(upcoming_weekly), class: 'rsvp button info tiny' %> 
         </div>
 </article>
       
 
+<% end %>
 <% end %>
 <% end %>

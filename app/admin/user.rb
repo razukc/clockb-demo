@@ -326,6 +326,13 @@ ActiveAdmin.register User do
 	end
 
 	controller do
+		after_destroy do |record|
+			Usermeetup.where(:user_id => record.id).update_all(
+				:service_offered => false, 
+				:meetup => false, 
+				:event => false, 
+				:webinar => false)
+		end
 		def update
 			@user = User.find_by_id(params[:id])
 			if @user.update(user_params)

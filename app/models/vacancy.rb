@@ -8,5 +8,7 @@ class Vacancy < ActiveRecord::Base
 		Vacancy.find_by_id(resource).content['job_title']
 	end
 	serialize :content, Hash
-
+	def self.current_vacancies
+		Vacancy.all.select {|x| x.content['application_deadline'].to_date >= Date.today()}
+	end
 end

@@ -92,7 +92,7 @@ class PagesController < ApplicationController
   end
 
   def careers
-  	@vacancy = Vacancy.all
+  	@vacancy = Vacancy.current_vacancies
   end
   def clockb
     @know_the_team = User.know_the_team

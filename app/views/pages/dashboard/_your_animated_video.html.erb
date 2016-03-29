@@ -8,6 +8,7 @@
 			<%= f.hidden_field :animated_video, value: '[deleted]' %>
 			<%= f.submit "Delete", class: 'alert button tiny left', :confirm => 'Delete: Are you sure?' %>
 		<% end %>
+		<button class="button tiny info right">Download Video</button>
 <% end %>
 	<% if @user.animated_video.in? (['','[deleted]', nil]) %>
 	<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'animated_video', _z: @user.id) %>" class="button tiny info right" style="width:100%", data-type="JSON">Request for Animated Video</a>

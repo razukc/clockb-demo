@@ -1,0 +1,12 @@
+<div id="social-media-form" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h4 id="modalTitle">Add Social Media Link</h4>
+	<div class="panel clearfix">
+	<%= form_for [@user, @user.social_media_links.build], remote: true do |f| %>
+			<%= f.select :media, :collection => [["Facebook","Facebook"],["Twitter","Twitter"],["Linkedin","Linkedin"]] %>
+			<%= f.text_area :link, :placeholder => '+ Add Social Media Link', style: 'resize:none;', rows: 2 %>
+			<%= f.submit "Add", class: 'button tiny right info', data: {disable_with: "Please wait..."} %>
+			<%= render partial: 'pages/dashboard/preloader' %>
+	<% end %>
+	</div>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

@@ -15,7 +15,9 @@
 			<!-- your logo and image -->
 			<li class="heading">your logo &amp; image</li>
 			<li class="divider"></li>
-
+			<div id="your_logo_and_image">
+			<%= render partial: 'pages/dashboard/your_logo_and_image' %>
+			</div>
 			<!-- website and headline message -->
 			<li class="heading">website &amp; headline message</li>
 			<li class="divider"></li>
@@ -44,22 +46,14 @@
 			<li class="heading">your advertisement</li>
 			<li class="divider"></li>
 			<div id="your_advertisement">
-			<% if @user.regular? %>
 			<%= render partial: 'pages/dashboard/your_advertisement' %>
-			<% else %>
-			<%= render partial: 'shared/upgrade_to_premium', locals: {_x: 'premium', _y: 'dashboard_advert', _z: @user.id} %>
-			<% end %>
 			</div>
 			
 			<!-- your social media links -->
 			<li class="heading">your social media links</li>
 			<li class="divider"></li>
 			<div id="your_social_media_links">
-			<% if @user.regular? %>
 			<%= render partial: 'pages/dashboard/your_social_media_links' %>
-			<% else %>
-			<%= render partial: 'shared/upgrade_to_premium', locals: {_x: 'premium', _y: 'dashboard_social_media_links', _z: @user.id} %>
-			<% end %>
 			</div>
 			
 			<!-- your networking requirement -->

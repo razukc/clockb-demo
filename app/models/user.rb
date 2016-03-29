@@ -32,6 +32,7 @@ serialize :inputs, Hash
 # include DeviseInvitable::Inviter
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
+has_many :logo_and_images, :dependent => :destroy
 has_many :networking_requirements, dependent: :destroy
 accepts_nested_attributes_for :networking_requirements,
 	:reject_if => :all_blank

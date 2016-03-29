@@ -21,10 +21,10 @@ class Event < ActiveRecord::Base
 		Event.all.order(:start_date)
 	end
 	def self.m_main
-		m_all.find{|u| u.form_params['type'] == "main"}
+		m_all.select{|u| u.form_params['type'] == "main"}
 	end
 	def self.m_weekly
-		m_all.find{|u| u.form_params['type'] == "weekly"}
+		m_all.select{|u| u.form_params['type'] == "weekly"}
 	end
 	def self.m_upcoming
 		Event.where('start_date >= ?', Date.today).order(:start_date)
@@ -32,11 +32,13 @@ class Event < ActiveRecord::Base
 
 	def self.m_upcoming_main
 		 # Event.where('true = true', :form_params.find{|x| x[:type] == 'main'}).limit(1)
-		m_upcoming.find{ |u| u.form_params['type'] == "main" }
+		# m_upcoming.find{ |u| u.form_params['type'] == "main" }
+		m_upcoming.limit(3).select{ |u| u.form_params['type'] == "main" }
 					
 	end
 	def self.m_upcoming_weekly
-		m_upcoming.find{ |u| u.form_params['type'] == "weekly"}
+		# m_upcoming.find{ |u| u.form_params['type'] == "weekly"}
+		m_upcoming.limit(3).select{ |u| u.form_params['type'] == "weekly"}
 	end
 
 	def self.m_slider

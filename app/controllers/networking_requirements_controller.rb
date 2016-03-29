@@ -1,7 +1,10 @@
 class NetworkingRequirementsController < ApplicationController
+	before_action :authenticate_user!
 	# before_action :premium_only
 	def create
-		@networking_requirement = NetworkingRequirement.create(networking_requirement_params)
+		@user = User.find(params[:user_id])
+		@networking_requirement = @user.networking_requirements.build(networking_requirement_params)
+		@networking_requirement.save
 		respond_to do |format|
 			format.html {redirect_to dashboard_path}
 			format.js {}

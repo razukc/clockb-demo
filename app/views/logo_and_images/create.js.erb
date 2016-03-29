@@ -1,4 +1,4 @@
-<% if @advert.errors.any? %>
+<% if @logo_and_image.errors.any? %>
   
   $('div.errors').show();
 
@@ -15,9 +15,9 @@ setTimeout(
   }, 1000);
 
 //refresh partial
-$('div#your_advertisement')
+$('div#your_logo_and_image')
 	.html("<%= escape_javascript render(partial: 
-		"pages/dashboard/your_advertisement") %>"
+		"pages/dashboard/your_logo_and_image") %>"
 	);
 
 //
