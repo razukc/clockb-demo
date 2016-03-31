@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
-	
+	has_many :main_event_sliders, dependent: :destroy
+	accepts_nested_attributes_for :main_event_sliders,
+		reject_if: :all_blank
+
 	scope :main, -> {where("form_params like ?", '%type: main%')}
 	scope :weekly, -> {where("form_params like ?", '%type: weekly%')}
 	
@@ -17,7 +20,7 @@ class Event < ActiveRecord::Base
 	def self.user_attendees(id)
 		Usermeetup.where(:event => true, :user_x => id)
 	end
-
+	
 	def self.m_all
 		Event.all.order(:start_date)
 	end
