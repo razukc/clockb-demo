@@ -93,6 +93,41 @@
 			<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
 			<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
 		</ul>
+		<% 
+			@v_main_price_and_mileages = MainEventPriceAndMileage.where(:event_id => v_main.id)
+			unless @v_main_price_and_mileages.empty?
+		%>
+				<table width="100%">
+					<thead>
+						<tr>
+							<th width="25%">Attendee Category</td>
+							<th width="25%">Price - What do you pay?</td>
+							<th width="50%">Mileage - What do you get?</td>
+						</tr>
+					</thead>
+					<tbody>
+		<%
+				@v_main_price_and_mileages.each do |price_and_mileage|
+		%>
+						<tr>
+							<td width= "25%"><%= price_and_mileage.attendee_category %></td>
+							<td width="25%"><%= price_and_mileage.price %></td>
+							<td width="50%">
+								<ul class="no-bullet change-color">
+								<li>
+								<%= price_and_mileage.mileage.split("\n").join("</li><li>").html_safe %>
+								</li>
+								</ul>
+							</td>
+						</tr>
+		<%
+				end
+		%>
+						</tbody>
+					</table>
+		<%
+			end
+		%>
 		<div id="_request_for_event_id_<%= v_main.id %>">
 						<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
