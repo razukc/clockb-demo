@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :resourcexes, except: [:create, :destroy, :update, :edit, :new, :show], path: "resources"
   resources :usermeetups
   resources :profiles
+      get 'get_users' => 'profiles#get_users'
   resources :requests
   resources :users do
     resources :adverts
@@ -30,8 +31,11 @@ Rails.application.routes.draw do
     resources :social_media_links
     resources :networking_requirements
     resources :logo_and_images
+    resources :feedback_from_users
   end
-  resources :feedback_from_users, except: [:destroy, :update, :edit, :index, :new, :show]
+
+
+  
   # resources :users_websites
   # resources :users
 
@@ -48,6 +52,7 @@ Rails.application.routes.draw do
 
   get 'complete_profile', to: 'pages#complete_profile'
   put 'complete_profile', to: 'pages#complete_profile'
+  root 'pages#home'
   # resources :webinars
   # match '/party/:id', :to => 'webinars#party', :as => :party, :via => :get
   
@@ -66,7 +71,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,10 +1,14 @@
 class FeedbackFromUsersController < ApplicationController
 def new
-	@feedback = FeedbackFromUser.new
+	@user = User.find(params[:user_id])
+	@new_feedback = @user.feedbacks.build
+	render partial: 'form'
 end
 
 def create
-	@feedback = FeedbackFromUser.create(feedback_params)
+	@user = User.find(params[:user_id])
+	@feedback = @user.feedbacks.build(feedback_params)
+	@feedback.save
 	respond_to do |format|
 		format.html {redirect_to '/dashboard'}
 		format.js {}

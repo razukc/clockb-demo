@@ -1,0 +1,11 @@
+<h5>Advertisements</h5>
+<ul class="example-orbit" data-orbit>
+  <%= @user.adverts.each do |adv| %>
+  <li>
+    <%= image_tag adv.image_url(:slider) %>
+    <div class="orbit-caption">
+      <%= adv.content.html_safe %>
+    </div>
+  </li>
+  <% end %>
+</ul>

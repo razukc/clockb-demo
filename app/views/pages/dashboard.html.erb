@@ -216,7 +216,7 @@ locals: {_x: 'premium', _y: 'service_offered', _z: current_user.id} %>
 	<div class="large-6 columns">
 		<% if @user.client? || @user.alumni? %>
 		<h5>Feedbacks</h5>
-		<%= form_for FeedbackFromUser.new, remote: true, method: :post do |f| %>
+		<%= form_for [@user, FeedbackFromUser.new], remote: true, method: :post do |f| %>
 		<%= f.text_area :feedback, rows: 6, required: true %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.submit "Submit", class: 'button info tiny right'%>

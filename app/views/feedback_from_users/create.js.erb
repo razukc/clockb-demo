@@ -4,5 +4,18 @@
 <% else %>
 	$('div.errors').hide();
 	$('div.success').show();
-	$('form input, textarea').prop("disabled", true);
+	// $('form input, textarea').prop("disabled", true);
+	$('div#feedback-form').html("<div class='alert-box success'>Thank you for your feedback!</div>");
+	setTimeout(
+	  function() 
+	  {
+	    //do something special
+	    $('#myModal-content').foundation('reveal', 'close');
+	  }, 3000);
+
+	//
+	// $('.best_in_place').best_in_place();
+	// $(document).foundation();
+
+	//
 <% end %>

@@ -6,7 +6,7 @@
 			req.media == "Facebook" ? "<i class='fi-social-facebook left bigger-icon'></i>".html_safe : (req.media== "Linkedin" ? "<i class='fi-social-linkedin left bigger-icon'></i>".html_safe : "<i class='fi-social-twitter left bigger-icon'></i>".html_safe)
 		%>
 		<%#= best_in_place req, :media, :as => :select, :collection => [["Facebook","Facebook"],["Twitter","Twitter"],["Linkedin","Linkedin"]] %>
-		<%= best_in_place req, :link, class: 'left', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_social_id_#{req.id}", style: 'padding:10px;margin-left:10px;width:75%;', url: user_social_media_link_path(@user, req), :display_with => :truncate, :helper_options => {length: 35} %>
+		<%= best_in_place req, :link, class: 'left', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_social_id_#{req.id}", style: 'padding:10px;margin-left:10px;width:73%;', url: user_social_media_link_path(@user, req), :display_with => :truncate, :helper_options => {length: 35} %>
 		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_social_id_#{req.id}", style: 'font-size: larger;padding:10px 5px 0 5px;' %>
 		<%= link_to "<i class='fi-trash'></i>".html_safe, user_social_media_link_path(@user, req), class: 'right', method: :delete, data: {confirm: 'Delete: Are your sure?'}, remote: true, style: 'font-size: larger;padding:10px 5px 0 0px;' %>
 		<!-- <a class="close-reveal-modal">&#215;</a> -->

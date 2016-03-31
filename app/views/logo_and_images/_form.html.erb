@@ -1,0 +1,11 @@
+<div id="logo-and-image-form" class="" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h4 id="modalTitle">Your Logo &amp; Image</h4>
+	<div class="panel clearfix">
+	<%= form_for [@user, @new_logo_and_image], remote: true, :html => {multipart: true}, data: {type: :script} do |f| %>
+			<%= f.file_field :content, class: '' %>
+		<%= f.submit "Upload", class: 'button tiny right info', data: {:disable_with => 'Please wait...'} %>
+		<%= render partial: 'pages/dashboard/preloader' %>
+	<% end %>
+	</div>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

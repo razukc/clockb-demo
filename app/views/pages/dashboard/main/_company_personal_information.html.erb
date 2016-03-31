@@ -1,0 +1,33 @@
+<h5>Company/Personal Information</h5>
+<div class="dashboard-orbit">
+<ul class="example-orbit-content" data-orbit data-options="timer:false;timer_speed:3000;slide_number:false;">
+  <li data-orbit-slide="headline-1">
+    <div class="row panel">
+    	<div class="columns large-6 medium-6">
+	    	<%= image_tag @user.logo_and_images.any? ? @user.logo_and_images.first.content_url(:slider) : "500.png" %>
+	    	<div class="headline-message" style="background-color:white;padding:10px;">
+		    	<%= @user.headline_message? ? @user.headline_message : "Headline Message" %>
+	    	</div>
+    	</div>
+    	<div class="columns large-6 medium-6">
+			<table width="100%" class="panel radius" style="padding:5px;">
+				<tbody>
+					<tr>
+						<th class="subheader">Name</th>
+						<td><%= @user.inputs['name']%></td>
+					</tr>
+					<tr>
+						<th  class="subheader">Field of Expertise</th>
+						<td><%= @user.inputs['field_of_expertise']%></td>
+					</tr>
+    				<tr>
+						<th  class="subheader">Years of Experience</th>
+						<td><%= @user.inputs['years_of_experience']%></td>
+					</tr>
+				</tbody>
+			</table>
+    	</div>
+    </div>
+  </li>
+</ul>
+</div>

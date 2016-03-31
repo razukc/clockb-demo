@@ -27,21 +27,27 @@
     </div>
 
     <!-- Company -->
-    <div class="field">
-      <%= i.label :person_in_charge %>
-      <%= i.text_field :person_in_charge %>
+    <div class="company-fields">
+      <div class="field">
+        <%= i.label :person_in_charge %>
+        <%= i.text_field :person_in_charge %>
+      </div>
+      <div class="field">
+        <%= i.label :company_address %>
+        <%= i.text_field :company_address %>
+      </div>
+      <div class="field">
+        <%= i.label :company_email %>
+        <%= i.text_field :company_email %>
+      </div>
+      <div class="field">
+        <%= i.label :number_of_employees %>
+        <%= i.text_field :number_of_employees %>
+      </div>
     </div>
     <div class="field">
-      <%= i.label :company_address %>
-      <%= i.text_field :company_address %>
-    </div>
-    <div class="field">
-      <%= i.label :year_founded %>
-      <%= i.text_field :year_founded %>
-    </div>
-    <div class="field">
-      <%= i.label :number_of_employees %>
-      <%= i.text_field :number_of_employees %>
+      <%= i.label :years_of_experience %>
+      <%= i.text_field :years_of_experience %>
     </div>
     <div class="field">
       <%= i.label :website %>
@@ -52,11 +58,11 @@
       <%= i.telephone_field :contact_number, required: true %>
     </div>
     <div class="field">
-      <%= i.label "Select Package" %>
-      <%= i.radio_button :package_selected, "regular" %>
-      <%= i.label :package_selected_regular, "Regular", class: 'inline' %>
+      <%#= i.check_box :package_selected, as: :boolean, label: "Request for Premium Package" %>
       <%= i.radio_button :package_selected, "premium" %>
-      <%= i.label :package_selected_premium, "Premium"%>
+      <%= i.label :package_selected_premium, "Request for Premium Package"%>
+      <%= i.radio_button :package_selected, "regular" %>
+      <%= i.label :package_selected_regular, "Regular Package", class: 'inline' %>
     </div>
     <!-- Company ends -->
     <ul class="side-nav">
@@ -69,10 +75,51 @@
       <%= i.text_field :profile, required: true %>
     </div>
 	<div class="field">
-    	<%= i.label "Products/Services of Business" %>
-    	<%= i.text_field :products_services_of_business %>
+      <%= i.label "Products/Services of Business" %>
+      <%= i.text_field :products_services_of_business %>
     </div>
-	<div class="field">
+  <div class="field">
+      <%= i.label "Industry of expertise" %>
+      <%= i.select :industry_of_expertise,
+          :collection => 
+          [
+            ["Agriculture & Forestry Sector","Agriculture & Forestry Sector"],
+            ["Arts, Entertainment & Recreation Sector","Arts, Entertainment & Recreation Sector"],
+            ["Business Innovation","Business Innovation"],
+            ["Business Services Sector","Business Services Sector"],
+            ["Construction Sector","Construction Sector"],
+            ["Consumer Services","Consumer Services"],
+            ["Education Sector","Education Sector"],
+            ["Electric Utilities","Electric Utilities"],
+            ["Finance & Insurance Sector","Finance & Insurance Sector"],
+            ["Government","Government"],
+            ["Health Care Sector","Health Care Sector"],
+            ["IT & Technology","IT & Technology"],
+            ["Lodging","IT & Technology"],
+            ["Management of Companies & Enterprises","Management of Companies & Enterprises"],
+            ["Manufacturing Sector","Manufacturing Sector"],
+            ["Media","Media"],
+            ["Membership Organizations","Membership Organizations"],
+            ["Mining","Mining"],
+            ["Natural Gas Distribution","Natural Gas Distribution"],
+            ["Nonprofit Institutions","Nonprofit Institutions"],
+            ["Oil & Gas","Oil & Gas"],
+            ["Others","Others"],
+            ["Private Households","Private Households"],
+            ["Professional Services Sector","Professional Services Sector"],
+            ["Real Estate","Real Estate"],
+            ["Religious Organizations","Religious Organizations"],
+            ["Rental & Leasing","Rental & Leasing"],
+            ["Restaurants, Bars & Food Services","Restaurants, Bars & Food Services"],
+            ["Retail Sector","Retail Sector"],
+            ["Transportation Services Sector","Transportation Services Sector"],
+            ["Water & Sewer Utilities","Water & Sewer Utilities"],
+            ["Wholesale Sector","Wholesale Sector"]
+          ]
+
+       %>
+  </div>
+	<div class="field" style="float:left;">
     	<%= i.label "Field of Expertise" %>
     	<%= i.text_field :field_of_expertise %>
     </div>
@@ -80,44 +127,10 @@
       <%= i.label "Target Audience" %>
       <%= i.text_field :target_audience %>
     </div>
-    <div class="field">
-      <%= i.label "Target Audience Location" %>
-      <%= i.text_field :target_audience_location %>
-    </div>
+
     <!-- Business ends -->
 
-    <!-- Social Media -->
-    <ul class="side-nav">
-      <li class="heading">social media accounts</li>
-      <li class="divider"></li>
-    </ul>
-    <div class="field">
-    	<%= i.label "Facebook" %>
-    	<%= i.text_field :facebook %>
-    </div>
-    <div class="field">
-        	<%= i.label "Linkedin" %>
-        	<%= i.text_field :linkedin %>
-    </div>
-    <div class="field">
-        	<%= i.label "Twitter" %>
-        	<%= i.text_field :twitter %>
-    </div>
-    <div class="field">
-    	<%= i.label "Others" %>
-    	<%= i.text_field :social_media_others %>
-    </div>
-    <!-- Social Media ends -->
 
-    <!-- Networking requirement -->
-	<div class="fields">
-          <ul class="side-nav">
-        <li class="heading">please be specific about your Networking requirement</li>
-        <li class="divider"></li>
-      </ul>
-	    <%= i.text_area :networking_requirement, {rows: 6} %>
-    </div>
-    <!-- Networking requirement ends-->
 
     <div class="fields">
       <ul class="side-nav">

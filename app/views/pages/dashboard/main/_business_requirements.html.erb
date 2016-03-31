@@ -1,0 +1,16 @@
+<h5>Business Requirements</h5>
+<div class="panel " style="max-height:228px;overflow-y:scroll;padding:10px;">
+<ul class="no-bullet">
+	<% unless @user.business_requirements.empty? %>
+		<% @user.business_requirements.each do |biz| %>
+			<div class="panel callout radius clearfix" style="padding:10px;margin-top:5px;">
+			<li>
+				<%= (content_tag :p, biz.content, class: 'text-justify') unless biz.content.blank? %>
+				<div style="border-bottom:1px solid #e3e3e3;margin-top:5px;margin-bottom:5px;"></div>
+				<%= link_to "Offer Service", "#", class: 'button info tiny clearfix right', style: 'padding:5px;margin:5px;' %> 
+			</li>
+			</div>
+		<% end %>
+	<% end %>
+</ul>
+</div>

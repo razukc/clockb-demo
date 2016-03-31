@@ -41,11 +41,7 @@
       <%= i.text_field :profile, required: true %>
     </div>
     <div class="field">
-      <%= i.label "Select Package" %>
-      <%= i.radio_button :package_selected, "regular", checked: true %>
-      <%= i.label :package_selected_regular, "Regular", class: 'inline' %>
-      <%= i.radio_button :package_selected, "premium" %>
-      <%= i.label :package_selected_premium, "Premium"%>
+      <%= i.hidden_field :package_selected, value: "regular" %>
     </div>
     <% end %>
   </div>

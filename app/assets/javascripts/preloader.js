@@ -1,6 +1,4 @@
-
 $( document ).ready(function() {
-
   // show preloader on AJAX start
   $(document).ajaxStart(function(){
     $("div.preloader").show();

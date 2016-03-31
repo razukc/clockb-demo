@@ -20,6 +20,7 @@ class PagesController < ApplicationController
     # @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
     # @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
+    @events = Event.all
     # format.html {render :layout => 'application'}
     format.html {render 'pages/dashboard/index'}
     end
@@ -112,10 +113,10 @@ class PagesController < ApplicationController
   end
     def download_animated_video
       require 'open-uri'
-  @resource = current_user
-url = @resource.animated_video_file.to_s
-data = open(url).read
-send_data data, :disposition => 'attachment', :filename=>"your_animated_video.mp4"
+      @resource = current_user
+      url = @resource.animated_video_file.to_s
+      data = open(url).read
+      send_data data, :disposition => 'attachment', :filename=>"your_animated_video.mp4"
 end
   private
   def complete_profile_params

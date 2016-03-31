@@ -1,6 +1,11 @@
 class LogoAndImagesController < ApplicationController
 before_action :authenticate_user!
 # before_action :premium_only
+def new
+	@user = get_user
+	@new_logo_and_image = @user.logo_and_images.build
+	render partial: 'form'
+end
 def create
 	@user = get_user
 	@logo_and_image = @user.logo_and_images.build(logo_and_image_params)

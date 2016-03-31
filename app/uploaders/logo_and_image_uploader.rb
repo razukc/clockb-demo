@@ -38,10 +38,10 @@ class LogoAndImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [200, 200]
   end
   version :dashboard do
-    process :resize_to_fit => [303, 600]
+    process :resize_to_fit => [500, 500]
   end
   version :slider do
-    process :resize_to_fill => [470, 350]
+    process :resize_to_fit => [600, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

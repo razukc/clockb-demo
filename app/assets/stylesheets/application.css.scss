@@ -117,3 +117,23 @@ margin-top:10px !important;
 .bigger-icon {
   font-size: 24px;
 }
+
+//
+//dashboard-orbit
+//
+
+.dashboard-orbit{
+  .orbit-container {
+      overflow: visible !important;
+  }
+  .orbit-slides-container {
+      overflow: hidden !important;    
+  }
+  .orbit-container .orbit-prev {
+      margin-left: -40px;
+  }
+  .orbit-container .orbit-next {
+      margin-right: -40px;
+  }
+  .orbit-next, .orbit-prev { color: #008CBA !important;}
+}

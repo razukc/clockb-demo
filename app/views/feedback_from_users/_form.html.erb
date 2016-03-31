@@ -1,0 +1,11 @@
+<div id="feedback-form" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h4 id="modalTitle">Send a Feedback</h4>
+	<div class="panel clearfix">
+	<%= form_for [@user, @new_feedback], remote: true do |f| %>
+			<%= f.text_area :feedback, :placeholder => '+ Your Feedback', style: 'resize:none;', rows: 4 %>
+			<%= f.submit "Send", class: 'button tiny right info', data: {disable_with: "Please wait..."} %>
+			<%= render partial: 'pages/dashboard/preloader' %>
+	<% end %>
+	</div>
+	  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

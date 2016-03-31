@@ -1,6 +1,6 @@
 <div class="clearfix">
 	<% @user.adverts.each do |req| %>
-	<div class="panel clearfix callout" id='<%= "advert_id_#{req.id}" %>' style="padding:5px;">
+	<div class="panel clearfix callout" id='<%= "advert_id_#{req.id}" %>' style="">
 		<%= image_tag req.image_url(:dashboard), class: 'th-no-hover lazyload' %>
 		<%= best_in_place req, :content, class: 'panel callout left contain-to-grid', :ok_button => "Save", ok_button_class: "inline button tiny info right", :cancel_button => "Cancel", cancel_button_class: "button tiny secondary inline left", :activator => "a.edit_advert_id_#{req.id}", style: 'padding:10px;margin-top:5px;', url: user_advert_path(@user, req), :nil => "<span class='left' style='color:#ccc;'>Description</span>".html_safe %>
 		<%= link_to "<i class='fi-pencil'></i>".html_safe, "#", class: "right edit_advert_id_#{req.id}", style: 'font-size: larger;padding:0 5px 0 5px;' %>

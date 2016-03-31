@@ -1,0 +1,81 @@
+		<h5>Networking Profiles</h5>
+		<table width="100%" id="networking_profiles" class="panel">
+			<thead>
+				<tr>
+					<th colspan="2">
+						Search
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td width="50%">
+						<ul class="no-bullet profiles" style="max-height:200px;overflow-y:scroll;">
+							<li>Agriculture & Forestry Sector</li>
+							<li>Arts, Entertainment & Recreation Sector</li>
+							<li>Business Innovation</li>
+							<li>Business Services Sector</li>
+							<li>Construction Sector</li>
+							<li>Consumer Services</li>
+							<li>Education Sector</li>
+							<li>Electric Utilities</li>
+							<li>Finance & Insurance Sector</li>
+							<li>Government</li>
+							<li>Health Care Sector</li>
+							<li><a href="#">IT & Technology</a></li>
+							<li>Lodging</li>
+							<li>Management of Companies & Enterprises</li>
+							<li>Manufacturing Sector</li>
+							<li>Media</li>
+							<li>Membership Organizations</li>
+							<li>Mining</li>
+							<li>Natural Gas Distribution</li>
+							<li>Nonprofit Institutions</li>
+							<li>Oil & Gas </li>
+							<li>Others</li>
+							<li>Private Households</li>
+							<li>Professional Services Sector</li>
+							<li>Real Estate</li>
+							<li>Religious Organizations</li>
+							<li>Rental & Leasing</li>
+							<li>Restaurants, Bars & Food Services</li>
+							<li>Retail Sector</li>
+							<li>Transportation Services Sector</li>
+							<li>Water & Sewer Utilities</li>
+							<li>Wholesale Sector</li>
+						</ul>	
+					</td>
+					<td width="50%">
+						<ul class="no-bullet profile">
+							<li><em></em></li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+<script type="text/javascript">
+$(document).on("click", 'ul.profiles > li ', function() {
+    $.ajax({
+                 url: "<%= get_users_path %>",
+                type: "GET",
+            dataType: "json",
+                data: { networking_profile_name: $(this).text() }, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {},
+             success: function(data, textStatus, xhr) {
+                        // Do something with the response here
+                        // alert(data);
+                        $.each(data, function(k, v) {
+                            $.each(v, function(q, r){
+	                            // alert(r.id);
+		                        $('ul.profile').("<li>"+r.name+"</li>");
+                            });
+                        });
+                      },
+               error: function() {
+                        alert("Something went wrong!")
+                      }
+    });
+});
+
+</script>

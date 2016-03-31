@@ -25,8 +25,16 @@ f.inputs "Details" do
 		f.input :website
 		f.input :headline_message, as: :text, :input_html => {rows: 4}
 		f.input :animated_video, as: :text, :input_html => {rows: 4}, label: "Animated Video Embed Code"
+		if f.object.animated_video_file && f.object.animated_video_file.file
+		  li do
+		  	label :animated_video_file
+		  	dd link_to "#{f.object.animated_video_file.file.filename}", f.object.animated_video_file.url
+		  	f.input :remove_animated_video_file, as: :boolean, :label => "Remove"
+		  end
+		else
 		f.input :animated_video_file, as: :file
 		f.input :animated_video_file_cache, as: :hidden
+		end
 
 	end
 	f.inputs "Client Background" do

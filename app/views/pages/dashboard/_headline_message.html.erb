@@ -2,7 +2,7 @@
 	<%= best_in_place @user, :headline_message, 
 		:url => registration_path(@user), 
 		class: 'left contain-to-grid panel callout', 
-		:place_holder => 'Headline Message', 
+		# :place_holder => 'Headline Message', 
 		:ok_button => "Save", 
 		ok_button_class: "inline button tiny info right", 
 		:cancel_button => "Cancel", 
@@ -10,9 +10,9 @@
 		:html_attrs => {rows: 4, cols: '20', onKeyUp: 'javascript:$("#counting").html($(this).val().replace(/\n/g, "\n\r").length);'},
 		:inner_class => "counted fix-margin-txtarea", 
 		# :activator => 'a.edit_headline_message', 
-		:nil => "<span class='left' style='color:#ccc;'>Headline Message</span><span class='right' style='color:#ccc;'>[Click to set]</span>".html_safe,
+		:place_holder => "<span class='left' style='color:#A19D9D;'>Headline Message</span><span class='right' style='color:#A19D9D;'>[Click to set]</span>".html_safe,
 		style: 'padding:10px;', id: 'counted', 
-		:display_with => lambda { |args| simple_format truncate(args, length: 150) }, 
+		:display_with => lambda { |args| truncate(args, length: 150) }, 
 		as: :textarea
 		# confirm: true
 		# skip_blur: true, 
@@ -21,5 +21,5 @@
 	<%= content_tag :span, "0", id: 'counting', class: 'left', style: 'margin-left:10px;font-size:small;color:#A19D9D;' %>
 	<%= content_tag :span, "/", class: 'left', style: 'margin-left:1px;font-size:small;color:#A19D9D;' %>
 	<%= content_tag :span, "150 characters max", class: 'left', style: 'margin-left:1px;font-size:small;color:#A19D9D;' %>
-	<%= link_to "Update", "#", class: "button tiny info right edit_headline_message", style: '' %>
+	<%#= link_to "Update", "#", class: "button tiny info right edit_headline_message", style: '' %>
 </div>

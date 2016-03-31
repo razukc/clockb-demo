@@ -6,7 +6,7 @@
 		<div class="clearfix"></div>
 		<%= form_for @user, url: registration_path(@user), remote: true do |f| %>
 			<%= f.hidden_field :animated_video, value: '[deleted]' %>
-			<%= f.submit "Delete", class: 'alert button tiny left', :confirm => 'Delete: Are you sure?' %>
+			<%= f.submit "Delete", class: 'alert button tiny left', data: {:confirm => 'Delete: Are you sure?'} %>
 		<% end %>
 		<% if @user.animated_video_file.present? %>
 			<%= link_to("Download", download_animated_video_path, class: "button tiny info right") %>
