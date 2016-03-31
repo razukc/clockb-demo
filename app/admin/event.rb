@@ -135,7 +135,15 @@ f.input :attachment, as: :file, :label => "Photo"
 li image_tag (f.object.attachment.thumb.url) if f.object.attachment?
 f.input :attachment_cache, as: :hidden
 end
+f.inputs "Main Event Slider Images" do
+	f.has_many :main_event_sliders, allow_destroy: true, heading: false,
+			new_record: 'Add new' do |main_event_slider|
+		main_event_slider.input :image, as: :file, :label => "Slider"
+		main_event_slider.input :image_cache, as: :hidden
+		main_event_slider.input :caption, as: :text, input_html: {rows: 3}
 
+	end
+end
 f.actions
 end
 
@@ -165,12 +173,13 @@ end
 
 def event_params
 content_keys = params[:event][:form_params].keys
-params.require(:event).permit(:start_date, :attachment, :attendees_limit,
-extra_params: extra_params, form_params: form_params)
+params.require(:event).permit(:start_date, :attachment, :attachment_cache, :remove_attachement, :attendees_limit,
+form_params: form_params, 
+main_event_sliders_attributes: [:id, :image, :caption, :_destroy])
 end
 def form_params
 ["type", "name", "description", "venue", 
-"start_time",]
+"start_time"]
 end
 def extra_params
 ["attachment_cache"]

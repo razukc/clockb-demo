@@ -106,6 +106,7 @@ class PagesController < ApplicationController
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     @v_main = Event.m_main
+    
     @v_weekly = Event.m_weekly
   end
   def browse

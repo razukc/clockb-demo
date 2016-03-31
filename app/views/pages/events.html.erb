@@ -66,8 +66,21 @@
 				<!-- Main Event -->
 				<h4><%= v_main.form_params['name'] %></h4>
 				<div class="clearfix">
-					<% if !v_main.attachment.blank? %>
-						<%= image_tag v_main.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+					<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
+					<% if !@v_main_sliders.empty? %>
+					<ul class="example-orbit" data-orbit>
+						<% @v_main_sliders.each do |main_slider| %>
+
+					  <li>
+					    <%= image_tag main_slider.image_url(:slider) %>
+					    <% if !main_slider.caption.blank? %>
+					    <div class="orbit-caption">
+					      Caption One.
+					    </div>
+					    <% end %>
+					  </li>
+						<% end %>
+					</ul>
 					<% end %>
 
 				</div>

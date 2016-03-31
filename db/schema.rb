@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331121843) do
+ActiveRecord::Schema.define(version: 20160331171032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,16 @@ ActiveRecord::Schema.define(version: 20160331121843) do
   end
 
   add_index "logo_and_images", ["user_id"], name: "index_logo_and_images_on_user_id", using: :btree
+
+  create_table "main_event_sliders", force: :cascade do |t|
+    t.string   "image"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "caption"
+  end
+
+  add_index "main_event_sliders", ["event_id"], name: "index_main_event_sliders_on_event_id", using: :btree
 
   create_table "milestone_alumnis", force: :cascade do |t|
     t.text     "content"
@@ -379,6 +389,7 @@ ActiveRecord::Schema.define(version: 20160331121843) do
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "logo_and_images", "users"
+  add_foreign_key "main_event_sliders", "events"
   add_foreign_key "milestone_alumnis", "alumnis"
   add_foreign_key "milestones", "clients"
   add_foreign_key "milestones", "users"
