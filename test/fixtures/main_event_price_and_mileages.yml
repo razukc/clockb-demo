@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attendee_category: MyString
+  price: MyString
+  mileage: MyString
+  event_id: 
+
+two:
+  attendee_category: MyString
+  price: MyString
+  mileage: MyString
+  event_id: 

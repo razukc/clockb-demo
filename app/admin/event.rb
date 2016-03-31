@@ -139,9 +139,15 @@ f.inputs "Main Event Slider Images" do
 	f.has_many :main_event_sliders, allow_destroy: true, heading: false,
 			new_record: 'Add new' do |main_event_slider|
 		main_event_slider.input :image, as: :file, :label => "Slider"
-		main_event_slider.input :image_cache, as: :hidden
 		main_event_slider.input :caption, as: :text, input_html: {rows: 3}
 
+	end
+end
+f.inputs "Main Event Price and Mileage" do
+	f.has_many :main_event_price_and_mileages, allow_destroy: true, heading: false, new_record: 'Add new' do |main_event_price|
+		main_event_price.input :attendee_category
+		main_event_price.input :price
+		main_event_price.input :mileage, as: :text, input_html: {rows: 3}
 	end
 end
 f.actions
@@ -175,7 +181,9 @@ def event_params
 content_keys = params[:event][:form_params].keys
 params.require(:event).permit(:start_date, :attachment, :attachment_cache, :remove_attachement, :attendees_limit,
 form_params: form_params, 
-main_event_sliders_attributes: [:id, :image, :caption, :_destroy])
+main_event_sliders_attributes: [:id, :image, :caption, :_destroy],
+main_event_price_and_mileages_attributes: [:id, :attendee_category, :price, :mileage, :_destroy]
+)
 end
 def form_params
 ["type", "name", "description", "venue", 

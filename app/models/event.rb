@@ -1,7 +1,10 @@
 class Event < ActiveRecord::Base
 	has_many :main_event_sliders, dependent: :destroy
 	accepts_nested_attributes_for :main_event_sliders,
-		reject_if: :all_blank
+		reject_if: :all_blank, allow_destroy: true
+has_many :main_event_price_and_mileages, dependent: :destroy
+	accepts_nested_attributes_for :main_event_price_and_mileages,
+		reject_if: :all_blank, allow_destroy: true
 
 	scope :main, -> {where("form_params like ?", '%type: main%')}
 	scope :weekly, -> {where("form_params like ?", '%type: weekly%')}
