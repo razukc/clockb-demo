@@ -4,14 +4,27 @@
 		<% if current_user.has_event(_z, current_user.id) %>
 		<a href="#"><button class="success tiny disabled right"><i class="fi-check">&nbsp;</i>Registered</button></a>
 		<% else %>
-			<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
-				<%= f.hidden_field :user_id, value: current_user.id %>
-				<%= f.hidden_field :user_x, value: _z %>
-				<%= f.submit "Register", class: 'button tiny right', name: 'event', id: 'event_'+_z.to_s %>
+			<% if 
+				Event.attendees(_z).count + Event.user_attendees(_z).count == Event.find(_z).attendees_limit 
+				%>
+			<button class="success tiny disabled right">Registration Closed</button>
+			<% else %>
+				<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
+					<%= f.hidden_field :user_id, value: current_user.id %>
+					<%= f.hidden_field :user_x, value: _z %>
+					<%= f.submit "Register", class: 'button tiny right', name: 'event', id: 'event_'+_z.to_s %>
+				<% end %>
 			<% end %>
 		<% end %>
+
 	<% else %>
-		<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'event', _y: _y, _z: _z) %>" class="button tiny right" data-type="JSON">Register</a>		
+		<% if 
+			Event.attendees(_z).count + Event.user_attendees(_z).count == Event.find(_z).attendees_limit 
+			%>
+		<button class="success tiny disabled right">Registration Closed</button>
+		<% else %>
+			<a href="#" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'event', _y: _y, _z: _z) %>" class="button tiny right" data-type="JSON">Register</a>		
+		<% end -%>
 	<% end -%>
 
 </div>

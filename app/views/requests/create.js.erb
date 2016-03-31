@@ -27,7 +27,13 @@
 
 $('div.errors').hide();
 $('div.success').show();
-$('div#your_animated_video').html("<%= escape_javascript render(partial: "pages/dashboard/your_animated_video", locals: {user: @user}) %>");
+<% if current_user %>
+$('div#your_animated_video').html("<%= escape_javascript render(partial: "pages/dashboard/your_animated_video", locals: {user: current_user}) %>");
+<% end %>
+<% if @request.link_params['_x'] == 'event' %>
+
+$('div#_request_for_event_id_<%= @request.link_params["_z"] %>').html("<%= escape_javascript render(partial: "shared/register_for_event", locals: {_y: @request.link_params['_y'], _z: @request.link_params['_z']}) %>");
+<% end %>
 setTimeout(
   function() 
   {

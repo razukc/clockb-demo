@@ -81,7 +81,8 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	  	    #     end
 	  	    # end
 	  	def account_update_params
-	  	  params.require(:user).permit(:website, :headline_message, :animated_video, business_requirements_attributes: [:id, :content, :_destroy],
+	  	  params.require(:user).permit(:website, :headline_message, :animated_video, 
+	  	  	:remove_animated_video_file, business_requirements_attributes: [:id, :content, :_destroy],
 	  	  	adverts_attributes: [:id, :content, :image, :_destroy],
 	  	  	social_media_links_attributes: [:id, :media, :link, :_destroy],
 	  	  	networking_requirements_attributes: [:id, :content, :_destroy]

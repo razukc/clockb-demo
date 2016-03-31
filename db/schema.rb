@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329190901) do
+ActiveRecord::Schema.define(version: 20160331121843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,8 +124,9 @@ ActiveRecord::Schema.define(version: 20160329190901) do
     t.text     "extra_params"
     t.date     "start_date"
     t.string   "attachment"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "attendees_limit"
   end
 
   create_table "events_members", id: false, force: :cascade do |t|
@@ -203,8 +204,9 @@ ActiveRecord::Schema.define(version: 20160329190901) do
   create_table "networking_requirements", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   add_index "networking_requirements", ["user_id"], name: "index_networking_requirements_on_user_id", using: :btree

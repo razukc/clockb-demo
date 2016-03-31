@@ -27,7 +27,7 @@
     </div>
 
     <!-- Company -->
-    <div class="company-fields">
+    <div class="company-fields hide">
       <div class="field">
         <%= i.label :person_in_charge %>
         <%= i.text_field :person_in_charge %>
@@ -44,6 +44,20 @@
         <%= i.label :number_of_employees %>
         <%= i.text_field :number_of_employees %>
       </div>
+      <!-- Business -->
+      <div class="field">
+        <%= i.label "Type of Business" %>
+        <%= i.text_field :profile, required: true %>
+      </div>
+  	<div class="field">
+        <%= i.label "Products/Services of Business" %>
+        <%= i.text_field :products_services_of_business %>
+      </div>
+      <div class="field">
+        <%= i.label "Target Audience" %>
+        <%= i.text_field :target_audience %>
+      </div>
+      <!-- business ends -->
     </div>
     <div class="field">
       <%= i.label :years_of_experience %>
@@ -64,20 +78,15 @@
       <%= i.radio_button :package_selected, "regular" %>
       <%= i.label :package_selected_regular, "Regular Package", class: 'inline' %>
     </div>
-    <!-- Company ends -->
+<div class="personal-fields hide">
+  <div class="field">
+    <%= i.label :personal_email %>
+    <%= i.telephone_field :personal_email %>
+  </div>
     <ul class="side-nav">
-      <li class="heading hide">complete your profile</li>
+      <li class="heading hide">#####</li>
       <li class="divider"></li>
     </ul>
-    <!-- Business -->
-    <div class="field">
-      <%= i.label "Type of Business" %>
-      <%= i.text_field :profile, required: true %>
-    </div>
-	<div class="field">
-      <%= i.label "Products/Services of Business" %>
-      <%= i.text_field :products_services_of_business %>
-    </div>
   <div class="field">
       <%= i.label "Industry of expertise" %>
       <%= i.select :industry_of_expertise,
@@ -119,19 +128,18 @@
 
        %>
   </div>
-	<div class="field" style="float:left;">
-    	<%= i.label "Field of Expertise" %>
-    	<%= i.text_field :field_of_expertise %>
+  <div class="field">
+      <%= i.label "Field of Expertise" %>
+      <%= i.text_field :field_of_expertise %>
     </div>
+
+
     <div class="field">
       <%= i.label "Target Audience" %>
       <%= i.text_field :target_audience %>
     </div>
 
-    <!-- Business ends -->
-
-
-
+</div>
     <div class="fields">
       <ul class="side-nav">
         <li class="heading">our other offerings you would be interested in</li>
@@ -150,7 +158,7 @@
       <%= i.check_box :interested_in, {multiple: true}, "research_and_strategy_development", nil %>
       <%= i.label :interested_in_research_and_strategy_development, "Research and Strategy Development" %>
 
-    	<%= i.check_box :interested_in, {multiple: true}, "social_media_management", nil %>
+      <%= i.check_box :interested_in, {multiple: true}, "social_media_management", nil %>
       <%= i.label :interested_in_social_media_management, "Social Media Management" %>
     </div>
 

@@ -46,30 +46,35 @@ render partial: "requests/form"
 end
 
 def create
-@request = Request.create(requests_params)
-if @request.save
-	case @request.link_params['_x']
+# @request = Request.create(requests_params)
+
+
+@request = Request.where("request_by like ? and request_for like ?" ,"%email: #{requests_params[:form_params][:email]}%", "%_x: #{requests_params[:link_params][:_x]}%").first_or_create(requests_params) do |obj|
+	
+# if @request.save
+	# case @request.link_params['_x']
+	case obj.link_params['_x']
 		when 'meeting'
-			ClockbMailer.meeting_email(@request.form_params['email']).deliver_now
+			ClockbMailer.meeting_email(obj.form_params['email']).deliver_now
 		when 'vacancy'
-			ClockbMailer.job_application_email(@request.form_params['email']).deliver_now
-			ClockbMailer.admin_job_application_email(@request).deliver_now
+			ClockbMailer.job_application_email(obj.form_params['email']).deliver_now
+			ClockbMailer.admin_job_application_email(obj).deliver_now
 		when 'webinar'
-			ClockbMailer.webinar_email(@request.form_params['email']).deliver_now
+			ClockbMailer.webinar_email(obj.form_params['email']).deliver_now
 		when 'event'
-			ClockbMailer.event_email(@request.form_params['email'], Event.find_by_id(@request.link_params['_z']).form_params['type']).deliver_now
+			ClockbMailer.event_email(obj.form_params['email'], Event.find_by_id(obj.link_params['_z']).form_params['type']).deliver_now
+			ClockbMailer.admin_event_email_non_user(obj, Event.find_by_id(obj.link_params['_z']).form_params['type']).deliver_now
 		when 'premium'
 			ClockbMailer.premium_email(current_user.email).deliver_now
 		when 'internship'
-			ClockbMailer.admin_internship_email(@request).deliver_now
+			ClockbMailer.admin_internship_email(obj).deliver_now
 		when 'animated_video'
-			@user = User.find_by_id(@request.link_params['_z'])
+			@user = User.find_by_id(obj.link_params['_z'])
 			@user.update(:animated_video => '[requested]')
-			ClockbMailer.admin_animated_video_email(@user).deliver_now
-			
-		end
-		
+			ClockbMailer.admin_animated_video_email(@user).deliver_now	
+		end	
 end
+# end
 respond_to do |format|
 # if @request.save
 format.html {redirect_to '/'}

@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
 	def self.user_attendees(id)
 		Usermeetup.where(:event => true, :user_x => id)
 	end
+
 	def self.m_all
 		Event.all.order(:start_date)
 	end

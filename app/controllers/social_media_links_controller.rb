@@ -1,6 +1,6 @@
 class SocialMediaLinksController < ApplicationController
 	before_action :authenticate_user!
-	before_action :premium_only
+	# before_action :premium_only
 	def get_user
 		User.find(params[:user_id])
 	end

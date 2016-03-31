@@ -78,9 +78,11 @@
 			<li><strong>Start Date:</strong> <%= v_main.start_date? ? v_main.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
 			<li><strong>Time:</strong> <%= v_main.form_params['start_time'] %></li>
 			<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
+			<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
 		</ul>
-				<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id } %>
-		
+		<div id="_request_for_event_id_<%= v_main.id %>">
+						<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
+				</div>
 		<hr />
 		<% end %>
 		<% end %>
@@ -100,8 +102,11 @@
 			<li><strong>Start Date:</strong> <%= v_weekly.start_date? ? v_weekly.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
 			<li><strong>Time:</strong> <%= v_weekly.form_params['start_time'] %></li>
 			<li><strong>Venue:</strong> <%= v_weekly.form_params['venue'] %></li>
+			<li><strong>No. of Participants:</strong> <%= v_weekly.attendees_limit %></li>
 		</ul>
+		<div id="_request_for_event_id_<%= v_weekly.id %>">
 		<%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: v_weekly.id } %>
+	</div>
 		<%= "<hr />".html_safe unless index == @v_weekly.size - 1 %>
 		<% end %>
 		<% end %>

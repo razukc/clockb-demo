@@ -26,7 +26,9 @@
               <strong>Time: </strong><%= @events_single.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= @events_single.form_params['venue'] %><br />
             </p>
+            <div id="_request_for_event_id_<%= @events_single.id %>">
             <%= render partial: "shared/register_for_event", locals: {_y: @events_single.form_params['type'], _z: @events_single.id } %>
+            </div>
 
             <hr />
           <% else %>
@@ -41,7 +43,9 @@
               <strong>Time: </strong><%= event.form_params['start_time'] %><br />
               <strong>Venue: </strong><%= event.form_params['venue'] %><br />
             </p>
+            <div id="_request_for_event_id_<%= event.id %>">
             <%= render partial: "shared/register_for_event", locals: {_y: event.form_params['type'], _z: event.id } %>
+            </div>
 
             <hr />
           <% end %>

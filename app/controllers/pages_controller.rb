@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   layout 'pages'
   before_action :authenticate_user! , only: [:dashboard, :dashboard2, :complete_profile]
+  
   def dashboard2
     @user = current_user
     

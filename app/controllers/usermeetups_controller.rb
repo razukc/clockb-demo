@@ -1,6 +1,6 @@
 class UsermeetupsController < ApplicationController
 before_action :authenticate_user!
-before_action :premium_only
+# before_action :premium_only
 def create
 	@meetup = Usermeetup.new(usermeetups_params)
 	@meetup.webinar = true if params[:webinar]

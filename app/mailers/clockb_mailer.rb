@@ -24,11 +24,26 @@ class ClockbMailer < ApplicationMailer
     @type = type
     mail(from: 'events@clockb.com', to: email, subject: 'Event Registration ' << @type.humanize << ' Event')
   end
+
   def premium_email(email)
     mail(from: 'services@clockb.com', to: email, subject: 'Request for Premium Account')
   end
 
   # Admin Emails
+  def admin_event_email_non_user(resource, type)
+    @type = type
+    @resource = resource
+    @name = @resource.form_params['name']
+    unless @resource.form_params['company'].blank?
+      
+    @company = @resource.form_params['company']
+    end
+    
+    @phone = @resource.form_params['phone']
+    @email = @resource.form_params['email']
+
+    mail(from: 'admin@clockb.com', to: 'events@clockb.com', subject: "Event Registration " << @type.humanize << ' Event')
+  end
   def admin_animated_video_email(resource)
     @resource = resource
     @email = @resource.email

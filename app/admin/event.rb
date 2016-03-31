@@ -127,6 +127,7 @@ r.input :description, as: :text, input_html: {rows: 6}
 r.input :venue 
 r.input :start_time
 end	
+f.input :attendees_limit, :required => true
 f.input :start_date, as: :datepicker, required: true, #:date_time_picker,
 # datepicker_options: {format:"l, F d, Y H:i A"}
 datepicker_options: {date_format:"DD, MM d, yy"}
@@ -164,7 +165,7 @@ end
 
 def event_params
 content_keys = params[:event][:form_params].keys
-params.require(:event).permit(:start_date, :attachment, 
+params.require(:event).permit(:start_date, :attachment, :attendees_limit,
 extra_params: extra_params, form_params: form_params)
 end
 def form_params
