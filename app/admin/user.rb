@@ -356,6 +356,7 @@ ActiveAdmin.register User do
 
 		def create
 			@user = User.new(user_params)
+			@user.password = generate_password
 			if @user.save && @user.errors.empty?
 			redirect_to admin_user_path(@user)
 			else
@@ -379,6 +380,10 @@ ActiveAdmin.register User do
 			tasks_attributes: [:id, :content, :status, :schedule, :_destroy],
 			employee_documents_attributes: [:id, :name, :_destroy, :attachment, :attachment_cache],
 			inputs: inputs_keys)
+		end
+		protected
+		def generate_password
+			Devise.friendly_token.first(8)
 		end
 	end
 
