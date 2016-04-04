@@ -62,7 +62,7 @@
 			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'webinar', user: current_user) %>" class="button tiny left">Request for Webinar</a>
 		</div>
 		<div id="meetup_form_<%= @user.id %>">
-			<% if Usermeetup.has_requested_meetup(current_user.id, @user.id) %>
+			<% if Usermeetup.has_requested_meetup(current_user.id, @user.id) > 0 %>
 			<button class="tiny success right">Meetup Requested</button>
 			<% else -%>
 
@@ -128,7 +128,7 @@
 					<td><%= "Request for Webinar" %></td>
 					<td>
 						<div id="meetup_form_<%= @user.id %>">
-									<% if Usermeetup.has_requested_meetup(current_user.id, @user.id) %>
+									<% if Usermeetup.has_requested_meetup(current_user.id, @user.id) > 0 %>
 									<span class="label success">Meetup Requested</span>
 									<% else -%>
 
