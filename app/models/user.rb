@@ -18,6 +18,7 @@ scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct
 scope :offered_services, -> {joins(:meetups).where(:usermeetups => {service_offered: true}).distinct}
 scope :posted_business_requirements, -> {joins(:business_requirements).distinct}
 scope :networkers, -> {where("inputs like ?", "%type: networker%")}
+
 mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
 mount_uploader :animated_video_file, AnimatedVideoUploader
@@ -115,6 +116,10 @@ profiles.select{|h| h.inputs['profile'] == "#{category}"}
 
 end
 
+def self.networkers_except_current(user_id)
+	condition = "type: networker"
+	User.all.select{|x| x.inputs['type'] == 'networker' && x.id != user_id}
+end
 
 def self.view_regulars
 User.all.select{|x| x.inputs['plan'] == 'regular'}
