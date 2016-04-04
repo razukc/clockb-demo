@@ -1,6 +1,6 @@
 <h4>Videos</h4>
 <div class="flex-video">
-	<% unless @dashboard_videos.embed_code.empty? %>
+	<% unless @dashboard_videos.empty? %>
 	<iframe width="560" height="315" src="
 	<%= @dashboard_videos.embed_code << "&index=" << rand(@dashboard_videos.number_of_videos).to_s %>" frameborder="0" allowfullscreen></iframe>
 	<% end %>

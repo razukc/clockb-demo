@@ -5,7 +5,17 @@ $('div.errors').show();
 $('div.success').hide();
 $('div.errors').hide();
 $('div.success').hide();
-<% @id = 'meetup' if @meetup.meetup? %>
+<% if @meetup.meetup? %>
+<% @id = 'meetup'  %>
+$('div#meetup_form_<%= @meetup.user_x %>')
+	.html('<button class="button tiny success disabled right">Meetup Request Sent</button>');
+
+// $('form#new_usermeetup input#<%= @id %>')
+	// .html('<button class="button tiny success disabled right">Meetup Request Sent</button>');
+
+	// .addClass('success disabled')
+	// .prop("value", 'Meetup request sent')
+<% end %>
 <% if @meetup.event? %>
 <% @id = 'event_' << @meetup.user_x.to_s %>
 $('form#new_usermeetup input#<%= @id %>')
