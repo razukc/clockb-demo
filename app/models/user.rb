@@ -32,23 +32,27 @@ serialize :inputs, Hash
 # include DeviseInvitable::Inviter
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
+
 has_many :logo_and_images, :dependent => :destroy
 accepts_nested_attributes_for :logo_and_images, allow_destroy: true,
 	:reject_if => :all_blank
+
 has_many :products_and_services, :dependent => :destroy
 accepts_nested_attributes_for :products_and_services, allow_destroy:true,
 	:reject_if => :all_blank
-accepts_nested_attributes_for :products_and_services, allow_destroy: true,
-	:reject_if => :all_blank
+
 has_many :networking_requirements, dependent: :destroy
-accepts_nested_attributes_for :networking_requirements,
+accepts_nested_attributes_for :networking_requirements, allow_destroy: true,
 	:reject_if => :all_blank
+
 has_many :social_media_links, :dependent => :destroy
-accepts_nested_attributes_for :social_media_links,
+accepts_nested_attributes_for :social_media_links, allow_destroy: true,
 	:reject_if => :all_blank
+
 has_many :adverts, :dependent => :destroy
 accepts_nested_attributes_for :adverts,
 	:reject_if => lambda { |record| record[:image].blank? }
+
 has_many :business_requirements, :dependent => :destroy
 accepts_nested_attributes_for :business_requirements,
 	:reject_if => lambda { |record| record[:content].blank? || record[:content].empty?}
