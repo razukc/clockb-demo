@@ -49,7 +49,7 @@
         <%= i.label "Type of Business" %>
         <%= i.text_field :profile, required: true %>
       </div>
-  	<div class="field">
+  	   <div class="field">
         <%= f.label "Products/Services of Business" %>
         <%= f.fields_for :products_and_services, @user.products_and_services do |product| %>
           <%= product.text_field :content %>
@@ -63,8 +63,8 @@
       <!-- business ends -->
     </div>
     <div class="field">
-      <%= i.label :years_of_experience %>
-      <%= i.text_field :years_of_experience %>
+      <%= i.label :year_founded %>
+      <%= i.text_field :year_founded %>
     </div>
     <div class="field">
       <%= i.label :website %>
@@ -84,7 +84,7 @@
 <div class="personal-fields hide">
   <div class="field">
     <%= i.label :personal_email %>
-    <%= i.telephone_field :personal_email %>
+    <%= i.email_field :personal_email %>
   </div>
     <ul class="side-nav">
       <li class="heading hide">#####</li>
@@ -92,7 +92,7 @@
     </ul>
   <div class="field">
       <%= i.label "Industry of expertise" %>
-      <%= i.select :industry_of_expertise,
+      <%= i.select :profile,
           :collection => 
           [
             ["Agriculture & Forestry Sector","Agriculture & Forestry Sector"],

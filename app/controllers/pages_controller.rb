@@ -23,6 +23,7 @@ class PagesController < ApplicationController
     @blogs = Resourcex.by_category('blog');
     @events = Event.all
     @dashboard_videos = DashboardVideo.first
+    @users = User.all
     # @business_requirements
     # format.html {render :layout => 'application'}
     format.html {render 'pages/dashboard/index'}
@@ -64,6 +65,7 @@ class PagesController < ApplicationController
     @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
     @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
+
     format.html {render :layout => 'application'}
     #format.html {}
     end

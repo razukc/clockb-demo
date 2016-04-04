@@ -373,6 +373,8 @@ ActiveAdmin.register User do
 			:photo, :photo_cache, :remove_photo,
 			:animated_video_file, :animated_video_file_cache, :remove_animated_video_file,
 			:website, :headline_message, :animated_video,
+			products_and_services_attributes: [:id, :content, :_destroy],
+			networking_requirements_attributes: [:id, :content, :_destroy],
 			milestones_attributes: [:id, :content, :achieved, :_destroy],
 			services_catereds_attributes: [:id, :content, :_destroy],
 			program_schedules_attributes: [:id, :content, :_destroy],
