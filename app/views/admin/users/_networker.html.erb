@@ -79,6 +79,18 @@ f.inputs "Details" do
 		
 	
 	end
+	f.inputs "Social Media Links" do
+		f.has_many :social_media_links, allow_destroy: true, new_record: 'Add New Social Media Link', heading: false do |social|
+			social.input :media, as: :select, collection: [["Facebook","Facebook"],["Twitter","Twitter"],["Linkedin","Linkedin"]]
+			social.input :link
+		end
+	end
+
+	f.inputs "Logo and Images" do
+		f.has_many :logo_and_images, allow_destroy: true, new_record: 'Add New Logo and Image', heading: false do |logo|
+			logo.input :content, as: :file
+		end
+	end
 	f.inputs "Interested in" do
 		f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
 		

@@ -33,7 +33,11 @@ serialize :inputs, Hash
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
 has_many :logo_and_images, :dependent => :destroy
+accepts_nested_attributes_for :logo_and_images, allow_destroy: true,
+	:reject_if => :all_blank
 has_many :products_and_services, :dependent => :destroy
+accepts_nested_attributes_for :products_and_services, allow_destroy:true,
+	:reject_if => :all_blank
 accepts_nested_attributes_for :products_and_services, allow_destroy: true,
 	:reject_if => :all_blank
 has_many :networking_requirements, dependent: :destroy
