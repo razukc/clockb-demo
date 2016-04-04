@@ -60,7 +60,59 @@ ActiveAdmin.register User do
 						end
 					end
 				end	
-
+				if user.products_and_services.any?
+					panel "Products and Services" do
+						attributes_table_for user do
+							table do
+								user.products_and_services.each do |k|
+									tr do
+										td do
+										k['content']
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+				
+				if user.logo_and_images.any?
+					panel "Logo and Images" do
+						
+					user.logo_and_images.map do |advert|
+							attributes_table_for advert do
+								row :images do
+									image_tag advert.content_url(:thumb)
+								end	
+							end
+					end			
+					end
+				end
+				if user.social_media_links.any?
+					panel "Social Media Links" do
+						attributes_table_for user.social_media_links do
+							row :media
+							row :link
+						end
+					end
+				end
+				if user.networking_requirements.any?
+					panel "Industry of expertise/Networking Requirements" do
+						attributes_table_for user do
+							table do
+								user.networking_requirements.each do |k|
+									tr do
+										td do
+										k['content']
+										end
+										td do
+											k['description']
+										end									end
+								end
+							end
+						end
+					end
+				end
 				if user.employee_documents.any?
 					panel "Employee Documents" do
 						attributes_table_for user.employee_documents do

@@ -69,15 +69,17 @@ f.inputs "Details" do
 				["Wholesale Sector","Wholesale Sector"]
 			]
 		end
-		f.has_many :products_and_services, allow_destroy: true, new_record: 'Add New Product & Services', heading: false do |product|
-			product.input :content, as: :text, label: "Product & Services of Business", :input_html => {rows: 3}
-		end
 		f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
 			i.input :field_of_expertise
 			i.input :target_audience
 		end
 		
 	
+	end
+	f.inputs "Products and Services" do
+		f.has_many :products_and_services, allow_destroy: true, new_record: 'Add New Product & Services', heading: false do |product|
+			product.input :content, as: :text, label: "Product & Services of Business", :input_html => {rows: 3}
+		end
 	end
 	f.inputs "Social Media Links" do
 		f.has_many :social_media_links, allow_destroy: true, new_record: 'Add New Social Media Link', heading: false do |social|
