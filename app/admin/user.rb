@@ -368,6 +368,7 @@ ActiveAdmin.register User do
 
 		def user_params
 			inputs_keys = params[:user][:inputs].keys
+			inputs_keys.push(:interested_in => [])
 			params.require(:user).permit(:email, 
 			:attachment, :attachment_cache, :remove_attachment,
 			:photo, :photo_cache, :remove_photo,
