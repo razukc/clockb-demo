@@ -269,7 +269,7 @@ ActiveAdmin.register User do
 		end
 	end
 
-	index download_links: false do
+	index download_links: true do
 		column :email
 		column "_User" do |k|
 			k.inputs['type'].titleize

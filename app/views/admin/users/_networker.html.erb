@@ -79,6 +79,17 @@ f.inputs "Details" do
 		
 	
 	end
+	f.inputs "Interested in" do
+		f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
+		
+			i.input :interested_in, as: :check_boxes, input_html: {multiple: true}, collection: [["Marketing","marketing"],
+									["Consulting","consulting"],
+									["Relationship Management","relationship_management"],
+									["Research and Strategy Development","research_and_strategy_development"],
+									["Social Media Management","social_media_management"]
+									]
+		end
+	end
 	f.inputs "Website/Headline Message/Animated Video" do
 		f.input :website
 		f.input :headline_message, as: :text, :input_html => {rows: 4}
