@@ -32,7 +32,7 @@
 						<th  class="subheader">Address</th>
 						<td><%= user.inputs['company_address']%></td>
 					</tr>
-					
+					<% if current_user.premium? %>
 					<tr>
 						<th  class="subheader">Email(P)</th>
 						<td><%= user.inputs['personal_email']%></td>
@@ -42,7 +42,7 @@
 						<th  class="subheader">Phone(P)</th>
 						<td><%= user.inputs['phone']%></td>
 					</tr>
-					
+					<% end -%>
 					<tr>
 						<th  class="subheader">Website</th>
 						<td><%= user.website %></td>
@@ -90,6 +90,7 @@
 								<th  class="subheader">Address</th>
 								<td><%= user.inputs['company_address']%></td>
 							</tr>
+					<% if current_user.premium? %>
 							
 							<tr>
 								<th  class="subheader">Email(P)</th>
@@ -100,6 +101,7 @@
 								<th  class="subheader">Phone(P)</th>
 								<td><%= user.inputs['phone']%></td>
 							</tr>
+							<% end -%>
 							
 							<tr>
 								<th  class="subheader">Website</th>
@@ -150,7 +152,7 @@
 							<th  class="subheader">Address</th>
 							<td><%= user.inputs['company_address']%></td>
 						</tr>
-						
+						<% if current_user.premium? %>
 						<tr>
 							<th  class="subheader">Email(P)</th>
 							<td><%= user.inputs['personal_email']%></td>
@@ -160,6 +162,7 @@
 							<th  class="subheader">Phone(P)</th>
 							<td><%= user.inputs['phone']%></td>
 						</tr>
+						<% end -%>
 						
 						<tr>
 							<th  class="subheader">Website</th>

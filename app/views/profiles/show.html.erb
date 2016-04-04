@@ -28,6 +28,7 @@
 					<th  class="subheader">Address</th>
 					<td><%= @user.inputs['company_address']%></td>
 				</tr>
+					<% if current_user.premium? %>
 			
 				<tr>
 					<th  class="subheader">Email(P)</th>
@@ -38,7 +39,7 @@
 					<th  class="subheader">Phone(P)</th>
 					<td><%= @user.inputs['personal_phone_number']%></td>
 				</tr>
-			
+			<% end -%>
 				<tr>
 					<th  class="subheader">Website</th>
 					<td><%= @user.website %></td>
@@ -51,8 +52,23 @@
 <!-- social media starts -->
 <div class="row">
 	<div class="columns large-6 medium-6">
+
+	<div id="social-media-upgrade" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		<%= render partial: 'shared/upgrade_to_premium', locals: {_x: 'premium', _y: 'social_media_links', _z: current_user.id} %>
+		  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	</div>
 	<% @user.social_media_links.each do |social_media| %>
+					<% if current_user.premium? %>
+
 		<%= link_to "#{social_media.media}", "#{social_media.link}", class: 'button tiny' %>
+
+	<% else %>
+
+		<a href="#" data-reveal-id="social-media-upgrade" class="button tiny">
+			<%= social_media.media %>
+		</a>
+
+	<% end %>
 	<% end %>
 	</div>
 	<!-- request for webinar / meetup starts -->
