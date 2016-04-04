@@ -18,27 +18,31 @@
     <%= f.fields_for :inputs do |i| %>
     <%= i.hidden_field :type, value: 'networker' %>
     <div class="field">
-      <%= i.radio_button :company, "company", :checked => true, autofocus: true %>
+      <%= i.radio_button :company, "company",  autofocus: true %>
       <%= i.label :company_company, "Company" , class: 'inline' %>
       <%= i.radio_button :company, "personal" %>
       <%= i.label :company_personal, "Personal" %>
     </div>
-    <br>
+
     <div class="field">
       <%= i.label :name %>
       <%= i.text_field :name, required: true %>
     </div>
-    <div class="field">
-      <%= i.label :person_in_charge %>
-      <%= i.text_field :person_in_charge %>
+    <div class="personal_fields">
+      <div class="fields">
+        <%= i.label "Personal Contact Number" %>
+        <%= i.text_field :personal_phone_number %>
+      </div>
     </div>
-    <div class="field">
-      <%= i.label "Contact Number" %>
-      <%= i.telephone_field :company_phone_number, required: true %>
-    </div>
-    <div class="field">
-      <%= i.label "Type of Business" %>
-      <%= i.text_field :profile, required: true %>
+    <div class="company_fields">
+        <div class="field">
+          <%= i.label :person_in_charge %>
+          <%= i.text_field :person_in_charge %>
+        </div>
+        <div class="field">
+          <%= i.label "Contact Number" %>
+          <%= i.telephone_field :company_phone_number %>
+        </div>
     </div>
     <div class="field">
       <%= i.hidden_field :package_selected, value: "regular" %>
@@ -73,3 +77,36 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+var company_status = $("input[type=radio][name='user[inputs][company]'][checked=checked]");
+var status = company_status.prop('value');
+
+if (status == 'company') {
+   $('div.company_fields').show();
+    $('div.personal_fields').hide();
+
+};
+if (status == 'personal') {
+    $('div.company_fields').hide();
+    $('div.personal_fields').show();
+
+
+  
+};
+$("input[type=radio][name='user[inputs][company]']").change(function() { 
+  if ($(this).prop('value') == 'company') {
+    $('div.company_fields').show();
+    $('div.personal_fields').hide();
+
+
+  };
+  if ($(this).prop('value') == 'personal') {
+
+  
+    $('div.company_fields').hide();
+    $('div.personal_fields').show();
+
+  };
+  $(document).foundation();
+});
+</script>
