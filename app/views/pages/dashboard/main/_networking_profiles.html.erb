@@ -1,5 +1,5 @@
 		<h5>Networking Profiles</h5>
-		<table width="100%" id="networking_profiles" class="panel">
+		<table width="100%" id="networking_profiles" class="panel" style="padding:0px;">
 			<thead>
 				<tr>
 					<th colspan="2">
@@ -10,7 +10,7 @@
 			<tbody>
 				<tr>
 					<td width="50%">
-						<ul class="no-bullet profiles" style="max-height:200px;overflow-y:scroll;">
+						<ul class="no-bullet profiles panel callout industry-list" style="max-height:200px;overflow-y:scroll;cursor:pointer;padding:0px;">
 							<li>Agriculture & Forestry Sector</li>
 							<li>Arts, Entertainment & Recreation Sector</li>
 							<li>Business Innovation</li>
@@ -22,7 +22,7 @@
 							<li>Finance & Insurance Sector</li>
 							<li>Government</li>
 							<li>Health Care Sector</li>
-							<li><a href="#">IT & Technology</a></li>
+							<li>IT & Technology</li>
 							<li>Lodging</li>
 							<li>Management of Companies & Enterprises</li>
 							<li>Manufacturing Sector</li>
@@ -45,32 +45,60 @@
 							<li>Wholesale Sector</li>
 						</ul>	
 					</td>
-					<td width="50%">
-						<ul class="no-bullet profile">
-							<li><em></em></li>
-						</ul>
+					<td width="50%" style="vertical-align:top;">
+						<div class="panel" style="max-height:200px;overflow-y:scroll;padding:1px;">
+						<table width="100%" class="profile" >
+							<tr class="info"><td><em>...</em></td></tr>
+						</table>
+						</div>
+						
+						
 					</td>
 				</tr>
 			</tbody>
 		</table>
-
+<style type="text/css">
+ul.profiles > li.active {
+	background-color: #008CBA;
+	color: #e3e3e3;
+}
+ul.industry-list > li {
+	padding:5px;
+	padding-left: 10px;
+}
+</style>
 <script type="text/javascript">
 $(document).on("click", 'ul.profiles > li ', function() {
+	// $(this).css({'background-color': "#008CBA"});
+	$('ul.profiles > li.active').removeClass('active');
+	$(this).toggleClass('active');
     $.ajax({
                  url: "<%= get_users_path %>",
                 type: "GET",
             dataType: "json",
                 data: { networking_profile_name: $(this).text() }, // This goes to Controller in params hash, i.e. params[:file_name]
+
             complete: function() {},
              success: function(data, textStatus, xhr) {
                         // Do something with the response here
                         // alert(data);
+                        // console.log(data);
+                        // console.log(data.users_info);
+                        if ($.trim(data.users_info)) {
+                        $('table.profile').html('');
+
                         $.each(data, function(k, v) {
                             $.each(v, function(q, r){
+	                            
 	                            // alert(r.id);
-		                        $('ul.profile').("<li>"+r.name+"</li>");
+	                            var html_content = '<tr><td style="vertical-align:top;">'+r.name+'</td><td class="vertical-align:top;"><a href="/profiles/'+r.id+'"  class="right" >View Profile</a></td></tr>' 
+
+		                        $('table.profile').append(html_content);
                             });
                         });
+                        } else{
+                        	$('table.profile').html("<tr><td><em>No results found</em></td></tr>");
+                        };
                       },
                error: function() {
                         alert("Something went wrong!")

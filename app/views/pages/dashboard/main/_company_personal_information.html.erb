@@ -6,7 +6,7 @@
     	<div class="columns large-6 medium-6">
 	    	<%= image_tag @user.logo_and_images.any? ? @user.logo_and_images.first.content_url(:slider) : "500.png" %>
 	    	<div class="headline-message" style="background-color:white;padding:10px;">
-		    	<%= @user.headline_message? ? @user.headline_message : "Headline Message" %>
+		    	<%= @user.headline_message? ? truncate(@user.headline_message, length: 150) : "Headline Message" %>
 	    	</div>
     	</div>
     	<div class="columns large-6 medium-6">

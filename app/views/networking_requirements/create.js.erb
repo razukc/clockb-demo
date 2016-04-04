@@ -1,6 +1,11 @@
 <% if @networking_requirement.errors.any? %>
   
   $('div.errors').show();
+ <% @networking_requirement.errors.each do |k,v| %>
+ <%= k  %>
+ <%= "---" %>
+ <%= v %>
+ <% end %>
 
 <% else %>
 

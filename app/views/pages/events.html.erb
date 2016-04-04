@@ -92,6 +92,9 @@
 			<li><strong>Time:</strong> <%= v_main.form_params['start_time'] %></li>
 			<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
 			<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
+			<% if v_main.document? %>
+			<li><strong>Document:</strong><%= link_to " Download", v_main.document_url, class: "" %></li>
+			<% end -%>
 		</ul>
 		<% 
 			@v_main_price_and_mileages = MainEventPriceAndMileage.where(:event_id => v_main.id)

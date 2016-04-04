@@ -1,17 +1,18 @@
 # Networking Profiles
 class ProfilesController < ApplicationController
 before_action :authenticate_user!
-before_action :premium_only, except: [:get_users]
+before_action :premium_only, except: [:get_users, :show]
 
 def get_users
 	@industry_of_expertise = params[:networking_profile_name]
 	@smth = NetworkingRequirement.select(:user_id)
-		.where('content like ?', @industry_of_expertise)
+		.where('content like ? and user_id not in (?)', @industry_of_expertise, current_user.id)
 		.distinct
 		@users_info = Array.new
 		@smth.each do |smth|
 			@users_info.push(:id => smth.user.id, :name => smth.user.inputs[:name])
 		end
+
 	render :json => {
                             :users_info => @users_info
                         }
@@ -27,10 +28,12 @@ respond_to do |format|
 end
 
 end
+
 def show
-@profile = User.profile(params[:id])
-render partial: "profiles/show"
+	@user = User.public_profile(params[:id]).first
+	@events = Event.all
 end
+
 def premium_only
 unless current_user.premium?
 render partial: 'shared/upgrade_to_premium',

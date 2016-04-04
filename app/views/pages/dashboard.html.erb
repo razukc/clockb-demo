@@ -70,7 +70,7 @@
 				<% else %>
 				<% @adverts.each do |advert| %>
 				<li>
-					<%= image_tag advert.image_url(:slider), class: 'lazyload' %>
+					<%= image_tag advert.image_url(:dashboard), class: 'lazyload' %>
 					<% if !advert.content.empty? %>
 					<div class="orbit-caption">
 						<%= advert.content %>

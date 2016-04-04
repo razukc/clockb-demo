@@ -50,8 +50,11 @@
         <%= i.text_field :profile, required: true %>
       </div>
   	<div class="field">
-        <%= i.label "Products/Services of Business" %>
-        <%= i.text_field :products_services_of_business %>
+        <%= f.label "Products/Services of Business" %>
+        <%= f.fields_for :products_and_services, @user.products_and_services do |product| %>
+          <%= product.text_field :content %>
+        <% end %>
+        
       </div>
       <div class="field">
         <%= i.label "Target Audience" %>

@@ -54,7 +54,7 @@
 				]
 
 			%>
-			<%= f.text_area :description, :placeholder => 'Write Description', input_html: {rows: 3} %>
+			<%= f.text_area :description, :placeholder => 'Write Description', input_html: {rows: 3}, required: true %>
 			<%= f.submit "Add", class: 'button tiny info right', data: {disable_with: "Please wait..."} %>
 			<%= render partial: 'pages/dashboard/preloader' %>
 	<% end %>

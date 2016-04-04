@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :networking_requirements
     resources :logo_and_images
     resources :feedback_from_users
+    resources :products_and_services
   end
 
 

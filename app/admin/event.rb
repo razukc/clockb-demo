@@ -150,6 +150,11 @@ f.inputs "Main Event Price and Mileage" do
 		main_event_price.input :mileage, as: :text, input_html: {rows: 3}
 	end
 end
+f.inputs "Document" do
+	f.input :document, as: :file
+	li link_to (f.object.document_url) if f.object.document?
+	# f.input :document_cache, as: :hidden
+end
 f.actions
 end
 
@@ -179,7 +184,7 @@ end
 
 def event_params
 content_keys = params[:event][:form_params].keys
-params.require(:event).permit(:start_date, :attachment, :attachment_cache, :remove_attachement, :attendees_limit,
+params.require(:event).permit(:document, :start_date, :attachment, :attachment_cache, :remove_attachement, :attendees_limit,
 form_params: form_params, 
 main_event_sliders_attributes: [:id, :image, :caption, :_destroy],
 main_event_price_and_mileages_attributes: [:id, :attendee_category, :price, :mileage, :_destroy]

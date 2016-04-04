@@ -1,11 +1,21 @@
 <h5>Advertisements</h5>
 <ul class="example-orbit" data-orbit>
-  <%= @user.adverts.each do |adv| %>
+<% if @user.adverts.empty? %>
+<li>
+	<%= image_tag "500.png" %>
+	<div class="orbit-caption">
+		Advert Description
+	</div>
+</li>
+<% end -%>
+  <% @user.adverts.each do |adv| %>
   <li>
-    <%= image_tag adv.image_url(:slider) %>
+    <%= image_tag adv.image_url(:dashboard) %>
+    <% unless adv.content.empty? %>
     <div class="orbit-caption">
       <%= adv.content.html_safe %>
     </div>
+    <% end %>
   </li>
   <% end %>
 </ul>

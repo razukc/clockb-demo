@@ -18,10 +18,12 @@ class PagesController < ApplicationController
     @upcoming_main = Event.m_upcoming_main
     @upcoming_weekly = Event.m_upcoming_weekly
     # @adverts = Advert.all
-    # @business_requirement = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
+    @business_requirements = BusinessRequirement.all.where('user_id not in (?)', current_user.id)
     # @profiles = User.group_by_profiles
     @blogs = Resourcex.by_category('blog');
     @events = Event.all
+    @dashboard_videos = DashboardVideo.first
+    # @business_requirements
     # format.html {render :layout => 'application'}
     format.html {render 'pages/dashboard/index'}
     end
@@ -124,6 +126,6 @@ end
   def complete_profile_params
     inputs_keys = params[:user][:inputs].keys
     inputs_keys.push(:interested_in => [])
-    params.require(:user).permit(:interested_in, inputs: inputs_keys)
+    params.require(:user).permit(:interested_in, inputs: inputs_keys, products_and_services_attributes: [:id, :content, :_destroy])
   end
 end

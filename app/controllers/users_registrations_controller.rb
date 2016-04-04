@@ -85,7 +85,8 @@ class UsersRegistrationsController < Devise::RegistrationsController
 	  	  	:remove_animated_video_file, business_requirements_attributes: [:id, :content, :_destroy],
 	  	  	adverts_attributes: [:id, :content, :image, :_destroy],
 	  	  	social_media_links_attributes: [:id, :media, :link, :_destroy],
-	  	  	networking_requirements_attributes: [:id, :content, :_destroy]
+	  	  	networking_requirements_attributes: [:id, :content, :_destroy],
+	  	  	products_and_services_attributes: [:id, :content, :_destroy]
 	  	  	)
 	  	end
 	 

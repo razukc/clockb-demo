@@ -36,11 +36,12 @@ class AdvertUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [200, 200]
   end
   version :dashboard do
-    process :resize_to_fit => [303, 600]
+    process :resize_to_fit => [400, 600]
   end
-  version :slider do
-    process :resize_to_fill => [470, 350]
-  end
+  # version :dashboard_slider do
+  #   process :resize_to_fill => [303, 303]
+  # end
+  
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list

@@ -33,6 +33,9 @@ serialize :inputs, Hash
 has_many :meetups, :class_name => 'Usermeetup', :dependent => :destroy
 has_many :feedbacks, :class_name => 'FeedbackFromUser', :dependent => :destroy
 has_many :logo_and_images, :dependent => :destroy
+has_many :products_and_services, :dependent => :destroy
+accepts_nested_attributes_for :products_and_services, allow_destroy: true,
+	:reject_if => :all_blank
 has_many :networking_requirements, dependent: :destroy
 accepts_nested_attributes_for :networking_requirements,
 	:reject_if => :all_blank
@@ -70,6 +73,9 @@ has_many :employee_documents, :dependent => :destroy
 accepts_nested_attributes_for :employee_documents, :allow_destroy => true,
 :reject_if => lambda { |a| a[:attachment].blank? } #&& a[:files_cache].blank?
 
+def self.public_profile(id)
+	User.where(id: id).limit(1)
+end
 def self.profile(id)
 User.where(id: id).limit(1).pluck(:id, :inputs, :email)
 # User.select("id, inputs, email").where("id = ?", id).limit(1)

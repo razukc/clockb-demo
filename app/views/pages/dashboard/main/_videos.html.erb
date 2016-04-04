@@ -1,4 +1,5 @@
 <h4>Videos</h4>
 <div class="flex-video">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/_AdQGXQ00OM?list=RD_AdQGXQ00OM&index=3" frameborder="0" allowfullscreen></iframe>
+	<iframe width="560" height="315" src="
+	<%= @dashboard_videos.embed_code << "&index=" << rand(@dashboard_videos.number_of_videos).to_s %>" frameborder="0" allowfullscreen></iframe>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331175141) do
+ActiveRecord::Schema.define(version: 20160404094749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,13 @@ ActiveRecord::Schema.define(version: 20160331175141) do
     t.string   "client_background"
   end
 
+  create_table "dashboard_videos", force: :cascade do |t|
+    t.string   "embed_code"
+    t.integer  "number_of_videos"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "employee_documents", force: :cascade do |t|
     t.string   "name"
     t.text     "attachment"
@@ -127,6 +134,7 @@ ActiveRecord::Schema.define(version: 20160331175141) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "attendees_limit"
+    t.string   "document"
   end
 
   create_table "events_members", id: false, force: :cascade do |t|
@@ -235,6 +243,15 @@ ActiveRecord::Schema.define(version: 20160331175141) do
   create_table "next_event_images", force: :cascade do |t|
     t.string "image"
   end
+
+  create_table "products_and_services", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "products_and_services", ["user_id"], name: "index_products_and_services_on_user_id", using: :btree
 
   create_table "program_schedules", force: :cascade do |t|
     t.text     "content"
@@ -406,6 +423,7 @@ ActiveRecord::Schema.define(version: 20160331175141) do
   add_foreign_key "milestones", "clients"
   add_foreign_key "milestones", "users"
   add_foreign_key "networking_requirements", "users"
+  add_foreign_key "products_and_services", "users"
   add_foreign_key "program_schedules", "clients"
   add_foreign_key "program_schedules", "users"
   add_foreign_key "recommended_services", "alumnis"

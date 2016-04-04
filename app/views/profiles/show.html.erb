@@ -1,0 +1,154 @@
+<br>
+<!-- company/personal profile starts -->
+<div class="row panel">
+	<div class="columns large-6 medium-6">
+    	<%= image_tag @user.logo_and_images.any? ? @user.logo_and_images.first.content_url(:slider) : "500.png", style: 'height:195px;width:auto;' %>
+    	<div class="headline-message" style="background-color:white;padding:10px;">
+	    	<%= @user.headline_message? ? truncate(@user.headline_message, length: 150) : "Headline Message" %>
+    	</div>
+	</div>
+	<div class="columns large-6 medium-6">
+		<table width="100%" class="panel radius" style="padding:5px;">
+			<tbody>
+				<tr>
+					<th class="subheader">Name</th>
+					<td><%= @user.inputs['name']%></td>
+				</tr>
+				<tr>
+					<th  class="subheader">Field of Expertise</th>
+					<td><%= @user.inputs['field_of_expertise']%></td>
+				</tr>
+				<tr>
+					<th  class="subheader">Years of Experience</th>
+					<td><%= @user.inputs['years_of_experience']%></td>
+				</tr>
+			
+				<tr>
+					<th  class="subheader">Address</th>
+					<td><%= @user.inputs['address']%></td>
+				</tr>
+			
+				<tr>
+					<th  class="subheader">Email(P)</th>
+					<td><%= @user.inputs['personal_email']%></td>
+				</tr>
+			
+				<tr>
+					<th  class="subheader">Phone(P)</th>
+					<td><%= @user.inputs['phone']%></td>
+				</tr>
+			
+				<tr>
+					<th  class="subheader">Website</th>
+					<td><%= @user.website%></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- social media starts -->
+<div class="row">
+	<div class="columns large-6 medium-6">
+	<% @user.social_media_links.each do |social_media| %>
+		<%= link_to "#{social_media.media}", "#{social_media.link}", class: 'button tiny' %>
+	<% end %>
+	</div>
+	<div class="columns large-6 medium-6">
+		<div id="request-for-x">
+			<div id="myModal-content" class="reveal-modal small" data-reveal></div>
+			<a href="#" id="myModal-button" data-reveal-id="myModal-content" data-reveal-ajax="<%= new_request_path(_x: 'webinar', user: current_user) %>" class="button tiny left">Request for Webinar</a>
+		</div>
+		
+		<%= link_to "Meetup", '#', class: 'button tiny right' %>
+	</div>
+<hr>
+</div>
+<!-- products and services starts -->
+<div class="row">
+	<div class="columns large-6 medium-6">
+		<table width="100%">
+			<thead><tr><th colspan="2"><h5>Products &amp; Services</h5></th></tr></thead>
+			<tbody>
+				<% @user.products_and_services.each_with_index do |product, index| %>
+				<tr>
+					<td width="10%"><%= index + 1 %></td>
+					<td><%= product.content %></td>
+				</tr>
+				<% end -%>
+			</tbody>
+		</table>
+		
+	</div>
+<!-- video starts -->
+	<div class="columns large-6">
+		<div class="flex-video"><%= content_tag @user.animated_video %></div>
+	</div>
+</div>
+
+<!-- business requirement starts	 -->
+<div class="row">
+	<div class="columns large-6 medium-6">
+		<table width="100%">
+			<thead><tr><th colspan="3"><h5>Business Requirements</h5></th></tr></thead>
+			<tbody>
+				<% @user.business_requirements.each_with_index do |product, index| %>
+				<tr>
+					<td width="10%" style="vertical-align:top"><%= index + 1 %></td>
+					<td><%= product.content %></td>
+					<td style="vertical-align:top"><%= "Offer Service" %></td>
+				</tr>
+				<% end -%>
+			</tbody>
+		</table>
+		
+	</div>
+<!-- networking requirements starts -->
+	<div class="columns large-6">
+		<table width="100%">
+			<thead><tr><th colspan="4"><h5><h5>Networking Requirements</h5></h5></th></tr></thead>
+			<tbody>
+				<% @user.networking_requirements.each_with_index do |product, index| %>
+				<tr>
+					<td width="10%"><%= index + 1 %></td>
+					<td><%= product.content %></td>
+					<td><%= "Request for Webinar" %></td>
+					<td><%= "Meetup" %></td>
+				</tr>
+				<% end -%>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!-- slidesr starts -->
+<div class="row">
+	<div class="columns large-12">
+		<ul class="example-orbit" data-orbit>
+		  <li>
+		    <%= image_tag "1000x500.png", class: 'lazyload' %>
+		    <!-- <div class="orbit-caption"> -->
+		      <!-- Caption One. -->
+		    <!-- </div> -->
+		  </li>
+		</ul>
+	<hr>
+	</div>
+</div>
+
+<!-- calendar starts -->
+
+<div class="row">
+<div class="columns large-6">
+	<%= render partial: "layouts/calendar" %>
+</div>
+<div class="columns large-6">
+<ul class="example-orbit" data-orbit>
+  <li>
+		    <%= image_tag "1000x500.png", class: 'lazyload' %>
+    <div class="orbit-caption">
+      Advert Caption
+    </div>
+  </li>
+</ul>
+</div>
+</div>

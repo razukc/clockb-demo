@@ -10,7 +10,7 @@ has_many :main_event_price_and_mileages, dependent: :destroy
 	scope :weekly, -> {where("form_params like ?", '%type: weekly%')}
 	
 	mount_uploader :attachment, EventUploader
-	
+	mount_uploader :document, DocumentUploader
 	# serialize [:form_params, :link_params, :extra_params], Hash
 	serialize :form_params, Hash
 	serialize :link_params, Hash

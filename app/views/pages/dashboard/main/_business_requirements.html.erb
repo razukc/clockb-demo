@@ -1,16 +1,42 @@
 <h5>Business Requirements</h5>
-<div class="panel " style="max-height:228px;overflow-y:scroll;padding:10px;">
-<ul class="no-bullet">
-	<% unless @user.business_requirements.empty? %>
-		<% @user.business_requirements.each do |biz| %>
-			<div class="panel callout radius clearfix" style="padding:10px;margin-top:5px;">
-			<li>
-				<%= (content_tag :p, biz.content, class: 'text-justify') unless biz.content.blank? %>
-				<div style="border-bottom:1px solid #e3e3e3;margin-top:5px;margin-bottom:5px;"></div>
-				<%= link_to "Offer Service", "#", class: 'button info tiny clearfix right', style: 'padding:5px;margin:5px;' %> 
-			</li>
-			</div>
+<div class="panel " style="max-height:228px;overflow-y:scroll;padding:1px;">
+	<% unless @business_requirements.empty? %>
+	<table width="100%">
+		<% @business_requirements.each do |biz| %>
+		<% if biz.id.nil? %>
+		<% else %>
+			<tr>
+				<td>
+				<%= (content_tag :div, truncate(biz.content, length: 80), class: 'text-justify', style: 'text-align:justify;') unless biz.content.blank? %>
+				<div id="business-requirement-item" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+				  <h4 id="modalTitle">Business Requirement</h4>
+					<div class="panel clearfix text-justify">
+						<%= biz.content %>
+					</div>
+					<div id="offer-service-form" class="clearfix">
+						<% if @user.has_offered_service(biz.id, @user.id) %>
+						<button class="button tiny success">Service Offered</button>
+						<% else %>
+						<%= form_for Usermeetup.new, url: usermeetups_path, remote: true, method: :post do |f| %>
+						<%= f.hidden_field :user_id, value: current_user.id %>
+						<%= f.hidden_field :user_x, value: biz.id %>
+						<%= f.submit "Offer Service", class: 'button tiny right', name: 'service_offered', id: "service_offered_#{biz.id}", :data => {:disable_with => 'Please wait...'} %>
+						<% end %>
+						<%= render partial: 'pages/dashboard/preloader' %>
+						<% end -%>
+					</div>
+					<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+				</div>
+				<div style="border-bottom:1px solid #e3e3e3;margin-top:1px;margin-bottom:1px;" class="clearfix">
+					<a href="#" data-reveal-id="business-requirement-item"  class="button info tiny right" style="padding:5px;margin:1px;">Read more</a>
+				</div>
+
+				</td>
+			</tr>
 		<% end %>
+		<% end %>
+	</table>
+	<% else %>
+	<table width="100%"><tr><td>...</td></tr></table>
 	<% end %>
-</ul>
 </div>
