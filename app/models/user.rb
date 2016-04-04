@@ -17,6 +17,7 @@ scope :webinars, -> {joins(:meetups).where(:usermeetups => {webinar: true}).dist
 scope :events, -> {joins(:meetups).where(:usermeetups => {event: true}).distinct}
 scope :offered_services, -> {joins(:meetups).where(:usermeetups => {service_offered: true}).distinct}
 scope :posted_business_requirements, -> {joins(:business_requirements).distinct}
+scope :networkers, -> {where("inputs like ?", "%type: networker%")}
 mount_uploader :attachment, DocumentUploader
 mount_uploader :photo, PhotoUploader
 mount_uploader :animated_video_file, AnimatedVideoUploader

@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     @blogs = Resourcex.by_category('blog');
     @events = Event.all
     @dashboard_videos = DashboardVideo.first
-    @users = User.all
+    @users = User.networkers
     # @business_requirements
     # format.html {render :layout => 'application'}
     format.html {render 'pages/dashboard/index'}
