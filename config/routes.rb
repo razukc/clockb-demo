@@ -47,7 +47,6 @@ Rails.application.routes.draw do
   get 'events/browse', :to => 'pages#browse', :as => 'events_browse'
   get 'events/:id', to: 'pages#browse', :as => 'event_browse'
   get 'dashboard', to: 'pages#dashboard'
-  get 'dashboard2', to: 'pages#dashboard2'
   get 'faqs', to: 'pages#faqs'
   get 'download_animated_video', to: 'pages#download_animated_video'
 

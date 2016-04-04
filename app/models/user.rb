@@ -26,7 +26,7 @@ devise :invitable, :database_authenticatable, :recoverable, :rememberable, :regi
 validates_presence_of :email, :message => " is required"
 validates_uniqueness_of :email, :message => " already in use"
 # validates_format_of :website, :with => URI.regexp(['http', 'https'])
-validates :website, :url => true, allow_blank: true# Could be combined with `allow_blank: true`
+# validates :website, :url => true, allow_blank: true# Could be combined with `allow_blank: true`
 serialize :inputs, Hash
 
 # include DeviseInvitable::Inviter

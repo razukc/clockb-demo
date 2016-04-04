@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   layout 'pages'
   before_action :authenticate_user! , only: [:dashboard, :dashboard2, :complete_profile]
   
-  def dashboard2
+  def dashboard
     @user = current_user
     
     respond_to do |format|
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
   def test
     render "pages/test"
   end
-  def dashboard
+  def dashboard_old
     @user = current_user
     
     respond_to do |format|
