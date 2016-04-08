@@ -115,7 +115,7 @@ class PagesController < ApplicationController
   end
   def browse
     @events_single = Event.find_by_id(params[:id])
-    @events_all = Event.all.order(:start_date)
+    @events_all = Event.all.where('start_date >= ?', Date.today)#.order(:start_date)
     @v_main = Event.m_main
     
     @v_weekly = Event.m_weekly
