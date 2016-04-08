@@ -49,10 +49,10 @@
           <% else %>
           <% @events_all.each do |event| %>
             <li><h5><%= event.form_params['name'] %></h5></li>
-            <% if @events_single.form_params['type'] == 'main' %>
+            <% if event.form_params['type'] == 'main' %>
             <%= render partial: "pages/main_event" %>
             <% else %>
-            
+            <br>
             <% if !event.attachment.blank? %>
             <p><%= image_tag event.attachment_url, class: 'th-no-hover lazyload' %></p>
             <% end %>
