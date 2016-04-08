@@ -5,6 +5,12 @@
 	<div data-magellan-expedition="fixed" class="custom-magellan" data-options="destination_threshold:50;offset_by_height: false;threshold:0;fixed_top:0;throttle_delay:30;active_class:custom-active">
 		<ul class="side-nav custom-side-nav">
 			<li class="heading">events</li>
+			<% unless @v_main.empty?  %>
+				<% @v_main.each do |v_main| %>
+				<!-- Main Event -->
+				<li data-magellan-arrival=<%= v_main.form_params['name'].parameterize %>><a href="#<%= v_main.form_params['name'].parameterize %>"><%= v_main.form_params['name'] %></a></li>
+				<% end %>
+			<% end %>
 	    	<li data-magellan-arrival="reasons-to-attend"><a href="#reasons-to-attend">Reasons to attend</a></li>
 
 	    	<li data-magellan-arrival="upcoming-events"><a href="#upcoming-events">Upcoming Events</a></li>
@@ -62,6 +68,7 @@
 			<% unless @v_main.empty? %>
 				<% @v_main.each do |v_main| %>
 				<!-- Main Event -->
+				<a data-magellan-destination="<%= v_main.form_params['name'].parameterize %>" name="<%= v_main.form_params['name'].parameterize %>"></a>
 				<h4><%= v_main.form_params['name'] %></h4>
 				<% if v_main.attachment.present? %>
 				<%= image_tag v_main.attachment.url, class: 'lazyload th-no-hover' %>
