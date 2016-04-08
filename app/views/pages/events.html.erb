@@ -67,6 +67,7 @@
 				<%= image_tag v_main.attachment.url, class: 'lazyload th-no-hover' %>
 				<% end -%>
 				<div class="clearfix"></div>
+				<br>
 				<div id="_request_for_event_id_<%= v_main.id %>">
 								<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
@@ -91,7 +92,7 @@
 				<% @v_main_sliders.each do |main_slider| %>
 
 			  <li>
-			    <%= image_tag main_slider.image_url(:slider) %>
+			    <%= image_tag main_slider.image_url(:slider_main) %>
 			    <% if !main_slider.caption.blank? %>
 			    <div class="orbit-caption">
 			      Caption One.
