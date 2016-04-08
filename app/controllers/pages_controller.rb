@@ -124,7 +124,7 @@ class PagesController < ApplicationController
     def download_animated_video
       require 'open-uri'
       @resource = current_user
-      url = @resource.animated_video_file.to_s
+      url = @resource.animated_video_file.to_s.sub('raw', 'video')
       data = open(url).read
       send_data data, :disposition => 'attachment', :filename=>"your_animated_video.mp4"
 end
