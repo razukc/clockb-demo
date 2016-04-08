@@ -39,7 +39,7 @@ class MainEventSlidersUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [437, 437]
   end
   version :slider_main do
-    process :resize_to_fit => [720, 360]
+    process :resize_to_fit => [720, 560]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
