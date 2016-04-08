@@ -103,7 +103,7 @@
 			<% end %>
 		</div>
 		<div id="description_two">
-			<%= simple_format v_main.form_params['description_two'] unless v_main.form_params['description_two'].empty? %>
+			<%= simple_format v_main.form_params['description_two'] unless v_main.form_params['description_two'].blank? %>
 		</div>
 		<% 
 			@v_main_price_and_mileages = MainEventPriceAndMileage.where(:event_id => v_main.id)
