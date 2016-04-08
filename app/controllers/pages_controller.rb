@@ -116,6 +116,9 @@ class PagesController < ApplicationController
   def browse
     @events_single = Event.find_by_id(params[:id])
     @events_all = Event.all.order(:start_date)
+    @v_main = Event.m_main
+    
+    @v_weekly = Event.m_weekly
   end
     def download_animated_video
       require 'open-uri'

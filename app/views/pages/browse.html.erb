@@ -17,7 +17,7 @@
         <ul class="no-bullet">
           <% if !@events_single.nil? %>
             <% if @events_single.form_params['type'] == 'main' %>
-            <%= render partial: "pages/main_event", locals: {@v_main: @events_single} %>
+            <%= render partial: "pages/main_event" %>
             <% end %>
             <li><h4><%= @events_single.form_params['name'] %></h4></li>
             <% if @events_single.form_params['type'] == 'weekly' %>
