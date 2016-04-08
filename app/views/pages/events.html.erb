@@ -82,7 +82,7 @@
 				</ul>
 		<br />
 		<h5>Event Insights</h5>
-		<div class="readmore"><%= simple_format v_main.form_params['description'].html_safe %></div>
+		<div class="readmore"><%= v_main.form_params['description'].html_safe %></div>
 		<div class="clearfix"></div>
 		<div class="clearfix">
 			<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
