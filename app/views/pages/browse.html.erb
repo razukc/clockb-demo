@@ -18,34 +18,14 @@
           <% if !@events_single.nil? %>
             <% if @events_single.form_params['type'] == 'main' %>
             <%= render partial: "pages/main_event" %>
-            <% end %>
+            <% else %>
             <li><h4><%= @events_single.form_params['name'] %></h4></li>
-            <% if @events_single.form_params['type'] == 'weekly' %>
-              <% if !@events_single.attachment.blank? %>
-              <p><%= image_tag @events_single.attachment_url, class: 'th-no-hover lazyload' %></p>
-              <% end %>
-            <% end -%>
-            <% if @events_single.form_params['type'] == 'main' %>
-              <div class="clearfix">
-                <% @v_main_sliders = MainEventSlider.where(:event_id => @events_single.id) %>
-                <% if !@v_main_sliders.empty? %>
-                <ul class="example-orbit" data-orbit>
-                  <% @v_main_sliders.each do |main_slider| %>
-
-                  <li>
-                    <%= image_tag main_slider.image_url(:slider_main) %>
-                    <% if !main_slider.caption.blank? %>
-                    <div class="orbit-caption">
-                      Caption One.
-                    </div>
-                    <% end %>
-                  </li>
-                  <% end %>
-                </ul>
-                <% end %>
-
-              </div>
-            <% end -%>
+            
+            <% if !@events_single.attachment.blank? %>
+            <p><%= image_tag @events_single.attachment_url, class: 'th-no-hover lazyload' %></p>
+            <% end %>
+          
+            
               <p><%= @events_single.form_params['description'] %></p>
               <p>
                 <strong>Date: </strong><%= @events_single.start_date? ? @events_single.start_date.strftime('%A, %B %e, %Y') : '-' %><br />
@@ -59,44 +39,11 @@
 
                 <% end -%>
               </p>
-              <% 
-                @v_main_price_and_mileages = MainEventPriceAndMileage.where(:event_id => @events_single.id)
-                unless @v_main_price_and_mileages.empty?
-              %>
-                  <table width="100%">
-                    <thead>
-                      <tr>
-                        <th width="25%">Attendee Category</td>
-                        <th width="25%">Price - What do you pay?</td>
-                        <th width="50%">Mileage - What do you get?</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-              <%
-                  @v_main_price_and_mileages.each do |price_and_mileage|
-              %>
-                      <tr>
-                        <td width= "25%"><%= price_and_mileage.attendee_category %></td>
-                        <td width="25%"><%= price_and_mileage.price %></td>
-                        <td width="50%">
-                          <ul class="no-bullet change-color">
-                          <li>
-                          <%= price_and_mileage.mileage.split("\n").join("</li><li>").html_safe %>
-                          </li>
-                          </ul>
-                        </td>
-                      </tr>
-              <%
-                  end
-              %>
-                      </tbody>
-                    </table>
-              <%
-                end
-              %>
+              
               <div id="_request_for_event_id_<%= @events_single.id %>">
               <%= render partial: "shared/register_for_event", locals: {_y: @events_single.form_params['type'], _z: @events_single.id } %>
               </div>
+            <% end %>
 
             <hr />
           <% else %>
