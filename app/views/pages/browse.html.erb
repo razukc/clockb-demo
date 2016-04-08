@@ -47,41 +47,33 @@
 
             <hr />
           <% else %>
-          <% unless @v_main.empty? %>
-            <% @v_main.each do |v_main| %>
-              <%= render partial: "pages/main_event" %>
-            <% end -%>
-          <% end -%>
-          <% @events_all.each do |event| %>
-            <% if event.form_params['type'] == 'main' %>
-            <%= render partial: "pages/main_event" %>
-            <% else %>
-            
-            <li><h5><%= event.form_params['name'] %></h5></li>
-            <% if !event.attachment.blank? %>
-            <p><%= image_tag event.attachment_url, class: 'th-no-hover lazyload' %></p>
-            <% end %>
-            
-            
-            <p><%= event.form_params['description'] %></p>
-            <p>
-              <strong>Date: </strong><%= event.start_date? ? event.start_date.strftime('%A, %B %e, %Y') : '-' %><br />
-              <strong>Time: </strong><%= event.form_params['start_time'] %><br />
-              <strong>Venue: </strong><%= event.form_params['venue'] %><br />
-              <% if event.form_params['type'] == 'main' %>
-                <strong>No. of Participants:</strong> <%= event.attendees_limit %></br>
-                        <% if event.document? %>
-                        <strong>Document:</strong><%= link_to " Download", event.document_url, class: "" %>
-                        <% end -%>
-              <% end -%>
-            </p>
-            
-            <div id="_request_for_event_id_<%= event.id %>">
-            <%= render partial: "shared/register_for_event", locals: {_y: event.form_params['type'], _z: event.id } %>
-            </div>
-            <% end %>
-            <hr />
-          <% end %>
+          
+          <%= render partial: "pages/main_event" %>
+          
+          <% unless @v_weekly.empty? %>
+      <% @v_weekly.each_with_index do |v_weekly, index| %>
+    <!-- Weekly Event -->
+    <h4><%= v_weekly.form_params['name'] %></h4>
+    <div class="clearfix">
+      <% if !v_weekly.attachment.blank? %>
+        <%= image_tag v_weekly.attachment_url(:featured), class: 'th-no-hover lazyload' %>
+    <% end %>
+    </div>
+    <br />
+    <h5>Event Insights</h5>
+    <p><%= v_weekly.form_params['description'] %></p>
+        <ul class="no-bullet">
+      <li><strong>Start Date:</strong> <%= v_weekly.start_date? ? v_weekly.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
+      <li><strong>Time:</strong> <%= v_weekly.form_params['start_time'] %></li>
+      <li><strong>Venue:</strong> <%= v_weekly.form_params['venue'] %></li>
+      <li><strong>No. of Participants:</strong> <%= v_weekly.attendees_limit %></li>
+    </ul>
+    <div id="_request_for_event_id_<%= v_weekly.id %>">
+    <%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: v_weekly.id } %>
+  </div>
+    <%= "<hr />".html_safe unless index == @v_weekly.size - 1 %>
+    <% end %>
+    <% end %>
           <% end %>
         </ul>
       <%= render partial: 'layouts/side_footer' %>
