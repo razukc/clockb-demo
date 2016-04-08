@@ -13,6 +13,9 @@
   <%= f.text_field :email, :disabled => 'disabled'%></p>
 
   <p><%= f.label :password %><br />
+        <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation %><br />
