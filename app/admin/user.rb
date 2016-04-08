@@ -323,6 +323,9 @@ ActiveAdmin.register User do
 
 	index download_links: true do
 		column :email
+		column "Name" do |k|
+			k.inputs["company"].present? ? k.inputs['company'] : k.inputs['name']
+		end
 		column "_User" do |k|
 			k.inputs['type'].titleize
 		end
