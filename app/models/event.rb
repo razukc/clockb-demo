@@ -25,7 +25,8 @@ has_many :main_event_price_and_mileages, dependent: :destroy
 	end
 	
 	def self.m_all
-		Event.all.order(:start_date)
+		# Event.all.order(:start_date)
+		Event.where('start_date >= ?', Date.today).order(:start_date)
 	end
 	def self.m_main
 		m_all.select{|u| u.form_params['type'] == "main"}
