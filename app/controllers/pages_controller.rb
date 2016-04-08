@@ -117,8 +117,9 @@ class PagesController < ApplicationController
     @events_single = Event.find_by_id(params[:id])
     @events_all = Event.all.where('start_date >= ?', Date.today)#.order(:start_date)
     @v_main = Event.m_main
-    
     @v_weekly = Event.m_weekly
+    @upcoming_main = Event.m_upcoming_main
+    @upcoming_weekly = Event.m_upcoming_weekly
   end
     def download_animated_video
       require 'open-uri'

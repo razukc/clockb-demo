@@ -47,6 +47,11 @@
 
             <hr />
           <% else %>
+          <% unless @v_main.empty? %>
+            <% @v_main.each do |v_main| %>
+              <%= render partial: "pages/main_event" %>
+            <% end -%>
+          <% end -%>
           <% @events_all.each do |event| %>
             <% if event.form_params['type'] == 'main' %>
             <%= render partial: "pages/main_event" %>
