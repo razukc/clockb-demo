@@ -16,6 +16,9 @@
   <% end %>
         <ul class="no-bullet">
           <% if !@events_single.nil? %>
+            <% if @events_single.form_params['type'] == 'main' %>
+            <%= render partial: "pages/main_event", locals: {v_main: @events_single} %>
+            <% end %>
             <li><h4><%= @events_single.form_params['name'] %></h4></li>
             <% if @events_single.form_params['type'] == 'weekly' %>
               <% if !@events_single.attachment.blank? %>
@@ -30,7 +33,7 @@
                   <% @v_main_sliders.each do |main_slider| %>
 
                   <li>
-                    <%= image_tag main_slider.image_url(:slider) %>
+                    <%= image_tag main_slider.image_url(:slider_main) %>
                     <% if !main_slider.caption.blank? %>
                     <div class="orbit-caption">
                       Caption One.
