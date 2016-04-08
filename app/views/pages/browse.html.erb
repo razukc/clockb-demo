@@ -50,8 +50,8 @@
           
           <%= render partial: "pages/main_event" %>
           <div class="clearfix"></div>
-          <br>
-          <% unless @v_weekly.empty? %>
+    <hr>
+     <% unless @v_weekly.empty? %>
       <% @v_weekly.each_with_index do |v_weekly, index| %>
     <!-- Weekly Event -->
     <h4><%= v_weekly.form_params['name'] %></h4>
