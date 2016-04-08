@@ -14,9 +14,10 @@
   <%= image_tag "http://res.cloudinary.com/hn61epjje/image/upload/v1457032673/Browse_kjiqn7.png", class: 'th-no-hover' %>
   <hr>
   <% end %>
-        <ul class="no-bullet">
+        
           <% if !@events_single.nil? %>
             <% if @events_single.form_params['type'] == 'main' %>
+            <%= content_for :page_title, @events_single.form_params['name'] %>
             <%= render partial: "pages/main_event" %>
             <% else %>
             <li><h4><%= @events_single.form_params['name'] %></h4></li>
@@ -76,7 +77,7 @@
     <% end %>
     <% end %>
           <% end %>
-        </ul>
+        
         
       <%= render partial: 'layouts/side_footer' %>
 </div>
