@@ -72,7 +72,7 @@
     <div id="_request_for_event_id_<%= v_weekly.id %>">
     <%= render partial: "shared/register_for_event", locals: {_y: 'weekly', _z: v_weekly.id } %>
   </div>
-    <%= "<hr />".html_safe unless index == @v_weekly.size - 1 %>
+    <%= "<hr />".html_safe unless index == @v_weekly.size  %> <!-- - 1 -->
     <% end %>
     <% end %>
           <% end %>
