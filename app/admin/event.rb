@@ -123,7 +123,9 @@ f.fields_for :form_params,
 r.input :type, :label => 'Main/Weekly', as: :select, :include_blank => false, 
 :collection => [["Main", "main"], ["Weekly", "weekly"]] 
 r.input :name, :required => true
-r.input :description, as: :text, input_html: {rows: 6}
+r.input :description, as: :text, input_html: {rows: 6}, label: "Description(Box 1)"
+r.input :description_two, as: :text, input_html: {rows: 6}, label: "Description(Box 2)"
+r.input :description_three, as: :text, input_html: {rows: 6}, label: "Description(Box 3)"
 r.input :venue 
 r.input :start_time
 end	
@@ -191,7 +193,7 @@ main_event_price_and_mileages_attributes: [:id, :attendee_category, :price, :mil
 )
 end
 def form_params
-["type", "name", "description", "venue", 
+["type", "name", "description", "venue", "description_two", "description_three",
 "start_time"]
 end
 def extra_params

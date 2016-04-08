@@ -33,7 +33,7 @@ index download_links: false do
 			dd "Company: "<<xyz.request_by['company'].to_s
 			dd "Phone: "<<xyz.request_by['phone'].to_s
 			dd "Email: "<<xyz.request_by['email'].to_s
-			
+
 		
 		when 'vacancy'
 			pre "Application for Vacancy"
@@ -63,6 +63,12 @@ index download_links: false do
 			dd "Company: "<<xyz.request_by['company'].to_s unless xyz.request_for['_y'] == 'weekly'
 			dd "Phone: "<<xyz.request_by['phone'].to_s
 			dd "Email: "<<xyz.request_by['email'].to_s
+			if xyz.request_for['_y'] == 'main'
+				dd "Field of expertise: "<<xyz.request_by['field_of_expertise'].to_s
+				dd "Address: "<<xyz.request_by['address']
+				dd "Attendee Category: "<<xyz.request_by['attendee_category'].humanize
+				dd "Payment Option: "<<xyz.request_by['payment_options'].humanize
+			end
 
 		when 'premium'
 			pre "Request for Premium Package"

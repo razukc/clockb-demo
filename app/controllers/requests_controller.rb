@@ -49,7 +49,9 @@ def create
 # @request = Request.create(requests_params)
 
 
-@request = Request.where("request_by like ? and request_for like ?" ,"%email: #{requests_params[:form_params][:email]}%", "%_x: #{requests_params[:link_params][:_x]}%").first_or_create(requests_params) do |obj|
+# @request = Request.where("request_by like ? and request_for like ?" ,"%email: #{requests_params[:form_params][:email]}%", "%_x: #{requests_params[:link_params][:_x]}%").first_or_create(requests_params) do |obj|
+
+@request = Request.where("request_by like ? and created_at >= ?" ,"%email: #{requests_params[:form_params][:email]}%", 1.day.ago).first_or_create(requests_params) do |obj|
 	
 # if @request.save
 	# case @request.link_params['_x']
@@ -94,8 +96,8 @@ def link_params
 ["_x", "_y", "_z", "_a"]
 end
 def form_params
-["name", "company", "phone", "email",
-"comment"]
+["name", "company", "phone", "email", "field_of_expertise", "address",
+"comment", "attendee_category", "payment_options"]
 end
 def extra_params
 ["attachment_cache"]

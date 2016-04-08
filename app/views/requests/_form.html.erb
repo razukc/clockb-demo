@@ -62,7 +62,7 @@
 				<%= r.text_area :comment, :placeholder => 'Why you\'re applying?', required: true, rows: 6 %>
 			<% end %>
 		<% end %>
-		<% if @_x.in?(['meeting', 'event']) %>
+		<% if @_x.in?(['meeting']) %>
 	
 		<%#= f.hidden_field :form_params, :value => @_x %>
 		<!-- , OpenStruct.new(@request.form_params) -->
@@ -85,6 +85,43 @@
 			<p class="panel"><%= "Press 'Ok' to continue." %></p>
 		<% end %>
 
+		<% if @_x.in?(['event']) && @_y.in?(['weekly']) %>
+			<%= f.fields_for :form_params do |r| %>
+				<%= r.text_field :name, :placeholder => 'Name', required: true %>
+				<%= (r.text_field :company, :placeholder => 'Company', required:true) unless @_y == 'weekly' %>
+				<%= r.telephone_field :phone, :placeholder => 'Phone', required: true %>
+				<%= r.email_field :email, :placeholder => 'Email', required: true %>
+			<% end %>
+		<% end %>
+		<% if @_x.in?(['event']) && @_y.in?(['main']) %>
+			<%= f.fields_for :form_params do |r| %>
+				<%= r.text_field :name, :placeholder => 'Name', required: true %>
+				<%= (r.text_field :company, :placeholder => 'Organization', required:false) unless @_y == 'weekly' %>
+				<%= r.email_field :email, :placeholder => 'Email', required: true %>
+				<%= r.telephone_field :phone, :placeholder => 'Contact No.', required: true %>
+				<%= r.text_field :field_of_expertise, :placeholder => 'Field of Expertise', required: false %>
+				<%= r.text_field :address, :placeholder => 'Address', required: false %>
+				<div class="clearfix"></div>
+
+				<span>Attendee Category</span><br>
+				<%= r.radio_button :attendee_category, "featured_connect" %>
+				<%= r.label :attendee_category, "Featured Connect", value: "featured_connect" %>
+				<%= r.radio_button :attendee_category, "connect" %>
+				<%= r.label :attendee_category, "Connect", value: "connect" %>
+				<%= r.radio_button :attendee_category, "featured_business_card" %>
+				<%= r.label :attendee_category, "Featured Business Card", value: "featured_business_card" %>
+				<div class="clearfix"></div>
+
+				<span>Payment Options</span><br>
+				<%= r.radio_button :payment_options, "cheque" %>
+				<%= r.label :payment_options, "Cheque", value: "cheque" %>
+				<%= r.radio_button :payment_options, "cash" %>
+				<%= r.label :payment_options, "Cash", value: "cash" %>
+				<%= r.radio_button :payment_options, "bank_transfer" %>
+				<%= r.label :payment_options, "Bank transfer/Deposit", value: "bank_transfer" %>
+				<div class="clearfix"></div>
+			<% end %>
+		<% end %>
 
 		<%= f.submit @_x.in?(['delete_animated_video']) ? "Ok" : "Send", class: 'button right small' %>
 		<% end %>

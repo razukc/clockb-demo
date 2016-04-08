@@ -1,4 +1,16 @@
 <h4>Event Registration <%= @type.humanize %> Event</h4>
+<% if @type == 'main' %>
+	<ul style="list-style-type:none;">
+		<li>Name: <%= @name %></li>
+		<li>Organization: <%= @company %></li>
+		<li>Email: <%= @email %></li>
+		<li>Contact No.: <%= @phone %></li>
+		<li>Field of Expertise: <%= @field_of_expertise %></li>
+		<li>Address: <%= @address %></li>
+		<li>Attendee Category: <%= @attendee_category.titleize %></li>
+		<li>Payment Option: <%= @payment_option.titleize %></li>
+	</ul>
+<% else %>
       <ul style="list-style-type:none;">
         <li>Name: <%= @name %></li>
         <% if @company %>
@@ -7,3 +19,4 @@
         <li>Phone: <%= @phone %></li>
         <li>Email: <%= @email %></li>
       </ul>
+<% end %>

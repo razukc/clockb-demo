@@ -41,7 +41,12 @@ class ClockbMailer < ApplicationMailer
     
     @phone = @resource.form_params['phone']
     @email = @resource.form_params['email']
-
+    if @type == 'main'
+      @field_of_expertise = @resource.form_params['field_of_expertise']
+      @payment_option = @resource.form_params['payment_options']
+      @attendee_category = @resource.form_params['attendee_category']
+      @address = @resource.form_params['address']
+    end
     mail(from: 'admin@clockb.com', to: 'events@clockb.com', subject: "Event Registration " << @type.humanize << ' Event')
   end
   def admin_animated_video_email(resource)

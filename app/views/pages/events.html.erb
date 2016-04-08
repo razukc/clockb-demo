@@ -41,7 +41,7 @@
 		</div>
 					 
 		<hr>
-		
+
 		<a data-magellan-destination="reasons-to-attend" name="reasons-to-attend"></a>
 		<h4>Reasons to attend</h4>
 		<p>In one word, Clock b Business Innovations defines its networking event as a “Platform”. Our business networking is:</p>
@@ -58,44 +58,53 @@
 <h5>Monday Coffee Queries</h5>
 <p>Start your week with some priceless advice. Start-ups, or for anyone who aspires to be an entrepreneur, our Monday morning coffee sessions are free advisory sessions to assess and fine-tune your ideas. If you have queries regarding your business or your ideas, simply pop in to our sessions to have it answered.</p>
 		<hr />
-		<div class="row">
-			<div class="large-7 columns" style="border-right:1px solid #008CBA;">
-			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
+		<!-- main event layout -->
 			<% unless @v_main.empty? %>
 				<% @v_main.each do |v_main| %>
 				<!-- Main Event -->
 				<h4><%= v_main.form_params['name'] %></h4>
-				<div class="clearfix">
-					<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
-					<% if !@v_main_sliders.empty? %>
-					<ul class="example-orbit" data-orbit>
-						<% @v_main_sliders.each do |main_slider| %>
+				<% if v_main.attachment.present? %>
+				<%= image_tag v_main.attachment.url, class: 'lazyload th-no-hover' %>
+				<% end -%>
 
-					  <li>
-					    <%= image_tag main_slider.image_url(:slider) %>
-					    <% if !main_slider.caption.blank? %>
-					    <div class="orbit-caption">
-					      Caption One.
-					    </div>
-					    <% end %>
-					  </li>
-						<% end %>
-					</ul>
-					<% end %>
-
+				<div id="_request_for_event_id_<%= v_main.id %>">
+								<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
+				
+				<ul class="no-bullet">
+					<li><strong>Start Date:</strong> <%= v_main.start_date? ? v_main.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
+					<li><strong>Time:</strong> <%= v_main.form_params['start_time'] %></li>
+					<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
+					<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
+					<% if v_main.document? %>
+					<li><strong>Document:</strong><%= link_to " Download", v_main.document_url, class: "" %></li>
+					<% end -%>
+				</ul>
 		<br />
 		<h5>Event Insights</h5>
-		<p><%= v_main.form_params['description'] %></p>
-		<ul class="no-bullet">
-			<li><strong>Start Date:</strong> <%= v_main.start_date? ? v_main.start_date.strftime('%A, %B %e, %Y') : '-' %></li>
-			<li><strong>Time:</strong> <%= v_main.form_params['start_time'] %></li>
-			<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
-			<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
-			<% if v_main.document? %>
-			<li><strong>Document:</strong><%= link_to " Download", v_main.document_url, class: "" %></li>
-			<% end -%>
-		</ul>
+		<div class="readmore"><%= simple_format v_main.form_params['description'].html_safe %></div>
+		<div class="clearfix"></div>
+		<div class="clearfix">
+			<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
+			<% if !@v_main_sliders.empty? %>
+			<ul class="example-orbit" data-orbit>
+				<% @v_main_sliders.each do |main_slider| %>
+
+			  <li>
+			    <%= image_tag main_slider.image_url(:slider) %>
+			    <% if !main_slider.caption.blank? %>
+			    <div class="orbit-caption">
+			      Caption One.
+			    </div>
+			    <% end %>
+			  </li>
+				<% end %>
+			</ul>
+			<% end %>
+		</div>
+		<div id="description_two">
+			<%= simple_format v_main.form_params['description_two'] unless v_main.form_params['description_two'].empty? %>
+		</div>
 		<% 
 			@v_main_price_and_mileages = MainEventPriceAndMileage.where(:event_id => v_main.id)
 			unless @v_main_price_and_mileages.empty?
@@ -133,10 +142,16 @@
 		%>
 		<div id="_request_for_event_id_<%= v_main.id %>">
 						<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
-				</div>
+		</div>
 		<hr />
 		<% end %>
 		<% end %>
+		
+		
+		<!-- main event layout ends -->
+		<div class="row">
+			<div class="large-7 columns" style="border-right:1px solid #008CBA;">
+			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
 			<% unless @v_weekly.empty? %>
 			<% @v_weekly.each_with_index do |v_weekly, index| %>
 		<!-- Weekly Event -->
