@@ -65,7 +65,7 @@
 <p>Start your week with some priceless advice. Start-ups, or for anyone who aspires to be an entrepreneur, our Monday morning coffee sessions are free advisory sessions to assess and fine-tune your ideas. If you have queries regarding your business or your ideas, simply pop in to our sessions to have it answered.</p>
 		<hr />
 		<!-- main event layout -->
-		<div class="panel" style="padding:5px;">
+		<div class="">
 					<% unless @v_main.empty? %>
 						<% @v_main.each do |v_main| %>
 						<!-- Main Event -->
@@ -91,7 +91,9 @@
 						</ul>
 				<br />
 				<h5>Details</h5>
-				<div class="readmore"><%= v_main.form_params['description'].html_safe %></div>
+				<div class="readmore">
+					<%= v_main.form_params['description'].html_safe %>
+
 				<div class="clearfix"></div>
 				<div class="clearfix">
 					<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
@@ -156,12 +158,12 @@
 				<div id="_request_for_event_id_<%= v_main.id %>">
 								<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
-				<hr />
 				<% end %>
 				<% end %>
-				
-				</div>
+				</div> <!-- readmore -->
+				</div> <!-- panel -->
 		<!-- main event layout ends -->
+				<hr />
 		<div class="row">
 			<div class="large-7 columns" style="border-right:1px solid #008CBA;">
 			<a  data-magellan-destination="upcoming-events" name="upcoming-events"></a>
