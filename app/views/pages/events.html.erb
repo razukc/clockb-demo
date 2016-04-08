@@ -66,7 +66,7 @@
 				<% if v_main.attachment.present? %>
 				<%= image_tag v_main.attachment.url, class: 'lazyload th-no-hover' %>
 				<% end -%>
-
+				<div class="clearfix"></div>
 				<div id="_request_for_event_id_<%= v_main.id %>">
 								<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
@@ -77,12 +77,12 @@
 					<li><strong>Venue:</strong> <%= v_main.form_params['venue'] %></li>
 					<li><strong>No. of Participants:</strong> <%= v_main.attendees_limit %></li>
 					<% if v_main.document? %>
-					<li><strong>Document:</strong><%= link_to " Download", v_main.document_url, class: "" %></li>
+					<li><strong>About Business Networking Hours:</strong><%= link_to " Download", v_main.document_url, class: "" %></li>
 					<% end -%>
 				</ul>
 		<br />
-		<h5>Event Insights</h5>
-		<div class="readmore"><%= v_main.form_params['description'].html_safe %></div>
+		<h5>Details</h5>
+		<div class="readmore"><%= simple_format v_main.form_params['description'].html_safe %></div>
 		<div class="clearfix"></div>
 		<div class="clearfix">
 			<% @v_main_sliders = MainEventSlider.where(:event_id => v_main.id) %>
