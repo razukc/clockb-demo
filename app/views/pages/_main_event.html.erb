@@ -25,7 +25,9 @@
 						</ul>
 				<br />
 				<h5>Details</h5>
+				<% unless params[:id] %>
 				<div class="readmore">
+				<% end %>
 					<%= v_main.form_params['description'].html_safe %>
 
 				<div class="clearfix"></div>
@@ -94,6 +96,8 @@
 				</div>
 				<% end %>
 				<% end %>
+				<% unless params[:id] %>
 				</div> <!-- readmore -->
+				<% end %>
 				</div> <!-- panel -->
 		<!-- main event layout ends -->
