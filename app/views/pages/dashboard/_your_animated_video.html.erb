@@ -11,7 +11,7 @@
 		<% end %>
 		<% if @user.animated_video_file.present? %>
 			<%= link_to("Download", download_animated_video_path, class: "button tiny info right") %>
-			<%= link_to "", l_image_tag(@user.animated_video_file.to_s, :resource_type=>"video" %>
+			<%= link_to @user.animated_video_file.to_s, l_image_tag(@user.animated_video_file.to_s, :resource_type=>"video" %>
 		<% end %>
 <% end %>
 	<% if @user.animated_video.in? (['','[deleted]', nil]) %>
