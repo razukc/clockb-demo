@@ -114,6 +114,8 @@ class PagesController < ApplicationController
     @v_weekly = Event.m_weekly
   end
   def browse
+    @new_event_discussion = EventDiscussion.new
+    @all_event_discussion = EventDiscussion.where(:event_id => params[:id]).order('created_at desc')
     @events_single = Event.find_by_id(params[:id])
     @events_all = Event.all.where('start_date >= ?', Date.today)#.order(:start_date)
     @v_main = Event.m_main

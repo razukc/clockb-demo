@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509142533) do
+ActiveRecord::Schema.define(version: 20160512135114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,17 @@ ActiveRecord::Schema.define(version: 20160509142533) do
   end
 
   add_index "employee_documents", ["user_id"], name: "index_employee_documents_on_user_id", using: :btree
+
+  create_table "event_discussions", force: :cascade do |t|
+    t.integer  "event_id"
+    t.text     "comment"
+    t.integer  "in_reply_to", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "user_id"
+  end
+
+  add_index "event_discussions", ["event_id"], name: "index_event_discussions_on_event_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.text     "form_params"
@@ -436,6 +447,7 @@ ActiveRecord::Schema.define(version: 20160509142533) do
   add_foreign_key "adverts", "users"
   add_foreign_key "business_requirements", "users"
   add_foreign_key "employee_documents", "users"
+  add_foreign_key "event_discussions", "events"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "logo_and_images", "users"

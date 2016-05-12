@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :event_discussions
     get 'message_freelancer' => 'freelancers#message_freelancer'
     get 'book_your_appointment' => 'freelancers#book_your_appointment'
     get 'book_webinar_appointment' => 'freelancers#book_webinar_appointment'

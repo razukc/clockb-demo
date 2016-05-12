@@ -1,0 +1,10 @@
+<% if @event_discussion.errors.any? %>
+
+<% else %>
+	$('textarea#new_event_discussion_form').val('');
+	<% if @event_discussion.in_reply_to > 0 %>
+		$("#reply_comment_"+@event_discussion.in_reply_to+" > ul").prepend("<li class=\"panel radius\"><%= @event_discussion.comment %></li>");
+	<% else %>
+		$('#new_discussion_item > ul').prepend('<li class="panel"><%= @event_discussion.comment %></li>');
+	<% end %>
+<% end %>
