@@ -45,7 +45,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     /image\//
   end
   def filename
-     "#{secure_token}.#{file.extension}" if original_filename.present?
+     "#{secure_token}.#{file.extension}.downcase" if original_filename.present?
   end
   protected
   def secure_token

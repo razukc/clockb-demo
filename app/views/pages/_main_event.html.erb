@@ -94,7 +94,23 @@
 				<div id="_request_for_event_id_<%= v_main.id %>">
 								<%= render partial: "shared/register_for_event", locals: {_y: 'main', _z: v_main.id} %>
 				</div>
+<div class="hide">
+				<div class="clearfix"></div>
+				<hr>
+				<h4>Thread Discussion</h4>
+				<% unless user_signed_in? %>
+					<p>Click <a href="/sign_in">here</a> to sign in first</p>
+				<% else %>
+				<!-- new thread discussion starts -->
+				<%= render partial: "event_discussions/new", locals: {event_id: v_main.id, user_id: current_user.id} %>
+				<!-- new thread discussion ends -->
+				
+				<!-- existing thread discussion starts -->
+				<%= render partial: "event_discussions/show", locals: {event_id: v_main.id, user_id: current_user.id} %>
+				<!-- existing thread discussion ends -->
+				<% end -%>
 
+</div>
 				<% end %>
 				<% end %>
 				<% unless params[:id] %>
