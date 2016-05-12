@@ -425,6 +425,7 @@ ActiveAdmin.register User do
 			inputs_keys = params[:user][:inputs].keys
 			inputs_keys.push(:interested_in => [])
 			params.require(:user).permit(:email, 
+				:clock_b_freelancer, :join_as_clock_b_freelancer,
 			:attachment, :attachment_cache, :remove_attachment,
 			:photo, :photo_cache, :remove_photo,
 			:animated_video_file, :animated_video_file_cache, :remove_animated_video_file,

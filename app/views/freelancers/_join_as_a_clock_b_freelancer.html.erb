@@ -1,0 +1,19 @@
+<h5>Join as a Clock b Freelancer</h5>
+<div class="panel cleafix">
+	<p>Press "Send" to continue.</p>
+	<ul class="no-bullet">
+	<%= form_for Request.new, remote: true do |f| %>
+		<%= f.fields_for :form_params do |r| %>
+			<%= r.hidden_field :email, value: @user.email %>
+		<% end -%>
+		<%= f.fields_for :link_params do |l| %>
+			<%= l.hidden_field :_x, value: 'join_as_clock_b_freelancer' %>
+			<%= l.hidden_field :_z, value: @user.id %>
+		<% end -%>
+		<%= f.submit "Send", class: "button info small right", data: {disable_with: "Please wait..."} %>
+	<% end -%>
+	</ul>
+	<div class="clearfix"></div>
+</div>
+<%= render partial: 'pages/dashboard/preloader' %>
+<a class="close-reveal-modal">&#215;</a>

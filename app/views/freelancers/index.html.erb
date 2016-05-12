@@ -1,0 +1,164 @@
+<%= content_for :page_title, "Freelancers" %>
+<br>
+<div id="myModal" class="reveal-modal small" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div class="row panel">
+	<div class="columns large-12">
+	  <div class="slider-nav" style="padding-bottom:20px;">
+	    <div>
+	    	<h6>Today</h6>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>	    
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	    <div>
+	    	<span>31st October 2016</span>
+	    	<%= image_tag "500.png", class: 'lazyload', style: 'width:150px;'%>
+	    </div>
+	  </div>
+
+	</div>
+	<div class="columns large-4 medium-4">
+		<h6>Calendar</h6>
+	</div>
+	<div class="columns large-8 medium-8">
+	  <div class="slider-for">
+		<% 3.times do %>
+	  	<table width="100%" class="">
+  				<tr>
+  					<td colspan="2" >Freelancer Details</td>
+  				</tr>
+	  			<tr>
+	  				<td class="subheader">Name:</td>
+	  				<td><span class="left">John Doe</span><span class="right"><%= link_to "View full Profile", "#" %></span></td>
+	  			</tr>
+  				<tr>
+  					<td class="subheader">Time on Office:</td>
+  					<td>9 AM to 3 PM</td>
+  				</tr>
+  				<tr>
+  					<td class="subheader">Field of Expertise:</td>
+  					<td>Consulting</td>
+  				</tr>
+  				<tr>
+  					<td>
+  						<%= link_to "Message Freelancer", message_freelancer_path, class: 'button info tiny', 
+							data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+  					</td>
+  					<td>
+  						<%= link_to "Book your appointment", book_your_appointment_path, class: 'button info tiny', 
+							data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+  					</td>
+  				</tr>
+	  	</table>
+	  	<% end -%>
+	  </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="columns large-12">
+		<h4>Projects for Freelancers</h4>
+		<table width="100%">
+			<% if @projects_for_freelancers.empty? %>
+			<tr><th>No Projects found</th></tr>
+			<% else %>
+			<tr>
+				<th class="subheader">S.No.</th>
+				<th class="subheader">Project Name</th>
+				<th class="subheader">Created By</th>
+				<th class="subheader">Deadline</th>
+				<th>&nbsp;</th>
+			</tr>
+			<% index = 0 %>
+			<% @projects_for_freelancers.each do |project| %>
+			<tr>
+				<td><%= index+1  %></td>
+				<td><%= project.title %></td>
+				<td><%= project.user %></td>
+				<td><%= project.deadline %></td>
+				<td><%= link_to "View Project", user_project_path(project.user, project) %></td>
+			</tr>
+			<% end -%>
+			<% end -%>
+		</table>
+	</div>
+	<div class="columns large-6 medium-6">
+		<%= link_to "Add Freelance Project", add_freelance_project_path, class: "button expand", 
+			data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+	</div>
+	<div class="columns large-6 medium-6">
+		<!-- join as a clock b freelancer -->
+		<%= link_to "Join as a Clock b Freelancer", join_as_a_clock_b_freelancer_path, class: "button expand", 
+			data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+	</div>
+</div>
+
+
+<div class="row">
+<hr>
+	<div class="columns large-4 medium-4">
+		<h4>Freelancers</h4>
+	</div>
+	<div class="columns large-2 medium-2">&nbsp;
+	</div>
+	<div class="columns large-5 medium-5">
+		<select><option>Filter by Category</option></select>
+	</div>
+	<div class="columns large-1 medium-1">
+		<button class="tiny right">Search</button>
+	</div>
+</div>
+
+<div class="row">
+	<% 3.times do %>
+	<div class="columns large-4 medium-6">
+		<table width="100%">
+			<tr>
+				<td colspan="2" style="text-align:center;">
+					<%= image_tag "500.png", class: 'lazyload th-no-hover', style: "width:150px;" %>
+				</td>
+			</tr>
+			
+				<tr>
+					<td class="subheader">Name:</td>
+					<td><span class="left">John Doe</span><span class="right"><%= link_to "View Profile", "#" %></span></td>
+				</tr>
+				<tr>
+					<td class="subheader">Field of Expertise:</td>
+					<td>Consulting</td>
+				</tr>
+			
+			<tr>
+				<td>
+					<%= link_to "Message Freelancer", message_freelancer_path, class: 'button info tiny', 
+						data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+				</td>
+				<td>
+					<%= link_to "Book Webinar appointment", book_webinar_appointment_path, class: 'button info tiny', 
+						data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<% end -%>
+</div>	

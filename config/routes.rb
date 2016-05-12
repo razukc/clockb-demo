@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+    get 'message_freelancer' => 'freelancers#message_freelancer'
+    get 'book_your_appointment' => 'freelancers#book_your_appointment'
+    get 'book_webinar_appointment' => 'freelancers#book_webinar_appointment'
+    get 'join_as_a_clock_b_freelancer' => 'freelancers#join_as_a_clock_b_freelancer'
+    get 'add_freelance_project' => 'freelancers#add_freelance_project'
+  resources :freelancers
+
   get 'rough', to: 'pages#rough'
    
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -26,6 +34,7 @@ Rails.application.routes.draw do
       get 'get_users' => 'profiles#get_users'
   resources :requests
   resources :users do
+    resources :projects
     resources :adverts
     resources :business_requirements
     resources :social_media_links
@@ -36,10 +45,12 @@ Rails.application.routes.draw do
   end
 
 
+
   
   # resources :users_websites
   # resources :users
 
+  get 'freelancers' => 'pages#freelancers'
   get 'clockb' => 'pages#clockb'
   get 'services' => 'pages#services'
   get 'careers' => 'pages#careers'

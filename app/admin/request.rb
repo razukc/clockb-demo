@@ -19,7 +19,46 @@ actions :all, except: [:new, :create, :edit, :update]
 index download_links: false do
 	column :requests do |xyz|
 		case xyz.request_for['_x']
+		when 'message_freelancer'
+			pre 'Message to a Freelancer'
+			@user = User.find_by_id(xyz.request_for['_z'])
+			@freelancer = User.find_by_id(xyz.request_for['_a'])
+			@message = xyz.request_by['comment']
+			unless  @user.nil?
+				dd link_to "From: " << @user.email, admin_user_path(xyz.request_for['_z'])
+			end
+			unless @freelancer.nil?
+				dd link_to "Freelancer: " << @freelancer.email, admin_user_path(xyz.request_for['_a'])
+			end
+			dd "Message: " 
+			pre "\"" << @message << "\""
 
+		when 'book_webinar_appointment'
+			pre 'Book Webinar appointment with Freelancer'
+			@user = User.find_by_id(xyz.request_for['_z'])
+			@freelancer = User.find_by_id(xyz.request_for['_a'])
+			unless  @user.nil?
+				dd link_to "From: " << @user.email, admin_user_path(xyz.request_for['_z'])
+			end
+			unless @freelancer.nil?
+				dd link_to "Freelancer: " << @freelancer.email, admin_user_path(xyz.request_for['_a'])
+			end
+		when 'book_your_appointment'
+			pre 'Book appointment with Freelancer'
+			@user = User.find_by_id(xyz.request_for['_z'])
+			@freelancer = User.find_by_id(xyz.request_for['_a'])
+			unless  @user.nil?
+				dd link_to "From: " << @user.email, admin_user_path(xyz.request_for['_z'])
+			end
+			unless @freelancer.nil?
+				dd link_to "Freelancer: " << @freelancer.email, admin_user_path(xyz.request_for['_a'])
+			end
+		when 'join_as_clock_b_freelancer'
+			pre 'Request for Join as a Clock b Freelancer'
+			@user = User.find_by_id(xyz.request_for['_z'])
+			unless @user.nil?
+				dd link_to @user.email, admin_user_path(xyz.request_for['_z'])
+			end
 		when 'animated_video'
 			pre "Request for Animated Video"
 			@user = User.find_by_id(xyz.request_for['_z'])

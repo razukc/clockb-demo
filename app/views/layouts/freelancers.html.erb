@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:page_title) ? yield(:page_title) : "::" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Clock b " %>">
+    <%= stylesheet_link_tag    "application" %>
+    <%= favicon_link_tag %>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "lazysizes.min", 'async' => '' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body style="background-color:#e3e3e3;">
+    <!-- Top Navigation -->
+    <%= render 'layouts/navigation' %>
+    <!-- Breadcrumb -->
+    <div class="row">
+      <div class="columns">
+        <%= breadcrumbs display_single_fragment: false, pretext: "You are here: ", style: :foundation5 %>
+      </div>
+    </div>
+    <!-- Flash messages -->
+<!--     <div class="clearfix">
+      <%= render 'layouts/messages' %>
+    </div> -->
+    <div id="yield" >
+    <%= yield %>
+    </div>
+    <!-- Footer -->   
+    <%#= render 'layouts/footer' %>
+  </body>
+</html>

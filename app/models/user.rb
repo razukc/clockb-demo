@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+has_many :projects, dependent: :destroy
+accepts_nested_attributes_for :projects, :reject_if => lambda { |record| record[:title].blank? }
+
 has_many :users_websites, dependent: :destroy
 accepts_nested_attributes_for :users_websites,
 	:reject_if => lambda { |record| record[:address].blank? }
@@ -82,6 +85,10 @@ accepts_nested_attributes_for :tasks, :allow_destroy => true,
 has_many :employee_documents, :dependent => :destroy
 accepts_nested_attributes_for :employee_documents, :allow_destroy => true,
 :reject_if => lambda { |a| a[:attachment].blank? } #&& a[:files_cache].blank?
+
+def to_s
+	inputs['name']
+end
 
 def self.public_profile(id)
 	User.where(id: id).limit(1)
@@ -175,5 +182,8 @@ def has_offered_service(business_requirement_id, user_id)
 end
 def has_requested_animated_video?
 	self.animated_video == "[requested]"
+end
+def join_as_clock_b_freelancer?
+	self.join_as_clock_b_freelancer == true
 end
 end

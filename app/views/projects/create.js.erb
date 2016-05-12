@@ -1,0 +1,24 @@
+<% if @project.errors.any? %>
+  
+  $('div.errors').show();
+  // $('div.errors').removeClass('hide');
+ <% @project.errors.each do |k,v| %>
+ 	$('div.error_msg > p').html("<%= k.to_s.titleize << " " << v %>");
+ 	$('div.error_msg').show();
+ <% end %>
+
+<% else %>
+
+$('div.error_msg').hide();
+$('div.errors').hide();
+$('div.success').show();
+setTimeout(
+	function() 
+	{
+	//do something special
+	$('#myModal').foundation('reveal', 'close');
+	}, 1000
+);
+
+$(document).foundation();
+<% end %>

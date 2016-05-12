@@ -12,7 +12,15 @@
 			<%= k.hidden_field :_y, :value => @_y %>
 			<%= k.hidden_field :_z, :value => @_z %>
 		<% end %>
-		
+		<!-- join as a clock b freelancer -->
+		<% if @_x.in?(['join_as_clock_b_freelancer']) %>
+			<div class="panel clearfix">
+				<p>Press "Send" to continue.</p>
+				<%= f.fields_for :form_params do |r| %>
+					<%= r.hidden_field :email, value: current_user.email %>
+				<% end %>
+			</div>
+		<% end -%>
 		<% if @_x.in?(['vacancy']) %>
 			<div class="row">
 				<h5>Job Details</h5>

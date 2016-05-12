@@ -1,3 +1,4 @@
+# this class is used for user actions
 class UsermeetupsController < ApplicationController
 before_action :authenticate_user!
 before_action :premium_only
@@ -28,7 +29,10 @@ end
 
 private
 def usermeetups_params
-	params.require(:usermeetup).permit(:user_x, :user_id, :meetup, :webinar, :event, :service_offered)
+	params.require(:usermeetup).permit(:user_x, :user_id, :meetup, 
+		:webinar, :event, :service_offered,
+		:clock_b_freelancer
+		)
 end
 def premium_only
 	unless current_user.premium?

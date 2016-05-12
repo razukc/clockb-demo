@@ -1,0 +1,29 @@
+<%= content_for :page_title, "Project Details" %>
+<div class="row">
+	<div class="columns large-12">
+		<table width="100%">
+			<thead>
+				<tr><th colspan="2" style="text-align:center;"><h4>Project Details</h4></th></tr>
+			</thead>
+			<tr>
+				<td class="subheader">Project created by:</td>
+				<td>
+					<span class="left"><%= @project.user %></span>
+					<span class="right"><%= link_to "View Profile", profile_path(@project.user) %></span>
+				</td>
+			</tr>
+			<tr>
+				<td class="subheader">Name of Project:</td>
+				<td><%= @project.title %></td>
+			</tr>
+			<tr>
+				<td class="subheader">Project Description:</td>
+				<td><%= @project.description %></td>
+			</tr>
+			<tr>
+				<td class="subheader">Project Documents:</td>
+				<td><%= @project.document %></td>
+			</tr>
+		</table>
+	</div>
+</div>

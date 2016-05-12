@@ -1,0 +1,16 @@
+<h4>Add a Freelance Project</h4>
+<%= semantic_form_for [@user, @new_project], remote: true do |f| %>
+<ul class="no-bullet">
+	<%= f.input :title, label: false, placeholder: "Project Title(Required)", input_html: {required: true} %>
+	<%= f.input :description, label: false, placeholder: "Project Description", input_html: {rows: "4"} %>
+	<%#= f.input :deadline, as: :datetime_select, label: false, placeholder: "Project Deadline" %>
+	<label style="margin-bottom:10px;" class="left">Project Document</label>
+	<%= f.input :document, as: :file, label: false, placeholder: "Project Document", class: "left" %>
+	<%= f.input :public, label: " Public Project" %>
+	<hr>
+	<%= f.submit "Add", class: 'button tiny right' %>
+	<%= render partial: 'pages/dashboard/preloader' %>
+	<div class="error_msg hide" ><p class="label radius secondary"></p></div>
+</ul>
+<% end %>
+<a class="close-reveal-modal">&#215;</a>

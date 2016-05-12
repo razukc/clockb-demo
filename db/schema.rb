@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404094749) do
+ActiveRecord::Schema.define(version: 20160509142533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,13 @@ ActiveRecord::Schema.define(version: 20160404094749) do
     t.string "innovation"
   end
 
+  create_table "invite_freelancers", force: :cascade do |t|
+    t.integer  "project_freelancer_id"
+    t.integer  "freelancer_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "logo_and_images", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -263,6 +270,19 @@ ActiveRecord::Schema.define(version: 20160404094749) do
 
   add_index "program_schedules", ["client_id"], name: "index_program_schedules_on_client_id", using: :btree
   add_index "program_schedules", ["user_id"], name: "index_program_schedules_on_user_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "document"
+    t.boolean  "public",      default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.datetime "deadline"
+  end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "recommended_services", force: :cascade do |t|
     t.text     "content"
@@ -360,10 +380,10 @@ ActiveRecord::Schema.define(version: 20160404094749) do
   create_table "users", force: :cascade do |t|
     t.text     "inputs"
     t.string   "attachment"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: ""
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -374,12 +394,14 @@ ActiveRecord::Schema.define(version: 20160404094749) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
+    t.integer  "invitations_count",          default: 0
     t.string   "photo"
     t.text     "headline_message"
     t.string   "website"
     t.string   "animated_video"
     t.string   "animated_video_file"
+    t.boolean  "clock_b_freelancer",         default: false
+    t.boolean  "join_as_clock_b_freelancer", default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -426,6 +448,7 @@ ActiveRecord::Schema.define(version: 20160404094749) do
   add_foreign_key "products_and_services", "users"
   add_foreign_key "program_schedules", "clients"
   add_foreign_key "program_schedules", "users"
+  add_foreign_key "projects", "users"
   add_foreign_key "recommended_services", "alumnis"
   add_foreign_key "schedule_for_meetings", "clients"
   add_foreign_key "schedule_for_meetings", "users"

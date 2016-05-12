@@ -1,0 +1,20 @@
+<h5>Message Freelancer</h5>
+<div class="panel cleafix">
+	<ul class="no-bullet">
+	<%= form_for Request.new, remote: true do |f| %>
+		<%= f.fields_for :form_params do |r| %>
+			<%= r.hidden_field :email, value: @user.email %>
+			<%= r.text_area :comment, :placeholder => 'Type your message here...', required: true, rows: 7 %>
+		<% end -%>
+		<%= f.fields_for :link_params do |l| %>
+			<%= l.hidden_field :_x, value: 'message_freelancer' %>
+			<%= l.hidden_field :_z, value: @user.id %>
+			<%= l.hidden_field :_a, value: @user.id %>
+		<% end -%>
+		<%= f.submit "Send", class: "button info small right", data: {disable_with: "Please wait..."} %>
+	<% end -%>
+	</ul>
+	<div class="clearfix"></div>
+</div>
+<%= render partial: 'pages/dashboard/preloader' %>
+<a class="close-reveal-modal">&#215;</a>

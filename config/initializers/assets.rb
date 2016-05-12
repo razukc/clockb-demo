@@ -4,6 +4,8 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( lazysizes.min.js readmore.js custom-magellan.js )
+	# Rails.application.config.assets.precompile += %w( slick.css slick-theme.css slick.min.js )
+	# Rails.application.config.assets.precompile += %w( slick.eot slick.svg slick.ttf slick.woff )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

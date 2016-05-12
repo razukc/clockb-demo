@@ -7,6 +7,9 @@ def new
 @_a = params[:_a] ? params[:_a] : '_a'
 @_id = @_z ? @_z.to_i : 0
 case @_x
+when 'join_as_clock_b_freelancer'
+	@_title = "Join as a Clock b Freelancer"
+
 when 'delete_animated_video'
 	@_title = 'Delete Animated Video?'
 		
@@ -50,12 +53,21 @@ def create
 
 
 # @request = Request.where("request_by like ? and request_for like ?" ,"%email: #{requests_params[:form_params][:email]}%", "%_x: #{requests_params[:link_params][:_x]}%").first_or_create(requests_params) do |obj|
+# if requests_params[:link_params][:_x] == 'message_freelancer'
 
-@request = Request.where("request_by like ? and created_at >= ?" ,"%email: #{requests_params[:form_params][:email]}%", 1.day.ago).first_or_create(requests_params) do |obj|
-	
+	@request = Request.where("request_for like ? and request_by like ? and created_at >= ?" ,"%_x: #{requests_params[:link_params][:_x]}%", "%email: #{requests_params[:form_params][:email]}%", 1.minute.ago).first_or_create(requests_params) do |obj|
+
 # if @request.save
 	# case @request.link_params['_x']
 	case obj.link_params['_x']
+		when 'message_freelancer'
+			ClockbMailer.message_freelancer(obj).deliver_now
+		when 'book_webinar_appointment'
+			ClockbMailer.book_webinar_appointment(obj).deliver_now
+		when 'book_your_appointment'
+			ClockbMailer.book_your_appointment(obj).deliver_now
+		when 'join_as_clock_b_freelancer'
+			ClockbMailer.join_as_clock_b_freelancer(obj).deliver_now
 		when 'meeting'
 			ClockbMailer.meeting_email(obj.form_params['email']).deliver_now
 		when 'vacancy'

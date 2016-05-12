@@ -1,4 +1,8 @@
 <%= active_admin_form_for [:admin, @user] do |f|
+	f.inputs "Freelancer" do
+		f.input :clock_b_freelancer
+		# f.input :join_as_clock_b_freelancer
+	end
 f.inputs "Details" do
 	f.fields_for :inputs,(OpenStruct.new(User.find_by_id(params[:id]).inputs) unless f.object.new_record?) do |i|
 

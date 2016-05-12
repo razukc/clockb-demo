@@ -30,6 +30,37 @@ class ClockbMailer < ApplicationMailer
   end
 
   # Admin Emails
+  def message_freelancer(resource)
+    @resource = resource
+    @message = @resource.form_params['comment']
+    @user = User.find(@resource.link_params['_z'])
+    @freelancer = User.find(@resource.link_params['_a'])
+    @user_link = admin_user_url(@user)
+    @freelancer_link = admin_user_url(@freelancer)
+    mail(from: 'no-reply@clockb.com', to: 'admin@clockb.com', subject: 'Message to Freelancer')    
+  end
+  def book_webinar_appointment(resource)
+        @resource = resource
+        @user = User.find(@resource.link_params['_z'])
+        @freelancer = User.find(@resource.link_params['_a'])
+        @user_link = admin_user_url(@user)
+        @freelancer_link = admin_user_url(@freelancer)
+        mail(from: 'no-reply@clockb.com', to: 'admin@clockb.com', subject: 'Book Webinar Appointment with Freelancer')    
+  end
+  def book_your_appointment(resource)
+        @resource = resource
+        @user = User.find(@resource.link_params['_z'])
+        @freelancer = User.find(@resource.link_params['_a'])
+        @user_link = admin_user_url(@user)
+        @freelancer_link = admin_user_url(@freelancer)
+        mail(from: 'no-reply@clockb.com', to: 'admin@clockb.com', subject: 'Book Appointment with Freelancer')    
+  end
+  def join_as_clock_b_freelancer(resource)
+    @resource = resource
+    @user = User.find(@resource.link_params['_z'])
+    @admin_link = admin_user_url(@user)
+    mail(from: 'no-reply@clockb.com', to: 'admin@clockb.com', subject: 'Request for Join as a Clock b Freelancer')
+  end
   def admin_event_email_non_user(resource, type)
     @type = type
     @resource = resource
