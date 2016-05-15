@@ -1,0 +1,42 @@
+<% case attendee_category
+when 'featured_connect'
+	amt = 5000
+	txAmt = 0
+	psc = 0
+	pdc = 0
+	tAmt = amt + txAmt + psc + pdc
+
+when 'connect'
+	amt = 5000
+	txAmt = 0
+	psc = 0
+	pdc = 0
+	tAmt = amt + txAmt + psc + pdc
+
+when 'featured_business_card'
+	amt = 5000
+	txAmt = 0
+	psc = 0
+	pdc = 0
+	tAmt = amt + txAmt + psc + pdc
+	
+	
+end %>
+<div class="clearfix"></div>
+<form action="http://dev.esewa.com.np/epay/main" method="POST">
+<input value="<%= tAmt %>" name="tAmt" type="hidden">
+<input value="<%= amt %>" name="amt" type="hidden">
+<input value="<%= txAmt %>" name="txAmt" type="hidden">
+<input value="<%= psc %>" name="psc"	 type="hidden">
+<input value="<%= pdc %>" name="pdc" type="hidden">
+<input value="testmerchant" name="scd" type="hidden">
+	
+<input value="XYZ-1234" name="pid" type="hidden">
+	
+<input value="http://abc.com/success.html?q=su" type="hidden" name="su">
+	
+<input value="http://abc.com/failure.html?q=fu" type="hidden" name="fu">
+	
+<input value="Pay with eSewa" type="submit", class="button expand">
+</form>
+<a class="close-reveal-modal">&#215;</a>

@@ -32,19 +32,32 @@ $('div#your_animated_video').html("<%= escape_javascript render(partial: "pages/
 <% end %>
 
 <% if @request.link_params['_x'] == 'event' %>
-
 $('div#_request_for_event_id_<%= @request.link_params["_z"] %>').html("<%= escape_javascript render(partial: "shared/register_for_event", locals: {_y: @request.link_params['_y'], _z: @request.link_params['_z']}) %>");
 <% end %>
+
+
+
 setTimeout(
   function() 
   {
     //do something special
     $('div.success').hide();
-    $('#myModal-content').foundation('reveal', 'close');
     $('#myModal').foundation('reveal', 'close');
+    $('#myModal-content').foundation('reveal', 'close');
+    $(document).foundation();
   }, 600);
 
 <% end %>
 $('a.closed').on('click', function() {
 	$('#myModal-content').foundation('reveal', 'close');
 });
+
+
+<% if @request.form_params['payment_options'] == 'esewa' %>
+setTimeout(function(){
+    //product_id is event_id
+		$('#myModal-content').html("<%= escape_javascript render(partial: "esewa_payments/pay_with_esewa", locals: {attendee_category: @request.form_params['attendee_category'], product_id: @request.link_params['_z']}) %>");
+	    $('#myModal-content').foundation('reveal', 'open');
+}, 1200);
+<% end %>
+	

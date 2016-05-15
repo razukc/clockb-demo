@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'esewa_payments/index'
+
+  get 'esewa_payments/success'
+
+  get 'esewa_payments/failure'
+
   resources :event_discussions
     get 'message_freelancer' => 'freelancers#message_freelancer'
     get 'book_your_appointment' => 'freelancers#book_your_appointment'

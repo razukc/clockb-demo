@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512135114) do
+ActiveRecord::Schema.define(version: 20160515194016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,14 @@ ActiveRecord::Schema.define(version: 20160512135114) do
   end
 
   add_index "employee_documents", ["user_id"], name: "index_employee_documents_on_user_id", using: :btree
+
+  create_table "esewa_payments", force: :cascade do |t|
+    t.string   "product_id"
+    t.string   "reference_id"
+    t.float    "amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "event_discussions", force: :cascade do |t|
     t.integer  "event_id"
