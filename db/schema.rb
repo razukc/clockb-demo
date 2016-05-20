@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515194016) do
+ActiveRecord::Schema.define(version: 20160515214258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,24 @@ ActiveRecord::Schema.define(version: 20160515194016) do
   end
 
   add_index "event_discussions", ["event_id"], name: "index_event_discussions_on_event_id", using: :btree
+
+  create_table "event_sponsor_categories", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "event_sponsor_categories", ["event_id"], name: "index_event_sponsor_categories_on_event_id", using: :btree
+
+  create_table "event_sponsor_logos", force: :cascade do |t|
+    t.integer  "event_sponsor_category_id"
+    t.string   "logo"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "event_sponsor_logos", ["event_sponsor_category_id"], name: "index_event_sponsor_logos_on_event_sponsor_category_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.text     "form_params"
@@ -456,6 +474,8 @@ ActiveRecord::Schema.define(version: 20160515194016) do
   add_foreign_key "business_requirements", "users"
   add_foreign_key "employee_documents", "users"
   add_foreign_key "event_discussions", "events"
+  add_foreign_key "event_sponsor_categories", "events"
+  add_foreign_key "event_sponsor_logos", "event_sponsor_categories"
   add_foreign_key "feedback_from_users", "users"
   add_foreign_key "feedbacks_of_the_services", "clients"
   add_foreign_key "logo_and_images", "users"

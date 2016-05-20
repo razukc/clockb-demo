@@ -7,14 +7,14 @@ when 'featured_connect'
 	tAmt = amt + txAmt + psc + pdc
 
 when 'connect'
-	amt = 5000
+	amt = 3500
 	txAmt = 0
 	psc = 0
 	pdc = 0
 	tAmt = amt + txAmt + psc + pdc
 
 when 'featured_business_card'
-	amt = 5000
+	amt = 2500
 	txAmt = 0
 	psc = 0
 	pdc = 0
@@ -24,7 +24,7 @@ when 'featured_business_card'
 end %>
 <div class="clearfix"></div>
 <br>
-<form action="http://dev.esewa.com.np/epay/main" method="POST">
+<form action="https://www.esewa.com.np/epay/main" method="POST">
 <input value="<%= tAmt %>" name="tAmt" type="hidden">
 <input value="<%= amt %>" name="amt" type="hidden">
 <input value="<%= txAmt %>" name="txAmt" type="hidden">

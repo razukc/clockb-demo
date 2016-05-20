@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+	has_many :event_sponsor_categories, dependent: :destroy
+	accepts_nested_attributes_for :event_sponsor_categories, reject_if: :all_blank, allow_destroy: true
 	has_many :event_discussion, dependent: :destroy
 	accepts_nested_attributes_for :event_discussion, reject_if: :all_blank, allow_destroy: true
 	has_many :main_event_sliders, dependent: :destroy

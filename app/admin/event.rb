@@ -137,6 +137,16 @@ f.input :attachment, as: :file, :label => "Photo"
 li image_tag (f.object.attachment.thumb.url) if f.object.attachment?
 f.input :attachment_cache, as: :hidden
 end
+f.inputs "Event Sponsors" do
+	f.has_many :event_sponsor_categories, allow_destroy: true,
+		new_record: 'Add new Category' do |event_sponsor_category|
+			event_sponsor_category.input :name
+			event_sponsor_category.has_many :event_sponsor_logos, allow_destroy: true,
+				new_record: 'Add new Logo' do |event_sponsor_logo|
+					event_sponsor_logo.input :logo, as: :file
+				end
+	end
+end
 f.inputs "Main Event Slider Images" do
 	f.has_many :main_event_sliders, allow_destroy: true, heading: false,
 			new_record: 'Add new' do |main_event_slider|
@@ -189,7 +199,8 @@ content_keys = params[:event][:form_params].keys
 params.require(:event).permit(:document, :start_date, :attachment, :attachment_cache, :remove_attachement, :attendees_limit,
 form_params: form_params, 
 main_event_sliders_attributes: [:id, :image, :caption, :_destroy],
-main_event_price_and_mileages_attributes: [:id, :attendee_category, :price, :mileage, :_destroy]
+main_event_price_and_mileages_attributes: [:id, :attendee_category, :price, :mileage, :_destroy],
+event_sponsor_categories_attributes: [:id, :name, :_destroy, event_sponsor_logos_attributes: [:id, :logo, :_destroy]]
 )
 end
 def form_params
