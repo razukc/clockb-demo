@@ -1,4 +1,6 @@
-<%= content_for :page_title, 'Browse our events' %>
+          <% if @events_single.nil? %>
+          <%= content_for :page_title, 'Browse our events' %>
+          <% end %>
 
 
 <div class="row">

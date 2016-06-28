@@ -5,23 +5,36 @@
 		<ul class="no-bullet">
 		<% @all_event_discussion.each do |discussion| %>
 			<li class="panel">
-				<h5><%= User.find_by_id(discussion.user_id) %></h5>
+				<h6 class="subheader"><%= discussion.commenter %></h6>
 				<p><%= discussion.comment %></p>
-				<a href="javascript:void(0);" class="reply" id="<%= discussion.id %>">Reply</a>
+				
 				<div id="reply_comment_<%= discussion.id %>">
 					<ul class="no-bullet">
+						<% @event_discussion_replies = EventDiscussion.event_discussion_replies(event_id, discussion.id) %>
+						<% unless @event_discussion_replies.nil? %>
+							<% @event_discussion_replies.each do |reply| %>
+							<li class="panel callout radius">
+								<h6 class="subheader"><%= reply.commenter %></h6>
+								<p><%= reply.comment %></p>
+							</li>
+							<% end %>
+						<% end %>
 					</ul>
 				</div>
+				<div class="clearfix"></div>
 				<div id="reply_form_<%= discussion.id %>" class="hide">
 					<%= form_for @new_event_discussion, html: {:id => "#{discussion.id}", class: "reply_form"}, remote: true do |f| %>
-						<%= f.text_area :comment, placeholder: "Type your comment here...", id: 'new_event_discussion_form' %>
+						<%= f.text_field :commenter, placeholder: "Your full name", required: true %>
+						<%= f.text_area :comment, placeholder: "Type your comment here...", id: 'new_event_discussion_form', required: true %>
 						<%= f.hidden_field :user_id, value: user_id %>
 						<%= f.hidden_field :event_id, value: event_id %>
 						<%= f.hidden_field :in_reply_to, value: discussion.id %>
 						<%= f.submit "Post", class: "button tiny right", data: {disable_with: "Please wait..."} %>
 					<% end -%>
 				</div>
-				<div class="clearfix"></div>
+				
+
+				<a href="javascript:void(0);" class="reply" id="<%= discussion.id %>">Add your comment</a>
 			</li>
 		<% end -%>
 		</ul>
@@ -35,10 +48,10 @@
 		$("div#reply_form_"+id).toggleClass('hide');
 		$(document).foundation();
 	});
-	$("form.reply_form").live("ajax:complete", function(evt, data, status, xhr){
-		alert(data);
-	       var id2 = $(this).attr('id');
-	       $("div#reply_comment_"+id2+" > ul").prepend("<li class=\"panel radius\">data</li>")
-			$(document).foundation();
-	   });
+	// $("form.reply_form").live("ajax:complete", function(evt, data, status, xhr){
+	// 	alert(data);
+	//        var id2 = $(this).attr('id');
+	//        $("div#reply_comment_"+id2+" > ul").append("<li class=\"panel callout\">data</li>")
+	// 		$(document).foundation();
+	//    });
 </script>

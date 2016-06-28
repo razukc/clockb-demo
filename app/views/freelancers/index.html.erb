@@ -122,43 +122,19 @@
 	<div class="columns large-2 medium-2">&nbsp;
 	</div>
 	<div class="columns large-5 medium-5">
-		<select><option>Filter by Category</option></select>
+		<%= form_tag search_freelancers_path, remote: true do %>
+			<%= select_tag :query, options_for_select(options_for_field_of_expertise), :include_blank => 'Filter by Category'
+
+				%>
 	</div>
 	<div class="columns large-1 medium-1">
-		<button class="tiny right">Search</button>
+		<%= submit_tag "Search", class: "button tiny right" %>
 	</div>
+<% end %>
 </div>
 
 <div class="row">
-	<% 3.times do %>
-	<div class="columns large-4 medium-6">
-		<table width="100%">
-			<tr>
-				<td colspan="2" style="text-align:center;">
-					<%= image_tag "500.png", class: 'lazyload th-no-hover', style: "width:150px;" %>
-				</td>
-			</tr>
-			
-				<tr>
-					<td class="subheader">Name:</td>
-					<td><span class="left">John Doe</span><span class="right"><%= link_to "View Profile", "#" %></span></td>
-				</tr>
-				<tr>
-					<td class="subheader">Field of Expertise:</td>
-					<td>Consulting</td>
-				</tr>
-			
-			<tr>
-				<td>
-					<%= link_to "Message Freelancer", message_freelancer_path, class: 'button info tiny', 
-						data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
-				</td>
-				<td>
-					<%= link_to "Book Webinar appointment", book_webinar_appointment_path, class: 'button info tiny', 
-						data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
-				</td>
-			</tr>
-		</table>
+	<div class="columns search_freelancers_result">
+		<%= render partial: "search_freelancers_result", locals: {search_freelancers_result: @search_freelancers_result} %>
 	</div>
-	<% end -%>
 </div>	

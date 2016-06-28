@@ -1,5 +1,6 @@
 <%= form_for @new_event_discussion, remote: true do |f| %>
-	<%= f.text_area :comment, placeholder: "Type your comment here...", id: 'new_event_discussion_form' %>
+	<%= f.text_field :commenter, placeholder: "Your full name", required: true, id: 'new_event_discussion_form' %>
+	<%= f.text_area :comment, placeholder: "Start discussion here...", id: 'new_event_discussion_form', required: true %>
 	<%= f.hidden_field :user_id, value: user_id %>
 	<%= f.hidden_field :event_id, value: event_id %>
 	<%= f.hidden_field :in_reply_to, value: 0 %>

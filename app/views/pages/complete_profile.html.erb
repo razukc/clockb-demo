@@ -45,10 +45,7 @@
         <%= i.text_field :number_of_employees %>
       </div>
       <!-- Business -->
-      <div class="field">
-        <%= i.label "Type of Business" %>
-        <%= i.text_field :profile, required: true %>
-      </div>
+
   	   <div class="field">
         <%= f.label "Products/Services of Business" %>
         <%= f.fields_for :products_and_services, @user.products_and_services do |product| %>
@@ -74,6 +71,47 @@
       <%= i.label :contact_number %>
       <%= i.telephone_field :contact_number, required: true %>
     </div>
+<div class="field">
+      <%= i.label "Type of Business/Industry of expertise" %>
+      <%= i.select :profile, options_for_field_of_expertise, {}, prompt: "Select a category" 
+          # :collection => 
+          # [
+          #   ["Agriculture & Forestry Sector","Agriculture & Forestry Sector"],
+          #   ["Arts, Entertainment & Recreation Sector","Arts, Entertainment & Recreation Sector"],
+          #   ["Business Innovation","Business Innovation"],
+          #   ["Business Services Sector","Business Services Sector"],
+          #   ["Construction Sector","Construction Sector"],
+          #   ["Consumer Services","Consumer Services"],
+          #   ["Education Sector","Education Sector"],
+          #   ["Electric Utilities","Electric Utilities"],
+          #   ["Finance & Insurance Sector","Finance & Insurance Sector"],
+          #   ["Government","Government"],
+          #   ["Health Care Sector","Health Care Sector"],
+          #   ["IT & Technology","IT & Technology"],
+          #   ["Lodging","IT & Technology"],
+          #   ["Management of Companies & Enterprises","Management of Companies & Enterprises"],
+          #   ["Manufacturing Sector","Manufacturing Sector"],
+          #   ["Media","Media"],
+          #   ["Membership Organizations","Membership Organizations"],
+          #   ["Mining","Mining"],
+          #   ["Natural Gas Distribution","Natural Gas Distribution"],
+          #   ["Nonprofit Institutions","Nonprofit Institutions"],
+          #   ["Oil & Gas","Oil & Gas"],
+          #   ["Others","Others"],
+          #   ["Private Households","Private Households"],
+          #   ["Professional Services Sector","Professional Services Sector"],
+          #   ["Real Estate","Real Estate"],
+          #   ["Religious Organizations","Religious Organizations"],
+          #   ["Rental & Leasing","Rental & Leasing"],
+          #   ["Restaurants, Bars & Food Services","Restaurants, Bars & Food Services"],
+          #   ["Retail Sector","Retail Sector"],
+          #   ["Transportation Services Sector","Transportation Services Sector"],
+          #   ["Water & Sewer Utilities","Water & Sewer Utilities"],
+          #   ["Wholesale Sector","Wholesale Sector"]
+          # ]
+
+       %>
+  </div>
     <div class="field">
       <%#= i.check_box :package_selected, as: :boolean, label: "Request for Premium Package" %>
       <%= i.radio_button :package_selected, "premium" %>
@@ -90,48 +128,8 @@
       <li class="heading hide">#####</li>
       <li class="divider"></li>
     </ul>
-  <div class="field">
-      <%= i.label "Industry of expertise" %>
-      <%= i.select :profile,
-          :collection => 
-          [
-            ["Agriculture & Forestry Sector","Agriculture & Forestry Sector"],
-            ["Arts, Entertainment & Recreation Sector","Arts, Entertainment & Recreation Sector"],
-            ["Business Innovation","Business Innovation"],
-            ["Business Services Sector","Business Services Sector"],
-            ["Construction Sector","Construction Sector"],
-            ["Consumer Services","Consumer Services"],
-            ["Education Sector","Education Sector"],
-            ["Electric Utilities","Electric Utilities"],
-            ["Finance & Insurance Sector","Finance & Insurance Sector"],
-            ["Government","Government"],
-            ["Health Care Sector","Health Care Sector"],
-            ["IT & Technology","IT & Technology"],
-            ["Lodging","IT & Technology"],
-            ["Management of Companies & Enterprises","Management of Companies & Enterprises"],
-            ["Manufacturing Sector","Manufacturing Sector"],
-            ["Media","Media"],
-            ["Membership Organizations","Membership Organizations"],
-            ["Mining","Mining"],
-            ["Natural Gas Distribution","Natural Gas Distribution"],
-            ["Nonprofit Institutions","Nonprofit Institutions"],
-            ["Oil & Gas","Oil & Gas"],
-            ["Others","Others"],
-            ["Private Households","Private Households"],
-            ["Professional Services Sector","Professional Services Sector"],
-            ["Real Estate","Real Estate"],
-            ["Religious Organizations","Religious Organizations"],
-            ["Rental & Leasing","Rental & Leasing"],
-            ["Restaurants, Bars & Food Services","Restaurants, Bars & Food Services"],
-            ["Retail Sector","Retail Sector"],
-            ["Transportation Services Sector","Transportation Services Sector"],
-            ["Water & Sewer Utilities","Water & Sewer Utilities"],
-            ["Wholesale Sector","Wholesale Sector"]
-          ]
-
-       %>
-  </div>
-  <div class="field">
+  
+  <div class="field hide">
       <%= i.label "Field of Expertise" %>
       <%= i.text_field :field_of_expertise %>
     </div>

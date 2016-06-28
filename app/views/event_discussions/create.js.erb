@@ -2,9 +2,13 @@
 
 <% else %>
 	$('textarea#new_event_discussion_form').val('');
+	$('input[type=text]#new_event_discussion_form').val('');
 	<% if @event_discussion.in_reply_to > 0 %>
-		$("#reply_comment_"+@event_discussion.in_reply_to+" > ul").prepend("<li class=\"panel radius\"><%= @event_discussion.comment %></li>");
+		$("div#reply_form_"+<%= @event_discussion.in_reply_to %>).toggleClass('hide');
+		$("#reply_comment_"+<%= @event_discussion.in_reply_to %>+" > ul").append("<li class=\"panel callout radius\"><h6 class=\"subheader\"><%= @event_discussion.commenter %></h6><%= @event_discussion.comment %></li>");
 	<% else %>
-		$('#new_discussion_item > ul').prepend('<li class="panel"><%= @event_discussion.comment %></li>');
+		$('#new_discussion_item > ul').prepend('<li class="panel"><h6 class=\"subheader\"><%= @event_discussion.commenter %></h6><%= @event_discussion.comment %></li>');
 	<% end %>
+
 <% end %>
+$(document).foundation();

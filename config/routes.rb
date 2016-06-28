@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get 'esewa_payments/failure'
 
   resources :event_discussions
+    get 'event_discussions/comments/:id' => 'event_discussions#comments'
     get 'message_freelancer' => 'freelancers#message_freelancer'
     get 'book_your_appointment' => 'freelancers#book_your_appointment'
     get 'book_webinar_appointment' => 'freelancers#book_webinar_appointment'
     get 'join_as_a_clock_b_freelancer' => 'freelancers#join_as_a_clock_b_freelancer'
     get 'add_freelance_project' => 'freelancers#add_freelance_project'
+    post 'search_freelancers' => 'freelancers#search_freelancers'
   resources :freelancers
 
   get 'rough', to: 'pages#rough'

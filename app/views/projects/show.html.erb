@@ -27,3 +27,60 @@
 		</table>
 	</div>
 </div>
+<div class="row">
+	<div class="columns large-4">
+		<h5>Assign Freelancers</h5>
+		  	<table width="100%">
+					<tr>
+						<td colspan="2" style="text-align:center;">
+							<%= image_tag "500.png", class: 'lazyload th-no-hover', style: "width:150px;" %>
+						</td>
+					</tr>
+					
+						<tr>
+							<td class="subheader">Name:</td>
+							<td><span class="left">John Doe</span><span class="right"><%= link_to "View Profile", "#" %></span></td>
+						</tr>
+						<tr>
+							<td class="subheader">Field of Expertise:</td>
+							<td>Consulting</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="checkbox">Assign Freelancer
+							</td>
+						</tr>
+					
+					<tr>
+						<td>
+							<%= link_to "Message Freelancer", message_freelancer_path, class: 'button info tiny', 
+								data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+						</td>
+						<td>
+							<%= link_to "Book Webinar appointment", book_webinar_appointment_path, class: 'button info tiny', 
+								data: {"reveal-id" => "myModal", "reveal-ajax" => true} %>
+						</td>
+					</tr>
+				</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="columns large-12">
+		<h5>Assigned Tasks</h5>
+		<table width="100%">
+			<tr>
+				<th>Assigned Freelancer</th>
+				<th>Task</th>
+				<th>Deadline</th>
+				<th>&nbsp;</th>
+			</tr>
+			<tr>
+				<td>John Doe</td>
+				<td><input type="text_area"></td>
+				<td><input type="textbox"></td>
+				<td><button class="tiny">Assign Task</button></td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515214258) do
+ActiveRecord::Schema.define(version: 20160626125053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20160515214258) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id"
+    t.string   "commenter"
   end
 
   add_index "event_discussions", ["event_id"], name: "index_event_discussions_on_event_id", using: :btree
