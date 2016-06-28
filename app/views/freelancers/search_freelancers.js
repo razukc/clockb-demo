@@ -1,0 +1,1 @@
+$('div.search_freelancers_result').html("<%= escape_javascript render(partial: "freelancers/search_freelancers_result", locals: {search_freelancers_result: @search_freelancers_result}) %>");
