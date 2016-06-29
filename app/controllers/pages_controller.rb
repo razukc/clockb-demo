@@ -104,6 +104,9 @@ class PagesController < ApplicationController
     @know_the_team = User.know_the_team
   end
   def events
+    @new_event_discussion = EventDiscussion.new
+    @all_event_discussion = EventDiscussion.where(:event_id => params[:id], :in_reply_to => 0).order('created_at desc')
+    
     @events = Event.all
     @slider = EventsSlider.where(:add_to_site => true).order('created_at DESC')
     @gallery = Event.m_gallery
