@@ -110,7 +110,7 @@
 				<%= r.text_field :field_of_expertise, :placeholder => 'Field of Expertise', required: false %>
 				<%= r.text_field :address, :placeholder => 'Address', required: false %>
 				<div class="clearfix"></div>
-
+				<% if @_id != '28' #entrepreneur psychology %>
 				<span>Attendee Category</span><br>
 				<%= r.radio_button :attendee_category, "featured_connect" %>
 				<%= r.label :attendee_category, "Featured Connect", value: "featured_connect" %>
@@ -119,6 +119,7 @@
 				<%= r.radio_button :attendee_category, "featured_business_card" %>
 				<%= r.label :attendee_category, "Featured Business Card", value: "featured_business_card" %>
 				<div class="clearfix"></div>
+				<% end %>
 
 				<span>Payment Options</span><br>
 				<%= r.radio_button :payment_options, "cheque" %>
@@ -127,8 +128,10 @@
 				<%= r.label :payment_options, "Cash", value: "cash" %>
 				<%= r.radio_button :payment_options, "bank_transfer" %>
 				<%= r.label :payment_options, "Bank transfer/Deposit", value: "bank_transfer" %>
+				<% if @_id != '28' #entrepreneur psychology %>
 				<%= r.radio_button :payment_options, "esewa" %>
 				<%= r.label :payment_options, "eSewa", value: "esewa" %>
+				<% end %>
 				<div class="clearfix"></div>
 			<% end %>
 		<% end %>
